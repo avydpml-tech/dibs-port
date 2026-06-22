@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/door_spedup_louder.ogg-650591dd7e9db7b7bacfe7b4d435d57c.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/door/door_spedup_louder.ogg"
+dest_files=[ "res://.import/door_spedup_louder.ogg-650591dd7e9db7b7bacfe7b4d435d57c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

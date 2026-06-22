@@ -1,0 +1,165 @@
+[gd_resource type="AudioBusLayout" load_steps=9 format=2]
+
+[sub_resource type="AudioEffectReverb" id=1]
+resource_name = "Reverb"
+room_size = 0.22
+damping = 0.39
+spread = 0.41
+hipass = 0.32
+dry = 0.38
+wet = 0.54
+
+[sub_resource type="AudioEffectReverb" id=2]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id=3]
+resource_name = "Reverb"
+room_size = 0.81
+damping = 0.69
+hipass = 0.43
+dry = 0.4
+
+[sub_resource type="AudioEffectAmplify" id=8]
+resource_name = "Amplify"
+
+[sub_resource type="AudioEffectEQ21" id=9]
+resource_name = "EQ21"
+band_db/22_hz = -60.0
+band_db/32_hz = -60.0
+band_db/44_hz = -60.0
+band_db/63_hz = -60.0
+band_db/90_hz = -60.0
+band_db/125_hz = -60.0
+band_db/175_hz = -60.0
+band_db/250_hz = -60.0
+band_db/350_hz = -60.0
+band_db/500_hz = -48.4
+band_db/700_hz = -25.1
+band_db/1000_hz = -5.0
+band_db/1400_hz = -31.6
+band_db/2000_hz = -41.4
+band_db/2800_hz = -56.8
+band_db/4000_hz = -60.0
+band_db/5600_hz = -60.0
+band_db/8000_hz = -60.0
+band_db/11000_hz = -60.0
+band_db/16000_hz = -60.0
+band_db/22000_hz = -60.0
+
+[sub_resource type="AudioEffectEQ21" id=11]
+resource_name = "EQ21"
+band_db/22_hz = -60.0
+band_db/32_hz = -60.0
+band_db/44_hz = -60.0
+band_db/63_hz = -60.0
+band_db/90_hz = -60.0
+band_db/125_hz = -60.0
+band_db/175_hz = -60.0
+band_db/250_hz = -60.0
+band_db/350_hz = -60.0
+band_db/500_hz = -60.0
+band_db/700_hz = -60.0
+band_db/1000_hz = -60.0
+band_db/1400_hz = -60.0
+band_db/2000_hz = -60.0
+band_db/2800_hz = 4.5
+band_db/4000_hz = -21.8
+band_db/5600_hz = -60.0
+band_db/8000_hz = -60.0
+band_db/11000_hz = -60.0
+band_db/16000_hz = -60.0
+band_db/22000_hz = -60.0
+
+[sub_resource type="AudioEffectEQ21" id=12]
+resource_name = "EQ21"
+band_db/22_hz = -60.0
+band_db/32_hz = -60.0
+band_db/44_hz = -60.0
+band_db/63_hz = -60.0
+band_db/90_hz = -60.0
+band_db/125_hz = -60.0
+band_db/175_hz = -60.0
+band_db/250_hz = -60.0
+band_db/350_hz = -60.0
+band_db/500_hz = -60.0
+band_db/700_hz = -60.0
+band_db/1000_hz = -60.0
+band_db/1400_hz = -60.0
+band_db/2000_hz = -60.0
+band_db/2800_hz = 4.5
+band_db/4000_hz = -21.8
+band_db/5600_hz = -60.0
+band_db/8000_hz = -60.0
+band_db/11000_hz = -60.0
+band_db/16000_hz = -60.0
+band_db/22000_hz = -60.0
+
+[sub_resource type="AudioEffectReverb" id=10]
+resource_name = "Reverb"
+room_size = 0.13
+damping = 0.28
+spread = 0.51
+dry = 0.48
+wet = 0.32
+
+[resource]
+bus/1/name = "Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0694828
+bus/1/send = "Mus 2"
+bus/1/effect/0/effect = SubResource( 1 )
+bus/1/effect/0/enabled = true
+bus/2/name = "Music Co"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -0.328256
+bus/2/send = "Mus 2"
+bus/2/effect/0/effect = SubResource( 1 )
+bus/2/effect/0/enabled = true
+bus/3/name = "SFX"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "Mus 2"
+bus/3/effect/0/effect = SubResource( 2 )
+bus/3/effect/0/enabled = false
+bus/4/name = "BSFX"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "Mus 2"
+bus/4/effect/0/effect = SubResource( 3 )
+bus/4/effect/0/enabled = true
+bus/5/name = "Voice"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = "Mus 2"
+bus/6/name = "Enemy"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = "Mus 2"
+bus/7/name = "Phone"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = "Master"
+bus/7/effect/0/effect = SubResource( 8 )
+bus/7/effect/0/enabled = true
+bus/7/effect/1/effect = SubResource( 9 )
+bus/7/effect/1/enabled = true
+bus/7/effect/2/effect = SubResource( 11 )
+bus/7/effect/2/enabled = false
+bus/7/effect/3/effect = SubResource( 12 )
+bus/7/effect/3/enabled = false
+bus/7/effect/4/effect = SubResource( 10 )
+bus/7/effect/4/enabled = false

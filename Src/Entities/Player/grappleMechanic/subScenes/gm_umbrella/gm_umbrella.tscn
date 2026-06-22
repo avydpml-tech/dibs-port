@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/tent_icon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/tentacle.tscn" type="PackedScene" id=2]
+
+[node name="walnutArena" type="Node2D"]
+
+[node name="tentaicon2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 271.981, 379.504 )
+
+[node name="tentaicon3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 887.342, 243.349 )
+disable_movement = true
+pull_player = true
+
+[node name="tentacle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 951.477, 106.549 )
+
+[node name="tentacle2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 273.375, 221.345 )

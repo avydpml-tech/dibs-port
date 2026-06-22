@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/UI/CinemaScreen/cinemaThumbnail.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/4_Interactables/cinema_tape_icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/outline.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0000.png" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Light2D
+
+func _on_VisibilityNotifier2D_viewport_entered(_viewport):
+	show()
+
+
+func _on_VisibilityNotifier2D_viewport_exited(_viewport):
+	hide()
+"
+
+[node name="cinemaThumbnail" type="TextureButton" groups=["CinemaTape"]]
+use_parent_material = true
+margin_right = 1154.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.29, 0.29 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 2 )
+
+[node name="big5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 602.152, 242.144 )
+scale = Vector2( 4.63947, 2.87486 )
+energy = 0.83
+shadow_enabled = true
+script = SubResource( 1 )
+
+[node name="thumbnail" type="Sprite" parent="."]
+show_behind_parent = true
+use_parent_material = true
+position = Vector2( 576.136, 238.885 )
+texture = ExtResource( 5 )
+
+[node name="cinema_tape" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.807843 )
+position = Vector2( 84.0747, 90.2628 )
+scale = Vector2( 4.11876, 4.11876 )
+texture = ExtResource( 3 )
+
+[node name="outline" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.109804 )
+position = Vector2( 576.136, 238.885 )
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="." to="." method="_on_self_pressed"]

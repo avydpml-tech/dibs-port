@@ -1,0 +1,11 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf"
+
+[resource]
+size = 22
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = SubResource( 11 )

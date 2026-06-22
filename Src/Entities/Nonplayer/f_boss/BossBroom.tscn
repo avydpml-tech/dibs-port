@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_koubold/broom.png" type="Texture" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/BossBroom.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -7.6 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fall"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ -7.6319, 89.6554 ]
+}
+
+[node name="BossBroom" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Broom")
+anims/RESET = SubResource( 1 )
+anims/fall = SubResource( 2 )
+
+[node name="Broom" type="Sprite" parent="."]
+position = Vector2( 1, -1 )
+rotation = -0.132645
+texture = ExtResource( 1 )
+offset = Vector2( -1, -49 )

@@ -1,0 +1,7081 @@
+[gd_scene load_steps=252 format=2]
+
+[ext_resource path="res://Src/Menu/Themes/interact_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Light.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" type="Script" id=6]
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" type="Script" id=7]
+[ext_resource path="res://addons/imjp94.yafsm/src/states/State.gd" type="Script" id=8]
+[ext_resource path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" type="Script" id=9]
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/BooleanCondition.gd" type="Script" id=10]
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/IntegerCondition.gd" type="Script" id=11]
+[ext_resource path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" type="Script" id=12]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/BossFloorCivid.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/BossBroom.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/BossStaticCollide.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/Boss_Eyes_cropped-Sheet.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/Boss_Art_V0.1_Export.png" type="Texture" id=17]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/Boss_Art_V0.1_Export-6-Sheet.png" type="Texture" id=18]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/BossRoof/BossRoof_001-Sheet.png" type="Texture" id=19]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/base/boss_base.png" type="Texture" id=20]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/BossStart_01.png" type="Texture" id=21]
+[ext_resource path="res://Src/Interactables/lockedDoor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/rolled_newspaper.png" type="Texture" id=23]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/scruff_mox_test.png" type="Texture" id=24]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/blonk.png" type="Texture" id=25]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/Boss_Art_V0.1_Export-6.png" type="Texture" id=26]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/scruff_mox_2.png" type="Texture" id=27]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/boss_anim.png" type="Texture" id=28]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/roof_ammo/boss_roof_ammo.png" type="Texture" id=29]
+[ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=30]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/f_boss.gd" type="Script" id=31]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/eye.gd" type="Script" id=32]
+
+[sub_resource type="Resource" id=233]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 767.5, 814.5 )
+}
+name = "BHM_Floor_Sweep"
+
+[sub_resource type="Resource" id=234]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1129.5, 594.5 )
+}
+name = "BHM_Idle_Flashed"
+
+[sub_resource type="Resource" id=235]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1192, 814.5 )
+}
+name = "BHM_Newspaper_Swat_Ready"
+
+[sub_resource type="Resource" id=236]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1010.5, 814.5 )
+}
+name = "BHM_Roof_Ammo"
+
+[sub_resource type="Resource" id=178]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 348, 160 )
+}
+name = "Entry"
+
+[sub_resource type="Resource" id=179]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 488, 520 )
+}
+name = "Exit"
+
+[sub_resource type="Resource" id=184]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 508, 160 )
+}
+name = "Idle"
+
+[sub_resource type="Resource" id=186]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 312.5, 320 )
+}
+name = "Newspaper_Swat"
+
+[sub_resource type="Resource" id=187]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 648, 300 )
+}
+name = "Roof_Ammo"
+
+[sub_resource type="Resource" id=185]
+script = ExtResource( 12 )
+from = "Entry"
+to = "Idle"
+conditions = {
+}
+priority = 0
+
+[sub_resource type="Resource" id=191]
+script = ExtResource( 12 )
+from = "Idle"
+to = "Newspaper_Swat"
+conditions = {
+}
+priority = 0
+
+[sub_resource type="Resource" id=192]
+script = ExtResource( 10 )
+name = "flashed_once"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=188]
+script = ExtResource( 12 )
+from = "Newspaper_Swat"
+to = "Exit"
+conditions = {
+"flashed_once": SubResource( 192 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=180]
+script = ExtResource( 9 )
+__meta__ = {
+"graph_offset": Vector2( 268, 0 )
+}
+name = "BHM_"
+states = {
+"BHM_Floor_Sweep": SubResource( 233 ),
+"BHM_Idle_Flashed": SubResource( 234 ),
+"BHM_Newspaper_Swat_Ready": SubResource( 235 ),
+"BHM_Roof_Ammo": SubResource( 236 ),
+"Entry": SubResource( 178 ),
+"Exit": SubResource( 179 ),
+"Idle": SubResource( 184 ),
+"Newspaper_Swat": SubResource( 186 ),
+"Roof_Ammo": SubResource( 187 )
+}
+transitions = {
+"Entry": {
+"Idle": SubResource( 185 )
+},
+"Idle": {
+"Newspaper_Swat": SubResource( 191 )
+},
+"Newspaper_Swat": {
+"Exit": SubResource( 188 )
+}
+}
+
+[sub_resource type="Resource" id=377]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 595.5, 440 )
+}
+name = "Boss_Start"
+
+[sub_resource type="Resource" id=329]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 808, 1200 )
+}
+name = "Death"
+
+[sub_resource type="Resource" id=239]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 608, 300 )
+}
+name = "Entry"
+
+[sub_resource type="Resource" id=243]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 808, 1360 )
+}
+name = "Exit"
+
+[sub_resource type="Resource" id=242]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 597, 620 )
+}
+name = "Fight_Idle"
+
+[sub_resource type="Resource" id=367]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1096.5, 620 )
+}
+name = "Fight_Idle_Block"
+
+[sub_resource type="Resource" id=249]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 208.5, 620 )
+}
+name = "Floor_Sweep"
+
+[sub_resource type="Resource" id=253]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 581, 1200 )
+}
+name = "Interruptables"
+
+[sub_resource type="Resource" id=250]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1066, 720 )
+}
+name = "Newspaper_Swat_Expose"
+
+[sub_resource type="Resource" id=251]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 783.5, 860 )
+}
+name = "Newspaper_Swat_Flashed"
+
+[sub_resource type="Resource" id=247]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 789, 720 )
+}
+name = "Newspaper_Swat_Ready"
+
+[sub_resource type="Resource" id=252]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1073, 860 )
+}
+name = "Newspaper_Swat_Slam"
+
+[sub_resource type="Resource" id=254]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 287.5, 1200 )
+}
+name = "Player_Lifted"
+
+[sub_resource type="Resource" id=326]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 591.5, 1360 )
+}
+name = "Player_Lose"
+
+[sub_resource type="Resource" id=248]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 290.5, 860 )
+}
+name = "Roof_Ammo"
+
+[sub_resource type="Resource" id=284]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 458, 860 )
+}
+name = "Roof_Ammo_Hit"
+
+[sub_resource type="Resource" id=246]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=244]
+script = ExtResource( 12 )
+from = "Boss_Start"
+to = "Fight_Idle"
+conditions = {
+"anim_finished": SubResource( 246 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=378]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=379]
+script = ExtResource( 12 )
+from = "Death"
+to = "Exit"
+conditions = {
+"anim_finished": SubResource( 378 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=245]
+script = ExtResource( 12 )
+from = "Entry"
+to = "Boss_Start"
+conditions = {
+}
+priority = 0
+
+[sub_resource type="Resource" id=241]
+script = ExtResource( 12 )
+from = "Entry"
+to = "Boss_Start"
+conditions = {
+}
+priority = 0
+
+[sub_resource type="Resource" id=374]
+script = ExtResource( 10 )
+name = "is_in_playable_area"
+comparation = 0
+value = false
+
+[sub_resource type="Resource" id=369]
+script = ExtResource( 12 )
+from = "Fight_Idle"
+to = "Fight_Idle_Block"
+conditions = {
+"is_in_playable_area": SubResource( 374 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=255]
+script = ExtResource( 7 )
+name = "play_floor_sweep"
+
+[sub_resource type="Resource" id=256]
+script = ExtResource( 12 )
+from = "Fight_Idle"
+to = "Floor_Sweep"
+conditions = {
+"play_floor_sweep": SubResource( 255 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=342]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=343]
+script = ExtResource( 12 )
+from = "Fight_Idle"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 342 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=259]
+script = ExtResource( 7 )
+name = "play_newspaper_swat"
+
+[sub_resource type="Resource" id=258]
+script = ExtResource( 12 )
+from = "Fight_Idle"
+to = "Newspaper_Swat_Ready"
+conditions = {
+"play_newspaper_swat": SubResource( 259 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=391]
+script = ExtResource( 10 )
+name = "is_player_lost"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=392]
+script = ExtResource( 12 )
+from = "Fight_Idle"
+to = "Player_Lose"
+conditions = {
+"is_player_lost": SubResource( 391 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=261]
+script = ExtResource( 7 )
+name = "play_roof_ammo"
+
+[sub_resource type="Resource" id=257]
+script = ExtResource( 12 )
+from = "Fight_Idle"
+to = "Roof_Ammo"
+conditions = {
+"play_roof_ammo": SubResource( 261 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=371]
+script = ExtResource( 7 )
+name = "boss_unblock"
+
+[sub_resource type="Resource" id=370]
+script = ExtResource( 12 )
+from = "Fight_Idle_Block"
+to = "Fight_Idle"
+conditions = {
+"boss_unblock": SubResource( 371 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=263]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=264]
+script = ExtResource( 12 )
+from = "Floor_Sweep"
+to = "Fight_Idle"
+conditions = {
+"anim_finished": SubResource( 263 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=335]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=332]
+script = ExtResource( 12 )
+from = "Floor_Sweep"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 335 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=331]
+script = ExtResource( 11 )
+name = "boss_health"
+comparation = 5
+value = 0
+
+[sub_resource type="Resource" id=330]
+script = ExtResource( 12 )
+from = "Interruptables"
+to = "Death"
+conditions = {
+"boss_health": SubResource( 331 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=375]
+script = ExtResource( 10 )
+name = "is_in_playable_area"
+comparation = 0
+value = false
+
+[sub_resource type="Resource" id=376]
+script = ExtResource( 12 )
+from = "Interruptables"
+to = "Fight_Idle"
+conditions = {
+"is_in_playable_area": SubResource( 375 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=274]
+script = ExtResource( 10 )
+name = "is_player_grappled"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=275]
+script = ExtResource( 12 )
+from = "Interruptables"
+to = "Player_Lifted"
+conditions = {
+"is_player_grappled": SubResource( 274 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=327]
+script = ExtResource( 10 )
+name = "is_player_lost"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=328]
+script = ExtResource( 12 )
+from = "Interruptables"
+to = "Player_Lose"
+conditions = {
+"is_player_lost": SubResource( 327 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=344]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=345]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Expose"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 344 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=272]
+script = ExtResource( 7 )
+name = "boss_flashed"
+
+[sub_resource type="Resource" id=269]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Expose"
+to = "Newspaper_Swat_Flashed"
+conditions = {
+"boss_flashed": SubResource( 272 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=267]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=268]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Expose"
+to = "Newspaper_Swat_Slam"
+conditions = {
+"anim_finished": SubResource( 267 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=270]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=271]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Flashed"
+to = "Fight_Idle"
+conditions = {
+"anim_finished": SubResource( 270 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=340]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=341]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Flashed"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 340 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=338]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=339]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Ready"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 338 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=262]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=260]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Ready"
+to = "Newspaper_Swat_Expose"
+conditions = {
+"anim_finished": SubResource( 262 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=276]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=273]
+script = ExtResource( 12 )
+from = "Newspaper_Swat_Slam"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 276 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=278]
+script = ExtResource( 7 )
+name = "freed_grapple"
+
+[sub_resource type="Resource" id=389]
+script = ExtResource( 10 )
+name = "is_player_lost"
+comparation = 0
+value = false
+
+[sub_resource type="Resource" id=277]
+script = ExtResource( 12 )
+from = "Player_Lifted"
+to = "Fight_Idle"
+conditions = {
+"freed_grapple": SubResource( 278 ),
+"is_player_lost": SubResource( 389 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=387]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=388]
+script = ExtResource( 12 )
+from = "Player_Lifted"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 387 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=380]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=381]
+script = ExtResource( 12 )
+from = "Player_Lose"
+to = "Exit"
+conditions = {
+"anim_finished": SubResource( 380 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=324]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=325]
+script = ExtResource( 12 )
+from = "Roof_Ammo"
+to = "Fight_Idle"
+conditions = {
+"anim_finished": SubResource( 324 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=336]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=333]
+script = ExtResource( 12 )
+from = "Roof_Ammo"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 336 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=286]
+script = ExtResource( 7 )
+name = "is_hit"
+
+[sub_resource type="Resource" id=285]
+script = ExtResource( 12 )
+from = "Roof_Ammo"
+to = "Roof_Ammo_Hit"
+conditions = {
+"is_hit": SubResource( 286 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=288]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=287]
+script = ExtResource( 12 )
+from = "Roof_Ammo_Hit"
+to = "Fight_Idle"
+conditions = {
+"anim_finished": SubResource( 288 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=337]
+script = ExtResource( 7 )
+name = "Interrupt"
+
+[sub_resource type="Resource" id=334]
+script = ExtResource( 12 )
+from = "Roof_Ammo_Hit"
+to = "Interruptables"
+conditions = {
+"Interrupt": SubResource( 337 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=237]
+script = ExtResource( 9 )
+__meta__ = {
+"graph_offset": Vector2( 528, 260 )
+}
+name = "BSD_"
+states = {
+"Boss_Start": SubResource( 377 ),
+"Death": SubResource( 329 ),
+"Entry": SubResource( 239 ),
+"Exit": SubResource( 243 ),
+"Fight_Idle": SubResource( 242 ),
+"Fight_Idle_Block": SubResource( 367 ),
+"Floor_Sweep": SubResource( 249 ),
+"Interruptables": SubResource( 253 ),
+"Newspaper_Swat_Expose": SubResource( 250 ),
+"Newspaper_Swat_Flashed": SubResource( 251 ),
+"Newspaper_Swat_Ready": SubResource( 247 ),
+"Newspaper_Swat_Slam": SubResource( 252 ),
+"Player_Lifted": SubResource( 254 ),
+"Player_Lose": SubResource( 326 ),
+"Roof_Ammo": SubResource( 248 ),
+"Roof_Ammo_Hit": SubResource( 284 )
+}
+transitions = {
+"Boss_Start": {
+"Fight_Idle": SubResource( 244 )
+},
+"Death": {
+"Exit": SubResource( 379 )
+},
+"Entry": {
+"Boss_Start": SubResource( 245 ),
+"State": SubResource( 241 )
+},
+"Fight_Idle": {
+"Fight_Idle_Block": SubResource( 369 ),
+"Floor_Sweep": SubResource( 256 ),
+"Interruptables": SubResource( 343 ),
+"Newspaper_Swat_Ready": SubResource( 258 ),
+"Player_Lose": SubResource( 392 ),
+"Roof_Ammo": SubResource( 257 )
+},
+"Fight_Idle_Block": {
+"Fight_Idle": SubResource( 370 )
+},
+"Floor_Sweep": {
+"Fight_Idle": SubResource( 264 ),
+"Interruptables": SubResource( 332 )
+},
+"Interruptables": {
+"Death": SubResource( 330 ),
+"Fight_Idle": SubResource( 376 ),
+"Player_Lifted": SubResource( 275 ),
+"Player_Lose": SubResource( 328 )
+},
+"Newspaper_Swat_Expose": {
+"Interruptables": SubResource( 345 ),
+"Newspaper_Swat_Flashed": SubResource( 269 ),
+"Newspaper_Swat_Slam": SubResource( 268 )
+},
+"Newspaper_Swat_Flashed": {
+"Fight_Idle": SubResource( 271 ),
+"Interruptables": SubResource( 341 )
+},
+"Newspaper_Swat_Ready": {
+"Interruptables": SubResource( 339 ),
+"Newspaper_Swat_Expose": SubResource( 260 )
+},
+"Newspaper_Swat_Slam": {
+"Interruptables": SubResource( 273 )
+},
+"Player_Lifted": {
+"Fight_Idle": SubResource( 277 ),
+"Interruptables": SubResource( 388 )
+},
+"Player_Lose": {
+"Exit": SubResource( 381 )
+},
+"Roof_Ammo": {
+"Fight_Idle": SubResource( 325 ),
+"Interruptables": SubResource( 333 ),
+"Roof_Ammo_Hit": SubResource( 285 )
+},
+"Roof_Ammo_Hit": {
+"Fight_Idle": SubResource( 287 ),
+"Interruptables": SubResource( 334 )
+}
+}
+
+[sub_resource type="Resource" id=51]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1175, 60 )
+}
+name = "Clothes_Apology"
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 528, -200 )
+}
+name = "Entry"
+
+[sub_resource type="Resource" id=354]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 926, 0 )
+}
+name = "Given_Broom"
+
+[sub_resource type="Resource" id=39]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1156, -180 )
+}
+name = "Given_Gift"
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 1159, -60 )
+}
+name = "Idle_Look"
+
+[sub_resource type="Resource" id=355]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 839, 0 )
+}
+name = "Mox_Hug"
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 522, 0 )
+}
+name = "Reading"
+
+[sub_resource type="Resource" id=38]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 253, 260 )
+}
+name = "Reading_Flashed"
+
+[sub_resource type="Resource" id=307]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 697, 260 )
+}
+name = "Surprised"
+
+[sub_resource type="Resource" id=316]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 896.5, 260 )
+}
+name = "Surprised_Done"
+
+[sub_resource type="Resource" id=419]
+script = ExtResource( 8 )
+__meta__ = {
+"graph_offset": Vector2( 134, 260 )
+}
+name = "Tired_Boss"
+
+[sub_resource type="Resource" id=386]
+script = ExtResource( 12 )
+from = "BSD_"
+to = "Reading"
+conditions = {
+}
+priority = 0
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 12 )
+from = "Entry"
+to = "Reading"
+conditions = {
+}
+priority = 0
+
+[sub_resource type="Resource" id=360]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=361]
+script = ExtResource( 12 )
+from = "Given_Broom"
+to = "Reading"
+conditions = {
+"anim_finished": SubResource( 360 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=362]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=363]
+script = ExtResource( 12 )
+from = "Mox_Hug"
+to = "Reading"
+conditions = {
+"anim_finished": SubResource( 362 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=198]
+script = ExtResource( 7 )
+name = "bhm_start"
+
+[sub_resource type="Resource" id=183]
+script = ExtResource( 12 )
+from = "Reading"
+to = "BHM_"
+conditions = {
+"bhm_start": SubResource( 198 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=353]
+script = ExtResource( 7 )
+name = "boss_fight_started"
+
+[sub_resource type="Resource" id=230]
+script = ExtResource( 12 )
+from = "Reading"
+to = "BSD_"
+conditions = {
+"boss_fight_started": SubResource( 353 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=356]
+script = ExtResource( 7 )
+name = "given_broom"
+
+[sub_resource type="Resource" id=357]
+script = ExtResource( 12 )
+from = "Reading"
+to = "Given_Broom"
+conditions = {
+"given_broom": SubResource( 356 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=358]
+script = ExtResource( 7 )
+name = "mox_hug"
+
+[sub_resource type="Resource" id=359]
+script = ExtResource( 12 )
+from = "Reading"
+to = "Mox_Hug"
+conditions = {
+"mox_hug": SubResource( 358 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=66]
+script = ExtResource( 10 )
+name = "flashed_once"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=65]
+script = ExtResource( 12 )
+from = "Reading"
+to = "Reading_Flashed"
+conditions = {
+"flashed_once": SubResource( 66 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=309]
+script = ExtResource( 7 )
+name = "first_approached"
+
+[sub_resource type="Resource" id=308]
+script = ExtResource( 12 )
+from = "Reading"
+to = "Surprised"
+conditions = {
+"first_approached": SubResource( 309 )
+}
+priority = 1
+
+[sub_resource type="Resource" id=423]
+script = ExtResource( 10 )
+name = "is_tired_boss"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=420]
+script = ExtResource( 12 )
+from = "Reading"
+to = "Tired_Boss"
+conditions = {
+"is_tired_boss": SubResource( 423 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=351]
+script = ExtResource( 7 )
+name = "boss_fight_started"
+
+[sub_resource type="Resource" id=232]
+script = ExtResource( 12 )
+from = "Reading_Flashed"
+to = "BSD_"
+conditions = {
+"boss_fight_started": SubResource( 351 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=350]
+script = ExtResource( 7 )
+name = "boss_not_flashed"
+
+[sub_resource type="Resource" id=67]
+script = ExtResource( 12 )
+from = "Reading_Flashed"
+to = "Reading"
+conditions = {
+"boss_not_flashed": SubResource( 350 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=352]
+script = ExtResource( 7 )
+name = "boss_fight_started"
+
+[sub_resource type="Resource" id=322]
+script = ExtResource( 12 )
+from = "Surprised"
+to = "BSD_"
+conditions = {
+"boss_fight_started": SubResource( 352 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=318]
+script = ExtResource( 7 )
+name = "surprise_timeout"
+
+[sub_resource type="Resource" id=317]
+script = ExtResource( 12 )
+from = "Surprised"
+to = "Surprised_Done"
+conditions = {
+"surprise_timeout": SubResource( 318 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=319]
+script = ExtResource( 7 )
+name = "anim_finished"
+
+[sub_resource type="Resource" id=320]
+script = ExtResource( 12 )
+from = "Surprised_Done"
+to = "Reading"
+conditions = {
+"anim_finished": SubResource( 319 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=421]
+script = ExtResource( 7 )
+name = "boss_fight_started"
+
+[sub_resource type="Resource" id=422]
+script = ExtResource( 12 )
+from = "Tired_Boss"
+to = "BSD_"
+conditions = {
+"boss_fight_started": SubResource( 421 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 9 )
+name = ""
+states = {
+"BHM_": SubResource( 180 ),
+"BSD_": SubResource( 237 ),
+"Clothes_Apology": SubResource( 51 ),
+"Entry": SubResource( 14 ),
+"Given_Broom": SubResource( 354 ),
+"Given_Gift": SubResource( 39 ),
+"Idle_Look": SubResource( 35 ),
+"Mox_Hug": SubResource( 355 ),
+"Reading": SubResource( 13 ),
+"Reading_Flashed": SubResource( 38 ),
+"Surprised": SubResource( 307 ),
+"Surprised_Done": SubResource( 316 ),
+"Tired_Boss": SubResource( 419 )
+}
+transitions = {
+"BSD_": {
+"Reading": SubResource( 386 )
+},
+"Entry": {
+"Reading": SubResource( 21 )
+},
+"Given_Broom": {
+"Reading": SubResource( 361 )
+},
+"Mox_Hug": {
+"Reading": SubResource( 363 )
+},
+"Reading": {
+"BHM_": SubResource( 183 ),
+"BSD_": SubResource( 230 ),
+"Given_Broom": SubResource( 357 ),
+"Mox_Hug": SubResource( 359 ),
+"Reading_Flashed": SubResource( 65 ),
+"Surprised": SubResource( 308 ),
+"Tired_Boss": SubResource( 420 )
+},
+"Reading_Flashed": {
+"BSD_": SubResource( 232 ),
+"Reading": SubResource( 67 )
+},
+"Surprised": {
+"BSD_": SubResource( 322 ),
+"Surprised_Done": SubResource( 317 )
+},
+"Surprised_Done": {
+"Reading": SubResource( 320 )
+},
+"Tired_Boss": {
+"BSD_": SubResource( 422 )
+}
+}
+
+[sub_resource type="Animation" id=291]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhysicBodies/disabledPlayerPos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00915077 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 157, -65 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 46.0, 47.0, 48.0, 49.0, 49.0, 49.0, 49.0, 49.0 ]
+}
+
+[sub_resource type="Animation" id=302]
+resource_name = "BSD_Death"
+length = 1.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 114.0, 115.0, 116.0, 117.0, 118.0, 119.0, 120.0, 121.0, 121.0, 121.0, 121.0, 121.0 ]
+}
+
+[sub_resource type="Animation" id=176]
+resource_name = "BSD_Fight_Idle"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00288591, 0.105497, 0.199313, 0.283073 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 6, 11, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, -97 ), Vector2( 39, -120 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/BossStart01:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/boss_attacks:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossSprite:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossSprite:hframes")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossSprite:vframes")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = false
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprites/BossSprite:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 51.0, 52.0, 53.0, 54.0, 55.0, 55.0, 55.0, 55.0, 55.0, 55.0, 55.0 ]
+}
+
+[sub_resource type="Animation" id=372]
+length = 0.72
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 56.0, 57.0, 58.0, 59.0, 60.0, 60.0, 60.0, 60.0, 60.0 ]
+}
+
+[sub_resource type="Animation" id=292]
+length = 1.48
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.753891, 1.0233 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_floor_sweep"
+}, {
+"args": [  ],
+"method": "enable_floor_sweep_collision"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66, 0.72, 0.78, 0.84, 0.9, 0.96, 1.02, 1.08 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 79.0, 80.0, 81.0, 82.0, 83.0, 84.0, 85.0, 85.0, 85.0, 85.0, 85.0, 86.0, 87.0, 88.0, 89.0, 90.0, 90.0, 90.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=296]
+length = 0.68
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.58 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 96.0, 97.0, 98.0, 99.0, 100.0, 101.0 ]
+}
+
+[sub_resource type="Animation" id=124]
+resource_name = "BSD_Newspaper_Swat_Flashed"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0261169, 0.698746, 0.735231 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.653809, 0.755034 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.000662208, 0.0549812, 0.142411, 0.238857, 0.421885, 0.795197, 0.964506 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 3, 5, 3, 6 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossEyesCropped-Sheet:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.0487544, 0.221028 ),
+"transitions": PoolRealArray( -2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.427615, 0.427615 ), Vector2( 0.376165, 0.555981 ), Vector2( 0.427615, 0.427615 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.39695 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.751599, 1.05654 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_floor_sweep"
+}, {
+"args": [  ],
+"method": "enable_floor_sweep_collision"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossSprite:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossSprite:hframes")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossSprite:vframes")
+tracks/9/interp = 1
+tracks/9/loop_wrap = false
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprites/BossSprite:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Sprites/BossSprite:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 102.0, 103.0, 104.0, 105.0, 106.0, 107.0, 107.0, 107.0, 108.0, 109.0, 110.0, 111.0, 112.0, 112.0, 112.0, 112.0 ]
+}
+
+[sub_resource type="Animation" id=298]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 91.0, 92.0, 93.0, 94.0, 95.0, 95.0 ]
+}
+
+[sub_resource type="Animation" id=299]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 113.0 ]
+}
+
+[sub_resource type="Animation" id=300]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 113.0, 113.0, 113.0, 113.0 ]
+}
+
+[sub_resource type="Animation" id=346]
+resource_name = "BSD_Player_Lose"
+length = 3.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhysicBodies/disabledPlayerPos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3.38393 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 157, -65 ), Vector2( 157, -65 ), Vector2( 930, -65 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 3.38088, 3.39082 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_player_right"
+}, {
+"args": [  ],
+"method": "_enable_mox"
+}, {
+"args": [  ],
+"method": "close_boss_doors"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/ScruffMoxTest:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.38563 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/ScruffMoxTest:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.49749 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 24 ), ExtResource( 27 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossSprite:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossSprite:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 122.0, 122.0, 122.0, 122.0, 122.0, 122.0, 122.0, 122.0, 122.0, 122.0, 122.0, 123.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0, 124.0 ]
+}
+
+[sub_resource type="Animation" id=281]
+resource_name = "BSD_Roof_Ammo"
+length = 2.16
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0193352, 0.0558201, 0.599031, 0.720721 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0.709804 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.013256, 0.114481, 0.746261 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0, -20.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.861961 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_ammo"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/BossRoof001-Sheet:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.75873 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 14 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/BossRoof001-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.94534 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.601468, 0.731999, 0.928424, 1.07102, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 7, 2, 1, 8, 11 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossEyesCropped-Sheet:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.0269272 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2.07695 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprites/BossSprite:texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Sprites/BossSprite:hframes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Sprites/BossSprite:vframes")
+tracks/12/interp = 1
+tracks/12/loop_wrap = false
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Sprites/BossSprite:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = false
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Sprites/BossSprite:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = false
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99, 1.08, 1.17, 1.26, 1.35, 1.44, 1.53, 1.62, 1.71, 1.8, 1.89, 1.98, 2.07 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 61.0, 61.0, 62.0, 63.0, 64.0, 65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 71.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0, 72.0 ]
+}
+
+[sub_resource type="Animation" id=301]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 73.0, 74.0, 75.0, 76.0, 77.0, 78.0, 78.0, 78.0 ]
+}
+
+[sub_resource type="Animation" id=365]
+length = 2.24
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63, 0.7, 0.77, 0.84, 0.91, 0.98, 1.05, 1.12, 1.19, 1.26, 1.33, 1.4, 1.47, 1.54, 1.61, 1.68, 1.75, 1.82, 1.89, 1.96, 2.03, 2.1, 2.17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8.0, 8.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 17.0, 17.0, 17.0, 17.0, 18.0, 19.0, 20.0, 20.0, 20.0, 20.0, 20.0, 21.0, 22.0, 23.0, 23.0, 23.0, 23.0, 23.0, 23.0, 23.0 ]
+}
+
+[sub_resource type="Animation" id=366]
+length = 1.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=347]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PhysicBodies/disabledPlayerPos:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 157, -65 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/ScruffMoxTest:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/ScruffMoxTest:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 24 ) ]
+}
+
+[sub_resource type="Animation" id=303]
+length = 0.48
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=348]
+length = 0.32
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5.0, 6.0, 7.0, 7.0 ]
+}
+
+[sub_resource type="Animation" id=349]
+length = 0.32
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2.0, 3.0, 4.0, 4.0 ]
+}
+
+[sub_resource type="Animation" id=306]
+length = 0.42
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 33.0, 34.0, 35.0, 36.0, 37.0 ]
+}
+
+[sub_resource type="Animation" id=321]
+length = 1.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 41.0, 42.0, 42.0, 42.0, 42.0, 43.0, 44.0, 45.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=314]
+length = 0.48
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 39.0, 40.0, 40.0, 40.0, 40.0, 40.0 ]
+}
+
+[sub_resource type="Animation" id=315]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 38.0, 37.0, 37.0, 37.0, 37.0 ]
+}
+
+[sub_resource type="Animation" id=424]
+length = 0.16
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 32.0, 32.0 ]
+}
+
+[sub_resource type="Animation" id=312]
+length = 0.08
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=394]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhysicBodies/disabledPlayerPos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00915077 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 157, -65 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 38.0, 39.0, 40.0, 41.0, 41.0, 41.0, 41.0, 41.0 ]
+}
+
+[sub_resource type="Animation" id=395]
+resource_name = "BSD_Death"
+length = 1.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 106.0, 107.0, 108.0, 109.0, 110.0, 111.0, 112.0, 113.0, 113.0, 113.0, 113.0, 113.0 ]
+}
+
+[sub_resource type="Animation" id=396]
+resource_name = "BSD_Fight_Idle"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00288591, 0.105497, 0.199313, 0.283073 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 6, 11, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, -97 ), Vector2( 39, -120 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/BossStart01:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/boss_attacks:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossSprite:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossSprite:hframes")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossSprite:vframes")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = false
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprites/BossSprite:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 43.0, 44.0, 45.0, 46.0, 47.0, 47.0, 47.0, 47.0, 47.0, 47.0, 47.0 ]
+}
+
+[sub_resource type="Animation" id=397]
+length = 0.72
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 48.0, 49.0, 50.0, 51.0, 52.0, 52.0, 52.0, 52.0, 52.0 ]
+}
+
+[sub_resource type="Animation" id=418]
+resource_name = "BSD_Floor_Sweep_Left"
+length = 1.48
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhysicBodies/floorSweepCollide/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.786584, 0.843553, 1.44535 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 100, 101 ), Vector2( -125.5, 5.5 ), Vector2( -201.066, 5.5 ), Vector2( 100, 101 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PhysicBodies/floorSweepCollide/CollisionShape2D:shape:extents")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.784663, 0.843553 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 92, 9.5 ), Vector2( 131.934, 9.5 ) ]
+}
+
+[sub_resource type="Animation" id=398]
+resource_name = "BSD_Floor_Sweep_Right"
+length = 1.48
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhysicBodies/floorSweepCollide/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.786584, 0.843553, 1.44535 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 100, 101 ), Vector2( 125.5, 5.5 ), Vector2( 201.066, 5.5 ), Vector2( 100, 101 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PhysicBodies/floorSweepCollide/CollisionShape2D:shape:extents")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.784663, 0.843553 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 92, 9.5 ), Vector2( 131.934, 9.5 ) ]
+}
+
+[sub_resource type="Animation" id=399]
+length = 0.68
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.58 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 88.0, 89.0, 90.0, 91.0, 92.0, 93.0 ]
+}
+
+[sub_resource type="Animation" id=400]
+resource_name = "BSD_Newspaper_Swat_Flashed"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0261169, 0.698746, 0.735231 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.653809, 0.755034 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.000662208, 0.0549812, 0.142411, 0.238857, 0.421885, 0.795197, 0.964506 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 3, 5, 3, 6 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossEyesCropped-Sheet:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.0487544, 0.221028 ),
+"transitions": PoolRealArray( -2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.427615, 0.427615 ), Vector2( 0.376165, 0.555981 ), Vector2( 0.427615, 0.427615 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.39695 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossSprite:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossSprite:hframes")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossSprite:vframes")
+tracks/9/interp = 1
+tracks/9/loop_wrap = false
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprites/BossSprite:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Sprites/BossSprite:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 94.0, 95.0, 96.0, 97.0, 98.0, 99.0, 99.0, 99.0, 100.0, 101.0, 102.0, 103.0, 104.0, 104.0, 104.0, 104.0 ]
+}
+
+[sub_resource type="Animation" id=401]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 83.0, 84.0, 85.0, 86.0, 87.0, 87.0 ]
+}
+
+[sub_resource type="Animation" id=402]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 105.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=403]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 105.0, 105.0, 105.0, 105.0 ]
+}
+
+[sub_resource type="Animation" id=404]
+resource_name = "BSD_Player_Lose"
+length = 3.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("PhysicBodies/disabledPlayerPos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3.38393 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 157, -65 ), Vector2( 157, -65 ), Vector2( 930, -65 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 3.38088, 3.39082 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_player_right"
+}, {
+"args": [  ],
+"method": "_enable_mox"
+}, {
+"args": [  ],
+"method": "close_boss_doors"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/ScruffMoxTest:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.38563 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/ScruffMoxTest:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.49749 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 24 ), ExtResource( 27 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossSprite:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossSprite:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = false
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = false
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossSprite:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = false
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 114.0, 114.0, 114.0, 114.0, 114.0, 114.0, 114.0, 114.0, 114.0, 114.0, 114.0, 115.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0, 116.0 ]
+}
+
+[sub_resource type="Animation" id=405]
+resource_name = "BSD_Roof_Ammo"
+length = 2.16
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0193352, 0.0558201, 0.599031, 0.720721 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0.709804 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.013256, 0.114481, 0.746261 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0, -20.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.861961 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_ammo"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/BossRoof001-Sheet:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.75873 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 14 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/BossRoof001-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.94534 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.601468, 0.731999, 0.928424, 1.07102, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 7, 2, 1, 8, 11 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossEyesCropped-Sheet:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.0269272 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2.07695 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprites/BossSprite:texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Sprites/BossSprite:hframes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Sprites/BossSprite:vframes")
+tracks/12/interp = 1
+tracks/12/loop_wrap = false
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Sprites/BossSprite:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = false
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Sprites/BossSprite:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = false
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99, 1.08, 1.17, 1.26, 1.35, 1.44, 1.53, 1.62, 1.71, 1.8, 1.89, 1.98, 2.07 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 53.0, 53.0, 54.0, 55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0, 64.0 ]
+}
+
+[sub_resource type="Animation" id=406]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 70.0, 70.0 ]
+}
+
+[sub_resource type="Animation" id=407]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.0 ]
+}
+
+[sub_resource type="Animation" id=408]
+length = 1.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=409]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PhysicBodies/disabledPlayerPos:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 157, -65 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/ScruffMoxTest:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/ScruffMoxTest:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 24 ) ]
+}
+
+[sub_resource type="Animation" id=410]
+length = 0.48
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=411]
+length = 0.32
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5.0, 6.0, 7.0, 7.0 ]
+}
+
+[sub_resource type="Animation" id=412]
+length = 0.32
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2.0, 3.0, 4.0, 4.0 ]
+}
+
+[sub_resource type="Animation" id=413]
+length = 0.42
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.0, 25.0, 26.0, 27.0, 28.0, 29.0 ]
+}
+
+[sub_resource type="Animation" id=414]
+length = 1.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.64, 0.72, 0.8, 0.88, 0.96 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 33.0, 34.0, 34.0, 34.0, 34.0, 35.0, 36.0, 37.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=415]
+length = 0.48
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 31.0, 32.0, 32.0, 32.0, 32.0, 32.0 ]
+}
+
+[sub_resource type="Animation" id=416]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30.0, 29.0, 29.0, 29.0, 29.0 ]
+}
+
+[sub_resource type="Animation" id=417]
+length = 0.08
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "BSD_Boss_Start"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0261169 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.036677 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/positionlabel/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0108817, 0.802684, 0.833408 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/positionlabel/Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.0108817, 0.102416, 0.601053, 0.802684 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/positionlabel/Label:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.802044 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -83, 0 ), Vector2( -83, -20 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/BossStart01:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.840979 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Visual/BossStart01:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.0557032, 0.110832 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.295401, 0.295401 ), Vector2( 0.265179, 0.33929 ), Vector2( 0.295401, 0.295401 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Visual/positionlabel/Label:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.00915077 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "BOSS START" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Visual/hand_newspaper:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 14, -97 ) ]
+}
+
+[sub_resource type="Animation" id=165]
+resource_name = "BSD_Floor_Sweep"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.012201 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -9.53674e-07, -102 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=164]
+resource_name = "BSD_Newspaper_Swat_Expose"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0323377, 0.123213, 0.585114, 0.660624 ),
+"transitions": PoolRealArray( -2, 1, -2, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0, -20.0, -62.4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.114243, 0.591583, 0.66019 ),
+"transitions": PoolRealArray( -2, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 47, -54 ), Vector2( -68, -118 ), Vector2( -68, -118 ), Vector2( -73, -147 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.036677 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.065311 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 1 ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "BSD_Newspaper_Swat_Ready"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0490422, 0.103829 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0559595 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.036677 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/hand_newspaper:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.0100353 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 17, -92 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.0222991 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+
+[sub_resource type="Animation" id=136]
+resource_name = "BSD_Newspaper_Swat_Slam"
+length = 5.0
+
+[sub_resource type="Animation" id=114]
+resource_name = "BSD_Player_Lifted"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+
+[sub_resource type="Animation" id=283]
+resource_name = "BSD_Roof_Ammo (copy)"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0193352, 0.0558201, 0.599031, 0.720721 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0.709804 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.013256, 0.114481, 0.746261 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0, -20.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.861961 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_ammo"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/BossRoof001-Sheet:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.75873 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 14 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/BossRoof001-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.94534 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.7, 0.731999, 0.928424, 1.07102, 1.87905 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 7, 2, 1, 8, 11 ]
+}
+
+[sub_resource type="Animation" id=289]
+resource_name = "BSD_Roof_Ammo_Hit"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0193352, 0.0558201, 0.599031, 0.720721 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0.709804 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.013256, 0.114481, 0.746261 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0, -20.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/BossRoof001-Sheet:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.75873 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 14 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/BossRoof001-Sheet:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.94534 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.0278971, 0.0788816, 0.144329, 0.213718, 0.26229, 0.328904, 0.351119 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 16, -147 ), Vector2( 16, -147 ), Vector2( -3, -149 ), Vector2( -12, -144 ), Vector2( -10, -141 ), Vector2( -1, -144 ), Vector2( 4, -147 ), Vector2( 9, -148 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.0634451, 0.26229, 0.32474 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 2, 7, 4 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprites/BossEyesCropped-Sheet:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.0211554, 0.327212 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Visual/boss_attacks:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = false
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 29 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Visual/boss_attacks:hframes")
+tracks/10/interp = 1
+tracks/10/loop_wrap = false
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Visual/boss_attacks:vframes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = false
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Visual/boss_attacks:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = false
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Visual/boss_attacks:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = false
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 16.0, 16.0, 16.0 ]
+}
+
+[sub_resource type="Animation" id=151]
+resource_name = "Death"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0261169 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.036677 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/positionlabel/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0108817, 0.802684, 0.833408 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/positionlabel/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.0108817, 0.102416, 0.601053, 0.802684 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/positionlabel/Label:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.802044 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -83, 0 ), Vector2( -83, -20 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/positionlabel/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "BOSS END" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=177]
+resource_name = "End"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/BossStart01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/hand_newspaper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_enable_mox"
+} ]
+}
+
+[sub_resource type="Animation" id=157]
+resource_name = "Player_Lose"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0261169, 0.698746, 0.735231, 1.51392, 1.63561, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0.709804 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.653809, 0.755034, 1.66115, 3, 3.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 45.0, -20.0, -20.0, -20.0, 45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.036677 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/positionlabel/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0108817, 0.802684, 0.833408 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/positionlabel/Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.0108817, 0.102416, 0.601053, 0.802684 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/positionlabel/Label:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.802044 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -83, 0 ), Vector2( -83, -20 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/ScruffMoxTest:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4.18361 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("lockedDoor:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 4.16361, 4.37361 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 350, -1000 ), Vector2( 350, -1000 ), Vector2( 350, -231 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.88838, 2.0779 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.0793307 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 29, -140 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Visual/hand_newspaper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -44.9999 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Visual/hand_newspaper:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/positionlabel/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Visual/positionlabel/Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/positionlabel/Label:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -63, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/labels/BossState:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Reading" ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visual/Hit:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "HIT" ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Visual/positionlabel/Label:text")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "BOSS START" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Visual/hand_newspaper:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -12.7279, 45.2548 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Visual/hand_newspaper:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.3, 1.3 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Visual/ScruffMoxTest:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("lockedDoor:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -200, 883 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Visual/BossStart01:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Visual/BossStart01:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.295401, 0.295401 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -9.53674e-07, -102 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Sprites/BossEyesCropped-Sheet:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.427615, 0.427615 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Visual/BossRoof001-Sheet:frame")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Visual/BossRoof001-Sheet:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Visual/eye:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 67, -101 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Visual/eye:frame")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Visual/eye:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Sprites/BossEyesCropped-Sheet:flip_h")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Visual/boss_attacks:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=173]
+resource_name = "Reading"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/BossStart01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, -147 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Visual/hand_newspaper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/BossRoof001-Sheet:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Visual/eye:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 7.5, 7.6, 9.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 9, -143 ), Vector2( 9, -143 ), Vector2( 2, -142 ), Vector2( 2, -142 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Visual/eye:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 7.4, 7.5, 7.6, 9.5, 9.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 2, 1 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Visual/eye:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Visual/boss_attacks:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=174]
+resource_name = "Reading_Flashed"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/BossEyesCropped-Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Visual/hand_newspaper:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/BossEyesCropped-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 6, -146 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/BossEyesCropped-Sheet:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/BossEyesCropped-Sheet:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Visual/eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Visual/Hit:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -26, -199 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Visual/Hit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Visual/Hit:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "HIT" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Visual:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Sprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=290]
+resource_name = "blocked"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Visual/Hit:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0.0061517, 0.211403 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -26, -199 ), Vector2( -26, -211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Visual/Hit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.00487925, 0.131194, 0.20852 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Visual/Hit:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0.00178635 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "BLOCK
+" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Visual:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.206843 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1.96078, 1.96078, 1.96078, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Sprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1.96, 1.96, 1.96, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=385]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Visual/Hit:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0.0061517, 0.211403 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -26, -199 ), Vector2( -26, -211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Visual/Hit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.00487925, 0.131194, 0.20852 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Visual/Hit:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0.00178635 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "BLOCK
+" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Visual:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 2.89, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Sprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 2.89, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "hit"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Visual/Hit:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0.0061517, 0.211403 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -26, -199 ), Vector2( -26, -211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Visual/Hit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.00487925, 0.131194, 0.20852 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Visual/Hit:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0.00178635 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "HIT" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Visual:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.206843 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.439216, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Sprites:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.439216, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=8]
+size = 45
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 27
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 27
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=172]
+extents = Vector2( 569, 223 )
+
+[sub_resource type="RectangleShape2D" id=373]
+extents = Vector2( 273, 212 )
+
+[sub_resource type="RectangleShape2D" id=393]
+extents = Vector2( 131.934, 17.5 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 55, 152.5 )
+
+[sub_resource type="RectangleShape2D" id=305]
+extents = Vector2( 266, 81 )
+
+[sub_resource type="RectangleShape2D" id=313]
+extents = Vector2( 59, 119 )
+
+[node name="boss" type="KinematicBody2D" groups=["boss"]]
+collision_layer = 1024
+script = ExtResource( 31 )
+boss_health = 30
+max_annoy_count = 5
+ammo_scene = ExtResource( 4 )
+BossAnimPlayer = NodePath("AnimationPlayer")
+start_sweep_point = NodePath("PhysicBodies/StartSweepPoint")
+end_sweep_point = NodePath("PhysicBodies/EndSweepPoint")
+
+[node name="StateMachinePlayer" type="Node" parent="."]
+script = ExtResource( 6 )
+state_machine = SubResource( 12 )
+process_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BSD_Boss_Start = SubResource( 291 )
+anims/BSD_Death = SubResource( 302 )
+anims/BSD_Fight_Idle = SubResource( 176 )
+anims/BSD_Fight_Idle_Block = SubResource( 372 )
+anims/BSD_Floor_Sweep = SubResource( 292 )
+anims/BSD_Newspaper_Swat_Expose = SubResource( 296 )
+anims/BSD_Newspaper_Swat_Flashed = SubResource( 124 )
+anims/BSD_Newspaper_Swat_Ready = SubResource( 298 )
+anims/BSD_Newspaper_Swat_Slam = SubResource( 299 )
+anims/BSD_Player_Lifted = SubResource( 300 )
+anims/BSD_Player_Lose = SubResource( 346 )
+anims/BSD_Roof_Ammo = SubResource( 281 )
+anims/BSD_Roof_Ammo_Hit = SubResource( 301 )
+anims/Given_Broom = SubResource( 365 )
+anims/Mox_Hug = SubResource( 366 )
+anims/RESET = SubResource( 347 )
+anims/Reading = SubResource( 303 )
+anims/Reading_Flashed_Left = SubResource( 348 )
+anims/Reading_Flashed_Right = SubResource( 349 )
+anims/Surprised = SubResource( 306 )
+anims/Surprised_Done = SubResource( 321 )
+anims/Surprised_Left = SubResource( 314 )
+anims/Surprised_Right = SubResource( 315 )
+anims/Tired_Boss = SubResource( 424 )
+anims/guide = SubResource( 312 )
+
+[node name="FloorSweepAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BSD_Boss_Start = SubResource( 394 )
+anims/BSD_Death = SubResource( 395 )
+anims/BSD_Fight_Idle = SubResource( 396 )
+anims/BSD_Fight_Idle_Block = SubResource( 397 )
+anims/BSD_Floor_Sweep_Left = SubResource( 418 )
+anims/BSD_Floor_Sweep_Right = SubResource( 398 )
+anims/BSD_Newspaper_Swat_Expose = SubResource( 399 )
+anims/BSD_Newspaper_Swat_Flashed = SubResource( 400 )
+anims/BSD_Newspaper_Swat_Ready = SubResource( 401 )
+anims/BSD_Newspaper_Swat_Slam = SubResource( 402 )
+anims/BSD_Player_Lifted = SubResource( 403 )
+anims/BSD_Player_Lose = SubResource( 404 )
+anims/BSD_Roof_Ammo = SubResource( 405 )
+anims/BSD_Roof_Ammo_Hit = SubResource( 406 )
+anims/Given_Broom = SubResource( 407 )
+anims/Mox_Hug = SubResource( 408 )
+anims/RESET = SubResource( 409 )
+anims/Reading = SubResource( 410 )
+anims/Reading_Flashed_Left = SubResource( 411 )
+anims/Reading_Flashed_Right = SubResource( 412 )
+anims/Surprised = SubResource( 413 )
+anims/Surprised_Done = SubResource( 414 )
+anims/Surprised_Left = SubResource( 415 )
+anims/Surprised_Right = SubResource( 416 )
+anims/guide = SubResource( 417 )
+
+[node name="AnimationPlayerOld" type="AnimationPlayer" parent="."]
+anims/BSD_Boss_Start = SubResource( 42 )
+anims/BSD_Fight_Idle = SubResource( 176 )
+anims/BSD_Floor_Sweep = SubResource( 165 )
+anims/BSD_Newspaper_Swat_Expose = SubResource( 164 )
+anims/BSD_Newspaper_Swat_Flashed = SubResource( 124 )
+anims/BSD_Newspaper_Swat_Ready = SubResource( 52 )
+anims/BSD_Newspaper_Swat_Slam = SubResource( 136 )
+anims/BSD_Player_Lifted = SubResource( 114 )
+anims/BSD_Roof_Ammo = SubResource( 281 )
+"anims/BSD_Roof_Ammo (copy)" = SubResource( 283 )
+anims/BSD_Roof_Ammo_Hit = SubResource( 289 )
+anims/Death = SubResource( 151 )
+anims/End = SubResource( 177 )
+anims/Player_Lose = SubResource( 157 )
+anims/RESET = SubResource( 3 )
+anims/Reading = SubResource( 173 )
+anims/Reading_Flashed = SubResource( 174 )
+
+[node name="hitPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayerOld")
+anims/RESET = SubResource( 11 )
+anims/blocked = SubResource( 290 )
+anims/death = SubResource( 385 )
+anims/hit = SubResource( 10 )
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="BaseBody" type="Sprite" parent="Sprites"]
+modulate = Color( 0.870588, 0.870588, 0.870588, 1 )
+light_mask = 64
+position = Vector2( 17, -108 )
+texture = ExtResource( 20 )
+
+[node name="BossEyesCropped-Sheet" type="Sprite" parent="Sprites"]
+visible = false
+material = SubResource( 4 )
+position = Vector2( -9.53674e-07, -102 )
+rotation = 0.0775483
+scale = Vector2( 0.427615, 0.427615 )
+texture = ExtResource( 16 )
+hframes = 3
+vframes = 5
+
+[node name="BossSprite" type="Sprite" parent="Sprites"]
+light_mask = 64
+material = SubResource( 4 )
+position = Vector2( 16, -107 )
+texture = ExtResource( 28 )
+hframes = 12
+vframes = 11
+frame = 71
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="BossArtV01Export2" type="Sprite" parent="Visual"]
+visible = false
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+light_mask = 64
+position = Vector2( 68, -100 )
+scale = Vector2( 0.156, 0.156 )
+texture = ExtResource( 17 )
+
+[node name="eye2" type="Sprite" parent="Visual"]
+visible = false
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 67, -101 )
+scale = Vector2( 0.153589, 0.153589 )
+texture = ExtResource( 26 )
+
+[node name="eye" type="Sprite" parent="Visual"]
+visible = false
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 67, -101 )
+scale = Vector2( 0.153589, 0.153589 )
+texture = ExtResource( 18 )
+hframes = 3
+
+[node name="BossPlaceHolder" type="Sprite" parent="Visual"]
+visible = false
+modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( 14, -122.586 )
+scale = Vector2( 0.490381, 0.419888 )
+texture = ExtResource( 25 )
+
+[node name="positionlabel" type="Node2D" parent="Visual"]
+position = Vector2( -16, -264 )
+
+[node name="Label" type="Label" parent="Visual/positionlabel"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -63.0
+margin_right = 207.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 8 )
+text = "BOSS START"
+
+[node name="hand_newspaper" type="Sprite" parent="Visual"]
+visible = false
+position = Vector2( -12.7279, 45.2548 )
+rotation = -0.785396
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 23 )
+
+[node name="Hit" type="Label" parent="Visual"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -26.0
+margin_top = -199.0
+margin_right = 69.0
+margin_bottom = -124.0
+custom_fonts/font = SubResource( 9 )
+text = "HIT"
+
+[node name="labels" type="Node2D" parent="Visual"]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( -33, -6 )
+
+[node name="BossState" type="Label" parent="Visual/labels"]
+margin_left = 158.0
+margin_top = -219.0
+margin_right = 292.0
+margin_bottom = -186.0
+custom_fonts/font = SubResource( 6 )
+text = "Reading"
+
+[node name="AnnoyCounter" type="Label" parent="Visual/labels"]
+margin_left = 158.0
+margin_top = -192.0
+margin_right = 292.0
+margin_bottom = -159.0
+custom_fonts/font = SubResource( 7 )
+text = "Wawa"
+
+[node name="ScruffMoxTest" type="Sprite" parent="Visual"]
+visible = false
+material = SubResource( 4 )
+position = Vector2( 159, -69 )
+scale = Vector2( 1.25709, 1.25709 )
+texture = ExtResource( 24 )
+flip_h = true
+
+[node name="BossStart01" type="Sprite" parent="Visual"]
+visible = false
+material = SubResource( 4 )
+position = Vector2( -7, -31 )
+scale = Vector2( 0.295401, 0.295401 )
+texture = ExtResource( 21 )
+
+[node name="BossRoof001-Sheet" type="Sprite" parent="Visual"]
+visible = false
+position = Vector2( 38, -124 )
+scale = Vector2( 0.64355, 0.64355 )
+texture = ExtResource( 19 )
+hframes = 3
+vframes = 5
+
+[node name="boss_attacks" type="Sprite" parent="Visual"]
+visible = false
+material = SubResource( 4 )
+position = Vector2( 36, -59 )
+scale = Vector2( 0.644, 0.644 )
+texture = ExtResource( 29 )
+hframes = 5
+vframes = 4
+
+[node name="Eye" type="Sprite" parent="Visual"]
+visible = false
+position = Vector2( 0, -111 )
+texture = ExtResource( 30 )
+script = ExtResource( 32 )
+
+[node name="Tween" type="Tween" parent="Visual/Eye"]
+
+[node name="PhysicBodies" type="Node2D" parent="."]
+
+[node name="BossFloorSweep" parent="PhysicBodies" instance=ExtResource( 13 )]
+position = Vector2( -57, 308 )
+
+[node name="disabledPlayerPos" type="Position2D" parent="PhysicBodies"]
+position = Vector2( 157, -65 )
+
+[node name="Icon" type="Sprite" parent="PhysicBodies/disabledPlayerPos"]
+visible = false
+texture = ExtResource( 30 )
+
+[node name="playableArea" type="Area2D" parent="PhysicBodies"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicBodies/playableArea"]
+position = Vector2( 0, -31 )
+shape = SubResource( 172 )
+
+[node name="realPlayableArea" type="Area2D" parent="PhysicBodies"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicBodies/realPlayableArea"]
+position = Vector2( 0, -31 )
+shape = SubResource( 373 )
+
+[node name="BossTentaStatic2" parent="PhysicBodies" instance=ExtResource( 15 )]
+position = Vector2( -20, 423 )
+
+[node name="StartSweepPoint" type="Position2D" parent="PhysicBodies"]
+position = Vector2( -307, -7 )
+
+[node name="EndSweepPoint" type="Position2D" parent="PhysicBodies"]
+position = Vector2( 341, 5 )
+
+[node name="floorSweepCollide" type="StaticBody2D" parent="PhysicBodies"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicBodies/floorSweepCollide"]
+position = Vector2( 201.066, 5.5 )
+shape = SubResource( 393 )
+disabled = true
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="attackTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="SurprisedTimer" type="Timer" parent="Timers"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.658824 )
+margin_left = 69.0
+margin_top = 84.0
+margin_right = 1161.0
+margin_bottom = 198.0
+theme = ExtResource( 1 )
+text = "Hey uh, he will just block all your shots if you're too far.
+
+There is no visual indication for this yet, so this will do for now."
+align = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -133.5 )
+shape = SubResource( 1 )
+
+[node name="lockedDoor" parent="." instance=ExtResource( 22 )]
+position = Vector2( -200, 883 )
+unique_id = "p"
+
+[node name="AreaDetection" type="Node2D" parent="."]
+
+[node name="PlayerEnteredAreaSurprise" type="Area2D" parent="AreaDetection"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetection/PlayerEnteredAreaSurprise"]
+position = Vector2( 0, -31 )
+shape = SubResource( 305 )
+
+[node name="MiddlePlayerDetect" type="Area2D" parent="AreaDetection"]
+position = Vector2( 11, -94 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetection/MiddlePlayerDetect"]
+shape = SubResource( 313 )
+
+[node name="BossBroom" parent="AreaDetection" instance=ExtResource( 14 )]
+position = Vector2( 96, 12 )
+actor = NodePath("../..")
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="transited" from="StateMachinePlayer" to="." method="_on_StateMachinePlayer_transited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="FloorSweepAnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayerOld" to="." method="_on_AnimationPlayerOld_animation_finished"]
+[connection signal="body_entered" from="PhysicBodies/playableArea" to="." method="_on_playableArea_body_entered"]
+[connection signal="body_exited" from="PhysicBodies/playableArea" to="." method="_on_playableArea_body_exited"]
+[connection signal="body_entered" from="PhysicBodies/realPlayableArea" to="." method="_on_realPlayableArea_body_entered"]
+[connection signal="timeout" from="Timers/attackTimer" to="." method="_on_attackTimer_timeout"]
+[connection signal="timeout" from="Timers/SurprisedTimer" to="." method="_on_SurprisedTimer_timeout"]
+[connection signal="body_entered" from="AreaDetection/PlayerEnteredAreaSurprise" to="." method="_on_PlayerEnteredAreaSurprise_body_entered"]
+[connection signal="body_exited" from="AreaDetection/MiddlePlayerDetect" to="." method="_on_MiddlePlayerDetect_body_exited"]

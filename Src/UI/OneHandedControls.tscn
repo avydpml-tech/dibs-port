@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/UI/OneHandedControls.gd" type="Script" id=1]
+
+[node name="OneHandedControls" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="leftMouseArea" type="Control" parent="."]
+anchor_bottom = 1.0
+margin_right = 408.0
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="leftMouseArea"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.0627451 )
+
+[node name="rightMouseArea" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -406.0
+margin_right = 260.002
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="rightMouseArea"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.0627451 )
+
+[connection signal="mouse_entered" from="leftMouseArea" to="." method="_on_leftMouseArea_mouse_entered"]
+[connection signal="mouse_exited" from="leftMouseArea" to="." method="_on_leftMouseArea_mouse_exited"]
+[connection signal="mouse_entered" from="rightMouseArea" to="." method="_on_rightMouseArea_mouse_entered"]
+[connection signal="mouse_exited" from="rightMouseArea" to="." method="_on_rightMouseArea_mouse_exited"]

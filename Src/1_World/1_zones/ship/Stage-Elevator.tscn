@@ -1,0 +1,677 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/Sprites/Spritesheets/fox_spritesheet_clothed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Audio/sfx/_environment/elevator/ambient.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/1_Audio/sfx/_environment/elevator/clang.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/1_Visual/game_icon/DiBS_logo.png" type="Texture" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/D-DINExp.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/Entities/Player/z_test_scenes/snowBreathCPU.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_05_dark_gradient.gd" type="Script" id=11]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/back-dark-gradient.png" type="Texture" id=122]
+
+[sub_resource type="Animation" id=115]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=116]
+resource_name = "afterglow"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 25, 32 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../Audio/thud")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_next_level_fade_transition"
+} ]
+}
+
+[sub_resource type="Animation" id=117]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 17 ]
+}
+
+[sub_resource type="Animation" id=118]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.296015 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 21, 23 ]
+}
+
+[sub_resource type="Animation" id=119]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../snowBreath:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8.31395, -60.0743 ) ]
+}
+
+[sub_resource type="Animation" id=120]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
+
+[sub_resource type="Animation" id=121]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 19, 21 ]
+}
+
+[sub_resource type="Animation" id=122]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 20, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.00120983, 0.0830624, 0.281248 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_start_melee_attack"
+}, {
+"args": [  ],
+"method": "_stop_melee_attack"
+}, {
+"args": [  ],
+"method": "_return_to_idle"
+} ]
+}
+
+[sub_resource type="Animation" id=123]
+resource_name = "phone"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 43 ]
+}
+
+[sub_resource type="Animation" id=124]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 24 ]
+}
+
+[sub_resource type="Animation" id=125]
+length = 0.7
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7, 16 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.083, 0.415 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_play_audio_footstep"
+}, {
+"args": [  ],
+"method": "_play_audio_footstep"
+} ]
+}
+
+[sub_resource type="Animation" id=126]
+resource_name = "sit"
+length = 0.7
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.498 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 33, 42 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../snowBreath:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16.8282, -36.3383 ), Vector2( 8.50371, -36.3383 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.166, 0.332 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.8, -19.4955 ), Vector2( -1.8, -8 ) ]
+}
+
+[sub_resource type="Animation" id=127]
+resource_name = "stand"
+length = 0.25
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.238418 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 40, 33 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.249 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.8, -19.4955 ) ]
+}
+
+[sub_resource type="Animation" id=128]
+length = 0.2
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+
+[sub_resource type="Animation" id=129]
+
+[sub_resource type="CanvasItemMaterial" id=4]
+blend_mode = 1
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "pan_up"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 2.1, 30 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 57.288 ), Vector2( 660, 57.288 ), Vector2( 660, -42.031 ), Vector2( 660, -2000 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../Audio/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../Audio/AudioStreamPlayer2D2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 25.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_ending"
+} ]
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 1 )
+stage_music = "m_gymnopedie_1"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="black-background" type="Sprite" parent="CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 724.237, 397.413 )
+scale = Vector2( 3.92675, 2.1824 )
+texture = ExtResource( 16 )
+
+[node name="TileMap4" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65538, 1, 0, 131074, 3, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.313726, 0.278431, 0.278431, 1 )
+
+[node name="LoadPositions" type="Node2D" parent="."]
+position = Vector2( 912.24, 576.51 )
+
+[node name="237" parent="LoadPositions" instance=ExtResource( 14 )]
+position = Vector2( -263.444, -185.408 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="Entry-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -169.203, -202.81 )
+door_active = false
+scene_path_to_load = "res://Src/1_World/1_zones/stages/ship/Stage_03.tscn"
+where_is_exit_point = "right"
+enable_sound = false
+
+[node name="left" parent="doors_transitions/Entry-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( 145.612, 51.568 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 713.403
+margin_top = 538.1
+margin_right = 764.403
+margin_bottom = 552.1
+text = "Corridor"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 766, 413 )
+idle_timer = 1
+
+[node name="Floors2" type="TileMap" parent="."]
+visible = false
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 2, -1073741817, 0, 65537, 1610612743, 0, 65538, 8, 0, 65539, 7, 0, 196614, 8, 0, 196615, 8, 0 )
+
+[node name="FakeMox" type="Node2D" parent="."]
+position = Vector2( 644, 383 )
+rotation = -0.0747779
+scale = Vector2( 0.2, 0.2 )
+
+[node name="playerSprite2" type="Sprite" parent="FakeMox"]
+position = Vector2( -44.8582, 197.2 )
+rotation = 0.0747779
+scale = Vector2( 6.5465, 6.5465 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 20
+frame = 43
+
+[node name="playerSpriteAnimPlayer" type="AnimationPlayer" parent="FakeMox/playerSprite2"]
+reset_on_save = false
+anims/RESET = SubResource( 115 )
+anims/afterglow = SubResource( 116 )
+anims/aim = SubResource( 117 )
+anims/fall = SubResource( 118 )
+anims/idle = SubResource( 119 )
+anims/jump = SubResource( 120 )
+anims/jump_apex = SubResource( 121 )
+anims/melee = SubResource( 122 )
+anims/phone = SubResource( 123 )
+anims/reload = SubResource( 124 )
+anims/run = SubResource( 125 )
+anims/sit = SubResource( 126 )
+anims/stand = SubResource( 127 )
+anims/start_run = SubResource( 128 )
+anims/tangled = SubResource( 129 )
+
+[node name="snowBreath" parent="FakeMox" instance=ExtResource( 10 )]
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 638, 424 )
+scale = Vector2( 1.3093, 1.3093 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 20
+
+[node name="wall-light" parent="." instance=ExtResource( 9 )]
+position = Vector2( 654.639, 470.128 )
+scale = Vector2( 1, 0.560242 )
+
+[node name="Floors" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 2, -1073741817, 0, 65537, 1610612743, 0, 65538, 8, 0, 65539, 7, 0 )
+
+[node name="dark_gradient2" type="Node2D" parent="."]
+position = Vector2( 660, -1670.16 )
+scale = Vector2( 51.052, 0.407 )
+script = ExtResource( 11 )
+
+[node name="DiBsLogo" type="Sprite" parent="dark_gradient2"]
+modulate = Color( 1, 1, 1, 0.494118 )
+material = SubResource( 4 )
+position = Vector2( 6.64038, 2293.72 )
+scale = Vector2( 0.00779266, 0.977471 )
+texture = ExtResource( 5 )
+
+[node name="Label2" type="Label" parent="dark_gradient2/DiBsLogo"]
+use_parent_material = true
+margin_left = -266.445
+margin_top = 251.363
+margin_right = -115.445
+margin_bottom = 282.363
+rect_scale = Vector2( 1.22168, 1.22168 )
+theme = SubResource( 3 )
+text = "Report
+   Plants cleared: 23
+   Cinema collected: 4
+   Found koubold
+   Found woof
+   
+
+
+
+
+
+
+
+That's it for this update.
+Thanks for playing!
+
+
+
+
+
+
+
+You can, like, go now.
+
+
+
+
+
+Bye."
+
+[node name="Label3" type="Label" parent="dark_gradient2/DiBsLogo"]
+visible = false
+modulate = Color( 1, 1, 1, 0.258824 )
+use_parent_material = true
+margin_left = -233.779
+margin_top = 550.903
+margin_right = 238.221
+margin_bottom = 596.903
+rect_scale = Vector2( 1.22168, 1.22168 )
+theme = SubResource( 3 )
+text = "Found koubold and woof"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="dark_gradient2"]
+anims/pan_up = SubResource( 1 )
+
+[node name="Floors3" type="TileMap" parent="dark_gradient2"]
+modulate = Color( 0.278431, 0.254902, 0.254902, 1 )
+position = Vector2( -12.8114, -1993.9 )
+scale = Vector2( 0.0388675, 4.91871 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 0
+collision_mask = 0
+occluder_light_mask = 0
+format = 1
+tile_data = PoolIntArray( 131075, -1610612730, 0, 196609, -2147483642, 0, 196611, -1610612730, 0, 262145, -2147483642, 0, 262147, -1610612730, 0, 327681, -2147483642, 0, 327683, -1610612730, 0, 393217, -2147483642, 0, 393219, -1610612730, 0, 458753, -2147483642, 0, 458755, -1610612730, 0, 524289, -2147483642, 0, 524291, -1610612730, 0, 589825, -2147483642, 0, 589827, -1610612730, 0, 655361, -2147483642, 0, 655363, -1610612730, 0, 720897, -2147483642, 0, 720899, -1610612730, 0, 786433, -2147483642, 0, 786435, -1610612730, 0, 851969, -2147483642, 0, 851971, -1610612730, 0, 917505, -2147483642, 0, 917507, -1610612730, 0, 983041, -2147483642, 0, 983043, -1610612730, 0, 1048577, -2147483642, 0, 1048579, -1610612730, 0, 1114113, -2147483642, 0, 1114115, -1610612730, 0, 1179649, -2147483642, 0, 1179651, -1610612730, 0, 1245187, -1610612730, 0 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Control"]
+layer = 3
+
+[node name="black-background2" type="Sprite" parent="Control/CanvasLayer2"]
+visible = false
+position = Vector2( 666.249, 1287.15 )
+scale = Vector2( 4.45025, 1.68181 )
+texture = ExtResource( 16 )
+
+[node name="dark_gradient" type="Node2D" parent="Control/CanvasLayer2"]
+visible = false
+position = Vector2( 665.234, 888.016 )
+scale = Vector2( 51.4569, 0.406611 )
+
+[node name="back-dark-gradient" type="Sprite" parent="Control/CanvasLayer2/dark_gradient"]
+modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 122 )
+
+[node name="back-dark-gradient2" type="Sprite" parent="Control/CanvasLayer2/dark_gradient"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -2.43007e-05, 854.12 )
+rotation = 3.14159
+scale = Vector2( 1, 3.38399 )
+texture = ExtResource( 122 )
+
+[node name="back-dark-gradient3" type="Sprite" parent="Control/CanvasLayer2/dark_gradient"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -2.43007e-05, 854.12 )
+rotation = 3.14159
+scale = Vector2( 1, 3.38399 )
+texture = ExtResource( 122 )
+
+[node name="back-dark-gradient4" type="Sprite" parent="Control/CanvasLayer2/dark_gradient"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0.000110626, 1313.77 )
+rotation = 3.14159
+scale = Vector2( 1, 3.38399 )
+texture = ExtResource( 122 )
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2( 400, 607 )
+scale = Vector2( 0.898656, 0.898656 )
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2( 700, 507.43 )
+scale = Vector2( 0.898656, 0.898656 )
+stream = ExtResource( 3 )
+volume_db = 4.458
+bus = "SFX"
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

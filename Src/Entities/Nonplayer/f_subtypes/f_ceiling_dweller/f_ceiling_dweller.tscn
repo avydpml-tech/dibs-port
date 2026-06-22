@@ -1,0 +1,506 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Src/Entities/Nonplayer/Nonplayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_ceiling_dweller/f_ceiling_dwellerSM.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_ceiling_dweller/f_ceiling_dweller-t_pink-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_ceiling_dweller/f_ceiling_dweller.gd" type="Script" id=4]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_ceiling_dweller/f_ceiling_dweller-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/alert.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/walk.ogg" type="AudioStream" id=26]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit_indication"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 54.0996
+height = 39.4854
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 5.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "run"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "self_saucy"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "stunned"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[sub_resource type="Animation" id=9]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1, 126 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0259283, 0.0456498 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.960784, 0.054902, 0.054902, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0491168 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.705882, 0.403922, 0.137255, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 99.7926
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 64.4324, 122.048 )
+
+[sub_resource type="CapsuleShape2D" id=19]
+radius = 16.9337
+height = 188.009
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 94.8675
+
+[node name="f_ceiling_dweller" instance=ExtResource( 1 )]
+position = Vector2( 4, -7.54015 )
+script = ExtResource( 4 )
+entity_name = "f_ceiling_dweller"
+max_health = 21
+MAX_SPEED = 0
+afterglow_time = 1.0
+gravity_enabled = false
+is_stationary = true
+player_states_i_can_saucy = [ "jump", "fall" ]
+
+[node name="hit" parent="." index="0"]
+root_node = NodePath("..")
+anims/hit_indication = SubResource( 1 )
+
+[node name="StateMachine" type="Node2D" parent="." index="1"]
+script = ExtResource( 2 )
+
+[node name="detectSelf" type="Area2D" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectSelf" index="0"]
+shape = SubResource( 2 )
+
+[node name="normSprite2" type="Sprite" parent="." index="3"]
+modulate = Color( 0.886275, 0.886275, 0.886275, 1 )
+position = Vector2( 24.518, 8.423 )
+scale = Vector2( 1.3241, 1.761 )
+texture = ExtResource( 3 )
+offset = Vector2( 0.388466, 0.294304 )
+hframes = 15
+vframes = 9
+
+[node name="Anim" type="AnimationPlayer" parent="normSprite2" index="0"]
+anims/fall = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/run = SubResource( 6 )
+anims/self_saucy = SubResource( 7 )
+anims/stunned = SubResource( 8 )
+
+[node name="normSprite" type="Sprite" parent="." index="4"]
+position = Vector2( -0.499325, 12.1073 )
+scale = Vector2( 1.4, 1.761 )
+texture = ExtResource( 5 )
+offset = Vector2( 0.30508, 2.52065 )
+flip_h = true
+hframes = 15
+vframes = 9
+
+[node name="Anim" type="AnimationPlayer" parent="normSprite" index="0"]
+anims/fall = SubResource( 9 )
+anims/idle = SubResource( 10 )
+anims/jump = SubResource( 11 )
+anims/run = SubResource( 12 )
+anims/self_saucy = SubResource( 13 )
+anims/stunned = SubResource( 14 )
+
+[node name="deathSprite" type="Sprite" parent="." index="5"]
+visible = false
+position = Vector2( -2.86191, 16.0462 )
+scale = Vector2( 1.4, 1.761 )
+texture = ExtResource( 5 )
+hframes = 15
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deathSprite" index="0"]
+anims/dead = SubResource( 15 )
+anims/hit_indication = SubResource( 16 )
+
+[node name="rightJumpRayCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, 38.7186 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="leftJumpRayCast" type="RayCast2D" parent="." index="7"]
+position = Vector2( 0, 38.7186 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+
+[node name="sightLine" type="Area2D" parent="." index="8"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sightLine" index="0"]
+shape = SubResource( 17 )
+
+[node name="chaseSightLine" type="Area2D" parent="." index="9"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaseSightLine" index="0"]
+shape = SubResource( 18 )
+
+[node name="Audio" type="Node2D" parent="." index="10"]
+visible = false
+
+[node name="skitter" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource( 26 )
+volume_db = 24.0
+bus = "SFX"
+
+[node name="screech" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource( 25 )
+bus = "SFX"
+
+[node name="NonplayerCollision" parent="." index="11"]
+visible = false
+position = Vector2( 10.2993, 15.1754 )
+shape = SubResource( 19 )
+
+[node name="playerSaucyPos" parent="." index="12"]
+position = Vector2( 7.57266, 79.7356 )
+
+[node name="detectBodies" parent="." index="14"]
+visible = false
+
+[node name="CollisionShape2D" parent="detectBodies/attackRange" index="0"]
+position = Vector2( 0, 4.61176 )
+shape = SubResource( 20 )
+
+[connection signal="animation_finished" from="hit" to="." method="_on_hit_animation_finished"]
+[connection signal="animation_finished" from="deathSprite/AnimationPlayer" to="." method="_on_deathAnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="sightLine" to="." method="_on_sightLine_body_entered"]
+[connection signal="body_exited" from="sightLine" to="." method="_on_sightLine_body_exited"]
+[connection signal="body_entered" from="chaseSightLine" to="." method="_on_chaseSightLine_body_entered"]
+[connection signal="body_exited" from="chaseSightLine" to="." method="_on_chaseSightLine_body_exited"]

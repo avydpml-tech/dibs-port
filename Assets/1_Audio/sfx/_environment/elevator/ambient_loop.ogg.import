@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambient_loop.ogg-04a0532bd4bb7dbafc6efe3350a74ca6.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/elevator/ambient_loop.ogg"
+dest_files=[ "res://.import/ambient_loop.ogg-04a0532bd4bb7dbafc6efe3350a74ca6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

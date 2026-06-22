@@ -1,0 +1,297 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/perlin_noise.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/EastMall/Store - TheatreHall - table.png" type="Texture" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Assets/1_Visual/3_Background/EastMall/Store - TheatreHall.png" type="Texture" id=9]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/Theatre_logo_stanchion.png" type="Texture" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/Theatre_hall.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/3_Background/EastMall/Diner/diner_counter.png" type="Texture" id=17]
+[ext_resource path="res://Assets/1_Audio/music/_To_Be_Replaced/Mall Music/m_mall_song.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Src/MiscScenes/vendingMachine.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Src/Interactables/cinemaTapes.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_koubold/diner_koubold/f_diner_koubold.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/Interactables/trash.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Src/1_World_Objects/mallPoster.tscn" type="PackedScene" id=24]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+light_mode = 2
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 594.139, -256.225 )
+script = ExtResource( 1 )
+day_or_night = "dark"
+stage_music = "NULL"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Tilesets" type="Node2D" parent="Background"]
+
+[node name="background" type="TileMap" parent="Background/Tilesets"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 65549, 1, 0, 65550, 536870920, 0, 65551, 536870920, 0, 196606, 1610612743, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 536870912, 0, 131088, -536870904, 0, 196614, 20, 0, 196615, 20, 0, 196616, 20, 0, 196617, 20, 0, 196618, 20, 0, 196619, 20, 0, 196620, 20, 0, 196621, 20, 0, 196622, 20, 0, 262150, 20, 0, 262151, 20, 0, 262152, 20, 0, 262153, 20, 0, 262154, 20, 0, 262155, 20, 0, 262156, 20, 0 )
+
+[node name="playerPos" type="Position2D" parent="Background"]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="Theatre_hall" type="Sprite" parent="Background"]
+position = Vector2( 873.047, 682.632 )
+texture = ExtResource( 15 )
+
+[node name="big" parent="Background/Theatre_hall" instance=ExtResource( 5 )]
+position = Vector2( -238.279, -128.22 )
+scale = Vector2( 1.28946, 0.797663 )
+shadow_enabled = true
+
+[node name="big3" parent="Background/Theatre_hall" instance=ExtResource( 5 )]
+position = Vector2( 129.489, -100.969 )
+scale = Vector2( 1.50342, 0.756822 )
+shadow_enabled = true
+
+[node name="Store - TheatreHall" type="Sprite" parent="Background"]
+position = Vector2( 3215.78, 688.284 )
+texture = ExtResource( 9 )
+offset = Vector2( -669.764, 63.4742 )
+
+[node name="Posters" type="Node2D" parent="Background"]
+
+[node name="Poster" parent="Background/Posters" instance=ExtResource( 24 )]
+position = Vector2( 1727.66, 627.016 )
+
+[node name="Poster2" parent="Background/Posters" instance=ExtResource( 24 )]
+position = Vector2( 1988.6, 627.016 )
+
+[node name="Interactables" type="Node2D" parent="."]
+position = Vector2( -47.139, 0 )
+
+[node name="f_diner_koubold" parent="Interactables" instance=ExtResource( 22 )]
+position = Vector2( 2681, 1181.22 )
+
+[node name="DinerCounter" type="Sprite" parent="Interactables"]
+position = Vector2( 2683, 1187.22 )
+texture = ExtResource( 17 )
+
+[node name="cinemaTape" parent="Interactables" instance=ExtResource( 21 )]
+visible = false
+position = Vector2( 2647, 1082.22 )
+tape_name = "koubold1"
+
+[node name="doors_transitions" type="Node2D" parent="Interactables"]
+
+[node name="TheatreDoor" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 654.861, 659.829 )
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_01_b-CinemaRoom.tscn"
+where_is_exit_point = "right"
+enable_sound = false
+
+[node name="middle" parent="Interactables/doors_transitions/TheatreDoor" instance=ExtResource( 14 )]
+position = Vector2( -3.79219, 26.9884 )
+
+[node name="StoreDoor" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 2950.9, 659.829 )
+scale = Vector2( 1.22047, 1.22047 )
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_02_b-Mall.tscn"
+where_is_exit_point = "left"
+enable_sound = false
+
+[node name="MallDoor" parent="Interactables/doors_transitions/StoreDoor" instance=ExtResource( 14 )]
+position = Vector2( -3.79219, 26.9884 )
+
+[node name="lightSwitch" parent="Interactables/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 1782, 3217.23 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="Interactables/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 3465, 2923.22 )
+interacts_to = "switch2"
+
+[node name="middleDoor" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 2226, 660.986 )
+door_type = "long_door"
+door_active = false
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Stage-suiteLevel3.tscn"
+where_is_exit_point = "middle"
+unique_id = "hall_door"
+
+[node name="hallDoor" parent="Interactables/doors_transitions/middleDoor" instance=ExtResource( 14 )]
+position = Vector2( -5.33228, 24.2386 )
+scale = Vector2( 1.22047, 1.22047 )
+
+[node name="trashbin" parent="Interactables" instance=ExtResource( 23 )]
+position = Vector2( 1527, 707.225 )
+unique_id = "theatre_bins"
+
+[node name="trashbin2" parent="Interactables" instance=ExtResource( 23 )]
+position = Vector2( 3385, 710.225 )
+unique_id = "theatre_bins"
+
+[node name="trashbin3" parent="Interactables" instance=ExtResource( 23 )]
+position = Vector2( 2279, 1221.22 )
+unique_id = "theatre_bins"
+
+[node name="vendingMachine" parent="Interactables" instance=ExtResource( 19 )]
+modulate = Color( 0.541176, 0.541176, 0.541176, 1 )
+position = Vector2( 2088, 1178.22 )
+is_empty = true
+
+[node name="vendingMachine2" parent="Interactables" instance=ExtResource( 19 )]
+modulate = Color( 0.541176, 0.541176, 0.541176, 1 )
+position = Vector2( 2188, 1178.22 )
+is_empty = true
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1966.86, 538.225 )
+
+[node name="Entity" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 734.206, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Theatre_logo_stanchion" type="Sprite" parent="Foreground"]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 971.415, 736.865 )
+texture = ExtResource( 12 )
+
+[node name="Black" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131094, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 8, 0, 131100, 8, 0, 131101, 8, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0, 196610, 26, 0, 196611, 26, 0, 196612, 26, 0, 196613, -1610612710, 0, 262146, 26, 0, 262147, 26, 0, 262148, 26, 0, 262149, -1610612710, 0, 327682, 26, 0, 327683, 26, 0, 327684, 26, 0, 327685, 26, 0, 327686, 26, 0 )
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131087, 8, 0, 131088, 7, 0, 131094, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 8, 0, 131100, 8, 0, 131101, 8, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0, 196613, 1610612743, 0, 196621, 8, 0, 196622, 8, 0, 262149, 1610612743, 0, 262150, 8, 0, 262151, 8, 0, 262152, 8, 0, 262153, 8, 0, 262154, 8, 0, 262155, 8, 0, 262156, 8, 0, 262157, 8, 0 )
+
+[node name="Environment" type="Node2D" parent="Foreground"]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="big4" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -5407.72, -594.622 )
+scale = Vector2( 3.05659, 2.83706 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big5" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -3321.32, -581.516 )
+scale = Vector2( 2.20916, 2.05049 )
+energy = 0.84
+shadow_enabled = true
+
+[node name="big2" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -4461.19, -732.344 )
+scale = Vector2( 2.16685, 2.16685 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="Stairs2" type="Node2D" parent="Foreground"]
+position = Vector2( 1855.47, 1478.46 )
+
+[node name="Stairs" parent="Foreground/Stairs2" instance=ExtResource( 10 )]
+position = Vector2( 1798.38, -643.106 )
+
+[node name="Stairs2" parent="Foreground/Stairs2" instance=ExtResource( 10 )]
+position = Vector2( 1283.39, -386.211 )
+
+[node name="Stairs3" parent="Foreground/Stairs2" instance=ExtResource( 7 )]
+position = Vector2( -162.491, -396.023 )
+
+[node name="perlin_noise" type="Sprite" parent="Foreground"]
+visible = false
+modulate = Color( 0.0117647, 0.0509804, 0.0196078, 1 )
+material = SubResource( 1 )
+position = Vector2( 122.723, 300.348 )
+scale = Vector2( 7.66254, 1.49103 )
+texture = ExtResource( 2 )
+
+[node name="ammo" parent="Foreground" instance=ExtResource( 4 )]
+position = Vector2( 2601.09, 728.225 )
+
+[node name="Store - TheatreHall - table" type="Sprite" parent="Foreground"]
+position = Vector2( 2584.4, 1238.23 )
+texture = ExtResource( 3 )
+
+[node name="ForeInteractacbles" type="Node2D" parent="."]
+
+[node name="Transition_point" parent="ForeInteractacbles" instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 77.2778, 684.184 )
+rotation = 1.55912
+scene_path_to_load = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+where_is_exit_point = "top_right"
+
+[node name="left" parent="ForeInteractacbles/Transition_point" instance=ExtResource( 14 )]
+position = Vector2( 5.01297, -44.5934 )
+rotation = -1.55912
+
+[node name="black-background2" type="Sprite" parent="ForeInteractacbles/Transition_point"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 29.684, 631.382 )
+rotation = -1.55912
+scale = Vector2( 3.21811, 2.20816 )
+texture = ExtResource( 16 )
+
+[node name="Transition_point2" parent="ForeInteractacbles" instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 5437.24, 628.47 )
+rotation = -1.5708
+scene_path_to_load = "res://Src/1_World/1_zones/RightZones/Stage_02_a-StoreHall.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="ForeInteractacbles/Transition_point2" instance=ExtResource( 14 )]
+position = Vector2( -62.8702, -121.056 )
+rotation = -1.55912
+
+[node name="black-background" type="Sprite" parent="ForeInteractacbles/Transition_point2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -37.0292, 644.739 )
+rotation = 1.5708
+scale = Vector2( 3.21811, 2.20816 )
+texture = ExtResource( 16 )
+
+[node name="mallMusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 2922.15, 653.92 )
+stream = ExtResource( 18 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

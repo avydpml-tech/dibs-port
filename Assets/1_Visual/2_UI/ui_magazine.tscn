@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Shaders/outline2.shader" type="Shader" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/ui_magazine.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/ammo_4_full.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/outline_width = 0.0
+shader_param/outline_color = Color( 1, 1, 1, 1 )
+
+[node name="TextureButton" type="TextureButton"]
+material = SubResource( 1 )
+margin_right = 11.0
+margin_bottom = 21.0
+button_mask = 3
+texture_normal = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_TextureButton_mouse_exited"]

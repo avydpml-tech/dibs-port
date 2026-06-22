@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PM_FSSF_AMBIENCE_SOUNDSCAPE_LOOP_1.ogg-7a494b620b68bd072981fdc358d7901b.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/PM_FSSF_AMBIENCE_SOUNDSCAPE_LOOP_1.ogg"
+dest_files=[ "res://.import/PM_FSSF_AMBIENCE_SOUNDSCAPE_LOOP_1.ogg-7a494b620b68bd072981fdc358d7901b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

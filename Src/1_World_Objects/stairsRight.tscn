@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi-tiles-edited/Stairs 3.png" type="Texture" id=1]
+[ext_resource path="res://Src/1_World_Objects/stairs.gd" type="Script" id=2]
+
+
+
+
+[sub_resource type="CapsuleShape2D" id=1]
+height = 232.283
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -95.3009, -41.8054, 95.1014, 89.5523, -98.618, 94.8597 )
+
+[node name="Stairs" type="StaticBody2D"]
+modulate = Color( 0.219608, 0.219608, 0.219608, 1 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="Stairs 3" type="Sprite" parent="."]
+position = Vector2( 0, 15.997 )
+scale = Vector2( 1.23341, 1.23341 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="Stairs 4" type="Sprite" parent="."]
+position = Vector2( 0, 58.1772 )
+scale = Vector2( 1.23341, 0.616378 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 34.216 )
+rotation = -0.959931
+shape = SubResource( 1 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 2 )

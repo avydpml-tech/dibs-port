@@ -1,0 +1,535 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Src/Menu/temp/tabOverlay.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/4_Interactables/cinema_tape_icon.png" type="Texture" id=2]
+[ext_resource path="res://addons/GGS/src/components/boolean/ggsBool.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0000.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0001.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0000.png" type="Texture" id=6]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0000.png" type="Texture" id=7]
+[ext_resource path="res://Src/Shaders/black_and_white_shader.tres" type="Material" id=8]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_koubold/diner_koubold/snack.png" type="Texture" id=9]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0000.png" type="Texture" id=10]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/shadowgradient.png" type="Texture" id=11]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0000.png" type="Texture" id=12]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0000.png" type="Texture" id=13]
+[ext_resource path="res://Assets/1_Visual/3_Background/Mall/sneak_scarf.png" type="Texture" id=14]
+[ext_resource path="res://Src/Menu/Themes/DiBS_Theme.tres" type="Theme" id=15]
+[ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle_border_filled.png" type="Texture" id=17]
+[ext_resource path="res://Src/Menu/ExtraOptionsItem.gd" type="Script" id=18]
+[ext_resource path="res://Assets/1_Visual/2_UI/arrow_up.png" type="Texture" id=19]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0000.png" type="Texture" id=20]
+[ext_resource path="res://Src/component/fade_component.gd" type="Script" id=21]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FadeInGroup:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.811765 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "slide_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -90, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FadeInGroup:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.811765 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "slide_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -90, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "close_tab_menu"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "meetup",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "woof1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "tentacle3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "tentacle1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "boss",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "tentacle2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "train",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "koubold1",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ArrowUp:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("buttons:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("buttons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ArrowUp:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.376471 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "slide_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ArrowUp:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ 180.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("buttons:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -61 ), Vector2( 0, 12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("buttons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ArrowUp:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.141176 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="DynamicFontData" id=13]
+font_path = "res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 17
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 11
+extra_spacing_char = 1
+font_data = SubResource( 13 )
+
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 12 )
+Button/styles/focus = SubResource( 9 )
+Button/styles/hover = SubResource( 9 )
+Button/styles/pressed = SubResource( 10 )
+
+[node name="tabOverlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [ 641.0 ]
+}
+tape_icon = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.145098 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../tapeIcons")
+anims/RESET = SubResource( 1 )
+anims/slide_in = SubResource( 2 )
+anims/slide_out = SubResource( 3 )
+
+[node name="tapeIcons" type="Node2D" parent="."]
+
+[node name="FadeComponent" type="Node" parent="tapeIcons"]
+script = ExtResource( 21 )
+actor = NodePath("..")
+
+[node name="tapeThumbnail" type="AnimatedSprite" parent="tapeIcons"]
+material = ExtResource( 8 )
+position = Vector2( 349, 116 )
+scale = Vector2( 0.152787, 0.152787 )
+frames = SubResource( 4 )
+animation = "boss"
+
+[node name="tapeIconsBG" type="Node2D" parent="tapeIcons"]
+
+[node name="tapeIconsActive" type="Node2D" parent="tapeIcons"]
+
+[node name="Snack" type="Sprite" parent="tapeIcons"]
+modulate = Color( 1, 1, 1, 0.560784 )
+position = Vector2( 104, 446 )
+texture = ExtResource( 9 )
+
+[node name="SneakScarf" type="Sprite" parent="tapeIcons"]
+position = Vector2( 145, 482 )
+scale = Vector2( 0.863812, 0.863812 )
+texture = ExtResource( 14 )
+
+[node name="FadeInGroup" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.811765 )
+
+[node name="FadeComponent" type="Node" parent="FadeInGroup"]
+script = ExtResource( 21 )
+actor = NodePath("..")
+
+[node name="Node" type="Node" parent="FadeInGroup"]
+
+[node name="fileReportButton" type="Button" parent="FadeInGroup/Node"]
+margin_left = 804.0
+margin_top = 266.0
+margin_right = 905.0
+margin_bottom = 299.0
+theme = ExtResource( 15 )
+flat = true
+
+[node name="Hotkeys" type="Node2D" parent="FadeInGroup"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeInGroup/Hotkeys"]
+anims/RESET = SubResource( 16 )
+anims/slide_in = SubResource( 15 )
+
+[node name="Shadowgradient" type="Sprite" parent="FadeInGroup/Hotkeys"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 631.268, 11.495 )
+scale = Vector2( 3.47346, 2.44495 )
+texture = ExtResource( 11 )
+
+[node name="Shadowgradient2" type="Sprite" parent="FadeInGroup/Hotkeys"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 631.268, 299.495 )
+rotation = -3.13781
+scale = Vector2( 3.47346, 2.44495 )
+texture = ExtResource( 11 )
+
+[node name="ArrowUp" type="Sprite" parent="FadeInGroup/Hotkeys"]
+modulate = Color( 1, 1, 1, 0.376471 )
+position = Vector2( 641, 71 )
+rotation = 3.14159
+scale = Vector2( 0.259612, 0.0496418 )
+texture = ExtResource( 19 )
+
+[node name="Stats" type="RichTextLabel" parent="FadeInGroup/Hotkeys"]
+visible = false
+margin_left = 560.268
+margin_top = 55.0
+margin_right = 866.268
+margin_bottom = 289.0
+mouse_filter = 2
+theme = SubResource( 14 )
+text = "Quick Access Modes"
+
+[node name="buttons" type="Node2D" parent="FadeInGroup/Hotkeys"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="ExplorationMode" parent="FadeInGroup/Hotkeys/buttons" instance=ExtResource( 3 )]
+margin_left = 528.268
+margin_top = 88.0
+margin_right = 764.268
+margin_bottom = 120.0
+focus_mode = 1
+theme = ExtResource( 15 )
+custom_icons/off = ExtResource( 16 )
+custom_icons/on = ExtResource( 17 )
+text = "Exploration Mode"
+align = 1
+script = ExtResource( 18 )
+setting_index = 18
+option_description = "Explore the ambiance "
+
+[node name="BoredMode" parent="FadeInGroup/Hotkeys/buttons" instance=ExtResource( 3 )]
+margin_left = 528.268
+margin_top = 125.0
+margin_right = 764.268
+margin_bottom = 157.0
+theme = ExtResource( 15 )
+custom_icons/off = ExtResource( 16 )
+custom_icons/on = ExtResource( 17 )
+text = "Bored Mode"
+align = 1
+script = ExtResource( 18 )
+setting_index = 17
+option_description = "Explore the ambiance"
+
+[node name="Node" type="Node" parent="FadeInGroup/Hotkeys"]
+
+[node name="mouse_exit" type="Control" parent="FadeInGroup/Hotkeys/Node"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 520.0
+margin_top = 239.0
+margin_right = -498.0
+margin_bottom = -264.0
+mouse_filter = 1
+
+[node name="mouse_enter" type="Control" parent="FadeInGroup/Hotkeys/Node"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 465.0
+margin_right = -444.0
+margin_bottom = -620.0
+mouse_filter = 1
+
+[node name="StatsGroup" type="Node2D" parent="FadeInGroup"]
+modulate = Color( 1, 1, 1, 0.811765 )
+position = Vector2( -106, 193 )
+
+[node name="Shadowgradient3" type="Sprite" parent="FadeInGroup/StatsGroup"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1005, 16 )
+scale = Vector2( 3.47346, 2.44495 )
+texture = ExtResource( 11 )
+
+[node name="Shadowgradient4" type="Sprite" parent="FadeInGroup/StatsGroup"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1005, 304 )
+rotation = -3.13781
+scale = Vector2( 3.47346, 2.44495 )
+texture = ExtResource( 11 )
+
+[node name="Stats" type="RichTextLabel" parent="FadeInGroup/StatsGroup"]
+margin_left = 921.0
+margin_top = 100.0
+margin_right = 1227.0
+margin_bottom = 334.0
+mouse_filter = 2
+theme = SubResource( 14 )
+text = "   Plants cleared: 23
+   Cinema collected: 4
+   Found koubold 
+   Found woof"
+
+[node name="Stats2" type="RichTextLabel" parent="FadeInGroup/StatsGroup"]
+margin_left = 921.0
+margin_top = 67.0
+margin_right = 1227.0
+margin_bottom = 301.0
+mouse_filter = 2
+theme = SubResource( 14 )
+text = "[ Report ]
+"
+
+[connection signal="mouse_entered" from="FadeInGroup/Node/fileReportButton" to="." method="_on_fileReportButton_mouse_entered"]
+[connection signal="mouse_exited" from="FadeInGroup/Node/fileReportButton" to="." method="_on_fileReportButton_mouse_exited"]
+[connection signal="pressed" from="FadeInGroup/Node/fileReportButton" to="." method="_on_fileReportButton_pressed"]
+[connection signal="mouse_entered" from="FadeInGroup/Hotkeys/Node/mouse_exit" to="." method="_on_mouse_exit_mouse_entered"]
+[connection signal="mouse_entered" from="FadeInGroup/Hotkeys/Node/mouse_enter" to="." method="_on_mouse_enter_mouse_entered"]

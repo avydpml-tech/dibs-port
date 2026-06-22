@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/deep_coom2.ogg-bc52a6955c813cdb8248188c1a59c5db.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/smex/Coom/deep_coom2.ogg"
+dest_files=[ "res://.import/deep_coom2.ogg-bc52a6955c813cdb8248188c1a59c5db.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

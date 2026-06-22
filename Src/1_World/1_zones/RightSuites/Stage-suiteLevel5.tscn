@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Src/1_World/1_zones/RightSuites/level_tilemaps/level4.tmx" type="PackedScene" id=2]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 1 )
+day_or_night = "dark"
+
+[node name="Background" type="Node2D" parent="."]
+scale = Vector2( 2, 2 )
+
+[node name="TileMap4" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196607, 2, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 2, 0, 262143, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 3, 0 )
+
+[node name="level1" parent="Background" instance=ExtResource( 2 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="LoadPositions" type="Node2D" parent="."]
+position = Vector2( 912.24, 576.51 )
+
+[node name="237" parent="LoadPositions" instance=ExtResource( 14 )]
+position = Vector2( -270.846, 7.0568 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="Entry-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -933.711, 78.9197 )
+scene_path_to_load = "res://1_World/1_zones/stages/ship/Stage_03.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="doors_transitions/Entry-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( 3.71405, -1.11365 )
+
+[node name="Elevator" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 825.577, 46.1504 )
+scene_path_to_load = "res://1_World/1_zones/stages/sci fi/Stage_01.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Elevator" instance=ExtResource( 14 )]
+position = Vector2( -0.816528, -1.61804 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2749, 1414 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Floors" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196606, 1610612743, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 7, 0 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

@@ -1,0 +1,253 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://addons/GGS/src/components/boolean/ggsBool.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/dibs-logo.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/shadowgradient.png" type="Texture" id=5]
+[ext_resource path="res://Src/Menu/Extra.gd" type="Script" id=6]
+[ext_resource path="res://Src/Menu/Themes/DiBS_Theme.tres" type="Theme" id=7]
+[ext_resource path="res://Src/Menu/temp/patreonButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle.png" type="Texture" id=9]
+[ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle_border_filled.png" type="Texture" id=10]
+[ext_resource path="res://Assets/1_Visual/game_icon/DiBS_logo.png" type="Texture" id=11]
+[ext_resource path="res://Src/Menu/ExtraOptionsItem.gd" type="Script" id=13]
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=14]
+size = 15
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = SubResource( 1 )
+
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 14 )
+Button/styles/focus = SubResource( 12 )
+Button/styles/hover = SubResource( 12 )
+Button/styles/pressed = SubResource( 13 )
+
+[node name="Extra" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 126.385 ]
+}
+
+[node name="DiBsLogo" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.611765 )
+position = Vector2( 823.844, 198.375 )
+scale = Vector2( 0.538125, 0.538125 )
+texture = ExtResource( 11 )
+
+[node name="shadowgradient4" type="Sprite" parent="DiBsLogo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( -298.806, -8.69608 )
+rotation = -1.5708
+scale = Vector2( 4.64576, 4.64576 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient5" type="Sprite" parent="DiBsLogo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 249.394, -8.69608 )
+rotation = 1.5708
+scale = Vector2( 4.64576, 4.64576 )
+texture = ExtResource( 5 )
+
+[node name="dibs-logo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 811, 200 )
+texture = ExtResource( 3 )
+
+[node name="shadowgradient4" type="Sprite" parent="dibs-logo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( -147.951, -6.30457 )
+rotation = -1.5708
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient5" type="Sprite" parent="dibs-logo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 147.049, -6.30457 )
+rotation = 1.5708
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient6" type="Sprite" parent="."]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 852.251, 389 )
+rotation = -1.5708
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+
+[node name="moxieButton" parent="." instance=ExtResource( 8 )]
+margin_left = 1004.09
+margin_top = 125.059
+margin_right = 1316.09
+margin_bottom = 431.059
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 831.43
+margin_top = 295.803
+margin_right = 992.43
+margin_bottom = 1015.8
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+custom_constants/separation = 3
+__meta__ = {
+"_editor_description_": "Ideally, it would look better when:
+ - Font is 20 
+ - Theme Overrides > Constants > Separation: Off"
+}
+
+[node name="ggsBool5" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 233.0
+margin_bottom = 32.0
+focus_neighbour_top = NodePath("../../optionDescription")
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "Bored Mode"
+align = 1
+script = ExtResource( 13 )
+setting_index = 17
+option_description = "Make sure Mox doesn't get bored.
+Game save resets once bored.
+Disable to return back to Stamina Mode."
+
+[node name="ggsBool7" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 35.0
+margin_right = 233.0
+margin_bottom = 67.0
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "Exploration Mode"
+align = 1
+script = ExtResource( 13 )
+setting_index = 18
+option_description = "Explore the ship at your leisure with plants idling about"
+
+[node name="JumpStamina" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 70.0
+margin_right = 233.0
+margin_bottom = 102.0
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "Jump Stamina Drain"
+align = 1
+script = ExtResource( 13 )
+setting_index = 11
+option_description = "Mox couch potato. Jumping drains stamina. Ye."
+
+[node name="InfiniteAmmo" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 105.0
+margin_right = 233.0
+margin_bottom = 137.0
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "Infinite Ammo"
+align = 1
+script = ExtResource( 13 )
+setting_index = 21
+option_description = "Actually given a not-crappy blaster. Unlimited pews."
+
+[node name="ggsBool6" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 140.0
+margin_right = 233.0
+margin_bottom = 172.0
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "(Not) SFW-ish Mode"
+align = 1
+script = ExtResource( 13 )
+setting_index = 19
+option_description = "DOES NOT WORK.
+Work-in-progress SFW mode. Still VERY NSFW.
+For now, it just shows a picture of a shoe."
+
+[node name="ggsBool4" parent="VBoxContainer" instance=ExtResource( 2 )]
+visible = false
+margin_top = 210.0
+margin_right = 233.0
+margin_bottom = 242.0
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "Smooth Jazz"
+align = 1
+script = ExtResource( 13 )
+setting_index = 13
+option_description = "Enables smooth jazz music played in cinema and woof"
+
+[node name="AutoCombineAmmo" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 175.0
+margin_right = 233.0
+margin_bottom = 207.0
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 4 )
+custom_icons/off = ExtResource( 9 )
+custom_icons/on = ExtResource( 10 )
+text = "Auto-Combine Ammo"
+align = 1
+script = ExtResource( 13 )
+setting_index = 22
+option_description = "Auto-combines ammo on every reload. 
+PS, you can already combine ammo by holding \"Reload\""
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+margin_top = 210.0
+margin_right = 233.0
+margin_bottom = 252.0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 3 )
+text = "Back"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="optionDescription" type="Label" parent="."]
+margin_left = 86.0
+margin_top = 597.0
+margin_right = 986.0
+margin_bottom = 717.0
+theme = SubResource( 11 )
+text = "Tmp"
+align = 2
+
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]

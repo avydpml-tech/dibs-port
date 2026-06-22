@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/misc/gun.png" type="Texture" id=1]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/gun.gd" type="Script" id=2]
+
+
+
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.5408, 19.2888 )
+
+[node name="gun" type="Area2D"]
+position = Vector2( 746.35, 159.609 )
+collision_layer = 262144
+collision_mask = 262144
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="gun2" type="Sprite" parent="."]
+scale = Vector2( 1.62813, 1.62813 )
+skew = 4.37114e-08
+texture = ExtResource( 1 )

@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Src/Menu/MenuFont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/styles/focus = SubResource( 9 )
+Button/styles/hover = SubResource( 9 )
+Button/styles/pressed = SubResource( 10 )

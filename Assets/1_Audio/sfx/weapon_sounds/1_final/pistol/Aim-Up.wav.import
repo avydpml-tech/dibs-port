@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Aim-Up.wav-35e0e26ff2fbe160757c48123c9c88b8.sample"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/weapon_sounds/1_final/pistol/Aim-Up.wav"
+dest_files=[ "res://.import/Aim-Up.wav-35e0e26ff2fbe160757c48123c9c88b8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

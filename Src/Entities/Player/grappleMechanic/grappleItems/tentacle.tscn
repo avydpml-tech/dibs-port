@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/tentacle.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/_grapple_mechanic/icons/saucy-icons-tentacle.png" type="Texture" id=2]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/gook_leash.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "tentacle"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.69551
+height = 4.92287
+
+[node name="tentacle" type="KinematicBody2D"]
+collision_layer = 131072
+collision_mask = 0
+script = ExtResource( 1 )
+FASTER_SPEED = 100
+
+[node name="leash" type="Sprite" parent="."]
+visible = false
+position = Vector2( -18.4995, 4.3194 )
+rotation = -1.5708
+texture = ExtResource( 3 )
+offset = Vector2( 1.06418, 59.044 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/tentacle = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2( 3.64987, 3.44184 )
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.8
+
+[connection signal="timeout" from="dashTimer" to="." method="_on_dashTimer_timeout"]

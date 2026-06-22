@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/UI/OneHandReminder.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=18]
+font_path = "res://Assets/1_Visual/z_Fonts/D-DINExp-Bold.otf"
+
+[sub_resource type="DynamicFont" id=26]
+size = 26
+font_data = SubResource( 18 )
+
+[sub_resource type="Theme" id=23]
+default_font = SubResource( 26 )
+
+[sub_resource type="DynamicFont" id=27]
+font_data = SubResource( 18 )
+
+[sub_resource type="Theme" id=25]
+default_font = SubResource( 27 )
+
+[node name="OneHandReminder" type="Node2D"]
+visible = false
+modulate = Color( 1, 1, 1, 0.411765 )
+script = ExtResource( 1 )
+
+[node name="text" type="Label" parent="."]
+margin_left = 442.0
+margin_top = 85.0
+margin_right = 880.0
+margin_bottom = 146.0
+theme = SubResource( 23 )
+text = "hey uh, one-handed mode is enabled
+"
+align = 1
+
+[node name="debugUnstuck" type="Label" parent="."]
+margin_left = 338.0
+margin_top = 124.0
+margin_right = 966.0
+margin_bottom = 184.0
+theme = SubResource( 25 )
+text = "Just move your mouse around.
+You can disable this mode under Options.
+This message will only show once, then never again. Forever."
+align = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

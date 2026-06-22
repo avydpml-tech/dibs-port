@@ -1,0 +1,189 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/tentacle.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/_grapple_mechanic/icons/saucy-icons-tentacle.png" type="Texture" id=2]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grappleItems/gook_leash.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/rolled_newspaper.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/2_UI/twirl_03.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "tentacle"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.69551
+height = 4.92287
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RolledNewspaper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.000961971 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -26 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RolledNewspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.000961971 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Twirl03:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Twirl03:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -236.244 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "newspaper_swat"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("RolledNewspaper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.192174 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -24, -26 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RolledNewspaper:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.192174 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ -17.5412, 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Twirl03:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0587886, 0.170815, 0.191826 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Twirl03:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.193136 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -380.43, -96.2 ]
+}
+
+[node name="newspaper" type="KinematicBody2D"]
+collision_layer = 131072
+collision_mask = 0
+script = ExtResource( 1 )
+SPEED = 300
+FASTER_SPEED = 80
+is_dash = true
+is_newspaper = true
+dash_amount = 5.077
+
+[node name="leash" type="Sprite" parent="."]
+visible = false
+position = Vector2( -18.4995, 4.3194 )
+rotation = -1.5708
+texture = ExtResource( 3 )
+offset = Vector2( 1.06418, 59.044 )
+
+[node name="Twirl03" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 1, -2 )
+rotation = -4.12324
+scale = Vector2( 0.177697, 0.177697 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="RolledNewspaper" type="Sprite" parent="."]
+position = Vector2( 0, -26 )
+rotation = 1.5708
+scale = Vector2( 1.47537, 1.47537 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/tentacle = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2( 3.64987, 3.44184 )
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/newspaper_swat = SubResource( 3 )
+
+[connection signal="timeout" from="dashTimer" to="." method="_on_dashTimer_timeout"]

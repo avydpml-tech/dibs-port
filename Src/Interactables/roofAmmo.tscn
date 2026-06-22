@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/Interactables/roofAmmo.gd" type="Script" id=2]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 97, 20.9843 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+light_mode = 1
+
+[node name="RoofAmmo" type="RigidBody2D"]
+collision_layer = 1024
+mode = 1
+gravity_scale = 40.0
+script = ExtResource( 2 )
+is_persist = true
+ammo_PackedScene = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="interactTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Icon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 7, 29 )
+texture = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+light_mask = 131072
+material = SubResource( 2 )
+scale = Vector2( 0.252861, 0.252861 )
+texture = ExtResource( 5 )
+color = Color( 0.388235, 0.839216, 0.913725, 1 )
+energy = 2.0
+shadow_enabled = true
+
+[node name="dropAmmoPos" type="Position2D" parent="."]
+position = Vector2( 0, 27 )

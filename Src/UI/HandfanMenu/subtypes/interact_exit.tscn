@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/UI/HandfanMenu/InteractOptionBtn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/icons/exitLeft.png" type="Texture" id=2]
+[ext_resource path="res://Src/UI/HandfanMenu/subtypes/interact_exit.gd" type="Script" id=3]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_koubold/icons/icons2.png" type="Texture" id=4]
+[ext_resource path="res://Src/Interactables/Modules/change_scene.tscn" type="PackedScene" id=5]
+
+[node name="InteractOption" instance=ExtResource( 1 )]
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="SceneChanger" parent="." index="0" instance=ExtResource( 5 )]
+new_scene_path = "res://Src/1_World/1_zones/RightSuites/Park/Stage-Labs.tscn"
+
+[connection signal="pressed" from="." to="SceneChanger" method="interacted"]

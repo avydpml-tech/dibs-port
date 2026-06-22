@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dead_trigger.ogg-f86ff7f7b352aad6b711892655be2b5c.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/clicks/dead_trigger.ogg"
+dest_files=[ "res://.import/dead_trigger.ogg-f86ff7f7b352aad6b711892655be2b5c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/3_Background/roughs/Suites Roughs.png" type="Texture" id=2]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_wolf/f_wolf.tscn" type="PackedScene" id=23]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 1 )
+day_or_night = "dark"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="Background" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="TileMap7" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.164706, 0.164706, 0.164706, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -131077, 13, 0, -131076, 13, 0, -131075, 13, 0, -10, 536870929, 0, -9, 536870929, 0, -8, 536870929, 0, -7, 536870929, 0, -6, 536870929, 0, -5, 536870929, 0, -4, 536870929, 0, -3, 536870929, 0, -2, 536870929, 0, -1, 536870929, 0, -65536, 536870929, 0, -65535, 536870929, 0, -65534, 536870929, 0, -65533, 536870929, 0, -65532, 536870929, 0, -65531, 536870929, 0, -65530, 536870929, 0, -65529, 536870929, 0, -65528, 536870929, 0, -65527, 536870929, 0, -65526, 536870929, 0, -65525, 536870929, 0, -65524, 536870929, 0, -65523, 536870929, 0, -65522, 536870929, 0, -65521, 536870929, 0, -65520, 536870929, 0, 65530, 1, 0, 65531, 13, 0, 65532, 13, 0, 65533, 13, 0, 65534, 13, 0, 65535, 13, 0, 0, 13, 0, 1, 13, 0, 2, 13, 0, 3, 13, 0, 4, 13, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 20, 0, 9, 20, 0, 10, 536870936, 0, 11, 536870936, 0, 12, 536870929, 0, 13, 536870929, 0, 14, 536870929, 0, 15, 20, 0, 16, 20, 0, 131067, 13, 0, 131068, 13, 0, 131069, 13, 0, 131070, 13, 0, 131071, 13, 0, 65536, 13, 0, 65537, 13, 0, 65538, 13, 0, 65539, 13, 0, 65540, 13, 0, 65541, 13, 0, 65542, 13, 0, 65543, 13, 0, 65544, 20, 0, 65545, 20, 0, 65546, 20, 0, 65547, 20, 0, 65548, 20, 0, 65549, 20, 0, 65550, 20, 0, 65551, 20, 0, 65552, 20, 0, 196603, 13, 0, 196604, 13, 0, 196605, 13, 0, 196606, 13, 0, 196607, 13, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 0, 131075, 13, 0, 131076, 13, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 20, 0, 131081, 20, 0, 131082, 20, 0, 131083, 20, 0, 131084, 20, 0, 131085, 20, 0, 131086, 20, 0, 131087, 20, 0, 131088, 20, 0, 262139, 13, 0, 262140, 13, 0, 262141, 13, 0, 262142, 13, 0, 262143, 13, 0, 196608, 13, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 13, 0, 196614, 13, 0, 196615, 13, 0, 196616, 20, 0, 196617, 20, 0, 196618, 20, 0, 196619, 20, 0, 196620, 20, 0, 196621, 20, 0, 196622, 20, 0, 196623, 20, 0, 196624, 20, 0, 327675, 13, 0, 327676, 13, 0, 327677, 13, 0, 327678, 13, 0, 327679, 13, 0, 262144, 13, 0, 262145, 13, 0, 262146, 13, 0, 262147, 13, 0, 262148, 20, 0, 262149, 20, 0, 262150, 20, 0, 262151, 20, 0, 262152, 20, 0, 262153, 20, 0, 262154, 20, 0, 262155, 20, 0, 262156, 20, 0, 262157, 20, 0, 262158, 20, 0, 262159, 20, 0, 262160, 20, 0, 393211, 13, 0, 393212, 13, 0, 393213, 13, 0, 393214, 13, 0, 393215, 13, 0, 327680, 13, 0, 327681, 13, 0, 327682, 13, 0, 327683, 13, 0, 327684, 20, 0, 327685, 20, 0, 327686, 20, 0, 327687, 20, 0, 327688, 20, 0, 327689, 20, 0, 327690, 20, 0, 327691, 20, 0, 327692, 20, 0, 327693, 20, 0, 327694, 20, 0, 327695, 20, 0, 327696, 20, 0, 458747, 13, 0, 458748, 13, 0, 458749, 13, 0, 458750, 13, 0, 458751, 13, 0, 393216, 13, 0, 393217, 13, 0, 393218, 13, 0, 393219, 13, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0, 393232, 20, 0, 524283, 13, 0, 524284, 13, 0, 524285, 13, 0, 524286, 13, 0, 524287, 13, 0, 458752, 13, 0, 458753, 13, 0, 458754, 13, 0, 458755, 13, 0, 458756, 20, 0, 458757, 20, 0, 458758, 20, 0, 458759, 20, 0, 458760, 20, 0, 458761, 20, 0, 458762, 20, 0, 458763, 20, 0, 458764, 20, 0, 458765, 20, 0, 458766, 20, 0, 458767, 20, 0, 458768, 20, 0, 524292, 20, 0, 524293, 20, 0, 524294, 20, 0, 524295, 20, 0, 524296, 20, 0, 524297, 20, 0, 524298, 20, 0, 524299, 20, 0, 524300, 20, 0, 524301, 20, 0, 524302, 20, 0, 524303, 20, 0, 524304, 20, 0, 589828, 20, 0, 589829, 20, 0, 589830, 20, 0, 589831, 20, 0, 589832, 20, 0, 589833, 20, 0, 589834, 20, 0, 589835, 20, 0, 589836, 20, 0, 589837, 20, 0, 589838, 20, 0, 589839, 20, 0, 589840, 20, 0, 655364, 20, 0, 655365, 20, 0, 655366, 20, 0, 655367, 20, 0, 655368, 20, 0, 655369, 20, 0, 655370, 20, 0, 655371, 20, 0, 655372, 20, 0, 655373, 20, 0, 655374, 20, 0, 655375, 20, 0, 655376, 20, 0, 720900, 20, 0, 720901, 20, 0, 720902, 20, 0, 720903, 20, 0, 720904, 20, 0, 720905, 20, 0, 720906, 20, 0, 720907, 20, 0, 720908, 20, 0, 720909, 20, 0, 720910, 20, 0, 720911, 20, 0, 720912, 20, 0, 786436, 20, 0, 786437, 20, 0, 786438, 20, 0, 786439, 20, 0, 786440, 20, 0, 786441, 20, 0, 786442, 20, 0, 786443, 20, 0, 786444, 20, 0, 786445, 20, 0, 786446, 20, 0, 786447, 20, 0, 786448, 20, 0, 851972, 20, 0, 851973, 20, 0, 851974, 20, 0, 851975, 20, 0, 851976, 20, 0, 851977, 20, 0, 851978, 20, 0, 851979, 20, 0, 851980, 20, 0, 851981, 20, 0, 851982, 20, 0, 851983, 20, 0, 851984, 20, 0 )
+
+[node name="TileMap5" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.247059, 0.247059, 0.247059, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 24, 0, 1, 13, 0, 2, 17, 0, 3, 17, 0, 4, 0, 0, 5, 1, 0, 6, 1, 0, 7, 536870929, 0, 8, 1, 0 )
+
+[node name="TileMap6" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 1, 5, 0, 3, 5, 0, 5, 5, 0, 7, 536870936, 0, 8, 5, 0, 10, 536870917, 0, 12, 536870917, 0 )
+
+[node name="Midground" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.4 )
+
+[node name="TileMap5" type="TileMap" parent="CanvasLayer/ParallaxBackground/Midground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -100 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -3, 1073741850, 0, -2, 1073741850, 0, -1, 1073741850, 0, -65536, 1073741850, 0, -65535, 1073741850, 0, -65534, 1073741850, 0, -65533, 1073741850, 0, -65532, 1073741850, 0, -65531, 536870938, 0, -65530, 536870938, 0, -65529, 536870938, 0, -65528, 536870938, 0, -65527, 536870938, 0, -65526, 536870938, 0, 0, 36, 0, 3, 36, 0, 8, 536870948, 0 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TileMap4" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -4, 26, 0, -3, 26, 0, -2, 26, 0, -1, 26, 0, -65536, 26, 0, 65526, 26, 0, 65527, 26, 0, 65528, 26, 0, 65529, 26, 0, 65530, 26, 0, 65531, 26, 0, 65532, 26, 0, 65533, 26, 0, 65534, 26, 0, 65535, 26, 0, 0, 26, 0, 1, 26, 0, 2, 26, 0, 3, 26, 0, 4, 26, 0, 5, 26, 0, 6, 26, 0, 131070, 17, 0, 131071, 17, 0, 65536, 17, 0, 65537, 5, 0, 65539, 1, 0, 65540, 1, 0, 196599, 26, 0, 196600, 26, 0, 196601, 26, 0, 196602, 26, 0, 196603, 26, 0, 196604, 26, 0, 196605, 26, 0, 196606, 26, 0, 196607, 26, 0, 131072, 26, 0, 131073, 26, 0, 131074, 26, 0, 131075, 26, 0, 131076, 26, 0, 131077, 26, 0, 131078, 26, 0, 131079, 26, 0, 262140, 26, 0, 262141, 26, 0, 262142, 26, 0, 262143, 26, 0, 196608, 26, 0, 196614, 26, 0, 196615, 26, 0, 262150, 26, 0, 262151, 26, 0, 327686, 26, 0, 327687, 26, 0, 393222, 26, 0, 393223, 26, 0, 1179651, 22, 0, 1179652, 22, 0, 1179653, 22, 0, 1179654, 22, 0, 1179655, 22, 0, 1179656, 22, 0, 1179657, 22, 0, 1179658, 22, 0, 1179659, 22, 0, 1179660, 22, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="LoadPositions" type="Node2D" parent="."]
+position = Vector2( 912.24, 576.51 )
+
+[node name="237" parent="LoadPositions" instance=ExtResource( 14 )]
+position = Vector2( -270.846, 7.0568 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="Entry-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -920.591, -195.242 )
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Park/Stage-TrainStation.tscn"
+where_is_exit_point = "left"
+
+[node name="left" parent="doors_transitions/Entry-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( 4, 8 )
+
+[node name="Elevator" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 238.409, -213.242 )
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Stage-suiteLevel3.tscn"
+where_is_exit_point = "right"
+enable_sound = false
+door_open = true
+
+[node name="right" parent="doors_transitions/Elevator" instance=ExtResource( 14 )]
+position = Vector2( -0.816528, 34 )
+
+[node name="Entity" type="Node2D" parent="."]
+
+[node name="f_wolf" parent="Entity" instance=ExtResource( 23 )]
+position = Vector2( 2657, 2408.86 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( -330, 295 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="big" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 1829, 242 )
+
+[node name="big2" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 2210, 4684 )
+scale = Vector2( 5.12009, 1.95335 )
+
+[node name="wall-light2" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( 82, 1111 )
+rotation = 1.28295
+
+[node name="wall-light3" parent="Foreground" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( -343, 543 )
+rotation = 3.14159
+
+[node name="Stairs" type="Node2D" parent="Foreground"]
+scale = Vector2( 2, 2 )
+
+[node name="FloorsTilemap" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131062, 26, 0, 131063, 26, 0, 131064, 26, 0, 131065, 26, 0, 131066, 26, 0, 131067, 26, 0, 131068, 26, 0, 131069, 26, 0, 131070, 6, 0, 131071, 6, 0, 65536, 6, 0, 65537, 6, 0, 65538, 6, 0, 65539, 6, 0, 65540, 6, 0, 65541, 26, 0, 65542, 26, 0, 65543, 26, 0, 65544, 26, 0, 131079, -1073741816, 0, 262146, 9, 0, 1179651, 8, 0, 1179652, 8, 0, 1179653, 8, 0, 1179654, 8, 0, 1179655, 8, 0, 1179656, 8, 0, 1179657, 8, 0, 1179658, 8, 0, 1179659, 8, 0, 1179660, 8, 0 )
+
+[node name="ForegroundTilemap" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131069, 1610612743, 0, 131070, 25, 0, 131071, 25, 0, 65536, 536870937, 0, 65537, 536870937, 0, 65538, 536870937, 0, 65539, 536870937, 0, 65540, 536870937, 0, 65541, 7, 0 )
+
+[node name="big3" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 776, 390 )
+scale = Vector2( 5.50159, 1.12828 )
+
+[node name="Transition_point" parent="Foreground" instance=ExtResource( 11 )]
+position = Vector2( 2283, 2670 )
+scale = Vector2( 1.97655, 1.97655 )
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Stage-suiteLevel2.tscn"
+where_is_exit_point = "top"
+
+[node name="2022-02-0108-49-23-SuitesRoughs" type="Sprite" parent="."]
+visible = false
+position = Vector2( 991, -285 )
+texture = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

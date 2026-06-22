@@ -1,0 +1,519 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Src/Menu/temp/openingScene.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/patreon/fixed_start_typo.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Manjari/Manjari-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Src/Menu/MenuFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/_Generic/droid-sans/DroidSans.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/1_Visual/3_Background/CryoBox.png" type="Texture" id=6]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/flashlight_light.png" type="Texture" id=8]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/RulesOfThirds-PNG.png" type="Texture" id=9]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/dibs-logo.png" type="Texture" id=10]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Src/Menu/temp/patreonButton.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/Menu/Themes/DiBS_Theme.tres" type="Theme" id=14]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://addons/GGS/src/components/boolean/ggsBool.tscn" type="PackedScene" id=16]
+[ext_resource path="res://addons/GGS/src/components/slider/ggsSlider.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle_border_filled.png" type="Texture" id=18]
+[ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle.png" type="Texture" id=19]
+[ext_resource path="res://Src/Menu/Themes/menuTheme.tres" type="Theme" id=20]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_01.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/Stage_01_b-CinemaRoom.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_09-Warehouse.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/Stage_02_b-Mall.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Src/Interactables/EventTrigger.tscn" type="PackedScene" id=26]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="ImageTexture" id=6]
+
+[sub_resource type="ImageTexture" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 18
+font_data = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+scene_path_to_load = ExtResource( 21 )
+quick_start = ExtResource( 22 )
+warehouse = ExtResource( 24 )
+cinema = ExtResource( 23 )
+mall = ExtResource( 25 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -13.4543
+margin_right = -13.4543
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="message" type="Sprite" parent="."]
+visible = false
+position = Vector2( 634.437, 353.549 )
+scale = Vector2( 0.858818, 0.858818 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="message"]
+anchor_left = -0.00791977
+anchor_top = -0.0010324
+anchor_right = -0.00791977
+anchor_bottom = -0.0010324
+margin_left = 227.212
+margin_top = 306.806
+margin_right = 281.212
+margin_bottom = 456.806
+rect_scale = Vector2( 1.282, 1.282 )
+text = "asdfsdfkjdfkjsdfkjskfjskdfjksdfjksldfjslkdjf;askdlfjasl;kdjflkjqq"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="message"]
+margin_left = -642.107
+margin_top = 270.512
+margin_right = -394.107
+margin_bottom = 284.512
+rect_scale = Vector2( 1.13831, 1.13831 )
+text = "If you played DiBS already:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="message"]
+margin_left = -644.436
+margin_top = 170.375
+margin_right = -591.436
+margin_bottom = 184.375
+rect_scale = Vector2( 1.13831, 1.13831 )
+text = "Mode:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debug_buttons" type="Node2D" parent="message"]
+position = Vector2( -738.733, -411.669 )
+scale = Vector2( 1.16439, 1.16439 )
+
+[node name="Label3" type="Label" parent="message/debug_buttons"]
+margin_left = 509.385
+margin_top = 584.015
+margin_right = 768.385
+margin_bottom = 700.015
+rect_scale = Vector2( 1.13831, 1.13831 )
+text = "Note: Debug build has fps dips 
+after aiming creatures.
+
+Don't worry. It's just game printing logs. 
+
+Release Build does not have fps dip."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="message/debug_buttons"]
+margin_left = 974.365
+margin_top = 340.227
+margin_right = 1233.37
+margin_bottom = 456.227
+rect_scale = Vector2( 1.13831, 1.13831 )
+text = "Debug Controls: 
+ - F9: Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debug" type="Button" parent="message/debug_buttons"]
+modulate = Color( 1, 1, 1, 0.647059 )
+anchor_left = 0.00158216
+anchor_top = -0.147606
+anchor_right = 0.0106613
+anchor_bottom = -0.147606
+margin_left = 1083.82
+margin_top = 599.677
+margin_right = 1174.82
+margin_bottom = 645.677
+rect_scale = Vector2( 1.33531, 1.33531 )
+text = "Debug Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="message"]
+margin_left = -213.253
+margin_top = -13.4281
+margin_right = 223.747
+margin_bottom = 22.5719
+custom_fonts/font = SubResource( 1 )
+text = "Press V for Fullscreen"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RulesOfThirds-PNG" type="Sprite" parent="."]
+visible = false
+position = Vector2( 641.374, 356.248 )
+scale = Vector2( 0.662303, 0.662303 )
+texture = ExtResource( 9 )
+
+[node name="dibs-logo" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.105882 )
+position = Vector2( 280.152, 165.272 )
+texture = ExtResource( 10 )
+
+[node name="Control2" type="Control" parent="."]
+margin_left = -17.1187
+margin_top = -0.634689
+margin_right = 22.8813
+margin_bottom = -0.634689
+rect_pivot_offset = Vector2( 742.426, 332.208 )
+
+[node name="flashlight_light" type="Sprite" parent="Control2"]
+modulate = Color( 0.282353, 0.541176, 0.643137, 0.32549 )
+position = Vector2( 451.915, 380.755 )
+scale = Vector2( 3.78052, 3.78052 )
+texture = ExtResource( 8 )
+
+[node name="CryoBox" type="Sprite" parent="Control2"]
+position = Vector2( 437.975, 379.84 )
+scale = Vector2( 1.81569, 1.81569 )
+texture = ExtResource( 6 )
+
+[node name="big" parent="Control2" instance=ExtResource( 7 )]
+position = Vector2( 444.355, 368.156 )
+scale = Vector2( 1.89059, 1.89059 )
+color = Color( 0.137255, 0.431373, 0.560784, 1 )
+energy = 0.5
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+margin_right = 976.726
+margin_bottom = 516.0
+custom_constants/margin_top = 282
+custom_constants/margin_left = 717
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control2/MarginContainer"]
+margin_left = 717.0
+margin_top = 282.0
+margin_right = 976.0
+margin_bottom = 516.0
+custom_constants/separation = 9
+
+[node name="PlayButton" type="Button" parent="Control2/MarginContainer/VBoxContainer2"]
+use_parent_material = true
+margin_right = 259.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 90 )
+focus_neighbour_top = NodePath("../Button3")
+focus_neighbour_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../Button3")
+theme = ExtResource( 20 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+text = "PLAY"
+flat = true
+align = 2
+
+[node name="OptionsButton" type="Button" parent="Control2/MarginContainer/VBoxContainer2"]
+use_parent_material = true
+margin_top = 99.0
+margin_right = 259.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 200, 0 )
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_bottom = NodePath("../Button3")
+focus_next = NodePath("../Button3")
+focus_previous = NodePath("../PlayButton")
+custom_fonts/font = ExtResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 10 )
+text = "OPTIONS"
+flat = true
+align = 2
+
+[node name="Button3" type="Button" parent="Control2/MarginContainer/VBoxContainer2"]
+use_parent_material = true
+margin_top = 138.0
+margin_right = 259.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 200, 0 )
+focus_neighbour_top = NodePath("../OptionsButton")
+focus_neighbour_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../OptionsButton")
+custom_fonts/font = ExtResource( 4 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 11 )
+text = "QUIT"
+flat = true
+align = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/MarginContainer"]
+visible = false
+margin_left = 717.0
+margin_top = 282.0
+margin_right = 976.0
+margin_bottom = 516.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ggsBool3" parent="Control2/MarginContainer/VBoxContainer" instance=ExtResource( 16 )]
+visible = false
+margin_right = 259.0
+margin_bottom = 32.0
+theme = ExtResource( 14 )
+custom_icons/off = SubResource( 6 )
+custom_icons/on = SubResource( 7 )
+text = "QWERTY"
+align = 1
+setting_index = 10
+
+[node name="ggsBool" parent="Control2/MarginContainer/VBoxContainer" instance=ExtResource( 16 )]
+margin_right = 259.0
+margin_bottom = 32.0
+theme = ExtResource( 14 )
+custom_icons/off = ExtResource( 19 )
+custom_icons/on = ExtResource( 18 )
+text = "Fullscreen"
+align = 1
+
+[node name="ggsBool2" parent="Control2/MarginContainer/VBoxContainer" instance=ExtResource( 16 )]
+margin_top = 36.0
+margin_right = 259.0
+margin_bottom = 68.0
+theme = ExtResource( 14 )
+custom_icons/off = ExtResource( 19 )
+custom_icons/on = ExtResource( 18 )
+text = "Borderless"
+align = 1
+setting_index = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control2/MarginContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 259.0
+margin_bottom = 96.0
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control2/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 117.0
+margin_right = 155.0
+margin_bottom = 24.0
+theme = ExtResource( 14 )
+text = "SFX"
+
+[node name="ggsSlider" parent="Control2/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 17 )]
+margin_left = 159.0
+margin_right = 259.0
+setting_index = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/MarginContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 259.0
+margin_bottom = 124.0
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control2/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 98.0
+margin_right = 155.0
+margin_bottom = 24.0
+theme = ExtResource( 14 )
+text = "Music"
+
+[node name="ggsSlider" parent="Control2/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 17 )]
+margin_left = 159.0
+margin_right = 259.0
+setting_index = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control2/MarginContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 259.0
+margin_bottom = 152.0
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control2/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 101.0
+margin_right = 155.0
+margin_bottom = 24.0
+theme = ExtResource( 14 )
+text = "Voice"
+
+[node name="ggsSlider" parent="Control2/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 17 )]
+margin_left = 159.0
+margin_right = 259.0
+setting_index = 8
+
+[node name="BackButton" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 259.0
+margin_bottom = 198.0
+theme = ExtResource( 14 )
+custom_fonts/font = SubResource( 8 )
+text = "Back"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shortcuts" type="HBoxContainer" parent="Control2"]
+margin_left = 77.7509
+margin_top = 610.396
+margin_right = 857.751
+margin_bottom = 667.396
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control2/shortcuts"]
+modulate = Color( 1, 1, 1, 0.235294 )
+margin_top = 21.0
+margin_right = 196.0
+margin_bottom = 35.0
+text = "     Press T for Spawn Locations"
+
+[node name="more_options" type="HBoxContainer" parent="Control2/shortcuts"]
+visible = false
+margin_left = 200.0
+margin_right = 812.0
+margin_bottom = 57.0
+
+[node name="quick_start" type="Button" parent="Control2/shortcuts/more_options"]
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_right = 150.0
+margin_bottom = 57.785
+rect_min_size = Vector2( 150, 57.785 )
+custom_fonts/font = SubResource( 5 )
+text = "Quick Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="warehouse2" type="Button" parent="Control2/shortcuts/more_options"]
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 57.785
+rect_min_size = Vector2( 150, 57.785 )
+custom_fonts/font = SubResource( 5 )
+text = "Warehouse"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mainhub" type="Button" parent="Control2/shortcuts/more_options"]
+visible = false
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_left = 308.0
+margin_right = 458.0
+margin_bottom = 57.785
+rect_min_size = Vector2( 150, 57.785 )
+custom_fonts/font = SubResource( 5 )
+text = "MainHub"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="theatre" type="Button" parent="Control2/shortcuts/more_options"]
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_left = 308.0
+margin_right = 458.0
+margin_bottom = 57.785
+rect_min_size = Vector2( 150, 57.785 )
+custom_fonts/font = SubResource( 5 )
+text = "Theatre"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mall" type="Button" parent="Control2/shortcuts/more_options"]
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_left = 462.0
+margin_right = 612.0
+margin_bottom = 57.785
+rect_min_size = Vector2( 150, 57.785 )
+custom_fonts/font = SubResource( 5 )
+text = "Mall"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="moxieButton" parent="Control2" instance=ExtResource( 13 )]
+margin_left = 490.049
+margin_top = 95.8129
+margin_right = 802.049
+margin_bottom = 401.813
+
+[node name="EventTrigger" parent="." instance=ExtResource( 26 )]
+value = false
+
+[connection signal="pressed" from="message/debug_buttons/debug" to="." method="_on_debug_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer2/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer2/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/ggsBool3" to="." method="_on_ggsBool3_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Control2/shortcuts/more_options/quick_start" to="." method="_on_quick_start_pressed"]
+[connection signal="pressed" from="Control2/shortcuts/more_options/warehouse2" to="." method="_on_warehouse_pressed"]
+[connection signal="pressed" from="Control2/shortcuts/more_options/mainhub" to="." method="_on_warehouse_pressed"]
+[connection signal="pressed" from="Control2/shortcuts/more_options/theatre" to="." method="_on_theatre_pressed"]
+[connection signal="pressed" from="Control2/shortcuts/more_options/mall" to="." method="_on_mall_pressed"]

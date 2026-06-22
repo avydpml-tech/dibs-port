@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sdt_moan06.ogg-1296ae123ae48255b5d4eece40494268.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/smex/Moan/Curated/sdt_moan06.ogg"
+dest_files=[ "res://.import/sdt_moan06.ogg-1296ae123ae48255b5d4eece40494268.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

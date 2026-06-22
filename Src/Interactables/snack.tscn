@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Src/Interactables/!_common/physicsInteractable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Interactables/snack.gd" type="Script" id=2]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_koubold/diner_koubold/snack.png" type="Texture" id=3]
+[ext_resource path="res://Src/Shaders/silouette.shader" type="Shader" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=6]
+height = 11.1534
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "clicked"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0624329, 0.137567 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0.811765, 0.811765, 0.811765, 1 ), Color( 0.411765, 0.411765, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mouse_hover"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.368627, 0.368627, 0.368627, 1 ), Color( 0.568627, 0.568627, 0.568627, 1 ) ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
+light_mode = 1
+
+[node name="Snack" instance=ExtResource( 1 )]
+rotation = 0.365206
+collision_layer = 131072
+collision_mask = 513
+gravity_scale = 40.0
+script = ExtResource( 2 )
+is_persist = true
+is_temporary = true
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 6 )
+
+[node name="Biorganic device copie 3" type="Sprite" parent="." index="1"]
+material = SubResource( 2 )
+position = Vector2( 0.202154, 0.0338082 )
+scale = Vector2( 1.14432, 1.14432 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Biorganic device copie 3" index="0"]
+anims/clicked = SubResource( 3 )
+anims/mouse_hover = SubResource( 4 )
+
+[node name="Biorganic device copie 2" type="Sprite" parent="." index="2"]
+position = Vector2( 0.202154, 0.0338082 )
+texture = ExtResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="." index="3"]
+light_mask = 131072
+material = SubResource( 5 )
+texture = ExtResource( 5 )
+color = Color( 0.388235, 0.839216, 0.913725, 1 )
+energy = 0.2
+shadow_enabled = true
+
+[node name="Label" type="Label" parent="." index="4"]
+margin_left = -10.2456
+margin_top = -45.3166
+margin_right = 29.7544
+margin_bottom = -31.3166
+text = "amount"
+__meta__ = {
+"_edit_use_anchors_": false
+}

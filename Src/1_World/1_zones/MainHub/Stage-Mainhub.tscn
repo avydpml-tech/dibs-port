@@ -1,0 +1,507 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/Tilesets/SmallCrates.tres" type="TileSet" id=2]
+[ext_resource path="res://Src/Shaders/glow.shader" type="Shader" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/planet.png" type="Texture" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Menu/SpecialStartScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/Interactables/trash.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Interactables/seat.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Environment/ambiant_particles.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Entities/Nonplayer/f_koubold_and_woof/MoxMeetup.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/1_World_Objects/Platform/risingPlatformElevator.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Src/Interactables/EventTrigger.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Src/Interactables/cinemaTapes.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Src/Interactables/lockedDoor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_wolf/f_wolf.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Assets/1_Visual/3_Background/mainhub/Mainhub - Ledge.png" type="Texture" id=24]
+[ext_resource path="res://addons/nklbdev.parallax/Parallax.gd" type="Script" id=25]
+[ext_resource path="res://Assets/1_Visual/3_Background/_Texture/roll-up_door-edited.png" type="Texture" id=26]
+[ext_resource path="res://Assets/1_Visual/3_Background/__Guides/zzzz_outline/3 MainHub-blockout.png" type="Texture" id=27]
+[ext_resource path="res://Assets/1_Visual/3_Background/mainhub/MainHub - foreground.png" type="Texture" id=28]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/radius = 5.0
+shader_param/amount = 0.4
+
+[sub_resource type="CanvasItemMaterial" id=14]
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0, 0.57906, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.752941, 1, 1, 1, 0 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 4, 77 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 99, -67 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1018.97, 957.0 ]
+}
+day_or_night = "light"
+
+[node name="EventTrigger" parent="." instance=ExtResource( 19 )]
+position = Vector2( -1, 721 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TileSets" type="Node2D" parent="Background"]
+
+[node name="roll up doors" type="Node2D" parent="Background/TileSets"]
+
+[node name="roll-up_door-edited" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 667.736, 894.917 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited2" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 916.455, 894.917 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited3" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 1147.19, 894.917 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited4" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 1382.48, 894.917 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited5" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 665.736, 1140.92 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited6" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 914.455, 1140.92 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited7" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 1145.19, 1140.92 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="roll-up_door-edited8" type="Sprite" parent="Background/TileSets/roll up doors"]
+position = Vector2( 1380.48, 1140.92 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 26 )
+
+[node name="windows" type="TileMap" parent="Background/TileSets"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 262143, 1610612743, 0, 196617, 1, 0, 327679, 26, 0 )
+
+[node name="bg-walls" type="TileMap" parent="Background/TileSets"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2.00037, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196608, 17, 0, 196609, 17, 0, 196610, 17, 0, 196611, 17, 0, 196612, 17, 0, 196613, 17, 0, 196614, 17, 0, 196615, 17, 0, 196616, 17, 0, 196617, 17, 0, 327678, 26, 0, 262144, 13, 0, 262145, 20, 0, 262146, 27, 0, 262149, 17, 0, 262150, 20, 0, 262151, 17, 0, 262152, 17, 0, 262153, 536870929, 0, 393214, 29, 0, 393215, 29, 0, 327680, 13, 0, 327681, 20, 0, 327685, 20, 0, 327686, 20, 0, 327687, 17, 0, 327688, 17, 0, 327689, 536870929, 0 )
+
+[node name="roof" type="TileMap" parent="Background/TileSets"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2.00037, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 327679, 1610612743, 0 )
+
+[node name="playerPos" type="Position2D" parent="Background"]
+position = Vector2( 1331.56, 904.25 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.384314, 0.403922, 0.454902, 1 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="doors_transitions" type="Node2D" parent="Interactables"]
+position = Vector2( 238.084, 0 )
+
+[node name="Door-To-Paloza2" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 1932.82, 918.755 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_10-ClairLune.tscn"
+where_is_exit_point = "right"
+
+[node name="middle" parent="Interactables/doors_transitions/Door-To-Paloza2" instance=ExtResource( 14 )]
+position = Vector2( 0.587158, 22.2055 )
+
+[node name="lightSwitch" parent="Interactables/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -2787.93, 1175.51 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="Interactables/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 5727.63, 1370.81 )
+interacts_to = "switch2"
+
+[node name="trashbins" parent="Interactables" instance=ExtResource( 10 )]
+position = Vector2( 427, 1476 )
+unique_id = "locked_door_striped_club"
+
+[node name="trashbins2" parent="Interactables" instance=ExtResource( 10 )]
+position = Vector2( 1935, 1225 )
+unique_id = "locked_door_striped_club"
+
+[node name="trashbins3" parent="Interactables" instance=ExtResource( 10 )]
+position = Vector2( 1937, 966 )
+unique_id = "locked_door_striped_club"
+
+[node name="f_wolf" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1224, 1379 )
+can_saucy_time = 0.01
+stun_time = 0.01
+can_be_stunned = false
+is_in_mall = true
+can_allow_interact = true
+time_before_walk = 2.0
+walk_end_point = NodePath("../wolfEndPoint")
+should_start_time_before_walk = true
+
+[node name="woofTape" parent="." groups=["Tape"] instance=ExtResource( 21 )]
+visible = false
+position = Vector2( 1195, 1447 )
+tape_name = "woof1"
+disabled = true
+
+[node name="moxMeetupTape" parent="." groups=["Tape"] instance=ExtResource( 21 )]
+visible = false
+position = Vector2( 1245, 1447 )
+tape_name = "meetup"
+disabled = true
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 910, 1381 )
+collision_mask = 16395
+
+[node name="MoxMeetup" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1247, 1385 )
+wolf_inst = NodePath("../f_wolf")
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Control"]
+
+[node name="SpecialStartScreen" parent="Control/CanvasLayer2" instance=ExtResource( 9 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control"]
+layer = -1
+scroll_base_scale = Vector2( 0.7, 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Control/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+
+[node name="planet-2880x1800-horizon-earth-4k-9337 - Copy2" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.564706, 0.623529, 0.894118, 1 )
+material = SubResource( 1 )
+position = Vector2( 340.195, 1411.02 )
+rotation = -2.87979
+scale = Vector2( 0.557229, 0.549992 )
+texture = ExtResource( 4 )
+
+[node name="black-background2" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 265.079, 1749.14 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="black-background3" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1502.25, 1203.25 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="black-background4" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2199.72, 1344.67 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="big7" parent="Control" instance=ExtResource( 5 )]
+position = Vector2( 921.78, 1365.46 )
+scale = Vector2( 3.3602, 2.68291 )
+color = Color( 0.337255, 0.486275, 0.886275, 1 )
+energy = 2.0
+range_item_cull_mask = 1047553
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Seats" type="Node2D" parent="Foreground"]
+
+[node name="seat2" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 1110, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat3" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 1052, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat4" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 994, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat5" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 936, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat6" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 877, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat7" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 820, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat8" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 762, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat9" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 704, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="seat10" parent="Foreground/Seats" instance=ExtResource( 12 )]
+position = Vector2( 646, 1502 )
+scale = Vector2( 0.620554, 0.620554 )
+is_in_cinema = false
+show_chair = false
+
+[node name="MainHub - foreground" type="Sprite" parent="Foreground"]
+position = Vector2( 1235.92, 1246.61 )
+texture = ExtResource( 28 )
+
+[node name="Stairs" parent="Foreground" instance=ExtResource( 7 )]
+position = Vector2( -628, 649 )
+
+[node name="Ledge" type="StaticBody2D" parent="Foreground"]
+position = Vector2( 565.098, 987.396 )
+
+[node name="Mainhub - Ledge" type="Sprite" parent="Foreground/Ledge"]
+texture = ExtResource( 24 )
+flip_h = true
+
+[node name="crates" type="TileMap" parent="Foreground"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196610, 8, 0, 196611, 8, 0, 196612, 8, 0, 196613, 536870918, 0, 196615, 6, 0, 196616, 8, 0, 196617, 8, 0, 262151, 6, 0, 262152, 8, 0, 262153, 536870920, 0, 262154, 1073741831, 0, 393214, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 536870920, 0, 327690, 1073741831, 0, 393220, 28, 0, 393221, 28, 0, 393222, 28, 0 )
+
+[node name="Triggers" type="Node2D" parent="Foreground"]
+position = Vector2( 1248.88, 744.479 )
+
+[node name="Lights" type="Node2D" parent="Foreground"]
+scale = Vector2( 4.30206, 4.30206 )
+
+[node name="big" parent="Foreground/Lights" instance=ExtResource( 5 )]
+position = Vector2( -72.8734, 317.624 )
+scale = Vector2( 1.0178, 0.605097 )
+color = Color( 0.913725, 0.411765, 1, 1 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="ForegroundInteractables" type="Node2D" parent="."]
+
+[node name="risingPlatform" parent="ForegroundInteractables" instance=ExtResource( 18 )]
+position = Vector2( 1663.42, 1535.63 )
+collision_layer = 8
+collision_mask = 10
+end_position = 955
+disable_engine_sound = true
+
+[node name="Transition_point" parent="ForegroundInteractables" instance=ExtResource( 11 )]
+position = Vector2( 2546, 732 )
+rotation = -1.5708
+scale = Vector2( 0.322126, 0.766497 )
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_01_a-TheatreHall.tscn"
+where_is_exit_point = "left"
+
+[node name="top_right" parent="ForegroundInteractables/Transition_point" instance=ExtResource( 14 )]
+position = Vector2( -788.021, -132.588 )
+rotation = 1.5708
+scale = Vector2( 1.42125, 0.606196 )
+
+[node name="ToSuites" parent="ForegroundInteractables" instance=ExtResource( 11 )]
+position = Vector2( 2496, 1544 )
+rotation = -1.57079
+scale = Vector2( 0.296986, 0.377734 )
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Stage-suiteLevel1.tscn"
+where_is_exit_point = "left"
+
+[node name="bottomRight" parent="ForegroundInteractables/ToSuites" instance=ExtResource( 14 )]
+position = Vector2( 299.674, -412.99 )
+rotation = 1.57079
+scale = Vector2( 2.64737, 3.36716 )
+
+[node name="To Bar" parent="ForegroundInteractables" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 1972.39, 2291.85 )
+rotation = -1.57079
+scale = Vector2( 0.296986, 0.377734 )
+
+[node name="To Lewd Stores" parent="ForegroundInteractables" instance=ExtResource( 11 )]
+position = Vector2( -335.95, 1300.41 )
+rotation = 1.5708
+scale = Vector2( 0.296986, 0.377734 )
+scene_path_to_load = "res://Src/1_World/1_zones/LewdZones/Stage_01-StripedClub.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="ForegroundInteractables/To Lewd Stores" instance=ExtResource( 14 )]
+position = Vector2( 494.756, -121.209 )
+rotation = -1.57079
+scale = Vector2( 2.64736, 3.36716 )
+
+[node name="To More Lewd Stores" parent="ForegroundInteractables" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 174.453, 2345.35 )
+rotation = 1.5708
+scale = Vector2( 0.296986, 0.377734 )
+where_is_exit_point = "Left"
+
+[node name="lockedDoor" parent="ForegroundInteractables" instance=ExtResource( 22 )]
+position = Vector2( 2074, 1531 )
+rotation = 3.14159
+unique_id = "locked_door_striped_club"
+interact_anim = "hide"
+
+[node name="toWestWing" parent="ForegroundInteractables" instance=ExtResource( 11 )]
+position = Vector2( -503, 557 )
+rotation = 1.5708
+scale = Vector2( 0.31413, 0.31413 )
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_04-WestWingTest.tscn"
+where_is_exit_point = "left"
+
+[node name="3 MainHub-blockout" type="Sprite" parent="."]
+visible = false
+position = Vector2( 812.639, 1354.01 )
+scale = Vector2( 2.34768, 2.34768 )
+texture = ExtResource( 27 )
+
+[node name="Parallax2" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.0784314 )
+position = Vector2( -531.47, -375.744 )
+script = ExtResource( 25 )
+enabled_in_editor = true
+motion_scale = Vector2( -0.3, -0.3 )
+
+[node name="ambiantParticles2" parent="Parallax2" instance=ExtResource( 15 )]
+modulate = Color( 0.643137, 0.643137, 0.678431, 1 )
+material = SubResource( 14 )
+position = Vector2( 1751.36, 1597.55 )
+color_ramp = SubResource( 15 )
+
+[node name="ambiantParticles3" parent="Parallax2" instance=ExtResource( 15 )]
+modulate = Color( 0.643137, 0.643137, 0.678431, 1 )
+material = SubResource( 14 )
+position = Vector2( 1751.36, 1597.55 )
+color_ramp = SubResource( 15 )
+
+[node name="Parallax3" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.027451 )
+position = Vector2( -885.783, -626.24 )
+script = ExtResource( 25 )
+enabled_in_editor = true
+motion_scale = Vector2( -0.5, -0.5 )
+
+[node name="ambiantParticles2" parent="Parallax3" instance=ExtResource( 15 )]
+modulate = Color( 0.643137, 0.643137, 0.678431, 1 )
+material = SubResource( 14 )
+position = Vector2( 1751.36, 1597.55 )
+scale_amount = 0.48
+color_ramp = SubResource( 15 )
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 479.0
+margin_top = 796.0
+margin_right = 754.0
+margin_bottom = 810.0
+text = "Intentionally leads to left side of west wing"
+
+[node name="Notes" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Notes"]
+margin_left = 1042.51
+margin_top = 1566.56
+margin_right = 1541.51
+margin_bottom = 1597.56
+text = "Set player camera limits by level script.
+ If player aim, clear camera limit and let player freely aim.
+Note: might be jarring when aiming 
+and camera height suddenly changes when aiming.
+
+Alt: When at window for 3 secs, pan up. 
+If player aims, pan up.  
+"
+
+[node name="Label2" type="Label" parent="Notes"]
+margin_left = 1335.25
+margin_top = 1634.45
+margin_right = 2215.25
+margin_bottom = 1767.45
+text = "
+Alt 2: If player has line of sight, 
+move y-axis of camera limit to cursor. 
+That way, if player is aiming at floor, 
+camera won't track cursor unless player aims at an angle, 
+which means they want to see something."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wolfEndPoint" type="Area2D" parent="."]
+position = Vector2( 1283, 1421 )
+collision_mask = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wolfEndPoint"]
+shape = SubResource( 16 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

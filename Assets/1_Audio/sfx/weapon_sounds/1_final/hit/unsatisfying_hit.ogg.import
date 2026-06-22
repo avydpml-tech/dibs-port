@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/unsatisfying_hit.ogg-03e6132489bee8d3fa6bce2eda1090cc.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/weapon_sounds/1_final/hit/unsatisfying_hit.ogg"
+dest_files=[ "res://.import/unsatisfying_hit.ogg-03e6132489bee8d3fa6bce2eda1090cc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

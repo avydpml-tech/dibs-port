@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/MiscScenes/labelButton.gd" type="Script" id=1]
+
+[node name="textButton" type="Button"]
+margin_right = 134.0
+margin_bottom = 20.0
+text = "Shaders by Gonkee"
+flat = true
+align = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+url = "https://www.youtube.com/watch?v=QEaTsz_0o44"
+[connection signal="mouse_entered" from="." to="." method="_on_textButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_textButton_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_textButton_pressed"]

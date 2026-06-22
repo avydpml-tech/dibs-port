@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Entities/Player/z_miscFolder/playerLastGroundedPosition.gd" type="Script" id=1]
+[ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=2]
+
+[node name="playerLastPosition" type="Position2D"]
+script = ExtResource( 1 )
+
+[node name="Icon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -1 )
+scale = Vector2( 0.363979, 0.363979 )
+texture = ExtResource( 2 )

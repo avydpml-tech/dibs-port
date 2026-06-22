@@ -1,0 +1,544 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://Src/Entities/Nonplayer/Nonplayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_shieldmon/f_shieldmonSM.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_shieldmon/PNG/shieldmon-tired.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Audio/sfx/weapon_sounds/1_final/hit/unsatisfying_hit.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_shieldmon/PNG/shieldmon-walk-animation-Sheet.png" type="Texture" id=10]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_shieldmon/PNG/shieldmon-misc-animations-Sheet.png" type="Texture" id=11]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_shieldmon/PNG/shieldmon-run-animations-Sheet.png" type="Texture" id=12]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_shieldmon/PNG/shieldmon-walk-head-animation-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/alert.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/walk.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_shieldmon/f_shieldmon.gd" type="Script" id=27]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit_indication"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shield_hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.5, 1.5, 1.5, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 54.0996
+height = 39.4854
+
+[sub_resource type="Animation" id=4]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000926208, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 2, 2, 2, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../shieldmonHead:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../shieldmonHead:frame")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "stunned"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0714734, 0.192007 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.960784, 0.054902, 0.054902, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0491168 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.705882, 0.403922, 0.137255, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 628.36
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 486.021, 15.4541 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 32.685, 58.3731 )
+
+[sub_resource type="CapsuleShape2D" id=20]
+radius = 17.0844
+height = 110.96
+
+[node name="f_shieldmon" instance=ExtResource( 1 )]
+position = Vector2( 4, 8.50446 )
+script = ExtResource( 27 )
+entity_name = "f_shieldmon"
+max_health = 20
+MAX_SPEED = 50
+acceleration = 100
+afterglow_time = 2.0
+
+[node name="hit" parent="." index="0"]
+root_node = NodePath("..")
+anims/hit_indication = SubResource( 1 )
+anims/shield_hit = SubResource( 2 )
+
+[node name="StateMachine" type="Node2D" parent="." index="1"]
+script = ExtResource( 2 )
+
+[node name="detectSelf" type="Area2D" parent="." index="2"]
+visible = false
+position = Vector2( 0, -21.3509 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectSelf" index="0"]
+shape = SubResource( 3 )
+
+[node name="normSprite" type="Sprite" parent="." index="3"]
+position = Vector2( -3.29387, -24.8155 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 10 )
+hframes = 5
+
+[node name="shieldHit" type="AnimationPlayer" parent="normSprite" index="0"]
+anims/hit_indication = SubResource( 4 )
+anims/shield_hit = SubResource( 5 )
+
+[node name="Anim" type="AnimationPlayer" parent="normSprite" index="1"]
+anims/fall = SubResource( 6 )
+anims/idle = SubResource( 7 )
+anims/jump = SubResource( 8 )
+anims/run = SubResource( 9 )
+anims/self_saucy = SubResource( 10 )
+anims/shield_fall = SubResource( 11 )
+anims/shield_idle = SubResource( 12 )
+anims/shield_run = SubResource( 13 )
+anims/stunned = SubResource( 14 )
+
+[node name="shieldmonHead" type="Sprite" parent="." index="4"]
+position = Vector2( -3.62382, -27.0018 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 13 )
+hframes = 5
+
+[node name="deathSprite" type="Sprite" parent="." index="5"]
+visible = false
+position = Vector2( -0.740603, -17.2481 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deathSprite" index="0"]
+anims/dead = SubResource( 15 )
+anims/hit_indication = SubResource( 16 )
+
+[node name="rightJumpRayCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, 38.7186 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="leftJumpRayCast" type="RayCast2D" parent="." index="7"]
+position = Vector2( 0, 38.7186 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+
+[node name="sightLine" type="Area2D" parent="." index="8"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sightLine" index="0"]
+shape = SubResource( 17 )
+
+[node name="chaseSightLine" type="Area2D" parent="." index="9"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaseSightLine" index="0"]
+shape = SubResource( 18 )
+
+[node name="Audio" type="Node2D" parent="." index="10"]
+
+[node name="skitter" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource( 24 )
+volume_db = 24.0
+bus = "SFX"
+
+[node name="screech" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource( 22 )
+bus = "SFX"
+
+[node name="unsatisfyingHit" type="AudioStreamPlayer" parent="Audio" index="2"]
+stream = ExtResource( 4 )
+volume_db = 5.0
+bus = "SFX"
+
+[node name="shieldmonShield" type="StaticBody2D" parent="." index="11"]
+visible = false
+position = Vector2( -27.0106, 1.85334 )
+collision_layer = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shieldmonShield" index="0"]
+shape = SubResource( 19 )
+
+[node name="shieldmonShield2" type="StaticBody2D" parent="." index="12"]
+visible = false
+position = Vector2( 27.4079, 1.45614 )
+collision_layer = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shieldmonShield2" index="0"]
+shape = SubResource( 19 )
+
+[node name="shieldPositions" type="Node2D" parent="." index="13"]
+
+[node name="right" type="Position2D" parent="shieldPositions" index="0"]
+position = Vector2( 38.7261, -26.7626 )
+
+[node name="left" type="Position2D" parent="shieldPositions" index="1"]
+position = Vector2( -41.5355, -30.683 )
+
+[node name="NonplayerCollision" parent="." index="14"]
+position = Vector2( -5.88645, -21.0012 )
+shape = SubResource( 20 )
+
+[node name="playerSaucyPos" parent="." index="15"]
+position = Vector2( 0, -19.3407 )
+
+[node name="detectBodies" parent="." index="17"]
+visible = false
+
+[connection signal="animation_finished" from="hit" to="." method="_on_hit_animation_finished"]
+[connection signal="animation_finished" from="normSprite/shieldHit" to="." method="_on_shieldHit_animation_finished"]
+[connection signal="animation_finished" from="deathSprite/AnimationPlayer" to="." method="_on_deathAnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="sightLine" to="." method="_on_sightLine_body_entered"]
+[connection signal="body_exited" from="sightLine" to="." method="_on_sightLine_body_exited"]
+[connection signal="body_entered" from="chaseSightLine" to="." method="_on_chaseSightLine_body_entered"]
+[connection signal="body_exited" from="chaseSightLine" to="." method="_on_chaseSightLine_body_exited"]

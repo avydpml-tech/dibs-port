@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_shieldmon/PNG/shieldmon-misc-animations-Sheet.png" type="Texture" id=1]
+
+
+
+
+
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 10.2736
+height = 41.2051
+
+[node name="leftShield" type="RigidBody2D"]
+rotation = -0.65692
+collision_layer = 0
+gravity_scale = 18.94
+
+[node name="shieldmon-misc-animations-Sheet" type="Sprite" parent="."]
+position = Vector2( -9.80791, 2.37384 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.00506768
+shape = SubResource( 1 )

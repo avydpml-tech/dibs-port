@@ -1,0 +1,251 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Src/Entities/Nonplayer/Nonplayer.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/spook.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/Meme/hand.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/arrow.png" type="Texture" id=4]
+[ext_resource path="res://Src/Environment/sleepy_particles.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=6]
+resource_name = "hit_indication"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 34.2948
+height = 31.821
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 54.1501, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 102.295, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 41.7962, 10 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -12, -67 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 26.7 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "wave"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00288591 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.00288591, 0.222539 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -12, -61 ), Vector2( -12, -67 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.058951, 0.165495, 0.335931 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.23763 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 13.0, -0.7 ]
+}
+
+[node name="Nonplayer" type="KinematicBody2D" groups=["Nonplayer"]]
+collision_layer = 1024
+collision_mask = 4161
+script = ExtResource( 1 )
+MAX_SPEED = 250
+
+[node name="hit" type="AnimationPlayer" parent="."]
+root_node = NodePath("../NonplayerCollision")
+anims/hit_indication = SubResource( 6 )
+
+[node name="NonplayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2( -3.99561, 1.22943 )
+shape = SubResource( 1 )
+
+[node name="playerSaucyPos" type="Position2D" parent="."]
+
+[node name="lightButNotReally" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.615686, 0.682353, 0.733333, 1 )
+self_modulate = Color( 1, 1, 1, 0.0980392 )
+show_behind_parent = true
+material = SubResource( 2 )
+position = Vector2( -5.69239, -3.08518 )
+scale = Vector2( 2.36, 1.48 )
+texture = ExtResource( 2 )
+
+[node name="detectBodies" type="Node2D" parent="."]
+
+[node name="enterDetect" type="Area2D" parent="detectBodies"]
+collision_layer = 64
+collision_mask = 4138
+
+[node name="collisionShape" type="CollisionShape2D" parent="detectBodies/enterDetect"]
+shape = SubResource( 3 )
+
+[node name="exitDetect" type="Area2D" parent="detectBodies"]
+collision_layer = 64
+collision_mask = 4138
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectBodies/exitDetect"]
+shape = SubResource( 4 )
+
+[node name="attackRange" type="Area2D" parent="detectBodies"]
+position = Vector2( -1, 0 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectBodies/attackRange"]
+shape = SubResource( 5 )
+
+[node name="attackSpeed" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="canSaucy" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="afterglowTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="stunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="checkAttackBodiesTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="sleepTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="state" type="Label" parent="."]
+visible = false
+margin_left = -21.0523
+margin_top = -70.3067
+margin_right = 18.9477
+margin_bottom = -56.3067
+text = "state text not modified"
+
+[node name="sleepyParticles" parent="." instance=ExtResource( 5 )]
+position = Vector2( -9, -73 )
+emitting = false
+local_coords = false
+
+[node name="Hand" type="Sprite" parent="."]
+visible = false
+position = Vector2( -12, -67 )
+rotation = 0.466003
+scale = Vector2( 0.114683, 0.114683 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
+anims/RESET = SubResource( 8 )
+anims/wave = SubResource( 7 )
+
+[node name="Arrow" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( -2, -84 )
+rotation = 4.71239
+scale = Vector2( 0.087912, 0.087912 )
+texture = ExtResource( 4 )
+
+[connection signal="body_entered" from="detectBodies/enterDetect" to="." method="_on_enterDetect_body_entered"]
+[connection signal="body_exited" from="detectBodies/exitDetect" to="." method="_on_exitDetect_body_exited"]
+[connection signal="body_entered" from="detectBodies/attackRange" to="." method="_on_attackRange_body_entered"]
+[connection signal="body_exited" from="detectBodies/attackRange" to="." method="_on_attackRange_body_exited"]
+[connection signal="timeout" from="sleepTimer" to="." method="_on_sleepTimer_timeout"]

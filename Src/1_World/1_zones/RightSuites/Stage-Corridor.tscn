@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_umbrella/f_umbrella.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_hangmon/f_hangmon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/1_Visual/3_Background/roughs/Suites Roughs.png" type="Texture" id=11]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_noodle/f_noodle.tscn" type="PackedScene" id=24]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 1 )
+day_or_night = "dark"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TileMap4" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -196602, 1, 0, -65538, 17, 0, -65537, 17, 0, -131072, 17, 0, -131071, 17, 0, -131070, 17, 0, -131069, 17, 0, -131068, 1, 0, -131067, 1, 0, -131066, 1, 0, -2, 17, 0, -1, 17, 0, -65536, 17, 0, -65535, 20, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, 131070, 20, 0, 131071, 20, 0, 65536, 20, 0, 65537, 17, 0, 65538, 17, 0, 65539, 17, 0, 65540, 17, 0, 65541, 17, 0, 65542, 17, 0, 196607, 20, 0, 131072, 20, 0, 131073, 20, 0, 131074, 20, 0, 131075, 20, 0, 131076, 20, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 13, 0, 131081, 13, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="LoadPositions" type="Node2D" parent="."]
+position = Vector2( 912.24, 576.51 )
+
+[node name="237" parent="LoadPositions" instance=ExtResource( 14 )]
+position = Vector2( -270.846, 7.0568 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="Entry-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -920.591, -208.242 )
+scene_path_to_load = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="doors_transitions/Entry-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( 3.71405, -1.11365 )
+
+[node name="Elevator" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 1163.41, 672.758 )
+scene_path_to_load = "res://1_World/1_zones/stages/sci fi/Stage_01.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Elevator" instance=ExtResource( 14 )]
+position = Vector2( -0.816528, -1.61804 )
+
+[node name="Entity" type="Node2D" parent="."]
+
+[node name="1" parent="Entity" instance=ExtResource( 24 )]
+position = Vector2( 577, 613 )
+
+[node name="2" parent="Entity" instance=ExtResource( 24 )]
+position = Vector2( 617, -143 )
+
+[node name="3" parent="Entity" instance=ExtResource( 24 )]
+position = Vector2( 1311, 607 )
+
+[node name="4" parent="Entity" instance=ExtResource( 24 )]
+position = Vector2( 1454, 686 )
+
+[node name="5" parent="Entity" instance=ExtResource( 2 )]
+position = Vector2( 735, 399 )
+
+[node name="6" parent="Entity" instance=ExtResource( 2 )]
+position = Vector2( 2369, 399 )
+
+[node name="7" parent="Entity" instance=ExtResource( 2 )]
+position = Vector2( 903, 399 )
+
+[node name="8" parent="Entity" instance=ExtResource( 2 )]
+position = Vector2( 1580, 417 )
+
+[node name="9" parent="Entity" instance=ExtResource( 3 )]
+position = Vector2( 1503, 453 )
+increase_fall_range_x_axis = 700
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( -322, -368 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Stairs" type="Node2D" parent="Foreground"]
+scale = Vector2( 2, 2 )
+
+[node name="Stairs2" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 554.5, -99.5 )
+scale = Vector2( 1, 1 )
+
+[node name="Stairs3" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 921.5, -225 )
+scale = Vector2( 1, 1 )
+
+[node name="Stairs" parent="Foreground/Stairs" instance=ExtResource( 7 )]
+position = Vector2( 101.5, 282 )
+scale = Vector2( 1, 1 )
+
+[node name="Floors" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -131074, 8, 0, -131073, 8, 0, -196608, 8, 0, -196607, 8, 0, -196606, 8, 0, -196605, 8, 0, -196604, 8, 0, -196603, 8, 0, -196602, 8, 0, -196600, 8, 0, -196599, 8, 0, -65538, 8, 0, -65537, 8, 0, -131072, 8, 0, -131070, 8, 0, -131069, 8, 0, -131067, 8, 0, -131066, 8, 0, -2, 8, 0, -1, 8, 0, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65532, 8, 0, 131071, 8, 0, 196606, 1610612743, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 262143, 26, 0, 196608, 26, 0, 196609, 26, 0, 196610, 26, 0, 196611, 26, 0, 196612, 26, 0, 196613, 26, 0, 196614, 26, 0, 196615, 26, 0, 196616, 26, 0 )
+
+[node name="wall-light" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( 198, 498 )
+
+[node name="wall-light2" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( 108, -146 )
+
+[node name="wall-light3" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( 620, -146 )
+
+[node name="2022-02-0108-49-23-SuitesRoughs" type="Sprite" parent="."]
+position = Vector2( 991, -285 )
+texture = ExtResource( 11 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

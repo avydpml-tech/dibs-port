@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sploosh6.ogg-75fd0d27452b7d571cad277ca6d90eab.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/footsteps/footsteps/sploosh6.ogg"
+dest_files=[ "res://.import/sploosh6.ogg-75fd0d27452b7d571cad277ca6d90eab.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

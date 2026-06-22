@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bullet_impact_concrete_brick_01.ogg-8a40b7c2596d412aa6a815cced6e2ecf.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/weapon_sounds/1_final/hit/bullet_impact_concrete_brick_01.ogg"
+dest_files=[ "res://.import/bullet_impact_concrete_brick_01.ogg-8a40b7c2596d412aa6a815cced6e2ecf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

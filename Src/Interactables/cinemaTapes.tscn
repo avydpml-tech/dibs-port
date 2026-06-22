@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Src/Interactables/!_common/physicsInteractable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Interactables/cinemaTapes.gd" type="Script" id=2]
+[ext_resource path="res://Src/Shaders/silouette.shader" type="Shader" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Visual/4_Interactables/cinema_tape_icon.png" type="Texture" id=6]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi packs tilesets/Pack 01 (Pixel Art)/PNG/Wall 4 Light.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.15407, 14.3915 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/modulate = Color( 1, 0.898039, 0.898039, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "clicked"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0624329, 0.137567 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0.811765, 0.811765, 0.811765, 1 ), Color( 0.411765, 0.411765, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mouse_hover"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.368627, 0.368627, 0.368627, 1 ), Color( 0.568627, 0.568627, 0.568627, 1 ) ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
+light_mode = 1
+
+[node name="cinemaTape" instance=ExtResource( 1 )]
+collision_layer = 131072
+collision_mask = 513
+gravity_scale = 40.0
+script = ExtResource( 2 )
+is_persist = true
+light_energy = 1.0
+
+[node name="Wall 4 Light" type="Sprite" parent="." index="0"]
+visible = false
+position = Vector2( -3.25158, -1.86271 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0, 35.3575 )
+shape = SubResource( 1 )
+
+[node name="Biorganic device copie 3" type="Sprite" parent="." index="2"]
+visible = false
+material = SubResource( 2 )
+position = Vector2( 0.202154, -11.2799 )
+scale = Vector2( 1.34669, 1.32821 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Biorganic device copie 3" index="0"]
+anims/clicked = SubResource( 3 )
+anims/mouse_hover = SubResource( 4 )
+
+[node name="Biorganic device copie 2" type="Sprite" parent="." index="3"]
+modulate = Color( 0.85098, 0.85098, 0.85098, 1 )
+position = Vector2( 0.202154, -11.2799 )
+scale = Vector2( 1.09723, 1.09723 )
+texture = ExtResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="." index="4"]
+light_mask = 131072
+material = SubResource( 5 )
+position = Vector2( 2.6705, 1.01517 )
+texture = ExtResource( 5 )
+shadow_enabled = true
+
+[node name="wall-light" parent="." index="5" instance=ExtResource( 7 )]
+position = Vector2( -0.870178, -41.4458 )
+rotation = 6.28319
+scale = Vector2( 0.231781, 0.25235 )

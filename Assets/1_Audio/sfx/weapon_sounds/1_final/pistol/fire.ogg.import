@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fire.ogg-81dda3fc53e9c16a58ccd7590b73e891.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/weapon_sounds/1_final/pistol/fire.ogg"
+dest_files=[ "res://.import/fire.ogg-81dda3fc53e9c16a58ccd7590b73e891.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

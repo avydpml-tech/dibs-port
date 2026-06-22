@@ -1,0 +1,212 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Src/Interactables/pickupInteractable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Environment/puffSmoke.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_04-StunFun.gd" type="Script" id=3]
+[ext_resource path="res://Assets/1_Audio/music/m_cafe_jazz.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/1_Visual/3_Background/poster_ad_base.png" type="Texture" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World/1_zones/gook.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/1_Visual/3_Background/__Guides/zzzz_outline/2 BackEntrance - 2ReceptionClockIn.png" type="Texture" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/1_Visual/3_Background/BackEntrance - 2ReceptionClockIn.png" type="Texture" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=32]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 105.32, 21.7469 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64.5073, 47.7469 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 3 )
+day_or_night = "dark"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="background" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 2, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 262143, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196613, 3, 0, 196614, 3, 0, 196615, 3, 0 )
+
+[node name="gook" type="TileMap" parent="Background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="gook2" type="TileMap" parent="Background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131075, 2, 0, 131076, 0, 0, 131077, 6, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="poster_ad_base" type="Sprite" parent="Background"]
+position = Vector2( 129.826, 641.919 )
+texture = ExtResource( 5 )
+
+[node name="poster_ad_base2" type="Sprite" parent="Background"]
+position = Vector2( 385.835, 641.919 )
+texture = ExtResource( 5 )
+
+[node name="poster_ad_base3" type="Sprite" parent="Background"]
+position = Vector2( 638.457, 641.919 )
+texture = ExtResource( 5 )
+
+[node name="BackEntrance - 2ReceptionClockIn" type="Sprite" parent="Background"]
+position = Vector2( -376.895, 671.682 )
+texture = ExtResource( 12 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="pickupInteractable" parent="Interactables" instance=ExtResource( 1 )]
+position = Vector2( -1739, 1060 )
+achievement = "newspaper_found"
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="Door-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -1711.27, 60.758 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_03-Palooza.tscn"
+where_is_exit_point = "stun"
+
+[node name="left" parent="doors_transitions/Door-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 33.2614 )
+
+[node name="Door-To-Cafe" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 1096.51, 68.8917 )
+scene_path_to_load = "res://Src/1_World/cafeEasterEgg.tscn"
+
+[node name="right" parent="doors_transitions/Door-To-Cafe" instance=ExtResource( 14 )]
+position = Vector2( -3.88916, 33.2614 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="doors_transitions/Door-To-Cafe"]
+stream = ExtResource( 4 )
+volume_db = 6.16
+autoplay = true
+max_distance = 300.0
+bus = "Music"
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( -344.219, 672.357 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 726.349, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="big2" parent="." instance=ExtResource( 32 )]
+position = Vector2( -638.306, 660.265 )
+rotation = 3.14009
+scale = Vector2( 2.17627, 2.17627 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big4" parent="." instance=ExtResource( 32 )]
+position = Vector2( -287.063, 660.265 )
+rotation = 3.14009
+scale = Vector2( 2.17627, 2.17627 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big3" parent="." instance=ExtResource( 32 )]
+position = Vector2( 16.694, 660.265 )
+rotation = 3.14009
+scale = Vector2( 2.17627, 2.17627 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="wall-light4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1161.53, 908.846 )
+effect = "flicker"
+
+[node name="puffSmokes" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1241.73, 769.234 )
+scale = Vector2( 0.114423, 0.114423 )
+local_cords = true
+
+[node name="puffSmokes2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1039.73, 770.234 )
+scale = Vector2( 0.1, 0.1 )
+local_cords = true
+
+[node name="breakableFloor" type="RigidBody2D" parent="."]
+mode = 1
+gravity_scale = 20.0
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="breakableFloor"]
+position = Vector2( 1142.15, 778.747 )
+shape = SubResource( 1 )
+
+[node name="floor2" type="TileMap" parent="breakableFloor"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131076, 8, 0, 196612, 3, 0 )
+
+[node name="Area2D" type="Area2D" parent="breakableFloor"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="breakableFloor/Area2D"]
+position = Vector2( 1142.15, 778.747 )
+shape = SubResource( 2 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="blackbar" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131071, 8, 0, 65536, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 26, 0 )
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131071, 8, 0, 65536, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 196603, 1610612743, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 7, 0, 262140, 3, 0, 262141, 3, 0, 262142, 3, 0 )
+
+[node name="Transition_point" parent="." instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1233.77, 3043.1 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn"
+where_is_exit_point = "playerPos"
+
+[node name="black-background2" type="Sprite" parent="."]
+position = Vector2( 1227.59, 3643.15 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="2 BackEntrance - 2ReceptionClockIn" type="Sprite" parent="."]
+visible = false
+position = Vector2( 526.135, 698.828 )
+texture = ExtResource( 10 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="body_entered" from="breakableFloor/Area2D" to="." method="_on_Area2D_body_entered"]

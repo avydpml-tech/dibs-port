@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/Entities/Player/z_test_scenes/particle_textures/searchpng.com-transparent-smoke-png-image-free-download.png" type="Texture" id=1]
+[ext_resource path="res://Src/Entities/Player/z_test_scenes/particle_textures/searchpng.com-white-smoke-png-image-free-download-3.png" type="Texture" id=2]
+[ext_resource path="res://Src/Entities/Player/z_test_scenes/snowBreath.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.445455 ), 0.0, 0.0, 0, 0, Vector2( 0.151394, 0.814773 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.175439, 0.552632 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.988235, 0.988235, 0.988235, 0.403922, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0657895, 0.245614, 0.517544 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.117647, 1, 1, 1, 0 )
+
+[node name="snowBreath" type="Node2D"]
+rotation = 3.14159
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 3 )
+NOTE = "THIS ONLY WORKS FOR PLAYER AND ENTITIES"
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.71
+local_coords = false
+texture = ExtResource( 1 )
+spread = 10.0
+gravity = Vector2( 0, -20 )
+initial_velocity = 400.0
+angular_velocity = 39.0
+angular_velocity_random = 1.0
+scale_amount = 0.04
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+
+[node name="Particles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 6
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.5
+local_coords = false
+texture = ExtResource( 2 )
+spread = 10.0
+gravity = Vector2( 0, -20 )
+initial_velocity = 400.0
+angular_velocity = -100.0
+angle = 280.0
+scale_amount = 0.02
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/component/fade_component.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Environment/fade_room.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/back-dark-gradient.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/black 128.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 35, 144 )
+
+[node name="FadeRoom" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="FadeComponent" parent="." instance=ExtResource( 1 )]
+actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Back-dark-gradient" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -1, -19 )
+rotation = 1.5708
+scale = Vector2( 12.596, 0.306243 )
+texture = ExtResource( 3 )
+
+[node name="Black128" type="Sprite" parent="."]
+position = Vector2( -531, -19 )
+scale = Vector2( 7.32813, 2.95312 )
+texture = ExtResource( 4 )
+
+[connection signal="interacted" from="." to="FadeComponent" method="fade"]

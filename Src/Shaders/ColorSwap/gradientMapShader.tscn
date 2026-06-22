@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Shaders/ColorSwap/gradientMapShader.tres" type="Material" id=1]
+[ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=2]
+
+[node name="gradientMapShader" type="ColorRect"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Icon" type="Sprite" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2( 1273, 427 )
+texture = ExtResource( 2 )

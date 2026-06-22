@@ -1,0 +1,260 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/leftextension.png" type="Texture" id=2]
+[ext_resource path="res://Src/Shaders/glow.shader" type="Shader" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/Interactables/scarfStand.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/Group_21.png" type="Texture" id=9]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/westwingmall.png" type="Texture" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/1_Audio/music/m_gymnopedie.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/3_Background/planet.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/3_Background/StripedPalace/Chunk9_light_long.png" type="Texture" id=17]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/radius = 5.0
+shader_param/amount = 0.4
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+scale = Vector2( 1, 0.998771 )
+script = ExtResource( 1 )
+day_or_night = "light"
+
+[node name="Songs" type="Node2D" parent="."]
+
+[node name="gymnopedie" type="AudioStreamPlayer2D" parent="Songs"]
+position = Vector2( 96, 469.577 )
+stream = ExtResource( 12 )
+autoplay = true
+max_distance = 1000.0
+bus = "Music"
+
+[node name="gymnopedie2" type="AudioStreamPlayer2D" parent="Songs"]
+position = Vector2( 1315, 576.709 )
+stream = ExtResource( 12 )
+autoplay = true
+bus = "Music"
+
+[node name="gymnopedie4" type="AudioStreamPlayer2D" parent="Songs"]
+position = Vector2( 2539, 543.668 )
+stream = ExtResource( 12 )
+autoplay = true
+max_distance = 500.0
+bus = "Music"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Tilesets" type="Node2D" parent="Background"]
+
+[node name="background" type="TileMap" parent="Background/Tilesets"]
+visible = false
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196606, 1610612743, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0 )
+
+[node name="playerPos" type="Position2D" parent="Background"]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+visible = false
+color = Color( 0.384314, 0.443137, 0.454902, 1 )
+
+[node name="CanvasModulateMoreCyan" type="CanvasModulate" parent="Background"]
+color = Color( 0.270588, 0.388235, 0.4, 1 )
+
+[node name="doors_transitions" type="Node2D" parent="Background"]
+position = Vector2( 7797.5, 510.724 )
+
+[node name="lightSwitch" parent="Background/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -2787.93, 1175.51 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="Background/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 5727.63, 1370.81 )
+interacts_to = "switch2"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+layer = -1
+scroll_base_scale = Vector2( 0.7, 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+
+[node name="planet-2880x1800-horizon-earth-4k-9337 - Copy2" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.521569, 0.631373, 0.639216, 1 )
+material = SubResource( 1 )
+position = Vector2( 339.849, 679.836 )
+rotation = -2.87979
+scale = Vector2( 0.557229, 0.549992 )
+texture = ExtResource( 15 )
+
+[node name="black-background2" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 264.732, 1017.96 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="black-background3" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1502.6, 472.066 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="black-background4" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2199.37, 613.486 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="Leftextension" type="Sprite" parent="."]
+position = Vector2( 5402, 863.061 )
+scale = Vector2( 2.65059, 2.11689 )
+texture = ExtResource( 2 )
+
+[node name="WestWingMall2x2" type="Sprite" parent="."]
+position = Vector2( 4884, 642.79 )
+texture = ExtResource( 10 )
+
+[node name="WestWingMall2x" type="Sprite" parent="."]
+position = Vector2( 1051, 646.795 )
+texture = ExtResource( 10 )
+
+[node name="scarfStand" parent="." instance=ExtResource( 7 )]
+modulate = Color( 0.384314, 0.490196, 0.564706, 1 )
+position = Vector2( 1430, 674.829 )
+
+[node name="Door-To-Mall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 6638, 660.812 )
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_02_b-Mall.tscn"
+where_is_exit_point = "topleft"
+
+[node name="right" parent="Door-To-Mall" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 16.5894 )
+
+[node name="Group21" type="Sprite" parent="."]
+position = Vector2( 1313, 582.716 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="Group22" type="Sprite" parent="."]
+position = Vector2( 3492, 582.716 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 542.18, 562.341 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Transition_point" parent="Foreground" instance=ExtResource( 11 )]
+position = Vector2( -164.169, 666.682 )
+rotation = 1.5708
+scale = Vector2( 0.849473, 0.324109 )
+scene_path_to_load = "res://Src/1_World/1_zones/LewdZones/Stage_01-StripedClub.tscn"
+where_is_exit_point = "topright"
+
+[node name="left" parent="Foreground/Transition_point" instance=ExtResource( 14 )]
+position = Vector2( 40.2759, -242.964 )
+rotation = -1.5708
+scale = Vector2( 3.08538, 1.1772 )
+
+[node name="light" type="Node2D" parent="Foreground"]
+
+[node name="Chunk9LightLong" type="Sprite" parent="Foreground/light"]
+modulate = Color( 1, 1, 1, 0.65098 )
+position = Vector2( 859, 661.813 )
+scale = Vector2( 2.42725, 1.44351 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PQpzb3VyY2V8PQpsYXllcnw9Cm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PUZhbHNlCm9fZXhfcHw9Cg=="
+}
+
+[node name="Chunk9LightLong4" type="Sprite" parent="Foreground/light"]
+modulate = Color( 1, 1, 1, 0.65098 )
+position = Vector2( 204, 661.813 )
+scale = Vector2( 2.42725, 1.44351 )
+texture = ExtResource( 17 )
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PQpzb3VyY2V8PQpsYXllcnw9Cm9wX2V4cHw9RmFsc2UKb19mb2xkZXJ8PQpvX25hbWV8PQpvbmx5X3Zpc2libGV8PUZhbHNlCm9fZXhfcHw9Cg=="
+}
+
+[node name="Chunk9LightLong2" type="Sprite" parent="Foreground/light"]
+position = Vector2( 1311, 661.813 )
+scale = Vector2( 2.42725, 1.44351 )
+texture = ExtResource( 17 )
+
+[node name="Chunk9LightLong3" type="Sprite" parent="Foreground/light"]
+position = Vector2( 1741, 661.813 )
+scale = Vector2( 2.42725, 1.44351 )
+texture = ExtResource( 17 )
+
+[node name="Environment" type="Node2D" parent="Foreground"]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="big" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -5419.88, -804.618 )
+scale = Vector2( 1.14893, 1.06641 )
+
+[node name="big4" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -5424.88, -574.335 )
+scale = Vector2( 3.05659, 2.83706 )
+
+[node name="big3" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -4968.88, -805.619 )
+scale = Vector2( 1.11826, 1.03794 )
+
+[node name="big5" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -4546.88, -812.628 )
+scale = Vector2( 1.43795, 1.33467 )
+
+[node name="big2" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -4671.88, -502.246 )
+scale = Vector2( 2.16685, 2.16685 )
+
+[node name="big6" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -6093.88, -791.602 )
+scale = Vector2( 1.14893, 1.06641 )
+
+[node name="big7" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -6051.88, -574.335 )
+scale = Vector2( 3.05659, 2.83706 )
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.286275, 0.286275, 0.286275, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65563, 7, 0, 65564, 1610612762, 0, 65565, 1610612762, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 0, 131088, 8, 0, 131089, 8, 0, 131090, 8, 0, 131091, 8, 0, 131092, 8, 0, 131093, 8, 0, 131094, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 7, 0, 131100, 1610612762, 0, 131101, 1610612762, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0, 327691, 1, 0 )
+
+[node name="ammo" parent="Foreground" instance=ExtResource( 4 )]
+position = Vector2( 2834.03, 639.883 )
+light_energy = 1.3
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

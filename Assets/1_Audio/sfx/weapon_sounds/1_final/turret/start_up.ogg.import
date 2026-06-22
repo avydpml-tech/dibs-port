@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/start_up.ogg-6a795c8ec7c3e6faf4d460081a9e0dbc.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/weapon_sounds/1_final/turret/start_up.ogg"
+dest_files=[ "res://.import/start_up.ogg-6a795c8ec7c3e6faf4d460081a9e0dbc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

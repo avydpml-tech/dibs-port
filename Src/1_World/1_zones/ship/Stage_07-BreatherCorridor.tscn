@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/perlin_noise.png" type="Texture" id=2]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=32]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+light_mode = 2
+
+[node name="Node2D3" type="Node2D"]
+position = Vector2( 6, 0 )
+scale = Vector2( 1, 0.998771 )
+script = ExtResource( 1 )
+day_or_night = "light"
+
+[node name="backgrond" type="Node2D" parent="."]
+
+[node name="background" type="TileMap" parent="backgrond"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 7, 0 )
+
+[node name="playerPos" type="Position2D" parent="."]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 7797.5, 510.724 )
+
+[node name="Door-To-Canals" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -7255.32, 144.556 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_06-Storage.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="doors_transitions/Door-To-Canals" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 16.5894 )
+
+[node name="Door-To-Elevator" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -4358.95, 152.854 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_09-Warehouse.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Door-To-Elevator" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 16.5894 )
+
+[node name="lightSwitch" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -2787.93, 1175.51 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 5727.63, 1370.81 )
+interacts_to = "switch2"
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 542.18, 562.341 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="big" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -3615.12, -759.632 )
+scale = Vector2( 3.05659, 2.83706 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big4" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -5408.31, -594.622 )
+scale = Vector2( 3.05659, 2.83706 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big3" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -2621.29, -843.177 )
+scale = Vector2( 2.20916, 2.05049 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big5" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -913.751, -747.105 )
+scale = Vector2( 2.20916, 2.05049 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big2" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -4464.19, -732.344 )
+scale = Vector2( 2.16685, 2.16685 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="floor" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196607, 1610612743, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 7, 0 )
+
+[node name="Stairs2" type="Node2D" parent="."]
+position = Vector2( 1855.47, 1478.46 )
+
+[node name="perlin_noise" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.0117647, 0.0509804, 0.0196078, 1 )
+material = SubResource( 1 )
+position = Vector2( 122.723, 300.348 )
+scale = Vector2( 7.66254, 1.49103 )
+texture = ExtResource( 2 )
+
+[node name="ammo" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2601.09, 646.701 )
+
+[node name="ammo2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2662.55, 699.223 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

@@ -1,0 +1,274 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/Door.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/shadowgradient.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/3_Background/light.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Audio/sfx/_environment/clicks/Click.ogg" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 51.5177, 6.93515 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 40.6677, 70.2386 )
+
+[sub_resource type="StreamTexture" id=15]
+flags = 4
+load_path = "res://.import/door.png-94aa326d8d1724f19e5840c93c2077a2.stex"
+
+[sub_resource type="Animation" id=5]
+length = 0.42
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.24
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0 ]
+}
+
+[sub_resource type="StreamTexture" id=8]
+flags = 4
+load_path = "res://.import/door_2.png-f441697b11864615362e6aeb6ab132e9.stex"
+
+[sub_resource type="Animation" id=9]
+length = 0.42
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.24
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0 ]
+}
+
+[sub_resource type="StreamTexture" id=14]
+flags = 4
+load_path = "res://.import/long_door.png-da0c35101a168d96fd2646a21c5b3309.stex"
+
+[sub_resource type="Animation" id=12]
+length = 0.36
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5.0, 4.0, 3.0, 2.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.24
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0 ]
+}
+
+[node name="Door" type="StaticBody2D"]
+position = Vector2( 2.33231, -0.238617 )
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2.85001, 42.0894 )
+shape = SubResource( 1 )
+
+[node name="detectPlayerNear" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayerNear"]
+shape = SubResource( 7 )
+
+[node name="Shadowgradient" type="Sprite" parent="."]
+modulate = Color( 0.305882, 0.305882, 0.305882, 1 )
+position = Vector2( -4.33231, -24.7614 )
+scale = Vector2( 1.91582, 1.91582 )
+texture = ExtResource( 4 )
+
+[node name="doorWithNoLights" type="Sprite" parent="."]
+light_mask = 3
+position = Vector2( -3.246, 5.9017 )
+scale = Vector2( 1.982, 1.782 )
+texture = SubResource( 15 )
+hframes = 3
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PWRvb3JXaXRoTm9MaWdodHMvQW5pbWF0aW9uUGxheWVyCnNvdXJjZXw9cmVzOi8vQXNzZXRzLzFfVmlzdWFsLzNfQmFja2dyb3VuZC9kb29yL3NvdXJjZS9kb29yLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1UcnVlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1UcnVlCm9fZXhfcHw9Cg=="
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="doorWithNoLights"]
+anims/close_door = SubResource( 5 )
+anims/door_left_open = SubResource( 16 )
+anims/open_door = SubResource( 3 )
+
+[node name="doorWithLights" type="Sprite" parent="."]
+visible = false
+light_mask = 3
+position = Vector2( -3.24625, -1.1228 )
+scale = Vector2( 1.98234, 1.78234 )
+texture = SubResource( 8 )
+hframes = 3
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PWRvb3JXaXRoTGlnaHRzL0FuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL0Fzc2V0cy8xX1Zpc3VhbC8zX0JhY2tncm91bmQvZG9vci9zb3VyY2UvZG9vcl8yLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1UcnVlCm9fZm9sZGVyfD0Kb19uYW1lfD0Kb25seV92aXNpYmxlfD1GYWxzZQpvX2V4X3B8PQo="
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="doorWithLights"]
+anims/close_door = SubResource( 9 )
+anims/open_door = SubResource( 10 )
+
+[node name="longDoor" type="Sprite" parent="."]
+visible = false
+position = Vector2( -3.246, 5.9017 )
+scale = Vector2( 1.982, 1.782 )
+texture = SubResource( 14 )
+hframes = 3
+vframes = 2
+__meta__ = {
+"_editor_description_": "YXNlcHJpdGVfd2l6YXJkX2NvbmZpZwpwbGF5ZXJ8PWxvbmdEb29yL0FuaW1hdGlvblBsYXllcgpzb3VyY2V8PXJlczovL0Fzc2V0cy8xX1Zpc3VhbC8zX0JhY2tncm91bmQvZG9vci9zb3VyY2UvbG9uZ19kb29yLmFzZXByaXRlCmxheWVyfD0Kb3BfZXhwfD1GYWxzZQpvX2ZvbGRlcnw9Cm9fbmFtZXw9Cm9ubHlfdmlzaWJsZXw9RmFsc2UKb19leF9wfD0K"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="longDoor"]
+anims/close_door = SubResource( 12 )
+anims/open_door = SubResource( 13 )
+
+[node name="Lights" type="Node2D" parent="."]
+visible = false
+
+[node name="MidLeft" type="Light2D" parent="Lights"]
+position = Vector2( -50.2938, -3.59242 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+energy = 0.6
+mode = 2
+range_height = -136.0
+range_layer_min = -1
+range_item_cull_mask = 2
+
+[node name="TopRight" type="Light2D" parent="Lights"]
+position = Vector2( 25.7457, -96.3965 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+energy = 0.6
+range_height = -136.0
+range_layer_min = -1
+range_item_cull_mask = 2
+
+[node name="TopLeft" type="Light2D" parent="Lights"]
+position = Vector2( -27.5419, -96.9952 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+energy = 0.6
+range_height = -136.0
+range_layer_min = -1
+range_item_cull_mask = 2
+
+[node name="MidRight" type="Light2D" parent="Lights"]
+position = Vector2( 48.4976, -0.598739 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+energy = 0.6
+mode = 2
+range_height = -136.0
+range_layer_min = -1
+range_item_cull_mask = 2
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+visible = false
+position = Vector2( -4.62009, 1.79671 )
+scale = Vector2( 7.46811, 9.44448 )
+
+[node name="timeDelay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="isPlayeronDoorTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="clickToEnter" type="Button" parent="."]
+visible = false
+margin_left = -58.0
+margin_top = -74.0
+margin_right = 54.0
+margin_bottom = 85.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="locked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = 2.384
+pitch_scale = 0.7
+bus = "SFX"
+
+[connection signal="body_entered" from="detectPlayerNear" to="." method="_on_detectPlayerNear_body_entered"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="pressed" from="clickToEnter" to="." method="_on_clickToEnter_pressed"]

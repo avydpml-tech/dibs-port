@@ -1,0 +1,425 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Src/Entities/Nonplayer/Nonplayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_tit_hugger/f_tit_hugger.gd" type="Script" id=2]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_tit_hugger/f_tit_huggerSM.gd" type="Script" id=3]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_tit_hugger/f_tit_hugger_full-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/alert.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/walk.ogg" type="AudioStream" id=26]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit_indication"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 54.0996
+height = 39.4854
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NonplayerCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.69085, 3.61248 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NonplayerCollision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -61.8796 ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NonplayerCollision:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -91.1266 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NonplayerCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.16278, 13.2872 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NonplayerCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.69085, 3.61248 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NonplayerCollision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -61.8796 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NonplayerCollision:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -91.1266 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NonplayerCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.16278, 13.2872 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "self_saucy"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NonplayerCollision:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -91.1266 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NonplayerCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.16278, 13.2872 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "stunned"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NonplayerCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.16278, 13.2872 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NonplayerCollision:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -91.1266 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0714734, 0.192007 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.960784, 0.054902, 0.054902, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0491168 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.705882, 0.403922, 0.137255, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 555.893
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 519.702, 15.4541 )
+
+[sub_resource type="CapsuleShape2D" id=13]
+radius = 14.0808
+height = 35.804
+
+[node name="f_tit_hugger" instance=ExtResource( 1 )]
+position = Vector2( 4, -9.88226 )
+script = ExtResource( 2 )
+entity_name = "f_tit_hugger"
+max_health = 10
+MAX_SPEED = 300
+afterglow_time = 2.0
+stun_time = 3.0
+allow_knock_back = false
+player_states_i_can_saucy = [ "fall", "jump" ]
+pouncing_distance = 400
+pouncing_height = 600
+
+[node name="hit" parent="." index="0"]
+root_node = NodePath("..")
+anims/hit_indication = SubResource( 1 )
+
+[node name="StateMachine" type="Node2D" parent="." index="1"]
+position = Vector2( 0, -1.41418 )
+script = ExtResource( 3 )
+
+[node name="detectSelf" type="Area2D" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectSelf" index="0"]
+shape = SubResource( 2 )
+
+[node name="normSprite" type="Sprite" parent="." index="3"]
+position = Vector2( -2.31928, -11.0663 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 4 )
+hframes = 3
+frame = 2
+
+[node name="Anim" type="AnimationPlayer" parent="normSprite" index="0"]
+anims/fall = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/run = SubResource( 6 )
+anims/self_saucy = SubResource( 7 )
+anims/stunned = SubResource( 8 )
+
+[node name="deathSprite" type="Sprite" parent="." index="4"]
+visible = false
+position = Vector2( -0.740603, -17.2481 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 4 )
+hframes = 3
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deathSprite" index="0"]
+anims/dead = SubResource( 9 )
+anims/hit_indication = SubResource( 10 )
+
+[node name="rightJumpRayCast" type="RayCast2D" parent="." index="5"]
+position = Vector2( 0, 19.0493 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="leftJumpRayCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, 19.0493 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+
+[node name="sightLine" type="Area2D" parent="." index="7"]
+position = Vector2( 0, -1.41418 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sightLine" index="0"]
+shape = SubResource( 11 )
+
+[node name="chaseSightLine" type="Area2D" parent="." index="8"]
+position = Vector2( 0, -1.41418 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaseSightLine" index="0"]
+shape = SubResource( 12 )
+
+[node name="Audio" type="Node2D" parent="." index="9"]
+position = Vector2( 0, -1.41418 )
+
+[node name="skitter" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource( 26 )
+volume_db = 24.0
+bus = "SFX"
+
+[node name="screech" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource( 25 )
+bus = "SFX"
+
+[node name="jumpTimer" type="Timer" parent="." index="10"]
+one_shot = true
+
+[node name="NonplayerCollision" parent="." index="11"]
+position = Vector2( -1.69085, 3.61248 )
+rotation = -1.08
+shape = SubResource( 13 )
+
+[node name="playerSaucyPos" parent="." index="12"]
+position = Vector2( 0, -19.1177 )
+
+[node name="detectBodies" parent="." index="14"]
+position = Vector2( 0, -1.41418 )
+
+[node name="canSaucy" parent="." index="16"]
+wait_time = 0.1
+
+[node name="state" parent="." index="21"]
+margin_top = -71.7209
+margin_bottom = -57.7209
+
+[node name="sleepyParticles" parent="." index="22"]
+position = Vector2( -3, -7.11774 )
+
+[connection signal="animation_finished" from="hit" to="." method="_on_hit_animation_finished"]
+[connection signal="animation_finished" from="deathSprite/AnimationPlayer" to="." method="_on_deathAnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="sightLine" to="." method="_on_sightLine_body_entered"]
+[connection signal="body_exited" from="sightLine" to="." method="_on_sightLine_body_exited"]
+[connection signal="body_entered" from="chaseSightLine" to="." method="_on_chaseSightLine_body_entered"]
+[connection signal="body_exited" from="chaseSightLine" to="." method="_on_chaseSightLine_body_exited"]

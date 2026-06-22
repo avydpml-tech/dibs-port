@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/metal_floor_break - Copy (2).ogg-7f557de027b4e17a37d7c9b4d9d87c2d.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/metal_floor_break - Copy (2).ogg"
+dest_files=[ "res://.import/metal_floor_break - Copy (2).ogg-7f557de027b4e17a37d7c9b4d9d87c2d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

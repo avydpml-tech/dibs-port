@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Src/UI/HandfanMenu/InteractOptionBtn.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/icons/exit_door.svg" type="Texture" id=2]
+[ext_resource path="res://Src/UI/HandfanMenu/subtypes/interact_boss_door.gd" type="Script" id=5]
+
+[node name="InteractOption" instance=ExtResource( 1 )]
+anchor_right = 0.031
+anchor_bottom = 0.056
+margin_right = 0.32
+margin_bottom = -0.32
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+script = ExtResource( 5 )
+should_hide_when_pressed = false
+signal_target = "boss_door"

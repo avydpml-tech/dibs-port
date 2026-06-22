@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Interactables/!_common/genericInteractable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Interactables/!_common/genericTrigger.gd" type="Script" id=2]
+
+[node name="Trigger" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,0 +1,374 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://Src/Entities/Nonplayer/Nonplayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_noodle/f_noodle.gd" type="Script" id=2]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_noodle/f_noodleSM.gd" type="Script" id=4]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_noodle/PNG/f_noodle-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=6]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/alert.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/walk.ogg" type="AudioStream" id=26]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 54.0996
+height = 39.4854
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "plop_to_ground"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7, 14 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 9 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "unplop_to_ground "
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 14, 11 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "plop_to_ground"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "self_saucy"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "stunned"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "unplop_to_ground "
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachine" id=26]
+states/idle/node = SubResource( 12 )
+states/idle/position = Vector2( 506, 106 )
+states/plop_to_ground/node = SubResource( 13 )
+states/plop_to_ground/position = Vector2( 857, 65 )
+states/run/node = SubResource( 14 )
+states/run/position = Vector2( 754, 136 )
+states/self_saucy/node = SubResource( 15 )
+states/self_saucy/position = Vector2( 450, 324 )
+states/stunned/node = SubResource( 16 )
+states/stunned/position = Vector2( 592, 324 )
+"states/unplop_to_ground /node" = SubResource( 17 )
+"states/unplop_to_ground /position" = Vector2( 857, 262 )
+transitions = [ "idle", "plop_to_ground", SubResource( 18 ), "idle", "self_saucy", SubResource( 19 ), "idle", "stunned", SubResource( 20 ), "run", "plop_to_ground", SubResource( 21 ), "run", "idle", SubResource( 22 ), "plop_to_ground", "unplop_to_ground ", SubResource( 23 ), "unplop_to_ground ", "run", SubResource( 24 ), "unplop_to_ground ", "idle", SubResource( 25 ) ]
+start_node = "plop_to_ground"
+end_node = "run"
+graph_offset = Vector2( 134, 39 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+
+[sub_resource type="Animation" id=28]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0714734, 0.192007 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.960784, 0.054902, 0.054902, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0491168 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.705882, 0.403922, 0.137255, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=30]
+radius = 628.36
+
+[sub_resource type="CapsuleShape2D" id=31]
+radius = 238.555
+height = 587.57
+
+[sub_resource type="CapsuleShape2D" id=32]
+radius = 26.6445
+height = 0.0
+
+[node name="f_noodle" instance=ExtResource( 1 )]
+position = Vector2( -1.99323, 10.8627 )
+script = ExtResource( 2 )
+entity_name = "f_noodle"
+max_health = 5
+MAX_SPEED = 180
+afterglow_time = 2.0
+gravity_enabled = false
+float_to_player = true
+allow_knock_back = false
+player_states_i_can_saucy = [ "jump", "fall" ]
+
+[node name="lightVignette" type="Sprite" parent="." index="0"]
+modulate = Color( 0.34902, 0.803922, 0.505882, 0.105882 )
+material = SubResource( 1 )
+position = Vector2( 3.43756, -12.4541 )
+rotation = -0.12192
+scale = Vector2( 0.86887, 0.887382 )
+texture = ExtResource( 6 )
+
+[node name="hit" parent="." index="1"]
+root_node = NodePath("..")
+anims/hit_indication = SubResource( 2 )
+
+[node name="StateMachine" type="Node2D" parent="." index="2"]
+script = ExtResource( 4 )
+
+[node name="detectSelf" type="Area2D" parent="." index="3"]
+position = Vector2( 0, 3.74579 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectSelf" index="0"]
+shape = SubResource( 3 )
+
+[node name="normSprite" type="Sprite" parent="." index="4"]
+position = Vector2( -2.31928, 15.2227 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 5
+frame = 14
+
+[node name="Anim" type="AnimationPlayer" parent="normSprite" index="0"]
+anims/fall = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/jump = SubResource( 6 )
+anims/plop_to_ground = SubResource( 7 )
+anims/run = SubResource( 8 )
+anims/self_saucy = SubResource( 9 )
+anims/stunned = SubResource( 10 )
+"anims/unplop_to_ground " = SubResource( 11 )
+
+[node name="AnimationTree" type="AnimationTree" parent="normSprite" index="1"]
+tree_root = SubResource( 26 )
+anim_player = NodePath("../Anim")
+active = true
+parameters/playback = SubResource( 27 )
+
+[node name="deathSprite" type="Sprite" parent="." index="5"]
+visible = false
+position = Vector2( -0.740601, 14.3539 )
+scale = Vector2( 1.291, 1.291 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deathSprite" index="0"]
+anims/dead = SubResource( 28 )
+anims/hit_indication = SubResource( 29 )
+
+[node name="rightJumpRayCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, -3.53139 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="leftJumpRayCast" type="RayCast2D" parent="." index="7"]
+position = Vector2( 0, -3.53139 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+
+[node name="sightLine" type="Area2D" parent="." index="8"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sightLine" index="0"]
+shape = SubResource( 30 )
+
+[node name="chaseSightLine" type="Area2D" parent="." index="9"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaseSightLine" index="0"]
+rotation = 1.5708
+shape = SubResource( 31 )
+
+[node name="Audio" type="Node2D" parent="." index="10"]
+
+[node name="skitter" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource( 26 )
+volume_db = 24.0
+bus = "SFX"
+
+[node name="screech" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource( 25 )
+bus = "SFX"
+
+[node name="flashedTimer" type="Timer" parent="." index="11"]
+
+[node name="NonplayerCollision" parent="." index="12"]
+position = Vector2( 1.84869, -13.7911 )
+shape = SubResource( 32 )
+
+[node name="playerSaucyPos" parent="." index="13"]
+position = Vector2( 0, -12.7356 )
+
+[connection signal="animation_finished" from="hit" to="." method="_on_hit_animation_finished"]
+[connection signal="animation_finished" from="deathSprite/AnimationPlayer" to="." method="_on_deathAnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="sightLine" to="." method="_on_sightLine_body_entered"]
+[connection signal="body_exited" from="sightLine" to="." method="_on_sightLine_body_exited"]
+[connection signal="body_entered" from="chaseSightLine" to="." method="_on_chaseSightLine_body_entered"]
+[connection signal="body_exited" from="chaseSightLine" to="." method="_on_chaseSightLine_body_exited"]
+[connection signal="timeout" from="flashedTimer" to="." method="_on_flashedTimer_timeout"]

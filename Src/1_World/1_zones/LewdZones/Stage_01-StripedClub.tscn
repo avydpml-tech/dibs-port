@@ -1,0 +1,435 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/LewdZones/Stage_01-StripedClub.gd" type="Script" id=1]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/leftextension.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Audio/music/m_gymnopedie.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/walls.png" type="Texture" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Assets/1_Visual/3_Background/__Guides/zzzz_outline/5 LeftArea.png" type="Texture" id=9]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_shieldmon/f_shieldmon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/back-dark-gradient.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/1_World_Objects/Platform/risingPlatformElevator.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_tit_hugger/f_tit_hugger.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/1_Visual/3_Background/black 128.png" type="Texture" id=21]
+[ext_resource path="res://Src/Interactables/lockedDoor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_hangmon/f_hangmon.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Assets/1_Visual/Tilesets/LewdAreaTileSet.tres" type="TileSet" id=24]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 139, 10 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+day_or_night = "dark"
+
+[node name="Westwing" type="Node2D" parent="."]
+
+[node name="gymnopedie" type="AudioStreamPlayer2D" parent="Westwing"]
+position = Vector2( 616, 317 )
+stream = ExtResource( 3 )
+autoplay = true
+max_distance = 1000.0
+bus = "Music"
+
+[node name="gymnopedie2" type="AudioStreamPlayer2D" parent="Westwing"]
+position = Vector2( 1786, 61 )
+stream = ExtResource( 3 )
+autoplay = true
+max_distance = 700.0
+bus = "Music"
+
+[node name="gymnopedie4" type="AudioStreamPlayer2D" parent="Westwing"]
+position = Vector2( 2743, 13 )
+stream = ExtResource( 3 )
+autoplay = true
+max_distance = 500.0
+bus = "Music"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Tilesets" type="Node2D" parent="Background"]
+
+[node name="westwing" type="TileMap" parent="Background/Tilesets"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 131069, 20, 0, 131070, 20, 0, 131071, 20, 0, 65536, 20, 0, 65537, 20, 0, 65538, 20, 0, 65539, 20, 0, 65540, 20, 0, 65541, 20, 0, 65542, 20, 0, 65543, 1, 0, 65544, 1, 0 )
+
+[node name="background" type="TileMap" parent="Background/Tilesets"]
+modulate = Color( 2, 2, 2, 1 )
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 24 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 29, 0, 131074, 29, 0, 131075, 29, 0, 131076, 29, 0, 131077, 29, 0, 131078, 29, 0, 131079, 29, 0, 131080, 29, 0, 196613, 30, 0, 196614, 30, 0, 196615, 30, 0, 196616, 30, 0, 262151, 30, 0, 262152, 35, 0, 262153, 35, 0, 262154, 35, 0, 262155, 35, 0, 262156, 35, 0, 262157, 35, 0, 262158, 35, 0, 262159, 35, 0, 262160, 31, 0, 262161, 35, 0, 262162, 31, 0, 327688, 31, 0, 327689, 30, 0, 327690, 31, 0, 327691, 35, 0, 327692, 35, 0, 327693, 35, 0, 327694, 35, 0, 327695, 35, 0, 327696, 31, 0, 327697, 30, 0, 393225, 30, 0, 393226, 1610612771, 0, 393227, 1610612771, 0, 393228, 1610612771, 0, 393229, 1610612771, 0, 393230, 1610612771, 0, 393231, 1610612771, 0, 393232, 1610612771, 0, 393233, 1610612771, 0, 393234, 1610612771, 0 )
+
+[node name="Walls" type="Sprite" parent="Background/Tilesets"]
+position = Vector2( 658, 381 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+offset = Vector2( -540, -536 )
+
+[node name="Walls2" type="Sprite" parent="Background/Tilesets"]
+position = Vector2( -109, 381 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+offset = Vector2( -540, -536 )
+
+[node name="Walls3" type="Sprite" parent="Background/Tilesets"]
+position = Vector2( 1421, 381 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+offset = Vector2( -540, -536 )
+
+[node name="Walls4" type="Sprite" parent="Background/Tilesets"]
+position = Vector2( 2183, 381 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+offset = Vector2( -540, -536 )
+
+[node name="Walls5" type="Sprite" parent="Background/Tilesets"]
+position = Vector2( 2948, 381 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+offset = Vector2( -540, -536 )
+
+[node name="playerPos" type="Position2D" parent="Background"]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.466667, 0.396078, 0.501961, 1 )
+__meta__ = {
+"_editor_description_": "Club: 776580
+Mall: 456366
+"
+}
+
+[node name="Leftextension" type="Sprite" parent="."]
+modulate = Color( 0.721569, 0.909804, 1, 1 )
+position = Vector2( 1199, 554 )
+texture = ExtResource( 2 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="doors_transitions" type="Node2D" parent="Interactables"]
+
+[node name="StoreDoor2" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+modulate = Color( 0.552941, 0.490196, 0.54902, 1 )
+position = Vector2( 390, 661 )
+door_type = "long_door"
+scene_path_to_load = "res://Src/1_World/1_zones/LewdZones/Stage_02-StripedClub.tscn"
+where_is_exit_point = "rightDoor"
+
+[node name="leftDoor" parent="Interactables/doors_transitions/StoreDoor2" instance=ExtResource( 14 )]
+position = Vector2( -3.79219, 26.9884 )
+
+[node name="StoreDoor" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+modulate = Color( 0.552941, 0.490196, 0.54902, 1 )
+position = Vector2( 4485.32, 1686.16 )
+scene_path_to_load = "res://Src/1_World/1_zones/LewdZones/Stage_02-StripedClub.tscn"
+where_is_exit_point = "left"
+
+[node name="StoreDoor" parent="Interactables/doors_transitions/StoreDoor" instance=ExtResource( 14 )]
+position = Vector2( -3.79219, 26.9884 )
+
+[node name="lightSwitch" parent="Interactables/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -2787.93, 1175.51 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="Interactables/doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 5727.63, 1370.81 )
+interacts_to = "switch2"
+
+[node name="genericSwitch" parent="Interactables" instance=ExtResource( 20 )]
+position = Vector2( 886, 646 )
+target_scene = "SELF"
+interacts_to = "locked_door_striped_club"
+
+[node name="genericSwitch2" parent="Interactables" instance=ExtResource( 20 )]
+position = Vector2( 886, 646 )
+target_scene = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+interacts_to = "locked_door_striped_club"
+
+[node name="genericSwitch3" parent="Interactables" instance=ExtResource( 20 )]
+position = Vector2( 886, 646 )
+target_scene = "res://Src/1_World/1_zones/MallZones/Stage_01_a-TheatreHall.tscn"
+interacts_to = "theatre_bins"
+
+[node name="Entity" type="Node2D" parent="."]
+modulate = Color( 0.99256, 0.96875, 1, 1 )
+
+[node name="1" parent="Entity" instance=ExtResource( 19 )]
+position = Vector2( 4791.32, 1169.63 )
+
+[node name="2" parent="Entity" instance=ExtResource( 19 )]
+position = Vector2( 2945.41, 1444.32 )
+
+[node name="3" parent="Entity" instance=ExtResource( 23 )]
+position = Vector2( 3811.17, 1368.09 )
+
+[node name="4" parent="Entity" instance=ExtResource( 12 )]
+position = Vector2( 3849.39, 1680.7 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 847, 663 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 734.206, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65535, 1610612743, 0, 9, 8, 0, 131071, 1610612743, 0, 65536, 8, 0, 65537, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 196605, 8, 0, 131072, 1610612743, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131078, 6, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131087, 8, 0, 131094, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 8, 0, 131100, 8, 0, 131101, 8, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0, 196614, 8, 0, 196621, 8, 0, 196622, 8, 0, 262151, 8, 0, 262152, 8, 0, 262153, 8, 0, 262154, 8, 0, 262155, 8, 0, 262156, 8, 0, 262157, 8, 0, 262158, 8, 0, 262159, 8, 0, 262160, 8, 0, 262162, 8, 0, 262163, 7, 0, 327687, 1610612743, 0, 327688, 8, 0, 327690, 8, 0, 327691, 8, 0, 327692, 8, 0, 327693, 8, 0, 327694, 8, 0, 327695, 8, 0, 327696, 8, 0, 327697, 8, 0, 393225, 8, 0, 393226, 8, 0, 393227, 8, 0, 393228, 8, 0, 393229, 8, 0, 393230, 8, 0, 393231, 8, 0, 393232, 8, 0, 393233, 8, 0, 393234, 8, 0, 393235, 7, 0 )
+
+[node name="Lights" type="TileMap" parent="Foreground"]
+material = SubResource( 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 24 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -3, 1610612762, 0, -2, 1610612762, 0, -1, 1610612762, 0, -65536, 1610612762, 0, -65535, 1610612762, 0, -65534, 1610612762, 0, -65533, 1610612762, 0, -65532, 1610612762, 0, -65531, 1610612762, 0, -65530, 1610612762, 0, -65529, 1610612762, 0, -65528, 1610612762, 0, -65527, 1610612762, 0, -65526, 1610612762, 0, -65525, 1610612762, 0, 65533, 1610612762, 0, 65534, 1610612762, 0, 65535, 1610612762, 0, 10, 1610612762, 0, 11, 1610612762, 0, 131069, 1610612762, 0, 131070, 1610612762, 0, 131071, 1610612762, 0, 65545, 1610612762, 0, 65546, 1610612762, 0, 65547, 1610612762, 0, 196605, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 8, 0, 131100, 8, 0, 131101, 8, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0, 262157, 36, 0, 262158, 36, 0, 262159, 36, 0, 262160, 36, 0, 262161, 36, 0, 262162, 36, 0, 393233, 32, 0 )
+
+[node name="Environment" type="Node2D" parent="Foreground"]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="big4" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -2761.89, -66.0903 )
+scale = Vector2( 7.81818, -1.00835 )
+energy = 0.8
+
+[node name="big2" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -1791.26, -94.9377 )
+scale = Vector2( 2.16685, 2.16685 )
+
+[node name="big5" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -4300.23, -570.113 )
+scale = Vector2( 9.61683, -1.53031 )
+energy = 0.4
+mode = 1
+
+[node name="big3" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -2717.26, 213.062 )
+scale = Vector2( 6.47545, 1.45404 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big6" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -1803.26, 429.062 )
+scale = Vector2( 5.88579, 2.0572 )
+
+[node name="big7" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -5637.88, -911.12 )
+scale = Vector2( 5.88579, 2.0572 )
+energy = 2.0
+
+[node name="big8" parent="Foreground/Environment" instance=ExtResource( 5 )]
+position = Vector2( -4608.88, -994.12 )
+scale = Vector2( 5.88579, 2.0572 )
+energy = 2.0
+
+[node name="ammo" parent="Foreground" instance=ExtResource( 4 )]
+position = Vector2( 2601.09, 646.701 )
+
+[node name="Stairs" type="Node2D" parent="Foreground"]
+
+[node name="Stairs" parent="Foreground/Stairs" instance=ExtResource( 17 )]
+position = Vector2( 1463.97, 833.741 )
+
+[node name="Stairs2" parent="Foreground/Stairs" instance=ExtResource( 17 )]
+position = Vector2( 1968.15, 1096.29 )
+
+[node name="Stairs3" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 4421.38, 1344.92 )
+
+[node name="Stairs5" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 2114, 317 )
+
+[node name="Stairs4" parent="Foreground/Stairs" instance=ExtResource( 17 )]
+position = Vector2( 2479.83, 1603.54 )
+
+[node name="ForeInteractacbles" type="Node2D" parent="."]
+
+[node name="platform" parent="ForeInteractacbles" instance=ExtResource( 18 )]
+position = Vector2( 635, 769 )
+end_position = 509
+disable_engine_sound = true
+
+[node name="Black129" type="Sprite" parent="ForeInteractacbles"]
+position = Vector2( 1424, -132 )
+scale = Vector2( 22.6953, 3.07031 )
+texture = ExtResource( 21 )
+
+[node name="Transition_point" parent="ForeInteractacbles" instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 2490, 146 )
+rotation = -1.56356
+scale = Vector2( 0.317655, 0.355518 )
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_04-WestWingTest.tscn"
+where_is_exit_point = "left"
+
+[node name="topright" parent="ForeInteractacbles/Transition_point" instance=ExtResource( 14 )]
+position = Vector2( 5.01297, -44.5934 )
+rotation = -1.55912
+
+[node name="black-background2" type="Sprite" parent="ForeInteractacbles/Transition_point"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 29.684, 631.382 )
+rotation = -1.55912
+scale = Vector2( 3.21811, 2.20816 )
+texture = ExtResource( 16 )
+
+[node name="Transition_point3" parent="ForeInteractacbles" instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 2566.32, 3350.19 )
+scale = Vector2( 3.63991, 3.63991 )
+scene_path_to_load = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+where_is_exit_point = "top_right"
+
+[node name="black-background3" type="Sprite" parent="ForeInteractacbles/Transition_point3"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 29.684, 631.382 )
+rotation = -1.55912
+scale = Vector2( 3.21811, 2.20816 )
+texture = ExtResource( 16 )
+
+[node name="Transition_point2" parent="ForeInteractacbles" instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 2237.92, 628.47 )
+rotation = -1.5708
+scale = Vector2( 0.20118, 0.20118 )
+scene_path_to_load = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="ForeInteractacbles/Transition_point2" instance=ExtResource( 14 )]
+position = Vector2( -263.849, -126.97 )
+rotation = -1.55912
+
+[node name="black-background" type="Sprite" parent="ForeInteractacbles/Transition_point2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -37.0292, 644.739 )
+rotation = 1.5708
+scale = Vector2( 3.21811, 2.20816 )
+texture = ExtResource( 16 )
+
+[node name="lockedDoor" parent="ForeInteractacbles" instance=ExtResource( 22 )]
+position = Vector2( 1037, 808 )
+rotation = 3.14159
+unique_id = "locked_door_striped_club"
+interact_anim = "up"
+
+[node name="lockedDoor2" parent="ForeInteractacbles" instance=ExtResource( 22 )]
+position = Vector2( 1040, 553 )
+rotation = 3.14159
+scale = Vector2( 1.04775, 0.157501 )
+unique_id = "none"
+interact_anim = "up"
+
+[node name="Node2D" type="Node2D" parent="ForeInteractacbles"]
+
+[node name="Black128" type="Sprite" parent="ForeInteractacbles/Node2D"]
+position = Vector2( 1297, 251.75 )
+scale = Vector2( 22.6953, 4.21484 )
+texture = ExtResource( 21 )
+
+[node name="Back-dark-gradient" type="Sprite" parent="ForeInteractacbles/Node2D"]
+position = Vector2( 637, 506 )
+rotation = 3.14159
+scale = Vector2( 16.8184, 0.0705727 )
+texture = ExtResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ForeInteractacbles/Node2D"]
+anims/RESET = SubResource( 5 )
+anims/fadeout = SubResource( 4 )
+
+[node name="blackCoverEntered" type="Area2D" parent="ForeInteractacbles"]
+position = Vector2( 641, 523 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForeInteractacbles/blackCoverEntered"]
+shape = SubResource( 3 )
+
+[node name="blackCoverEntered2" type="Area2D" parent="ForeInteractacbles"]
+position = Vector2( 2402, 136 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForeInteractacbles/blackCoverEntered2"]
+shape = SubResource( 3 )
+
+[node name="blackCoverExit" type="Area2D" parent="ForeInteractacbles"]
+position = Vector2( 641, 680 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForeInteractacbles/blackCoverExit"]
+shape = SubResource( 3 )
+
+[node name="5 LeftArea" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2673.03, 1001.7 )
+texture = ExtResource( 9 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="body_entered" from="ForeInteractacbles/blackCoverEntered" to="." method="_on_blackCoverEntered_body_entered"]
+[connection signal="body_entered" from="ForeInteractacbles/blackCoverEntered2" to="." method="_on_blackCoverEntered_body_entered"]
+[connection signal="body_entered" from="ForeInteractacbles/blackCoverExit" to="." method="_on_blackCoverExit_body_entered"]

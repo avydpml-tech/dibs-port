@@ -1,0 +1,356 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Src/1_World_Objects/SaveTerminal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/UI/BeginningTutorialBuffer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/tutorialParent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/UI/tutorial/one_handed_tutorial.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi-tiles-edited/Bed-1.png" type="Texture" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/emailInteract.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_01.gd" type="Script" id=10]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi packs tilesets/Pack 01 (Pixel Art)/PNG/Chair 2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/_Theatre/_Curated Fonts/D-DIN-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Environment/ambiant_particles.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Manjari/Manjari-Bold.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/wasd-keys-ui.png" type="Texture" id=18]
+[ext_resource path="res://Assets/1_Visual/2_UI/mouse_scroll_up_outline.svg" type="Texture" id=19]
+[ext_resource path="res://Assets/1_Visual/3_Background/MoxieShip/MoxieShip - 1Bedroom.png" type="Texture" id=20]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi packs tilesets/Pack 01 (Pixel Art)/PNG/Computer station 1.png" type="Texture" id=21]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/wasd-keys-ui-blank.png" type="Texture" id=22]
+[ext_resource path="res://Assets/1_Visual/2_UI/mouse_scroll_down_outline.svg" type="Texture" id=23]
+[ext_resource path="res://Assets/1_Visual/3_Background/__Guides/zzzz_outline/1 MoxieShip - 1Bedroom.png" type="Texture" id=24]
+[ext_resource path="res://addons/nklbdev.parallax/Parallax.gd" type="Script" id=25]
+[ext_resource path="res://Assets/1_Visual/3_Background/MoxieShip/MoxieShip - 1Bedroom_walls.png" type="Texture" id=26]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/newkey-UI.png" type="Texture" id=27]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/new2-ui.png" type="Texture" id=28]
+[ext_resource path="res://Assets/1_Visual/3_Background/CryoBoxOFF.png" type="Texture" id=29]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 17 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 10 )
+day_or_night = "dark"
+
+[node name="SaveTerminal" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 474.648, 589.594 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 655.991, 382.379 )
+scale = Vector2( 4.37978, 2.91878 )
+texture = ExtResource( 16 )
+
+[node name="background" type="Node2D" parent="."]
+position = Vector2( -6, 0 )
+
+[node name="Walls" type="TileMap" parent="background"]
+position = Vector2( 6, 0 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65537, 1, 0, 65538, 1, 0, 65539, 1, 0 )
+
+[node name="MoxieShip - 1Bedroom_walls" type="Sprite" parent="background"]
+modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+position = Vector2( 646.79, 384.318 )
+texture = ExtResource( 26 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floors" type="TileMap" parent="background"]
+visible = false
+position = Vector2( 6, 0 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65537, 6, 0, 65538, 6, 0, 65539, 6, 0 )
+
+[node name="wall-light" parent="background" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 654.753, 602.916 )
+
+[node name="MoxieShip - 1Bedroom" type="Sprite" parent="background"]
+position = Vector2( 643.566, 395.106 )
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Computer station 1" type="Sprite" parent="background"]
+position = Vector2( 965.282, 443.643 )
+scale = Vector2( 1.89256, 1.89256 )
+texture = ExtResource( 21 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background"]
+position = Vector2( 6, 0 )
+color = Color( 0.384314, 0.494118, 0.619608, 1 )
+
+[node name="DoorTransitions" type="Node2D" parent="."]
+position = Vector2( 925.191, 416.783 )
+
+[node name="CryoBoxOFF" type="Sprite" parent="DoorTransitions"]
+visible = false
+position = Vector2( -589.382, -34.6389 )
+scale = Vector2( 1.89474, 1.89474 )
+texture = ExtResource( 29 )
+
+[node name="Door" parent="DoorTransitions" instance=ExtResource( 6 )]
+position = Vector2( -283, -13 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_02.tscn"
+where_is_exit_point = "237"
+
+[node name="right" parent="DoorTransitions/Door" instance=ExtResource( 14 )]
+position = Vector2( -4.20019, 50.0543 )
+
+[node name="Bed-1" type="Sprite" parent="DoorTransitions"]
+visible = false
+position = Vector2( -416.671, 44.0501 )
+scale = Vector2( 1.46491, 1.46491 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 451.71, 408.918 )
+
+[node name="emailInteract" parent="." instance=ExtResource( 7 )]
+position = Vector2( 965.073, 417.639 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="Foreground"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Node2D2" type="Node2D" parent="Foreground/Control"]
+modulate = Color( 1, 1, 1, 0.576471 )
+position = Vector2( 465.987, 552.266 )
+scale = Vector2( 1.28435, 1.28435 )
+
+[node name="parentTutorial8" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.403922 )
+material = SubResource( 1 )
+position = Vector2( -10.8904, 13.8077 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 19 )
+input_str = "ui_scroll_up"
+was_pressed = [ "ui_up", "ui_right", "ui_left" ]
+
+[node name="Label2" type="Label" parent="Foreground/Control/Node2D2/parentTutorial8"]
+visible = false
+modulate = Color( 1, 1, 1, 0.870588 )
+material = SubResource( 4 )
+margin_left = -37.373
+margin_top = -101.219
+margin_right = 36.627
+margin_bottom = -36.2182
+rect_rotation = 180.0
+rect_scale = Vector2( 1, 1.1 )
+rect_pivot_offset = Vector2( 37.0928, 31.8265 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "scroll
+up"
+align = 1
+
+[node name="parentTutorial7" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.403922 )
+material = SubResource( 1 )
+position = Vector2( 137.823, 15.365 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 23 )
+input_str = "ui_interact"
+was_pressed = [ "ui_up", "ui_right", "ui_left" ]
+hide_when_exit_scene = true
+
+[node name="Label2" type="Label" parent="Foreground/Control/Node2D2/parentTutorial7"]
+visible = false
+modulate = Color( 1, 1, 1, 0.870588 )
+material = SubResource( 4 )
+margin_left = -37.373
+margin_top = -105.112
+margin_right = 36.627
+margin_bottom = -40.1117
+rect_scale = Vector2( 1, 1.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "scroll
+down"
+align = 1
+
+[node name="parentTutorial6" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+material = SubResource( 1 )
+position = Vector2( 135.29, 17.3036 )
+scale = Vector2( 0.678482, 0.678482 )
+texture = ExtResource( 18 )
+hide_when_exit_scene = true
+hide_if_one_handed = true
+
+[node name="Label" type="Label" parent="Foreground/Control/Node2D2/parentTutorial6"]
+margin_left = -10.681
+margin_top = 1.41504
+margin_right = 29.319
+margin_bottom = 24.4151
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "S"
+
+[node name="parentTutorial" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.580392 )
+material = SubResource( 1 )
+position = Vector2( 8.4928, -1.66382 )
+scale = Vector2( 0.678482, 0.678482 )
+texture = ExtResource( 27 )
+input_str = "ui_up"
+hide_if_one_handed = true
+
+[node name="Label" type="Label" parent="Foreground/Control/Node2D2/parentTutorial"]
+margin_left = -10.681
+margin_top = -8.54181
+margin_right = 29.319
+margin_bottom = 14.4582
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "W"
+
+[node name="parentTutorial2" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+material = SubResource( 1 )
+position = Vector2( 32.9663, 24.2061 )
+scale = Vector2( 0.678482, 0.678482 )
+texture = ExtResource( 27 )
+input_str = "ui_right"
+hide_if_one_handed = true
+
+[node name="Label3" type="Label" parent="Foreground/Control/Node2D2/parentTutorial2"]
+margin_left = -11.3811
+margin_top = -8.76276
+margin_right = 28.6189
+margin_bottom = 14.2372
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="parentTutorial3" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+material = SubResource( 1 )
+position = Vector2( -18.5965, 24.6703 )
+scale = Vector2( 0.678482, 0.678482 )
+texture = ExtResource( 27 )
+input_str = "ui_left"
+hide_if_one_handed = true
+
+[node name="Label2" type="Label" parent="Foreground/Control/Node2D2/parentTutorial3"]
+margin_left = -10.8539
+margin_top = -9.44696
+margin_right = 29.1461
+margin_bottom = 13.553
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="parentTutorial4" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.407843 )
+material = SubResource( 1 )
+position = Vector2( 7.99243, 24.6703 )
+scale = Vector2( 0.678482, 0.678482 )
+texture = ExtResource( 22 )
+was_pressed = [ "ui_up", "ui_left", "ui_right" ]
+hide_if_one_handed = true
+
+[node name="parentTutorial5" parent="Foreground/Control/Node2D2" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.407843 )
+material = SubResource( 1 )
+position = Vector2( 7.99243, 24.6703 )
+scale = Vector2( 0.678482, 0.678482 )
+texture = ExtResource( 22 )
+was_pressed = [ "ui_up", "ui_right", "ui_left" ]
+hide_if_one_handed = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Foreground/Control/Node2D2"]
+layer = 100
+
+[node name="OneHandedTutorial" parent="Foreground/Control/Node2D2/CanvasLayer" instance=ExtResource( 4 )]
+margin_left = -3.05176e-05
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Foreground/Control"]
+
+[node name="ui_tutorial_WAD" type="Sprite" parent="Foreground/Control/CanvasLayer2"]
+visible = false
+position = Vector2( 467.96, 550.915 )
+scale = Vector2( 0.689063, 0.689063 )
+texture = ExtResource( 28 )
+
+[node name="black_bars" type="TileMap" parent="Foreground"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65536, 26, 0, 65540, 26, 0 )
+
+[node name="walls" type="TileMap" parent="Foreground"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65536, 1610612743, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 7, 0 )
+
+[node name="Chair 2" type="Sprite" parent="Foreground"]
+position = Vector2( 923.691, 446.381 )
+scale = Vector2( 1.82997, 1.82997 )
+texture = ExtResource( 11 )
+
+[node name="1 MoxieShip - 1Bedroom" type="Sprite" parent="Foreground"]
+visible = false
+position = Vector2( 651.622, 413.949 )
+texture = ExtResource( 24 )
+
+[node name="Parallax" type="Node2D" parent="Foreground"]
+position = Vector2( -56.6656, -49.6517 )
+script = ExtResource( 25 )
+enabled_in_editor = true
+motion_scale = Vector2( -0.1, -0.1 )
+
+[node name="ambiantParticles" parent="Foreground/Parallax" instance=ExtResource( 15 )]
+modulate = Color( 0.588235, 0.592157, 0.670588, 0.145098 )
+position = Vector2( 716.162, 463.632 )
+emission_rect_extents = Vector2( 1000, 500 )
+
+[node name="BeginningTutorialBuffer" parent="Foreground" instance=ExtResource( 2 )]
+layer = 50
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

@@ -1,0 +1,490 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://Src/Entities/Nonplayer/Nonplayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/walk.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/1_Audio/sfx/enemy/walnut/alert.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_koubold/f_koubold.gd" type="Script" id=4]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_koubold/f_kouboldSM.gd" type="Script" id=5]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_koubold/f_koubold_runclimb.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit_indication"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0992417 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.980392, 0.403922, 0.403922, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 54.0996
+height = 39.4854
+
+[sub_resource type="Animation" id=3]
+resource_name = "alert"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000961971, 0.156599 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "climb"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12935, 0.781379 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 14, 14, 22 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.78111, 2.8412 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_teleport_behind_player"
+}, {
+"args": [  ],
+"method": "set_norm_sprite_anim_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle_stare"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.420179 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 6, 13 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 7 ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "turn"
+length = 0.248
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.210184 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2, 4 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.234268 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_norm_sprite_anim_finished"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "alert"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "climb"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "idle_stare"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "look_down"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "self_saucy"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "stunned"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "turn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachine" id=36]
+states/alert/node = SubResource( 13 )
+states/alert/position = Vector2( 506, 147 )
+states/climb/node = SubResource( 43 )
+states/climb/position = Vector2( 149, 112.866 )
+states/fall/node = SubResource( 14 )
+states/fall/position = Vector2( 614, 359 )
+states/idle_stare/node = SubResource( 15 )
+states/idle_stare/position = Vector2( 387, 214 )
+states/jump/node = SubResource( 16 )
+states/jump/position = Vector2( 710, 282 )
+states/look_down/node = SubResource( 17 )
+states/look_down/position = Vector2( 387, 83 )
+states/run/node = SubResource( 18 )
+states/run/position = Vector2( 614, 214 )
+states/self_saucy/node = SubResource( 19 )
+states/self_saucy/position = Vector2( -4, 294 )
+states/stunned/node = SubResource( 20 )
+states/stunned/position = Vector2( -4, 220 )
+states/turn/node = SubResource( 21 )
+states/turn/position = Vector2( 387, 359 )
+transitions = [ "look_down", "alert", SubResource( 22 ), "run", "jump", SubResource( 23 ), "jump", "fall", SubResource( 24 ), "fall", "run", SubResource( 25 ), "idle_stare", "turn", SubResource( 27 ), "run", "idle_stare", SubResource( 28 ), "fall", "idle_stare", SubResource( 29 ), "alert", "idle_stare", SubResource( 30 ), "idle_stare", "look_down", SubResource( 31 ), "stunned", "idle_stare", SubResource( 32 ), "idle_stare", "stunned", SubResource( 33 ), "self_saucy", "idle_stare", SubResource( 34 ), "idle_stare", "self_saucy", SubResource( 35 ), "climb", "idle_stare", SubResource( 44 ), "idle_stare", "climb", SubResource( 45 ), "turn", "run", SubResource( 46 ) ]
+start_node = "look_down"
+graph_offset = Vector2( -226, 113.866 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=37]
+
+[sub_resource type="Animation" id=38]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0714734, 0.192007 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.960784, 0.054902, 0.054902, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../f_walnut7:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0491168 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.705882, 0.403922, 0.137255, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=40]
+radius = 618.452
+
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 457.984, 15.4541 )
+
+[sub_resource type="CapsuleShape2D" id=42]
+radius = 17.7883
+height = 54.654
+
+[node name="f_koubold" instance=ExtResource( 1 )]
+position = Vector2( 0, 0 )
+script = ExtResource( 4 )
+entity_name = "f_koubold"
+max_health = 20
+MAX_SPEED = 740
+show_debug = true
+
+[node name="hit" type="AnimationPlayer" parent="." index="0"]
+anims/hit_indication = SubResource( 1 )
+
+[node name="StateMachine" type="Node2D" parent="." index="1"]
+script = ExtResource( 5 )
+
+[node name="detectSelf" type="Area2D" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectSelf" index="0"]
+shape = SubResource( 2 )
+
+[node name="normSprite" type="Sprite" parent="." index="3"]
+position = Vector2( 11.9673, -91.8893 )
+scale = Vector2( 1.35406, 1.35406 )
+texture = ExtResource( 6 )
+hframes = 23
+frame = 14
+
+[node name="Anim" type="AnimationPlayer" parent="normSprite" index="0"]
+anims/alert = SubResource( 3 )
+anims/climb = SubResource( 4 )
+anims/fall = SubResource( 5 )
+anims/idle_stare = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/look_down = SubResource( 8 )
+anims/run = SubResource( 9 )
+anims/self_saucy = SubResource( 10 )
+anims/stunned = SubResource( 11 )
+anims/turn = SubResource( 12 )
+
+[node name="AnimationTree" type="AnimationTree" parent="normSprite" index="1"]
+tree_root = SubResource( 36 )
+anim_player = NodePath("../Anim")
+active = true
+parameters/playback = SubResource( 37 )
+
+[node name="deathSprite" type="Sprite" parent="." index="4"]
+visible = false
+position = Vector2( 12.3471, -91.9144 )
+scale = Vector2( 1.354, 1.354 )
+texture = ExtResource( 6 )
+hframes = 23
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="deathSprite" index="0"]
+anims/dead = SubResource( 38 )
+anims/hit_indication = SubResource( 39 )
+
+[node name="rightJumpRayCast" type="RayCast2D" parent="." index="5"]
+position = Vector2( 0, 26.005 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="leftJumpRayCast" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, 26.005 )
+enabled = true
+cast_to = Vector2( -30, 0 )
+
+[node name="ceilingRayCast" type="RayCast2D" parent="." index="7"]
+position = Vector2( 0, -38.4222 )
+enabled = true
+cast_to = Vector2( 0, -200 )
+
+[node name="sightLine" type="Area2D" parent="." index="8"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sightLine" index="0"]
+shape = SubResource( 40 )
+
+[node name="chaseSightLine" type="Area2D" parent="." index="9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaseSightLine" index="0"]
+visible = false
+shape = SubResource( 41 )
+
+[node name="Timers" type="Node2D" parent="." index="10"]
+
+[node name="climbTimer" type="Timer" parent="Timers" index="0"]
+one_shot = true
+
+[node name="idleBeforeChaseTimer" type="Timer" parent="Timers" index="1"]
+one_shot = true
+
+[node name="Audio" type="Node2D" parent="." index="11"]
+
+[node name="skitter" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = ExtResource( 2 )
+volume_db = 24.0
+
+[node name="screech" type="AudioStreamPlayer2D" parent="Audio" index="1"]
+stream = ExtResource( 3 )
+
+[node name="NonplayerCollision" parent="." index="13"]
+position = Vector2( 0.676326, -14.6167 )
+shape = SubResource( 42 )
+
+[node name="detectBodies" parent="." index="15"]
+visible = false
+
+[node name="state" parent="." index="21"]
+text = "asdfasdfsadf"
+
+[node name="temp" type="Label" parent="state" index="0"]
+margin_left = -2.9477
+margin_top = -45.0666
+margin_right = 38.0523
+margin_bottom = -31.0666
+text = "Dunce"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="temp3" type="Label" parent="state" index="1"]
+margin_left = 12.0523
+margin_top = -29.0666
+margin_right = 53.0523
+margin_bottom = 1.93344
+text = "v
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="temp2" type="Label" parent="state" index="2"]
+margin_left = -66.9477
+margin_top = -79.0666
+margin_right = 121.052
+margin_bottom = -65.0666
+text = "Hi im koubold i have dumb ai"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="animation_finished" from="hit" to="." method="_on_hit_animation_finished"]
+[connection signal="animation_finished" from="deathSprite/AnimationPlayer" to="." method="_on_deathAnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="sightLine" to="." method="_on_sightLine_body_entered"]
+[connection signal="body_exited" from="sightLine" to="." method="_on_sightLine_body_exited"]
+[connection signal="body_entered" from="chaseSightLine" to="." method="_on_chaseSightLine_body_entered"]
+[connection signal="body_exited" from="chaseSightLine" to="." method="_on_chaseSightLine_body_exited"]

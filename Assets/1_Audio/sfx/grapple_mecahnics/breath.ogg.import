@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/breath.ogg-4112dd708b7f887a1711d1123dc7b2dd.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/grapple_mecahnics/breath.ogg"
+dest_files=[ "res://.import/breath.ogg-4112dd708b7f887a1711d1123dc7b2dd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

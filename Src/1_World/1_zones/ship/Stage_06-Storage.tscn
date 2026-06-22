@@ -1,0 +1,362 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/perlin_noise.png" type="Texture" id=2]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World/1_zones/gook.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Assets/1_Visual/Tilesets/SmallCrates.tres" type="TileSet" id=10]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_walnut/f_walnut.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Src/Interactables/lockedDoor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/Environment/watergoo.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=32]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+light_mode = 2
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 1 )
+day_or_night = "light"
+
+[node name="backgrond" type="Node2D" parent="."]
+
+[node name="background" type="TileMap" parent="backgrond"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 4, 13, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 13, 0, 9, 13, 0, 10, 13, 0, 131066, 1610612743, 0, 131067, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 13, 0, 65541, 13, 0, 65542, 13, 0, 65543, 13, 0, 65544, 13, 0, 65545, 13, 0, 65546, 13, 0, 196602, 536870919, 0, 196603, 13, 0, 196604, 1, 0, 196605, 1, 0, 131076, 13, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 13, 0, 131081, 13, 0, 131082, 13, 0, 131083, 13, 0, 131084, -1073741817, 0, 262137, 1610612743, 0, 262138, 1, 0, 262139, 1, 0, 262140, 1, 0, 262141, 13, 0, 196616, 13, 0, 196617, 13, 0, 196618, 13, 0, 196619, 13, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 7, 0, 327675, 13, 0, 327676, 13, 0, 327677, 13, 0, 327678, -1073741817, 0, 327679, -1073741817, 0, 262144, -1073741817, 0, 262145, -1073741817, 0, 262146, -1073741817, 0, 262147, -1073741817, 0, 262148, -1073741817, 0, 262149, -1073741817, 0, 262150, -1073741817, 0, 262151, -1073741817, 0, 262152, -1073741817, 0, 262153, 13, 0, 262154, 13, 0, 262155, 13, 0, 262156, 13, 0, 262157, 13, 0, 393212, -1073741816, 0, 393213, 13, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 13, 0, 327690, 13, 0 )
+
+[node name="background2" type="TileMap" parent="backgrond"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2.00037, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 3, 1610612743, 0, 196606, 7, 0, 131084, 7, 0, 131085, -1073741817, 0, 131086, -1073741817, 0, 131087, -1073741817, 0, 262142, 7, 0, 327678, 7, 0, 262152, 1610612743, 0 )
+
+[node name="for broken floors" type="TileMap" parent="backgrond"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, 19 )
+scale = Vector2( 2.00037, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196605, 14, 0 )
+
+[node name="gook" type="TileMap" parent="backgrond"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196604, 536870915, 0, 196605, 536870916, 0, 262140, 536870914, 0, 262141, 1, 0, 262155, 536870915, 0, 393214, 2, 0, 393215, 7, 0, 327680, 7, 0, 327681, 1, 0, 327682, 1, 0, 327684, 1, 0, 327685, 7, 0, 327686, 7, 0, 327687, 7, 0, 327688, 7, 0, 327689, 536870914, 0 )
+
+[node name="black-background2" type="Sprite" parent="backgrond"]
+position = Vector2( -1199.51, 1490.79 )
+scale = Vector2( 2.06505, 1.1332 )
+texture = ExtResource( 16 )
+
+[node name="playerPos" type="Position2D" parent="."]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 7797.5, 510.724 )
+
+[node name="Door-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -7408.42, -110.802 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn"
+where_is_exit_point = "middle"
+
+[node name="left" parent="doors_transitions/Door-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 33.078 )
+
+[node name="Door-To-Paloza2" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -6809.41, 920.407 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_08-BreatherCorridor.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Door-To-Paloza2" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 33.0781 )
+
+[node name="lightSwitch" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -2787.93, 1175.51 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 5727.63, 1370.81 )
+interacts_to = "switch2"
+
+[node name="genericSwitch" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -7533.5, 911.276 )
+target_scene = "SELF"
+interacts_to = "locked_door"
+
+[node name="ammo2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 5713.23, 1173.4 )
+rotation = 0.00640884
+
+[node name="ammo4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 598.196, 1406.52 )
+rotation = 0.00640884
+light_energy = 0.4
+
+[node name="ammo5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2229.43, 1369.99 )
+rotation = 0.00640884
+light_energy = 0.4
+
+[node name="ammo6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 565.982, 1375.48 )
+rotation = 0.00640884
+light_energy = 0.3
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( -397.419, 1447.88 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="watergoo" parent="Environment" instance=ExtResource( 23 )]
+modulate = Color( 0.784314, 0.576471, 0.662745, 1 )
+position = Vector2( -2836.06, -1008.41 )
+
+[node name="sewage_area" type="Node2D" parent="Environment"]
+position = Vector2( 3957.96, 912.63 )
+scale = Vector2( 4.30206, 4.30206 )
+
+[node name="big7" parent="Environment/sewage_area" instance=ExtResource( 32 )]
+energy = 0.6
+
+[node name="big8" parent="Environment/sewage_area" instance=ExtResource( 32 )]
+position = Vector2( 723.8, 13.7704 )
+scale = Vector2( 2.53097, 0.568969 )
+energy = 0.8
+shadow_enabled = true
+
+[node name="big9" parent="Environment/sewage_area" instance=ExtResource( 32 )]
+position = Vector2( 281.509, -0.615936 )
+energy = 0.6
+
+[node name="big" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -3742.81, -989.416 )
+energy = 0.6
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="1" parent="Entities" instance=ExtResource( 17 )]
+position = Vector2( 2619.04, 111.852 )
+
+[node name="2" parent="Entities" instance=ExtResource( 17 )]
+position = Vector2( 817.047, 1443.6 )
+
+[node name="3" parent="Entities" instance=ExtResource( 17 )]
+position = Vector2( 1339.82, 1448.61 )
+
+[node name="crates" type="TileMap" parent="."]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 2752527, -1610612735, 0, 2752528, -1610612735, 0, 2818062, -1610612735, 0, 2818063, -1610612735, 0, 2818064, -1610612735, 0, 2883597, -1610612735, 0, 2883598, -1610612735, 0, 2883599, -1610612735, 0, 2883600, -1610612735, 0, 2883601, -1610612735, 0, 2949131, -1610612735, 0, 2949132, -1610612735, 0, 2949133, -1610612735, 0, 2949134, -1610612735, 0, 2949135, -1610612735, 0, 2949136, -1610612735, 0, 2949137, -1610612735, 0, 2949138, -1610612735, 0, 3080191, 1, 0, 3014656, 1, 0, 3014657, 1, 0, 3014658, 1, 0, 3014659, 1, 0, 3014660, 1, 0, 3014666, -1610612735, 0, 3014667, -1610612735, 0, 3014668, 1, 0, 3014669, 1, 0, 3014670, 1, 0, 3014671, 1, 0, 3014672, -1610612735, 0, 3014673, -1610612735, 0, 3014674, -1610612735, 0, 3014675, -1610612735, 0, 3145727, 1, 0, 3080192, 1, 0, 3080193, 1, 0, 3080194, 1, 0, 3080195, 1, 0, 3080196, 1, 0, 3080197, 1, 0, 3080198, 1, 0, 3080199, 1, 0, 3080200, 1, 0, 3080201, 1, 0, 3080202, 1, 0, 3080203, 1, 0, 3080204, 1, 0, 3080205, 1, 0, 3080206, 1, 0, 3080207, 1, 0, 3080208, 1, 0, 3080209, 1, 0, 3080210, 1, 0, 3080211, -1610612735, 0, 3080212, -1610612735, 0 )
+
+[node name="floor" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131068, 8, 0, 131069, 8, 0, 131070, 8, 0, 131071, 8, 0, 65536, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 196602, 8, 0, 196603, 8, 0, 196604, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 262138, 8, 0, 262140, 8, 0, 262141, 8, 0, 196617, 8, 0, 196618, 8, 0, 196619, 8, 0, 196620, 8, 0, 196622, 8, 0, 196623, 8, 0, 327674, -1073741816, 0, 327675, 8, 0, 327676, 8, 0, 262155, 8, 0, 262156, 8, 0, 393212, 8, 0, 393213, 8, 0, 393214, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 8, 0 )
+
+[node name="Triggers" type="Node2D" parent="."]
+position = Vector2( 1248.88, 744.479 )
+
+[node name="lockedDoor" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -485.001, -477.541 )
+unique_id = "locked_door"
+
+[node name="lockedDoor2" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -1757.76, 286.884 )
+rotation = -1.5708
+unique_id = "locked_door"
+volume_distance = 1000
+
+[node name="lockedDoor4" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -1694.58, 214.544 )
+rotation = 4.71239
+unique_id = "locked_door"
+volume_distance = 1000
+
+[node name="lockedDoor3" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -1624.02, 138.783 )
+rotation = -1.5708
+unique_id = "locked_door"
+volume_distance = 1000
+
+[node name="lockedDoor12" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -2671.65, -195.627 )
+rotation = 1.5708
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor11" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -2608.47, -134.107 )
+rotation = -4.71239
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="Node2D2" type="Node2D" parent="Triggers"]
+position = Vector2( -2613.19, 308.855 )
+rotation = 1.5708
+
+[node name="lockedDoor15" parent="Triggers/Node2D2" instance=ExtResource( 22 )]
+position = Vector2( 0.00012207, 17.9336 )
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor13" parent="Triggers/Node2D2" instance=ExtResource( 22 )]
+position = Vector2( 129.364, -115.806 )
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor14" parent="Triggers/Node2D2" instance=ExtResource( 22 )]
+position = Vector2( 55.7317, -50.6492 )
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="black-background4" type="Sprite" parent="Triggers/Node2D2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 211.364, 180.396 )
+rotation = -1.57079
+scale = Vector2( 1.22905, -1.20569 )
+texture = ExtResource( 16 )
+
+[node name="lockedDoor10" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( -2537.91, -66.2626 )
+rotation = 1.5708
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor5" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 11820.3, 496.368 )
+rotation = -0.0367494
+unique_id = "dud"
+volume_distance = 1
+
+[node name="Node2D" type="Node2D" parent="Triggers"]
+position = Vector2( -2043.48, 703.478 )
+rotation = 1.5708
+
+[node name="lockedDoor18" parent="Triggers/Node2D" instance=ExtResource( 22 )]
+position = Vector2( -129.364, 133.74 )
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor17" parent="Triggers/Node2D" instance=ExtResource( 22 )]
+position = Vector2( -67.844, 70.5601 )
+rotation = -4.58559e-06
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor16" parent="Triggers/Node2D" instance=ExtResource( 22 )]
+position = Vector2( 0, 0 )
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="black-background5" type="Sprite" parent="Triggers/Node2D"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 79.8742, 258.296 )
+rotation = -1.57079
+scale = Vector2( 1.42505, -1.26137 )
+texture = ExtResource( 16 )
+
+[node name="lockedDoor6" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 9795.36, 720.451 )
+rotation = -1.5708
+unique_id = "trigger1"
+
+[node name="lockedDoor7" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 9790.33, 524.082 )
+rotation = -0.0367494
+unique_id = "trigger1"
+
+[node name="lockedDoor8" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 8299.46, -417.496 )
+rotation = -1.5708
+unique_id = "trigger1"
+
+[node name="lockedDoor9" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 8294.43, -613.865 )
+rotation = -0.0367494
+unique_id = "trigger1"
+
+[node name="black-background2" type="Sprite" parent="Triggers"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -1575.74, 195.082 )
+scale = Vector2( -0.829054, 1.20569 )
+texture = ExtResource( 16 )
+
+[node name="black-background3" type="Sprite" parent="Triggers"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -2788.75, -237.634 )
+scale = Vector2( -1.22905, 1.20569 )
+texture = ExtResource( 16 )
+
+[node name="Stairs2" type="Node2D" parent="."]
+
+[node name="Stairs" parent="Stairs2" instance=ExtResource( 15 )]
+position = Vector2( 1205.29, 577.238 )
+
+[node name="Stairs2" parent="Stairs2" instance=ExtResource( 15 )]
+position = Vector2( 2224.24, 834.048 )
+
+[node name="black-background2" type="Sprite" parent="Stairs2/Stairs2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 622.006, 246.254 )
+scale = Vector2( 0.647997, 0.142674 )
+texture = ExtResource( 16 )
+
+[node name="Stairs3" parent="Stairs2" instance=ExtResource( 3 )]
+position = Vector2( 3397.1, 1093.87 )
+
+[node name="Stairs4" parent="Stairs2" instance=ExtResource( 3 )]
+position = Vector2( 2640.76, 1347.79 )
+
+[node name="perlin_noise" type="Sprite" parent="."]
+modulate = Color( 0.0117647, 0.0509804, 0.0196078, 1 )
+material = SubResource( 1 )
+position = Vector2( 2067.7, 745.297 )
+scale = Vector2( 7.66254, 1.49103 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

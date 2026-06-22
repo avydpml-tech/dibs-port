@@ -1,0 +1,43 @@
+GDRE Tools v2.5.0
+Windows 10.0.19045, Mali-G720 MC8, vulkan
+Opening file: D:/Game hub/DiBS_0.8.3_win/DiBS_0.8.3.pck
+Multiple passing candidates for bytecode version 13:
+3.5.0-stable (a7aad78), 3.2.0-stable (5565f55)
+Choosing only one that matches engine version: 3.2.0-stable (5565f55).
+ERROR: res://addons/GGS/ggs_data.json.import: no destination files found in import data
+   at: ImportInfoModern::_load (modules\gdsdecomp\utility\import_info.cpp:618)
+ERROR: res://addons/quentincaffeino/console/.gutconfig.json.import: no destination files found in import data
+   at: ImportInfoModern::_load (modules\gdsdecomp\utility\import_info.cpp:618)
+Loaded 1970 imported files
+Detected Engine Version: 3.4.4
+Detected Bytecode Revision: 3.2.0-stable (5565f55)
+Verified 4426 files, no errors detected!
+Extracted 4426 files, no errors detected!
+Recreating plugin configs...
+Loading resource strings, this may take a while!!
+Resource strings loaded!
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     552
+Failed scripts:                         0
+Imported resources for export session:  1920
+Successfully converted:                 1920
+Lossy:                                  115
+Rewrote metadata:                       0
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 3.4.4 to edit the project.
+
+*******************************************************************************
+

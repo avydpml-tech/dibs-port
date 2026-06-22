@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/462437__julietclarke__vending-machine.wav-a24d48a9cbea70d44e08bab307356a41.sample"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/vending_machine/462437__julietclarke__vending-machine.wav"
+dest_files=[ "res://.import/462437__julietclarke__vending-machine.wav-a24d48a9cbea70d44e08bab307356a41.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

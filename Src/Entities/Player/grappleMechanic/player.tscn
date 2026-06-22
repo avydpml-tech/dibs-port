@@ -1,0 +1,329 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/_grapple_mechanic/icons/saucy-icons-fox-head.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Audio/sfx/swish/swish1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_koubold/broom.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/2_UI/gm_crosshair.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Visual/2_UI/twirl_03.png" type="Texture" id=6]
+[ext_resource path="res://Assets/1_Audio/sfx/hit impact/slap/slap2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/slapArea.gd" type="Script" id=8]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/player.gd" type="Script" id=9]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 28.6368
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 33.9479, 31.6569 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 86.7834
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Broom:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -3.42764 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Broom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.585, 1.611 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Broom:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 86.7834 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "broom_slap"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../twirl_03:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.063509 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 128.524, -25.9868 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../twirl_03:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0399663, 0.0742852 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.0935712 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "check_slap_area"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Broom:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.062402 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -3.42764, -179.784 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Broom:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.0050914, 0.0900786, 0.101567 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.585, 1.611 ), Vector2( 2.9, 2.9 ), Vector2( 2.9, 2.9 ), Vector2( 2.585, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Broom:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.00234988, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CollisionShape2D:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 200.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "slap"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../twirl_03:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.063509 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 128.524, -25.9868 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../twirl_03:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0399663, 0.0742852 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.0935712 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "check_slap_area"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:shape:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 86.7834 ]
+}
+
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 640.966, 356.358 )
+scale = Vector2( 0.371791, 0.366763 )
+collision_layer = 262144
+collision_mask = 512
+script = ExtResource( 9 )
+SPEED = 250
+knockback_force = 700
+damage = 2
+iframe_sec = 1.856
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="playerDetect" type="Area2D" parent="."]
+collision_layer = 262144
+collision_mask = 131072
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetect"]
+modulate = Color( 0.478431, 0.180392, 0.482353, 1 )
+shape = SubResource( 3 )
+
+[node name="slapOffset" type="Node2D" parent="."]
+
+[node name="slap_crosshair_thing" type="Sprite" parent="slapOffset"]
+position = Vector2( 57.0835, 1.06628 )
+rotation = 1.5708
+scale = Vector2( 2.68968, 2.72656 )
+texture = ExtResource( 5 )
+
+[node name="Broom" type="Sprite" parent="slapOffset"]
+visible = false
+position = Vector2( 0.385498, 2.68909 )
+rotation = -0.0598236
+scale = Vector2( 2.585, 1.611 )
+texture = ExtResource( 4 )
+offset = Vector2( 0.50116, 48.8584 )
+
+[node name="twirl_03" type="Sprite" parent="slapOffset"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 46.9907, 2.97705 )
+rotation = -0.453555
+scale = Vector2( 0.563901, 0.563901 )
+texture = ExtResource( 6 )
+
+[node name="slapArea" type="Area2D" parent="slapOffset"]
+position = Vector2( 98.4972, 0 )
+collision_mask = 2147614720
+script = ExtResource( 8 )
+minigame_player = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slapOffset/slapArea"]
+position = Vector2( -1.19824, 0 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="slapOffset/slapArea"]
+visible = false
+scale = Vector2( 1.2023, 1.21878 )
+texture = ExtResource( 1 )
+
+[node name="slapAnimPlayer" type="AnimationPlayer" parent="slapOffset/slapArea"]
+anims/RESET = SubResource( 7 )
+anims/broom_slap = SubResource( 8 )
+anims/slap = SubResource( 5 )
+
+[node name="swish" type="AudioStreamPlayer" parent="slapOffset/slapArea"]
+stream = ExtResource( 3 )
+bus = "SFX"
+
+[node name="hit" type="AudioStreamPlayer" parent="slapOffset/slapArea"]
+stream = ExtResource( 7 )
+volume_db = -5.669
+pitch_scale = 0.79
+bus = "SFX"
+
+[node name="justHitCreature" type="Timer" parent="slapOffset/slapArea"]
+one_shot = true
+
+[node name="playerSprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="iFrameTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="playerDetect" to="." method="_on_playerDetect_body_entered"]
+[connection signal="body_entered" from="slapOffset/slapArea" to="slapOffset/slapArea" method="_on_slapArea_body_entered"]
+[connection signal="animation_finished" from="slapOffset/slapArea/slapAnimPlayer" to="slapOffset/slapArea" method="_on_slapAnimPlayer_animation_finished"]
+[connection signal="timeout" from="iFrameTimer" to="." method="_on_iFrameTimer_timeout"]

@@ -1,0 +1,162 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Src/Menu/Themes/DiBS_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Src/Menu/temp/patreonButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Menu/MainPauseScreen.gd" type="Script" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/shadowgradient.png" type="Texture" id=5]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/dibs-logo.png" type="Texture" id=7]
+[ext_resource path="res://Assets/1_Visual/game_icon/DiBS_logo.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[node name="MainPauseScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 126.385 ]
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 758.261
+margin_top = 325.848
+margin_right = 980.261
+margin_bottom = 447.848
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+margin_right = 222.0
+margin_bottom = 54.0
+focus_neighbour_top = NodePath("../QuitButton")
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Resume"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadowgradient" type="Sprite" parent="VBoxContainer/ResumeButton"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 178.781, -42.1994 )
+scale = Vector2( 1.53329, 1.53329 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient2" type="Sprite" parent="VBoxContainer/ResumeButton"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 184.245, 138.187 )
+rotation = 3.12676
+scale = Vector2( 1.53329, 1.53329 )
+texture = ExtResource( 5 )
+
+[node name="Extras" type="Button" parent="VBoxContainer"]
+margin_top = 58.0
+margin_right = 222.0
+margin_bottom = 91.0
+focus_neighbour_top = NodePath("../ResumeButton")
+focus_neighbour_bottom = NodePath("../OptionsButton")
+theme = ExtResource( 1 )
+text = "Modes and Extras"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+margin_top = 95.0
+margin_right = 222.0
+margin_bottom = 128.0
+theme = ExtResource( 1 )
+text = "Options"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 222.0
+margin_bottom = 165.0
+focus_neighbour_top = NodePath("../OptionsButton")
+focus_neighbour_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../OptionsButton")
+theme = ExtResource( 1 )
+text = "Quit"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiBsLogo" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.611765 )
+position = Vector2( 823.844, 198.375 )
+scale = Vector2( 0.538125, 0.538125 )
+texture = ExtResource( 8 )
+
+[node name="shadowgradient4" type="Sprite" parent="DiBsLogo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( -298.806, -8.69608 )
+rotation = -1.5708
+scale = Vector2( 4.64576, 4.64576 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient5" type="Sprite" parent="DiBsLogo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 249.394, -8.69608 )
+rotation = 1.5708
+scale = Vector2( 4.64576, 4.64576 )
+texture = ExtResource( 5 )
+
+[node name="dibs-logo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 27, 200 )
+texture = ExtResource( 7 )
+offset = Vector2( 784, 0 )
+
+[node name="shadowgradient4" type="Sprite" parent="dibs-logo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( -147.951, -6.30457 )
+rotation = -1.5708
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient5" type="Sprite" parent="dibs-logo"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 147.049, -6.30457 )
+rotation = 1.5708
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+
+[node name="moxieButton" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.380392 )
+margin_left = 1004.09
+margin_top = 125.059
+margin_right = 1316.09
+margin_bottom = 431.059
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Extras" to="." method="_on_Extras_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

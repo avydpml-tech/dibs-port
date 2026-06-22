@@ -1,0 +1,1152 @@
+[gd_scene load_steps=153 format=2]
+
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0001.png" type="Texture" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/perlin_noise.png" type="Texture" id=2]
+[ext_resource path="res://Src/Shaders/glow.shader" type="Shader" id=3]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0000.png" type="Texture" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0000.png" type="Texture" id=6]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0000.png" type="Texture" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Shaders/black_and_white_shader.tres" type="Material" id=9]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0000.png" type="Texture" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Interactables/seat.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Environment/ambiant_particles.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0000.png" type="Texture" id=17]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0000.png" type="Texture" id=18]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0000.png" type="Texture" id=19]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0018.png" type="Texture" id=20]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0015.png" type="Texture" id=21]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0041.png" type="Texture" id=22]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0043.png" type="Texture" id=23]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0007.png" type="Texture" id=24]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0004.png" type="Texture" id=25]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0002.png" type="Texture" id=26]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0019.png" type="Texture" id=27]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0016.png" type="Texture" id=28]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0039.png" type="Texture" id=29]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0035.png" type="Texture" id=30]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0037.png" type="Texture" id=31]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0002.png" type="Texture" id=32]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0004.png" type="Texture" id=33]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0005.png" type="Texture" id=34]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0001.png" type="Texture" id=35]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0004.png" type="Texture" id=36]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0013.png" type="Texture" id=37]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0007.png" type="Texture" id=38]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0029.png" type="Texture" id=39]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0033.png" type="Texture" id=40]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0010.png" type="Texture" id=41]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0036.png" type="Texture" id=42]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0003.png" type="Texture" id=43]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0044.png" type="Texture" id=44]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0021.png" type="Texture" id=45]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0008.png" type="Texture" id=46]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0017.png" type="Texture" id=47]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0012.png" type="Texture" id=48]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0006.png" type="Texture" id=49]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0046.png" type="Texture" id=50]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0002.png" type="Texture" id=51]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Group_9.png" type="Texture" id=52]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0000.png" type="Texture" id=53]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Cinema_3.png" type="Texture" id=54]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0034.png" type="Texture" id=55]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0011.png" type="Texture" id=56]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0014.png" type="Texture" id=57]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0001.png" type="Texture" id=58]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0003.png" type="Texture" id=59]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0002.png" type="Texture" id=60]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0008.png" type="Texture" id=61]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Group_2.png" type="Texture" id=62]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0006.png" type="Texture" id=63]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Group_4.png" type="Texture" id=64]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/is this thing on edit.png" type="Texture" id=65]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Group_6.png" type="Texture" id=66]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0005.png" type="Texture" id=67]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Group_11.png" type="Texture" id=68]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/Group_13.png" type="Texture" id=69]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0003.png" type="Texture" id=70]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0003.png" type="Texture" id=71]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0009.png" type="Texture" id=72]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0004.png" type="Texture" id=73]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0006.png" type="Texture" id=74]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0030.png" type="Texture" id=75]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0006.png" type="Texture" id=76]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0031.png" type="Texture" id=77]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0032.png" type="Texture" id=78]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0000.png" type="Texture" id=79]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0005.png" type="Texture" id=80]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0020.png" type="Texture" id=81]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeBoss/0007.png" type="Texture" id=82]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBounce/0005.png" type="Texture" id=83]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0040.png" type="Texture" id=84]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/thumbnail/Group_11.png" type="Texture" id=85]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0045.png" type="Texture" id=86]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0038.png" type="Texture" id=87]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/tapeBake/0042.png" type="Texture" id=88]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/SFW/thumbnail/Group_2.png" type="Texture" id=89]
+[ext_resource path="res://Src/UI/CinemaScreen/cinemaThumbnail.tscn" type="PackedScene" id=90]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0004.png" type="Texture" id=91]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0004.png" type="Texture" id=92]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0006.png" type="Texture" id=93]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0001.png" type="Texture" id=94]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0005.png" type="Texture" id=95]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0007.png" type="Texture" id=96]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0004.png" type="Texture" id=97]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0006.png" type="Texture" id=98]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0003.png" type="Texture" id=99]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0001.png" type="Texture" id=100]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0005.png" type="Texture" id=101]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeMeetup/0007.png" type="Texture" id=102]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0006.png" type="Texture" id=103]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0003.png" type="Texture" id=104]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0001.png" type="Texture" id=105]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0001.png" type="Texture" id=106]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0001.png" type="Texture" id=107]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0006.png" type="Texture" id=108]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0002.png" type="Texture" id=109]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0002.png" type="Texture" id=110]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0007.png" type="Texture" id=111]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0004.png" type="Texture" id=112]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0007.png" type="Texture" id=113]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTrain/0002.png" type="Texture" id=114]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0003.png" type="Texture" id=115]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0003.png" type="Texture" id=116]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle3/0007.png" type="Texture" id=117]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeWoof1/0005.png" type="Texture" id=118]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/arrow.png" type="Texture" id=119]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/theatre_chairs_single.png" type="Texture" id=120]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0002.png" type="Texture" id=121]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/back-dark-gradient.png" type="Texture" id=122]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/theatre_screen_black_border.png" type="Texture" id=123]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0006.png" type="Texture" id=124]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeTentacle2/0005.png" type="Texture" id=125]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0005.png" type="Texture" id=126]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0002.png" type="Texture" id=127]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0002.png" type="Texture" id=128]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/theatre_chairschairs.png" type="Texture" id=129]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0001.png" type="Texture" id=130]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0005.png" type="Texture" id=131]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0004.png" type="Texture" id=132]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0007.png" type="Texture" id=133]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0006.png" type="Texture" id=134]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0003.png" type="Texture" id=135]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0003.png" type="Texture" id=136]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/0004.png" type="Texture" id=137]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0007.png" type="Texture" id=138]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/nsfw/tapeKoubold1/0008.png" type="Texture" id=139]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/theatre_screen.png" type="Texture" id=140]
+[ext_resource path="res://Src/1_World/1_zones/MallZones/Stage_01_b-CinemaRoom.gd" type="Script" id=141]
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationSets:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationSets:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("backgroundScreen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.360784, 0.360784, 0.360784, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("cinemaScreen/backArrow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "show_tapes_selection"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("backgroundScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0705882, 0.0705882, 0.0705882, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationSets:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationSets:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "transition_to_anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("backgroundScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0705882, 0.0705882, 0.0705882, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cinemaScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("cinemaScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationSets:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimationSets:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "turn_off_screen"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("backgroundScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.360784, 0.360784, 0.360784, 1 ), Color( 0.360784, 0.360784, 0.360784, 1 ), Color( 0.0705882, 0.0705882, 0.0705882, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationSets:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationSets:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("cinemaScreen/backArrow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+shader_param/radius = 5.0
+shader_param/amount = 0.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 3 )
+shader_param/radius = 5.0
+shader_param/amount = 0.2
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 100 ), ExtResource( 32 ), ExtResource( 70 ), ExtResource( 73 ), ExtResource( 67 ), ExtResource( 74 ), ExtResource( 102 ) ],
+"loop": true,
+"name": "meetup",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 128 ), ExtResource( 136 ), ExtResource( 132 ), ExtResource( 131 ), ExtResource( 134 ), ExtResource( 138 ), ExtResource( 139 ) ],
+"loop": true,
+"name": "koubold1",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 130 ), ExtResource( 127 ), ExtResource( 135 ), ExtResource( 137 ), ExtResource( 126 ), ExtResource( 124 ), ExtResource( 133 ) ],
+"loop": true,
+"name": "tentacle1",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 94 ), ExtResource( 114 ), ExtResource( 99 ), ExtResource( 97 ), ExtResource( 95 ), ExtResource( 98 ), ExtResource( 96 ) ],
+"loop": true,
+"name": "train",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 107 ), ExtResource( 121 ), ExtResource( 116 ), ExtResource( 91 ), ExtResource( 125 ), ExtResource( 108 ), ExtResource( 111 ) ],
+"loop": true,
+"name": "tentacle2",
+"speed": 13.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 58 ), ExtResource( 51 ), ExtResource( 59 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 49 ), ExtResource( 82 ) ],
+"loop": true,
+"name": "boss",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 105 ), ExtResource( 110 ), ExtResource( 115 ), ExtResource( 112 ), ExtResource( 118 ), ExtResource( 93 ), ExtResource( 113 ) ],
+"loop": true,
+"name": "woof1",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 106 ), ExtResource( 109 ), ExtResource( 104 ), ExtResource( 92 ), ExtResource( 101 ), ExtResource( 103 ), ExtResource( 117 ) ],
+"loop": true,
+"name": "tentacle3",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 62 ) ],
+"loop": true,
+"name": "_bake",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 64 ) ],
+"loop": true,
+"name": "_office",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 69 ) ],
+"loop": true,
+"name": "_headrest",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 68 ) ],
+"loop": true,
+"name": "_squash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 53 ), ExtResource( 35 ), ExtResource( 60 ), ExtResource( 71 ), ExtResource( 25 ), ExtResource( 83 ), ExtResource( 76 ), ExtResource( 38 ), ExtResource( 61 ) ],
+"loop": true,
+"name": "_cheeky",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 52 ) ],
+"loop": true,
+"name": "_commute",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 79 ), ExtResource( 26 ), ExtResource( 43 ), ExtResource( 36 ), ExtResource( 80 ), ExtResource( 63 ), ExtResource( 24 ), ExtResource( 46 ), ExtResource( 72 ), ExtResource( 41 ), ExtResource( 56 ), ExtResource( 48 ), ExtResource( 37 ), ExtResource( 57 ), ExtResource( 21 ), ExtResource( 28 ), ExtResource( 47 ), ExtResource( 20 ), ExtResource( 27 ), ExtResource( 81 ), ExtResource( 45 ), ExtResource( 39 ), ExtResource( 75 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 40 ), ExtResource( 55 ), ExtResource( 30 ), ExtResource( 42 ), ExtResource( 31 ), ExtResource( 87 ), ExtResource( 29 ), ExtResource( 84 ), ExtResource( 22 ), ExtResource( 88 ), ExtResource( 23 ), ExtResource( 44 ), ExtResource( 86 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "_chair",
+"speed": 18.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "_noodles",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=7]
+resource_name = "next_set"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.353553, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -942.929, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "prev_set"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.353553, 0.353553 ),
+"update": 0,
+"values": [ Vector2( -942.929, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=11]
+blend_mode = 1
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id=12]
+light_mode = 1
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 141 )
+
+[node name="Background" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( -182.098, 0 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, -1073741816, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 0, 131088, 8, 0, 131089, 8, 0, 131090, 8, 0, 131091, 8, 0, 131092, 8, 0, 131093, 8, 0, 131094, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 8, 0, 131100, 8, 0, 131101, 8, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0 )
+
+[node name="playerPos" type="Position2D" parent="Background"]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="Screen" type="Node2D" parent="."]
+
+[node name="screenAnim" type="AnimationPlayer" parent="Screen"]
+anims/RESET = SubResource( 13 )
+anims/show_tapes_selection = SubResource( 1 )
+anims/transition_to_anim = SubResource( 2 )
+anims/turn_off_screen = SubResource( 3 )
+
+[node name="backgroundScreen" type="Sprite" parent="Screen"]
+modulate = Color( 0.360784, 0.360784, 0.360784, 1 )
+material = SubResource( 4 )
+position = Vector2( 903.061, 442.61 )
+scale = Vector2( 1.82897, 1.82897 )
+texture = ExtResource( 140 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "5c5c5c"
+}
+
+[node name="cinemaScreen" type="AnimatedSprite" parent="Screen"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 5 )
+position = Vector2( 903.328, 442.333 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 6 )
+animation = "_commute"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="backArrow" type="TextureButton" parent="Screen/cinemaScreen"]
+visible = false
+margin_left = -534.0
+margin_top = 176.0
+margin_right = 89.0
+margin_bottom = 496.0
+rect_scale = Vector2( 0.233594, 0.233594 )
+texture_normal = ExtResource( 119 )
+
+[node name="big3" parent="Screen/cinemaScreen" instance=ExtResource( 5 )]
+position = Vector2( 18.1838, 8.40097 )
+rotation = -3.14159
+scale = Vector2( 6.90873, 3.86555 )
+energy = 0.55
+shadow_enabled = true
+
+[node name="big4" parent="Screen" instance=ExtResource( 5 )]
+position = Vector2( 878.31, 618.498 )
+scale = Vector2( 3.05659, 2.83706 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="AnimSetLabel" type="Label" parent="Screen"]
+visible = false
+margin_left = 895.992
+margin_top = 272.39
+margin_right = 980.992
+margin_bottom = 320.39
+text = "1 / 2"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationSets" type="Control" parent="Screen"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Screen/AnimationSets"]
+anims/next_set = SubResource( 7 )
+anims/prev_set = SubResource( 8 )
+
+[node name="Set1" type="Control" parent="Screen/AnimationSets"]
+material = ExtResource( 9 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Screen/AnimationSets/Set1"]
+visible = false
+margin_left = 448.0
+margin_top = 251.0
+margin_right = 533.0
+margin_bottom = 316.0
+rect_scale = Vector2( 2.3455, 2.3455 )
+text = "SFW MODE - NOT 
+FINAL 
+ANIMS
+
+
+
+
+lol"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nextAnimSetButton" type="TextureButton" parent="Screen/AnimationSets/Set1"]
+margin_left = 1332.93
+margin_top = 464.46
+margin_right = 1482.93
+margin_bottom = 614.46
+rect_rotation = 180.0
+rect_scale = Vector2( 0.259176, 0.259176 )
+texture_normal = ExtResource( 119 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Set1Anim1" parent="Screen/AnimationSets/Set1" instance=ExtResource( 90 )]
+margin_left = 551.484
+margin_top = 292.429
+margin_right = 1705.49
+margin_bottom = 772.429
+cinema_name_nsfw = "tentacle1"
+cinema_name_sfw = "_noodles"
+thumbnail_nsfw = ExtResource( 7 )
+thumbnail_sfw = ExtResource( 65 )
+
+[node name="Set1Anim2" parent="Screen/AnimationSets/Set1" instance=ExtResource( 90 )]
+margin_left = 936.447
+margin_top = 292.429
+margin_right = 2090.45
+margin_bottom = 772.429
+cinema_name_nsfw = "koubold1"
+cinema_name_sfw = "_chair"
+thumbnail_nsfw = ExtResource( 1 )
+thumbnail_sfw = ExtResource( 66 )
+
+[node name="Set1Anim3" parent="Screen/AnimationSets/Set1" instance=ExtResource( 90 )]
+margin_left = 551.485
+margin_top = 458.297
+margin_right = 1705.49
+margin_bottom = 938.297
+disabled = true
+cinema_name_nsfw = "tentacle2"
+cinema_name_sfw = "_bake"
+thumbnail_nsfw = ExtResource( 6 )
+thumbnail_sfw = ExtResource( 89 )
+
+[node name="Set1Anim4" parent="Screen/AnimationSets/Set1" instance=ExtResource( 90 )]
+margin_left = 936.447
+margin_top = 458.296
+margin_right = 2090.45
+margin_bottom = 938.296
+disabled = true
+cinema_name_nsfw = "tentacle3"
+cinema_name_sfw = "_office"
+thumbnail_nsfw = ExtResource( 4 )
+thumbnail_sfw = ExtResource( 64 )
+
+[node name="Set2" type="Control" parent="Screen/AnimationSets"]
+material = ExtResource( 9 )
+margin_left = 947.414
+margin_right = 987.414
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Screen/AnimationSets/Set2"]
+visible = false
+margin_left = 892.908
+margin_top = 441.701
+margin_right = 977.908
+margin_bottom = 489.701
+text = "SET 2
+"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="prevAnimSetButton" type="TextureButton" parent="Screen/AnimationSets/Set2"]
+margin_left = 483.637
+margin_top = 423.631
+margin_right = 633.637
+margin_bottom = 573.631
+rect_scale = Vector2( 0.259176, 0.259176 )
+texture_normal = ExtResource( 119 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Set2Anim1" parent="Screen/AnimationSets/Set2" instance=ExtResource( 90 )]
+margin_left = 548.487
+margin_top = 292.429
+margin_right = 1702.49
+margin_bottom = 772.429
+cinema_name_nsfw = "woof1"
+cinema_name_sfw = "_squash"
+thumbnail_nsfw = ExtResource( 17 )
+thumbnail_sfw = ExtResource( 85 )
+
+[node name="Set2Anim2" parent="Screen/AnimationSets/Set2" instance=ExtResource( 90 )]
+margin_left = 933.45
+margin_top = 292.429
+margin_right = 2087.45
+margin_bottom = 772.429
+cinema_name_nsfw = "train"
+cinema_name_sfw = "_commute"
+thumbnail_nsfw = ExtResource( 10 )
+thumbnail_sfw = ExtResource( 52 )
+
+[node name="Set2Anim3" parent="Screen/AnimationSets/Set2" instance=ExtResource( 90 )]
+margin_left = 548.488
+margin_top = 458.296
+margin_right = 1702.49
+margin_bottom = 938.297
+cinema_name_nsfw = "meetup"
+cinema_name_sfw = "_headrest"
+thumbnail_nsfw = ExtResource( 19 )
+thumbnail_sfw = ExtResource( 69 )
+
+[node name="Set2Anim4" parent="Screen/AnimationSets/Set2" instance=ExtResource( 90 )]
+margin_left = 933.45
+margin_top = 458.296
+margin_right = 2087.45
+margin_bottom = 938.296
+cinema_name_nsfw = "boss"
+cinema_name_sfw = "_cheeky"
+thumbnail_nsfw = ExtResource( 18 )
+thumbnail_sfw = ExtResource( 54 )
+
+[node name="theatre_screen2" type="Sprite" parent="Screen"]
+modulate = Color( 0.360784, 0.360784, 0.360784, 1 )
+material = SubResource( 4 )
+position = Vector2( 903.061, 453.95 )
+scale = Vector2( 1.82897, 1.82897 )
+texture = ExtResource( 123 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "5c5c5c"
+}
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1002.79, 343.093 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -10
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Foreground" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AreaTransitions" type="Node2D" parent="Foreground"]
+
+[node name="Transition_point2" parent="Foreground/AreaTransitions" instance=ExtResource( 11 )]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1592.21, 626.972 )
+rotation = -1.5708
+scene_path_to_load = "res://Src/1_World/1_zones/MallZones/Stage_01_a-TheatreHall.tscn"
+where_is_exit_point = "middle"
+turn_off_music = true
+
+[node name="right" parent="Foreground/AreaTransitions/Transition_point2" instance=ExtResource( 14 )]
+position = Vector2( -55.6295, -114.26 )
+rotation = -1.55912
+
+[node name="black-background" type="Sprite" parent="Foreground/AreaTransitions/Transition_point2"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -37.0275, 649.576 )
+rotation = 1.5708
+scale = Vector2( 3.21811, 2.20816 )
+texture = ExtResource( 16 )
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 0, 131088, 8, 0, 131089, 8, 0, 131090, 8, 0, 131091, 8, 0, 131092, 8, 0, 131093, 8, 0, 131094, 8, 0, 131095, 8, 0, 131096, 8, 0, 131097, 8, 0, 131098, 8, 0, 131099, 8, 0, 131100, 8, 0, 131101, 8, 0, 131102, 8, 0, 131103, 8, 0, 131104, 8, 0, 131105, 8, 0 )
+
+[node name="All Theatre Chairs" type="Node2D" parent="Foreground"]
+position = Vector2( 1108.77, 683.42 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Theatre Chairs backup" type="Node2D" parent="Foreground/All Theatre Chairs"]
+visible = false
+modulate = Color( 0.176471, 0.160784, 0.160784, 1 )
+light_mask = 0
+
+[node name="theatre_chairschairs2" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -253.692, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs3" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -133.844, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs4" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -13.9949, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( 105.854, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs5" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -731.726, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs6" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -611.878, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs7" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -492.029, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs8" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup"]
+light_mask = -2147483648
+position = Vector2( -372.18, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="Theatre Chairs backup2" type="Node2D" parent="Foreground/All Theatre Chairs"]
+visible = false
+modulate = Color( 0.294118, 0.301961, 0.313726, 1 )
+light_mask = 0
+position = Vector2( 113.71, 3.716 )
+
+[node name="theatre_chairschairs2" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -253.692, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs3" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -133.844, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs4" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -13.9949, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( 105.854, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs5" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -731.726, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs6" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -611.878, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs7" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -492.029, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs8" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs backup2"]
+light_mask = -2147483648
+position = Vector2( -372.18, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="Theatre Chairs4 backupo" type="Node2D" parent="Foreground/All Theatre Chairs"]
+visible = false
+modulate = Color( 0.172549, 0.172549, 0.192157, 0.411765 )
+light_mask = 0
+position = Vector2( 113.71, 3.716 )
+
+[node name="theatre_chairs_single" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -761.464, 28.9161 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single2" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -702.73, 28.9161 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single3" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -643.24, 28.9161 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single4" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -582.647, 30.0425 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single5" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -522.413, 31.0438 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single6" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -462.798, 30.0425 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single7" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -402.282, 30.2928 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single8" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -342.673, 31.6031 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single9" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -283.808, 30.6683 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single10" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -224.619, 30.3209 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single11" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -165.183, 30.8829 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single12" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -104.991, 30.1804 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single13" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( -45.2758, 30.7761 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single14" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( 15.2401, 29.9966 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single15" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( 73.5054, 30.7307 )
+texture = ExtResource( 120 )
+
+[node name="theatre_chairs_single16" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs4 backupo"]
+position = Vector2( 136.236, 30.7307 )
+texture = ExtResource( 120 )
+
+[node name="Theatre Chairs5" type="Node2D" parent="Foreground/All Theatre Chairs"]
+
+[node name="seat" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -170.122, 34.9534 )
+
+[node name="seat2" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -229.589, 34.9534 )
+
+[node name="seat3" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -288.869, 34.9534 )
+
+[node name="seat4" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -349.207, 34.9534 )
+
+[node name="seat5" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -408.675, 34.9534 )
+
+[node name="seat6" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -467.954, 34.9534 )
+
+[node name="seat8" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -529.677, 34.9534 )
+
+[node name="seat9" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -588.956, 34.9534 )
+
+[node name="seat10" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -648.271, 34.9534 )
+
+[node name="seat11" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( 66.9994, 34.7034 )
+
+[node name="seat12" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( 7.53174, 34.7034 )
+
+[node name="seat13" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -51.7474, 34.7034 )
+
+[node name="seat14" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( -111.062, 34.7034 )
+
+[node name="seat17" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( 185.545, 34.7034 )
+
+[node name="seat18" parent="Foreground/All Theatre Chairs/Theatre Chairs5" instance=ExtResource( 12 )]
+position = Vector2( 126.23, 34.7034 )
+
+[node name="Theatre Chairs2" type="Node2D" parent="Foreground/All Theatre Chairs"]
+modulate = Color( 0.184314, 0.188235, 0.2, 1 )
+light_mask = 0
+position = Vector2( 33.39, 12.488 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="theatre_chairschairs2" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( -253.692, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs3" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( -133.844, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs4" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( 183.748, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( 105.854, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs5" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( -731.726, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs6" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( -611.878, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs7" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( -492.029, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs8" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs2"]
+light_mask = -2147483648
+position = Vector2( -372.18, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="Theatre Chairs3" type="Node2D" parent="Foreground/All Theatre Chairs"]
+modulate = Color( 0.105882, 0.105882, 0.109804, 1 )
+light_mask = 0
+position = Vector2( 239.35, 26.76 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="theatre_chairschairs2" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -253.692, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs3" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -133.844, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs4" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -13.9949, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( 105.854, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs5" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -731.726, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs6" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -611.878, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs7" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -492.029, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="theatre_chairschairs8" type="Sprite" parent="Foreground/All Theatre Chairs/Theatre Chairs3"]
+light_mask = -2147483648
+position = Vector2( -372.18, 30.2762 )
+texture = ExtResource( 129 )
+
+[node name="perlin_noise" type="Sprite" parent="Foreground"]
+modulate = Color( 0.0117647, 0.0431373, 0.0509804, 1 )
+material = SubResource( 11 )
+position = Vector2( 122.723, 300.348 )
+scale = Vector2( 7.66254, 1.49103 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NOTE" type="Label" parent="."]
+material = SubResource( 12 )
+margin_left = -943.493
+margin_top = 279.949
+margin_right = -562.493
+margin_bottom = 395.949
+rect_scale = Vector2( 2.31756, 2.31756 )
+text = "Player should be introduced to 4 cinema tapes first.
+They'll think, \"Oh ok there are only four tapes.\"
+But then if they reach more than 4 tapes, or got a tape from
+the second set, then this mysterious arrow appears.
+
+You hover over it, and there it is, \"1 / 2\" 
+You click on it, and it's a whole nother set. "
+
+[node name="Back-dark-gradient" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 854, 731 )
+scale = Vector2( 46.9, 0.5925 )
+texture = ExtResource( 122 )
+
+[node name="ambiantParticles" parent="." instance=ExtResource( 15 )]
+modulate = Color( 0.588235, 0.592157, 0.670588, 0.0980392 )
+position = Vector2( 881, 471 )
+
+[connection signal="animation_finished" from="Screen/screenAnim" to="." method="_on_screenAnim_animation_finished"]
+[connection signal="pressed" from="Screen/cinemaScreen/backArrow" to="." method="_on_backArrow_pressed"]
+[connection signal="pressed" from="Screen/AnimationSets/Set1/nextAnimSetButton" to="." method="_on_nextAnimSetButton_pressed"]
+[connection signal="pressed" from="Screen/AnimationSets/Set2/prevAnimSetButton" to="." method="_on_prevAnimSetButton_pressed"]

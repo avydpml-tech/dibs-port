@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/clothing_rip.ogg-90da28fd5ca15a773d2d93273b49f45c.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/clothing/clothing_rip.ogg"
+dest_files=[ "res://.import/clothing_rip.ogg-90da28fd5ca15a773d2d93273b49f45c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

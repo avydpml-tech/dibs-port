@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/infobleep.ogg-333de9ce338f477ba9ca81c65181403e.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/ui/infobleep.ogg"
+dest_files=[ "res://.import/infobleep.ogg-333de9ce338f477ba9ca81c65181403e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Src/Entities/Player/playerProjectiles/gunSmoke.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.300613, 0.521472 )
+colors = PoolColorArray( 1, 1, 1, 0.764706, 1, 1, 1, 0.0762426, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+max_value = 100.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.250122, 100 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.335 ), 0.0, 0.0, 0, 0, Vector2( 0.972081, 0.9136 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 30, 6, 1 )
+flag_disable_z = true
+spread = 10.0
+flatness = 1.0
+gravity = Vector3( 0, -100, 0 )
+initial_velocity = 300.0
+initial_velocity_random = 0.6
+angular_velocity = -10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 200.0
+damping_curve = SubResource( 4 )
+angle = 270.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 30, 6, 1 )
+flag_disable_z = true
+spread = 10.0
+flatness = 1.0
+gravity = Vector3( 0, -100, 0 )
+initial_velocity = 300.0
+initial_velocity_random = 0.6
+angular_velocity = -40.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 200.0
+damping_curve = SubResource( 4 )
+angle = 270.0
+scale = 0.8
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 2 )
+
+[node name="smoke" type="Particles2D"]
+position = Vector2( 100, 20 )
+amount = 15
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+draw_order = 1
+process_material = SubResource( 7 )
+script = ExtResource( 2 )
+
+[node name="smoke2" type="Particles2D" parent="."]
+amount = 15
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+draw_order = 1
+process_material = SubResource( 8 )

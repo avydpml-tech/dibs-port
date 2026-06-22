@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/patreon/patreon-logo-png-transparent.png" type="Texture" id=1]
+[ext_resource path="res://Src/Menu/temp/patreonButton.gd" type="Script" id=2]
+
+[node name="moxieButton" type="Button"]
+margin_right = 519.0
+margin_bottom = 197.0
+rect_scale = Vector2( 0.17, 0.17 )
+icon = ExtResource( 1 )
+flat = true
+script = ExtResource( 2 )
+modulate_hover = 0.85
+modulate_default = 0.17
+
+[connection signal="mouse_entered" from="." to="." method="_on_moxieButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_moxieButton_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_moxieButton_pressed"]

@@ -1,0 +1,149 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Src/1_World_Objects/SaveTerminal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage-SaveStation.gd" type="Script" id=2]
+[ext_resource path="res://Src/Interactables/clothes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi-tiles-edited/Bed-1.png" type="Texture" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Audio/music/m_clair_de_lune.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/1_Visual/3_Background/Desk 1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi packs tilesets/Pack 01 (Pixel Art)/PNG/Phone 1.png" type="Texture" id=11]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 43.052, 19.7664 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+day_or_night = "dark"
+
+[node name="SaveTerminal" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 474.648, 589.594 )
+
+[node name="bed_pos" type="Position2D" parent="."]
+position = Vector2( 181, 441 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 655.991, 382.379 )
+scale = Vector2( 4.37978, 2.91878 )
+texture = ExtResource( 16 )
+
+[node name="background" type="Node2D" parent="."]
+position = Vector2( -6, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background"]
+position = Vector2( 6, 0 )
+color = Color( 0.372549, 0.411765, 0.537255, 1 )
+
+[node name="Walls" type="TileMap" parent="background"]
+position = Vector2( 6, 0 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65536, 1, 0, 65537, 1, 0, 65538, 1, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 566.438, 453.648 )
+scale = Vector2( 1.76231, 1.76231 )
+collision_layer = 512
+collision_mask = 1024
+
+[node name="Desk 1" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -0.582581, 7.86481 )
+shape = SubResource( 1 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="ammo2" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 530.614, 412 )
+rotation = 0.00640884
+
+[node name="ammo4" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 571.811, 411.131 )
+rotation = 0.00640884
+
+[node name="clothes" parent="Interactables" instance=ExtResource( 3 )]
+position = Vector2( 580.225, 411.382 )
+
+[node name="ammo3" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 603.348, 406.121 )
+rotation = -0.021148
+
+[node name="Door" parent="Interactables" instance=ExtResource( 6 )]
+position = Vector2( 382.002, 401.646 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_10-ClairLune.tscn"
+where_is_exit_point = "middle"
+
+[node name="middle" parent="Interactables/Door" instance=ExtResource( 14 )]
+position = Vector2( -4.20019, 50.0543 )
+
+[node name="DoorTransitions" type="Node2D" parent="."]
+position = Vector2( 946.341, 416.783 )
+
+[node name="Bed-1" type="Sprite" parent="DoorTransitions"]
+position = Vector2( -768.562, 50.328 )
+scale = Vector2( 1.46491, 1.46491 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="Phone 1" type="Sprite" parent="DoorTransitions"]
+position = Vector2( -781.207, -16.8491 )
+scale = Vector2( 2.86489, 2.86489 )
+texture = ExtResource( 11 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DoorTransitions/Phone 1"]
+position = Vector2( -0.937229, 1.53014 )
+scale = Vector2( 0.698108, 0.698108 )
+stream = ExtResource( 7 )
+volume_db = 4.0
+autoplay = true
+max_distance = 1000.0
+bus = "Music"
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 181, 422 )
+
+[node name="INvisible-Walls" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65536, 1610612744, 0, 65537, 1610612744, 0, 65538, 1610612744, 0, 65539, 7, 0 )
+
+[node name="wall-light" parent="." instance=ExtResource( 9 )]
+position = Vector2( 526.857, 643.641 )
+energy = 0.4
+
+[node name="wall-light2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 183.138, 642.012 )
+energy = 0.4
+
+[node name="Floors" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131071, 1610612743, 0, 65536, 536870918, 0, 65537, 536870918, 0, 65538, 536870918, 0 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

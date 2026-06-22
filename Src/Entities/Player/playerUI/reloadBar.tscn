@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/reloadbar-full.png" type="Texture" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/reloadbar.png" type="Texture" id=2]
+[ext_resource path="res://Src/Entities/Player/playerUI/reloadBar.gd" type="Script" id=3]
+
+[node name="reloadBar" type="TextureProgress"]
+margin_right = 400.0
+margin_bottom = 100.0
+rect_scale = Vector2( 0.152399, 0.106879 )
+value = 50.0
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="reloadBar" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0

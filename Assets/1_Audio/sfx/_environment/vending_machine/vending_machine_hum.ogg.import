@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vending_machine_hum.ogg-02ebe2c2727901d28bf05cba249462f3.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/vending_machine/vending_machine_hum.ogg"
+dest_files=[ "res://.import/vending_machine_hum.ogg-02ebe2c2727901d28bf05cba249462f3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

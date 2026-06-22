@@ -1,0 +1,260 @@
+{
+	"0": {
+		"name": "fullscreen",
+		"default": {
+			"value": false,
+			"window_script_path": "res://Src/SettingLogic/window_scale.gd",
+			"window_setting_index": 2
+		},
+		"current": {
+			"value": true,
+			"window_script_path": "res://Src/SettingLogic/window_scale.gd",
+			"window_setting_index": 2
+		},
+		"logic": "res://addons/GGS/logic/fullscreen.gd"
+	},
+	"1": {
+		"name": "borderless_window",
+		"default": {
+			"value": true
+		},
+		"current": {
+			"value": true
+		},
+		"logic": "res://Src/SettingLogic/borderless_window.gd"
+	},
+	"2": {
+		"name": "window_scale",
+		"default": {
+			"value": 0,
+			"min_scale": 1
+		},
+		"current": {
+			"value": 0,
+			"min_scale": 1
+		},
+		"logic": "res://Src/SettingLogic/window_scale.gd"
+	},
+	"3": {
+		"name": "window_resolution",
+		"default": {
+			"value": 2
+		},
+		"current": {
+			"value": 2
+		},
+		"logic": "res://Src/SettingLogic/window_resolution.gd"
+	},
+	"4": {
+		"name": "music_volume",
+		"default": {
+			"bus_name": "Music",
+			"value": 1
+		},
+		"current": {
+			"bus_name": "Music",
+			"value": 1
+		},
+		"logic": "res://Src/SettingLogic/audio_slider.gd"
+	},
+	"5": {
+		"name": "music_mute",
+		"default": {
+			"bus_name": "Music",
+			"value": false
+		},
+		"current": {
+			"bus_name": "Music",
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/audio_mute.gd"
+	},
+	"6": {
+		"name": "sfx_volume",
+		"default": {
+			"bus_name": "SFX",
+			"value": 1
+		},
+		"current": {
+			"bus_name": "SFX",
+			"value": 1
+		},
+		"logic": "res://Src/SettingLogic/audio_slider.gd"
+	},
+	"7": {
+		"name": "sfx_mute",
+		"default": {
+			"bus_name": "SFX",
+			"value": false
+		},
+		"current": {
+			"bus_name": "SFX",
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/audio_mute.gd"
+	},
+	"8": {
+		"name": "voice_volume",
+		"default": {
+			"bus_name": "Voice",
+			"value": 1
+		},
+		"current": {
+			"bus_name": "Voice",
+			"value": 1
+		},
+		"logic": "res://Src/SettingLogic/audio_slider.gd"
+	},
+	"9": {
+		"name": "voice_mute",
+		"default": {
+			"bus_name": "Voice",
+			"value": false
+		},
+		"current": {
+			"bus_name": "Voice",
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/audio_mute.gd"
+	},
+	"10": {
+		"name": "keyboard_layout",
+		"default": {
+			"value": true
+		},
+		"current": {
+			"value": true
+		},
+		"logic": "res://Src/SettingLogic/keyboard_layout.gd"
+	},
+	"11": {
+		"name": "jump_stamina",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": true
+		},
+		"logic": "res://Src/SettingLogic/jump_stamina.gd"
+	},
+	"12": {
+		"name": "frisky",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/frisky.gd"
+	},
+	"13": {
+		"name": "woof_jazz",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": true
+		},
+		"logic": "res://Src/SettingLogic/woof_jazz.gd"
+	},
+	"14": {
+		"name": "blush",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/blush.gd"
+	},
+	"15": {
+		"name": "no_minigame",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": true
+		},
+		"logic": "res://Src/SettingLogic/no_minigame.gd"
+	},
+	"16": {
+		"name": "placeholder",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/placeholder.gd"
+	},
+	"17": {
+		"name": "bored_mode",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/bored_mode.gd"
+	},
+	"18": {
+		"name": "exploration_mode",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/exploration_mode.gd"
+	},
+	"19": {
+		"name": "sfw_mode",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/sfw_mode.gd"
+	},
+	"20": {
+		"name": "one_handed_mode",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": true
+		},
+		"logic": "res://Src/SettingLogic/one_handed_mode.gd"
+	},
+	"21": {
+		"name": "infinite_ammo_mode",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/infinite_ammo_mode.gd"
+	},
+	"22": {
+		"name": "auto_combine_mode",
+		"default": {
+			"value": false
+		},
+		"current": {
+			"value": false
+		},
+		"logic": "res://Src/SettingLogic/auto_combine_mode.gd"
+	},
+	"23": {
+		"name": "mouse_deadzone",
+		"default": {
+			"value": 0
+		},
+		"current": {
+			"value": 94
+		},
+		"logic": "res://Src/SettingLogic/mouse_deadzone.gd"
+	}
+}

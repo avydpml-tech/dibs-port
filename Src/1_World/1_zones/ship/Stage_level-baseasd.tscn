@@ -1,0 +1,234 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/perlin_noise.png" type="Texture" id=2]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World/1_zones/gook.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Assets/1_Visual/Tilesets/SmallCrates.tres" type="TileSet" id=10]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_walnut/f_walnut.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/Interactables/!_common/genericTrigger.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Src/Interactables/genericSwitch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Src/Interactables/lockedDoor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/Environment/watergoo.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_05-Canals.gd" type="Script" id=26]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=32]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 233.403, 15.1793 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+light_mode = 2
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 26 )
+day_or_night = "light"
+
+[node name="backgrond" type="Node2D" parent="."]
+
+[node name="background" type="TileMap" parent="backgrond"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="background2" type="TileMap" parent="backgrond"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2.00037, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="gook" type="TileMap" parent="backgrond"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="playerPos" type="Position2D" parent="."]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 7797.5, 510.724 )
+
+[node name="Door-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 532.769, 1680.95 )
+scene_path_to_load = "res://1_World/1_zones/ship/Stage-Elevator.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="doors_transitions/Door-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 16.5894 )
+
+[node name="Door-To-Paloza2" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 1104.23, 47.9305 )
+door_active = false
+where_is_exit_point = "stun"
+
+[node name="right" parent="doors_transitions/Door-To-Paloza2" instance=ExtResource( 14 )]
+position = Vector2( -3.88904, 16.5894 )
+
+[node name="lightSwitch" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( -2787.93, 1175.51 )
+interacts_to = "locked_door1"
+
+[node name="lightSwitch2" parent="doors_transitions" instance=ExtResource( 20 )]
+position = Vector2( 5727.63, 1370.81 )
+interacts_to = "switch2"
+
+[node name="ammo2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 5713.23, 1173.4 )
+rotation = 0.00640884
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 12527.2, 2162.38 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="watergoo" parent="Environment" instance=ExtResource( 23 )]
+modulate = Color( 0.784314, 0.576471, 0.662745, 1 )
+position = Vector2( -3668.84, -612.376 )
+
+[node name="sewage_area" type="Node2D" parent="Environment"]
+position = Vector2( 3957.96, 912.63 )
+scale = Vector2( 4.30206, 4.30206 )
+
+[node name="big7" parent="Environment/sewage_area" instance=ExtResource( 32 )]
+energy = 0.6
+
+[node name="big8" parent="Environment/sewage_area" instance=ExtResource( 32 )]
+position = Vector2( 723.8, 13.7704 )
+scale = Vector2( 2.53097, 0.568969 )
+energy = 0.8
+shadow_enabled = true
+
+[node name="big9" parent="Environment/sewage_area" instance=ExtResource( 32 )]
+position = Vector2( 281.509, -0.615936 )
+energy = 0.6
+
+[node name="big" parent="Environment" instance=ExtResource( 32 )]
+position = Vector2( -3742.81, -989.416 )
+energy = 0.6
+
+[node name="f_Koubold" parent="." instance=ExtResource( 17 )]
+position = Vector2( 2619.04, 111.852 )
+
+[node name="crates" type="TileMap" parent="."]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="floor" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="Triggers" type="Node2D" parent="."]
+position = Vector2( 1248.88, 744.479 )
+
+[node name="changeToDark" type="Area2D" parent="Triggers"]
+position = Vector2( 826.832, -233.755 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/changeToDark"]
+shape = SubResource( 1 )
+
+[node name="lockedDoor" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 5609.5, 788.404 )
+unique_id = "locked_door1"
+
+[node name="lockedDoor2" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 12557.9, 856.377 )
+rotation = -1.5708
+unique_id = "switch2"
+interact_anim = "up"
+
+[node name="lockedDoor4" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 12552.9, 660.008 )
+rotation = -0.0367494
+unique_id = "dud"
+interact_anim = "up"
+
+[node name="lockedDoor3" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 11825.3, 692.737 )
+rotation = -1.5708
+unique_id = "switch2"
+interact_anim = "up"
+
+[node name="lockedDoor5" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 11820.3, 496.368 )
+rotation = -0.0367494
+unique_id = "dud"
+interact_anim = "up"
+
+[node name="lockedDoor6" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 9795.36, 720.451 )
+rotation = -1.5708
+unique_id = "trigger1"
+interact_anim = "up"
+
+[node name="lockedDoor7" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 9790.33, 524.082 )
+rotation = -0.0367494
+unique_id = "trigger1"
+interact_anim = "up"
+
+[node name="lockedDoor8" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 8299.46, -417.496 )
+rotation = -1.5708
+unique_id = "trigger1"
+interact_anim = "up"
+
+[node name="lockedDoor9" parent="Triggers" instance=ExtResource( 22 )]
+position = Vector2( 8294.43, -613.865 )
+rotation = -0.0367494
+unique_id = "trigger1"
+interact_anim = "up"
+
+[node name="Trigger" parent="Triggers" instance=ExtResource( 18 )]
+position = Vector2( 10914.9, 1493.72 )
+interacts_to = "trigger1"
+
+[node name="Stairs2" type="Node2D" parent="."]
+
+[node name="Stairs" parent="Stairs2" instance=ExtResource( 15 )]
+position = Vector2( 3231.99, -1237.63 )
+
+[node name="Stairs2" parent="Stairs2" instance=ExtResource( 15 )]
+position = Vector2( 5527.73, -978.687 )
+
+[node name="perlin_noise" type="Sprite" parent="."]
+modulate = Color( 0.0117647, 0.0509804, 0.0196078, 1 )
+material = SubResource( 2 )
+position = Vector2( 7638.49, 1157.78 )
+scale = Vector2( 7.66254, 1.49103 )
+texture = ExtResource( 2 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="body_entered" from="Triggers/changeToDark" to="." method="_on_changeToDark_body_entered"]

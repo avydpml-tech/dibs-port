@@ -1,0 +1,1168 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://Src/Entities/Player/playerUI/playerUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/white-bar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/white-bar-thin.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/4_Interactables/cinema_tape_icon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Audio/sfx/ui/pick_up.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/1_Visual/2_UI/ui_magazine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/3_Background/ammo_2_half.png" type="Texture" id=7]
+[ext_resource path="res://Assets/1_Visual/3_Background/ammo_4_full.png" type="Texture" id=8]
+[ext_resource path="res://Assets/1_Visual/3_Background/ammo_3_near_full.png" type="Texture" id=9]
+[ext_resource path="res://Assets/1_Visual/3_Background/ammo_1_quarter.png" type="Texture" id=10]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/Meme/shoes.png" type="Texture" id=11]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_koubold/diner_koubold/snack.png" type="Texture" id=12]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_koubold/icons/icons1.png" type="Texture" id=13]
+[ext_resource path="res://Src/UI/AmmoClickandDrag.gd" type="Script" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/Meme/mux.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/arrow.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/3_Background/Mall/sneak_scarf.png" type="Texture" id=17]
+[ext_resource path="res://Src/UI/snackProgressBar.tscn" type="PackedScene" id=18]
+[ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=19]
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/_grapple_mechanic/icons/saucy-icons-fox-head-outline.png" type="Texture" id=20]
+[ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/_grapple_mechanic/icons/saucy-icons-fox-head-noautosave.png" type="Texture" id=21]
+[ext_resource path="res://Src/UI/OneHandReminder.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Src/UI/Popup.tscn" type="PackedScene" id=23]
+[ext_resource path="res://addons/ActionIcon/ActionIcon.gd" type="Script" id=24]
+[ext_resource path="res://addons/ActionIcon/Keyboard/Blank.png" type="Texture" id=25]
+[ext_resource path="res://Src/component/popup_text_component.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Src/component/fade_component.tscn" type="PackedScene" id=27]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("popup_icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "dutiful_citizen_achievement"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.79397e-07, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dutiful Citizen. Good job." ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "newspaper_found"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.79397e-07, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Newspaper Found" ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "plants_cleared_achievement"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.79397e-07, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Plants cleared achievement." ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "scarf_found"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.79397e-07, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 17 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Scarf Found" ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "snack_found"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.79397e-07, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Snack Found" ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "tape_found"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.79397e-07, 0.05, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Cinema Tape Found" ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("leftStaminaBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.458824, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rightStaminaBar:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.458824, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("leftStaminaBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.235294 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rightStaminaBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.235294 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "exploration"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("leftStaminaBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.552941, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rightStaminaBar:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.552941, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("leftStaminaBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.356863 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rightStaminaBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.356863 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../shoes:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 5.189 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("leftSnackProgressBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.458824, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rightSnackProgressBar:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.458824, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("leftSnackProgressBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.235294 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rightSnackProgressBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.235294 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "exploration"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("leftSnackProgressBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.552941, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rightSnackProgressBar:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.827451, 0.258824, 0.552941, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("leftSnackProgressBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.356863 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rightSnackProgressBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.356863 ), Color( 1, 1, 1, 0.839216 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../shoes:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 5.189 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mux:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 900 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "shoe"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mux:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.5 ),
+"update": 0,
+"values": [ Vector2( 1157, 884 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Mux:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "shoe_rise"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Mux:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0.5 ),
+"update": 0,
+"values": [ Vector2( 1157, 884 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Mux:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="DynamicFontData" id=18]
+font_path = "res://Assets/1_Visual/z_Fonts/D-DINExp-Bold.otf"
+
+[sub_resource type="DynamicFont" id=16]
+size = 40
+font_data = SubResource( 18 )
+
+[sub_resource type="Theme" id=15]
+default_font = SubResource( 16 )
+
+[sub_resource type="DynamicFontData" id=19]
+font_path = "res://Assets/1_Visual/z_Fonts/D-DINExp-Bold.otf"
+
+[sub_resource type="DynamicFont" id=20]
+size = 15
+font_data = SubResource( 19 )
+
+[sub_resource type="Theme" id=17]
+default_font = SubResource( 20 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 26
+font_data = SubResource( 18 )
+
+[sub_resource type="Theme" id=23]
+default_font = SubResource( 22 )
+
+[sub_resource type="DynamicFont" id=24]
+font_data = SubResource( 18 )
+
+[sub_resource type="Theme" id=25]
+default_font = SubResource( 24 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 35, 58 )
+
+[sub_resource type="CanvasItemMaterial" id=33]
+light_mode = 1
+
+[sub_resource type="Animation" id=28]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "loading"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.379103 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0957567, 0.276168, 0.377476 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.509804 ), Color( 1, 1, 1, 0.521569 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="playerUI" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+ammo_img_4 = ExtResource( 8 )
+ammo_img_3 = ExtResource( 9 )
+ammo_img_2 = ExtResource( 7 )
+ammo_img_1 = ExtResource( 10 )
+clickable_ammo = ExtResource( 6 )
+denied_ammo_fade_component = NodePath("Denied/FadeComponent")
+
+[node name="Mux2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1048, 659 )
+scale = Vector2( 0.20559, 0.20559 )
+texture = ExtResource( 15 )
+
+[node name="dropMagButton" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0.407843 )
+margin_left = 77.0
+margin_top = 641.0
+margin_right = 227.0
+margin_bottom = 791.0
+rect_rotation = 270.0
+rect_scale = Vector2( 0.124827, 0.21387 )
+focus_mode = 0
+texture_hover = ExtResource( 16 )
+
+[node name="mags" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.533333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 97.3035
+margin_top = 569.393
+margin_right = 97.3035
+margin_bottom = 569.393
+mouse_filter = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="popup" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="popup_icon" type="Sprite" parent="popup"]
+modulate = Color( 1, 1, 1, 0.803922 )
+position = Vector2( 1255.28, 625.984 )
+texture = ExtResource( 19 )
+offset = Vector2( -177.247, 1.30481 )
+
+[node name="Label" type="Label" parent="popup"]
+margin_left = 1094.14
+margin_top = 621.847
+margin_right = 1173.14
+margin_bottom = 635.847
+rect_pivot_offset = Vector2( 161.144, 4.13635 )
+align = 2
+
+[node name="tapeFoundAudio" type="AudioStreamPlayer" parent="popup"]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="popup"]
+anims/RESET = SubResource( 4 )
+anims/dutiful_citizen_achievement = SubResource( 7 )
+anims/newspaper_found = SubResource( 26 )
+anims/plants_cleared_achievement = SubResource( 13 )
+anims/scarf_found = SubResource( 21 )
+anims/snack_found = SubResource( 5 )
+anims/tape_found = SubResource( 1 )
+
+[node name="staminaBar" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="BlueHeart" type="TextureProgress" parent="staminaBar"]
+visible = false
+margin_left = 631.0
+margin_top = 660.0
+margin_right = 671.0
+margin_bottom = 700.0
+rect_scale = Vector2( 0.5, 0.5 )
+value = 100.0
+rounded = true
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leftStaminaBar" type="TextureProgress" parent="staminaBar"]
+modulate = Color( 1, 1, 1, 0.235294 )
+margin_left = 380.222
+margin_top = 690.095
+margin_right = 580.222
+margin_bottom = 710.095
+rect_scale = Vector2( 1.3, 0.504 )
+step = 0.0
+value = 48.78
+texture_progress = ExtResource( 2 )
+fill_mode = 1
+
+[node name="rightStaminaBar" type="TextureProgress" parent="staminaBar"]
+modulate = Color( 1, 1, 1, 0.235294 )
+margin_left = 640.0
+margin_top = 690.226
+margin_right = 840.0
+margin_bottom = 710.226
+rect_scale = Vector2( 1.3, 0.504 )
+step = 0.0
+value = 50.0
+texture_progress = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="staminaBar"]
+anims/danger = SubResource( 2 )
+anims/exploration = SubResource( 11 )
+__meta__ = {
+"_editor_description_": "Red: d34242"
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="staminaBar"]
+anims/RESET = SubResource( 12 )
+anims/show_to_hide = SubResource( 3 )
+
+[node name="snackProgressBar" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="leftSnackProgressBar" type="TextureProgress" parent="snackProgressBar"]
+modulate = Color( 1, 1, 1, 0.235294 )
+margin_left = 380.222
+margin_top = 690.095
+margin_right = 580.222
+margin_bottom = 710.095
+rect_scale = Vector2( 1.3, 0.504 )
+step = 0.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+fill_mode = 1
+
+[node name="rightSnackProgressBar" type="TextureProgress" parent="snackProgressBar"]
+modulate = Color( 1, 1, 1, 0.235294 )
+margin_left = 640.0
+margin_top = 690.226
+margin_right = 840.0
+margin_bottom = 710.226
+rect_scale = Vector2( 1.3, 0.504 )
+step = 0.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="snackProgressBar"]
+anims/danger = SubResource( 29 )
+anims/exploration = SubResource( 30 )
+__meta__ = {
+"_editor_description_": "Red: d34242"
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="snackProgressBar"]
+anims/RESET = SubResource( 31 )
+anims/show_to_hide = SubResource( 32 )
+
+[node name="shoes" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shoes"]
+root_node = NodePath("../Shoes")
+anims/RESET = SubResource( 9 )
+anims/shoe = SubResource( 8 )
+anims/shoe_rise = SubResource( 10 )
+
+[node name="Shoes" type="Sprite" parent="shoes"]
+modulate = Color( 1, 1, 1, 0.141176 )
+position = Vector2( 1220, 668 )
+scale = Vector2( 0.256096, 0.256096 )
+texture = ExtResource( 11 )
+
+[node name="Mux" type="Sprite" parent="shoes"]
+position = Vector2( 0, 900 )
+scale = Vector2( 0.20559, 0.20559 )
+texture = ExtResource( 15 )
+
+[node name="debugLabel" type="Node2D" parent="."]
+visible = false
+
+[node name="debuglabel" type="Label" parent="debugLabel"]
+modulate = Color( 1, 1, 1, 0.270588 )
+margin_left = 403.0
+margin_top = 104.0
+margin_right = 871.0
+margin_bottom = 149.0
+rect_pivot_offset = Vector2( 234, 23 )
+theme = SubResource( 15 )
+text = "PUBLIC DEBUG BUILD"
+align = 1
+
+[node name="debuglabel2" type="Label" parent="debugLabel"]
+modulate = Color( 1, 1, 1, 0.270588 )
+margin_left = 512.0
+margin_top = 146.0
+margin_right = 762.0
+margin_bottom = 191.0
+theme = SubResource( 17 )
+text = "not for final release wonk wonk"
+align = 1
+
+[node name="debugLabel2" type="Node2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.411765 )
+
+[node name="playerStuck" type="Label" parent="debugLabel2"]
+margin_left = 493.0
+margin_top = 85.0
+margin_right = 795.0
+margin_bottom = 114.0
+theme = SubResource( 23 )
+text = "uh, you're probably stuck"
+
+[node name="debugUnstuck" type="Label" parent="debugLabel2"]
+margin_left = 338.0
+margin_top = 122.0
+margin_right = 966.0
+margin_bottom = 177.0
+theme = SubResource( 25 )
+text = "You can press `F5` to open debug mode, then 'F' to teleport.
+"
+align = 1
+
+[node name="OneHandReminder" parent="." instance=ExtResource( 22 )]
+
+[node name="snackProgressBarTest" parent="." instance=ExtResource( 18 )]
+visible = false
+modulate = Color( 0.662745, 0.827451, 0.937255, 0.341176 )
+margin_left = 53.0
+margin_top = 519.0
+margin_right = 93.0
+margin_bottom = 559.0
+mouse_filter = 2
+value = 73.0
+tint_under = Color( 1, 1, 1, 0.572549 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+visible = false
+position = Vector2( 576, 225 )
+collision_layer = 2147483648
+collision_mask = 2147483648
+input_pickable = true
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 6 )
+
+[node name="Icons1" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( -1, 3 )
+texture = ExtResource( 13 )
+
+[node name="Loading" type="Node2D" parent="."]
+position = Vector2( 1212, 619 )
+
+[node name="noAutoSave" type="Sprite" parent="Loading"]
+self_modulate = Color( 1, 1, 1, 0.258824 )
+material = SubResource( 33 )
+position = Vector2( 0, -1 )
+texture = ExtResource( 21 )
+
+[node name="SaveLoading" type="Sprite" parent="Loading"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loading"]
+root_node = NodePath("../SaveLoading")
+anims/RESET = SubResource( 28 )
+anims/loading = SubResource( 27 )
+
+[node name="visual" type="Control" parent="Loading"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1212.0
+margin_top = -619.0
+margin_right = -1212.0
+margin_bottom = -619.0
+mouse_filter = 2
+
+[node name="TabLayer" type="CanvasLayer" parent="Loading/visual"]
+layer = 128
+
+[node name="Tab" type="Control" parent="Loading/visual/TabLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ActionIcon" type="TextureRect" parent="Loading/visual/TabLayer/Tab"]
+margin_left = 448.0
+margin_top = 843.0
+margin_right = 488.0
+margin_bottom = 883.0
+rect_min_size = Vector2( 40, 0 )
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 24 )
+action_name = "ui_r"
+
+[node name="exclaimPopup" parent="." instance=ExtResource( 23 )]
+modulate = Color( 0.827451, 0.258824, 0.458824, 1 )
+position = Vector2( 640, 676 )
+
+[node name="PopupText" parent="." instance=ExtResource( 26 )]
+position = Vector2( 653, 154 )
+
+[node name="Denied" type="Node2D" parent="."]
+
+[node name="FadeComponent" parent="Denied" instance=ExtResource( 27 )]
+actor = NodePath("..")
+is_on_start_fade = true
+
+[node name="Ammo4Full" type="Sprite" parent="Denied"]
+modulate = Color( 1.76863, 0.380392, 0.380392, 0.752941 )
+position = Vector2( 97.2358, 588 )
+rotation = 0.261799
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 8 )
+
+[node name="Ammo4Full2" type="Sprite" parent="Denied"]
+modulate = Color( 1.76863, 0.380392, 0.380392, 0.752941 )
+position = Vector2( 132.236, 588 )
+rotation = 0.261799
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 8 )
+
+[connection signal="pressed" from="dropMagButton" to="." method="_on_dropMagButton_pressed"]
+[connection signal="input_event" from="KinematicBody2D" to="KinematicBody2D" method="_on_KinematicBody2D_input_event"]
+[connection signal="mouse_entered" from="KinematicBody2D" to="KinematicBody2D" method="_on_KinematicBody2D_mouse_entered"]

@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/Menu/Themes/DiBS_Theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Src/Menu/RestartScreen.gd" type="Script" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/shadowgradient.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 2 )
+
+[node name="MainPauseScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 126.385 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.705882 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 286.0
+margin_top = 178.0
+margin_right = 960.0
+margin_bottom = 375.0
+theme = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]
+Restart Game?
+
+[/center]"
+text = "
+Restart Game?
+
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 371.0
+margin_top = 278.0
+margin_right = 867.0
+margin_bottom = 465.0
+theme = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]
+She files the report and calls it a day. 
+
+SAVE PROGRESS WILL BE LOST.
+[/center]"
+text = "
+She files the report and calls it a day. 
+
+SAVE PROGRESS WILL BE LOST.
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 391.0
+margin_top = 436.0
+margin_right = 938.0
+margin_bottom = 490.0
+custom_constants/separation = 100
+
+[node name="RestartButton" type="Button" parent="HBoxContainer"]
+margin_right = 189.0
+margin_bottom = 54.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "RESTART"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadowgradient" type="Sprite" parent="HBoxContainer/RestartButton"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( -12.4906, 25.5093 )
+rotation = -1.57197
+scale = Vector2( 1.53329, 1.53329 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient2" type="Sprite" parent="HBoxContainer/RestartButton"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 168.18, 25.7087 )
+rotation = 1.57281
+scale = Vector2( 1.53329, 1.53329 )
+texture = ExtResource( 5 )
+
+[node name="CancelButton" type="Button" parent="HBoxContainer"]
+margin_left = 289.0
+margin_right = 458.0
+margin_bottom = 54.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "CANCEL"
+flat = true
+align = 2
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shadowgradient" type="Sprite" parent="HBoxContainer/CancelButton"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( -12.4906, 25.5093 )
+rotation = -1.57197
+scale = Vector2( 1.53329, 1.53329 )
+texture = ExtResource( 5 )
+
+[node name="shadowgradient2" type="Sprite" parent="HBoxContainer/CancelButton"]
+modulate = Color( 0.313726, 0.301961, 0.301961, 1 )
+show_behind_parent = true
+position = Vector2( 168.18, 25.7087 )
+rotation = 1.57281
+scale = Vector2( 1.53329, 1.53329 )
+texture = ExtResource( 5 )
+
+[connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

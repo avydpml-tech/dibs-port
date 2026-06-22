@@ -1,0 +1,303 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Src/Menu/Themes/interact_ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/1_Visual/smug_loaf.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/labs/computer.png" type="Texture" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/UI/HandfanMenu/subtypes/interact_activate_tired_boss.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/Environment/fade_room.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Interactables/roofAmmo.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/UI/HandfanMenu/HandfanMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Entities/Nonplayer/f_boss/f_boss.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/component/fade_component.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/UI/HandfanMenu/subtypes/interact_boss_door.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/Environment/boss_door.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Src/UI/HandfanMenu/subtypes/interact_give_boss_broom.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Src/UI/HandfanMenu/subtypes/interact_exit.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/1_Visual/3_Background/black 128.png" type="Texture" id=21]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_boss/export/rolled_newspaper.png" type="Texture" id=22]
+[ext_resource path="res://Src/1_World/1_zones/Lab/BossStage/bossStage.gd" type="Script" id=23]
+
+[sub_resource type="Animation" id=3]
+resource_name = "New"
+length = 3.0
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 120
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = SubResource( 11 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[node name="bossStage" type="Node2D" groups=["boss_stage"]]
+position = Vector2( -439, -16 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [ -308.0, 323.0 ]
+}
+day_or_night = "light"
+boss_inst = NodePath("boss")
+tired_boss_background = NodePath("Background/background/WallBlueLight")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/New = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Health" type="CanvasLayer" parent="."]
+
+[node name="NewspaperHitCount" type="Node2D" parent="Health"]
+modulate = Color( 1, 1, 1, 0.423529 )
+position = Vector2( 0, 17 )
+
+[node name="RolledNewspaper" type="Sprite" parent="Health/NewspaperHitCount"]
+position = Vector2( 576, 584 )
+rotation = 0.301028
+texture = ExtResource( 22 )
+
+[node name="RolledNewspaper2" type="Sprite" parent="Health/NewspaperHitCount"]
+position = Vector2( 641.458, 584 )
+rotation = 0.301028
+texture = ExtResource( 22 )
+
+[node name="RolledNewspaper3" type="Sprite" parent="Health/NewspaperHitCount"]
+position = Vector2( 705, 584 )
+rotation = 0.301028
+texture = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="Health"]
+modulate = Color( 1, 1, 1, 0.423529 )
+margin_left = 67.0
+margin_top = 17.0
+margin_right = 284.0
+margin_bottom = 159.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 12 )
+text = "WIP"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="background" type="Node2D" parent="Background"]
+position = Vector2( 4901.54, 0 )
+
+[node name="computer" parent="Background/background" instance=ExtResource( 14 )]
+position = Vector2( -3710.54, 409 )
+
+[node name="LightForBossOnly" parent="Background/background" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -4848.54, 329 )
+scale = Vector2( 3.3602, 2.68291 )
+color = Color( 0.458824, 0.419608, 0.419608, 1 )
+energy = 2.0
+range_item_cull_mask = 1047616
+shadow_enabled = true
+
+[node name="big9" parent="Background/background" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -4848.54, 329 )
+scale = Vector2( 3.3602, 2.68291 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+energy = 2.0
+range_item_cull_mask = 1047553
+shadow_enabled = true
+
+[node name="wall" type="TileMap" parent="Background/background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -80 )
+scale = Vector2( 2, 2.3 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65517, 28, 0, 65518, 28, 0, 131046, 29, 0, 131047, 29, 0, 131048, 29, 0, 131049, 29, 0, 131050, 29, 0, 131051, 29, 0, 131052, 29, 0, 131053, 29, 0, 131054, 29, 0, 131055, 29, 0, 131056, 29, 0, 131057, 29, 0, 131058, 29, 0, 131059, 29, 0, 131060, 29, 0, 131061, 29, 0, 131062, 29, 0, 196592, 28, 0, 262128, 28, 0, 196610, 8, 0, 196611, 8, 0, 196612, 8, 0, 196613, 536870918, 0, 196615, 6, 0, 196616, 8, 0, 196617, 8, 0, 262151, 6, 0, 262152, 8, 0, 262153, 536870920, 0, 262154, 1073741831, 0, 393214, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 536870920, 0, 327690, 1073741831, 0 )
+
+[node name="WallBlueLight" type="TileMap" parent="Background/background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -80 )
+scale = Vector2( 2, 2.3 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65517, 28, 0, 65518, 28, 0, 131046, 37, 0, 131047, 37, 0, 131048, 37, 0, 131049, 37, 0, 131050, 37, 0, 131051, 37, 0, 131052, 37, 0, 131053, 37, 0, 131054, 37, 0, 131055, 37, 0, 131056, 37, 0, 131057, 37, 0, 131058, 37, 0, 131059, 37, 0, 131060, 37, 0, 131061, 37, 0, 131062, 37, 0, 196592, 28, 0, 262128, 28, 0, 196610, 8, 0, 196611, 8, 0, 196612, 8, 0, 196613, 536870918, 0, 196615, 6, 0, 196616, 8, 0, 196617, 8, 0, 262151, 6, 0, 262152, 8, 0, 262153, 536870920, 0, 262154, 1073741831, 0, 393214, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 536870920, 0, 327690, 1073741831, 0 )
+
+[node name="FadeComponent" parent="Background/background/WallBlueLight" instance=ExtResource( 15 )]
+actor = NodePath("..")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.584314, 0.615686, 0.709804, 1 )
+
+[node name="Computer" type="Sprite" parent="."]
+position = Vector2( 503, -130 )
+texture = ExtResource( 3 )
+
+[node name="ceiling lights5" parent="Computer" instance=ExtResource( 5 )]
+position = Vector2( 860, 496 )
+scale = Vector2( 4.88468, 1.10066 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+energy = 2.0
+range_item_cull_mask = 1047617
+shadow_enabled = true
+
+[node name="lightsPlayerOnly" parent="Computer" instance=ExtResource( 5 )]
+position = Vector2( 886, 592 )
+scale = Vector2( 2.30054, 0.51838 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+range_item_cull_mask = 1047554
+shadow_enabled = true
+
+[node name="boss" parent="." instance=ExtResource( 12 )]
+light_mask = 0
+position = Vector2( 9, 475 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1178, 451 )
+
+[node name="SmugLoaf" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -444, -37 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 2 )
+
+[node name="Transition_point" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 4674, 1300 )
+scale = Vector2( 8.90649, 1.17048 )
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Park/Stage-Labs.tscn"
+where_is_exit_point = "computer"
+turn_off_music = true
+
+[node name="AmmoPlacementPos" type="Position2D" parent="."]
+visible = false
+position = Vector2( 18, 245 )
+
+[node name="RoofAmmo" parent="." instance=ExtResource( 9 )]
+position = Vector2( 282, 231 )
+scale = Vector2( 2.58, 2 )
+light_energy_amount = 7
+
+[node name="RoofAmmo2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -317, 231 )
+scale = Vector2( 2.58, 2 )
+light_energy_amount = 7
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BlackBackground2" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/BlackBackground2"]
+position = Vector2( 730.43, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="lights" type="Node2D" parent="."]
+
+[node name="FadeComponent" parent="lights" instance=ExtResource( 15 )]
+actor = NodePath("../../Background/background/WallBlueLight")
+
+[node name="ceiling lights" parent="lights" groups=["tired_boss_lights"] instance=ExtResource( 5 )]
+position = Vector2( -368, 483 )
+scale = Vector2( 4.65207, 1.04825 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+energy = 2.0
+range_item_cull_mask = 1047619
+shadow_enabled = true
+is_on_start_fade = true
+
+[node name="ceiling lights2" parent="lights" groups=["tired_boss_lights"] instance=ExtResource( 5 )]
+position = Vector2( 496, 467 )
+scale = Vector2( 4.65207, 1.04825 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+energy = 2.0
+range_item_cull_mask = 1047619
+shadow_enabled = true
+is_on_start_fade = true
+
+[node name="ceiling lights3" parent="lights" groups=["tired_boss_lights"] instance=ExtResource( 5 )]
+position = Vector2( 568, 252 )
+scale = Vector2( 4.65207, 1.04825 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+energy = 3.0
+range_item_cull_mask = 1047619
+shadow_enabled = true
+is_on_start_fade = true
+
+[node name="ceiling lights4" parent="lights" groups=["tired_boss_lights"] instance=ExtResource( 5 )]
+position = Vector2( -422, 274 )
+scale = Vector2( 8.02646, 0.661138 )
+color = Color( 0.32549, 0.65098, 0.760784, 1 )
+energy = 3.0
+range_item_cull_mask = 1047619
+shadow_enabled = true
+is_on_start_fade = true
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="BossDoor" parent="Foreground" instance=ExtResource( 18 )]
+position = Vector2( 849, 345 )
+is_open = false
+
+[node name="HandfanMenu" parent="Foreground" instance=ExtResource( 10 )]
+position = Vector2( 1344, 421 )
+options_packed_scenes = [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 20 ) ]
+
+[node name="BossFanMenu" parent="Foreground" instance=ExtResource( 10 )]
+position = Vector2( 49, 412 )
+options_packed_scenes = [ ExtResource( 19 ) ]
+
+[node name="Black128" type="Sprite" parent="Foreground"]
+position = Vector2( 862, 13.5 )
+scale = Vector2( 1, 3.10156 )
+texture = ExtResource( 21 )
+
+[node name="ceiling" type="TileMap" parent="Foreground"]
+modulate = Color( 0.282353, 0.282353, 0.282353, 1 )
+position = Vector2( 4901.54, -30 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65510, 6, 0, 65511, 6, 0, 65512, 6, 0, 65513, 6, 0, 65514, 6, 0, 65515, 6, 0, 65516, 6, 0, 65517, 6, 0, 65518, 6, 0, 65519, 6, 0, 65520, 6, 0, 65521, 6, 0, 65522, 6, 0, 65523, 6, 0, 65524, 6, 0 )
+
+[node name="Floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.282353, 0.282353, 0.282353, 1 )
+position = Vector2( 4901.54, 0 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131046, 6, 0, 131047, 6, 0, 131048, 6, 0, 131049, 6, 0, 131050, 6, 0, 131051, 6, 0, 131052, 6, 0, 131053, 6, 0, 131054, 6, 0, 131055, 6, 0, 131056, 6, 0, 131057, 6, 0, 131058, 6, 0, 131059, 6, 0, 131060, 6, 0, 131061, 6, 0 )
+
+[node name="FadeRoom" parent="Foreground" instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0.937255 )
+position = Vector2( 843, 361 )
+is_open = false
+
+[node name="big" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 939, 232 )
+shadow_enabled = true
+
+[node name="ammo" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1090, 409 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="tired_boss_bg_set" from="." to="Background/background/WallBlueLight/FadeComponent" method="fade"]
+[connection signal="tired_boss_bg_set" from="." to="lights/FadeComponent" method="fade"]
+[connection signal="boss_reading_entered" from="boss" to="Foreground/BossFanMenu" method="enable_menu"]
+[connection signal="boss_reading_exited" from="boss" to="Foreground/BossFanMenu" method="disable_menu"]

@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Src/Entities/Player/playerProjectiles/bulletProj.gd" type="Script" id=1]
+[ext_resource path="res://Src/Entities/Player/playerProjectiles/blue-swoosh.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Audio/sfx/weapon_sounds/1_final/hit/enemy_hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/1_Audio/sfx/weapon_sounds/1_final/hit/unsatisfying_hit.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=5]
+[ext_resource path="res://Src/Shaders/glow.shader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 6 )
+shader_param/radius = 12.465
+shader_param/amount = 0.573
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 25.2786, 3.27321 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 7.81567
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.977011, 0.670455 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.196078, 0.513726, 0.882353, 0.282353, 0.158447, 0.164467, 0.171875, 0.0352941 )
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 0.87297, 0.882353, 0.196078, 0.282353, 0.158447, 0.164467, 0.171875, 0.0352941 )
+
+[node name="bulletProj" type="Area2D"]
+material = SubResource( 1 )
+position = Vector2( -17.2221, 0 )
+collision_layer = 0
+collision_mask = 3072
+script = ExtResource( 1 )
+SPEED = 2400.0
+time_duration = 1.5
+
+[node name="selfArea" type="Area2D" parent="."]
+position = Vector2( 12.2221, 0 )
+collision_layer = 0
+collision_mask = 3073
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="selfArea"]
+position = Vector2( 1.2995, 0.899582 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 21.2221, 0.255774 )
+shape = SubResource( 4 )
+
+[node name="visualFluff" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2( 1.19209e-07, 0 )
+scale = Vector2( 1.37094, 1.33378 )
+
+[node name="Light2D" type="Light2D" parent="visualFluff"]
+use_parent_material = true
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 5 )
+color = Color( 0.627451, 0.866667, 0.921569, 1 )
+
+[node name="Light2D2" type="Light2D" parent="visualFluff"]
+use_parent_material = true
+scale = Vector2( 0.430024, 0.430024 )
+texture = ExtResource( 5 )
+color = Color( 0.054902, 0.054902, 0.403922, 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="visualFluff"]
+position = Vector2( 13.1728, 0.459427 )
+scale = Vector2( 0.134294, 0.0695556 )
+amount = 20
+lifetime = 0.4
+local_coords = false
+gravity = Vector2( 0, -300 )
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+tangential_accel_random = 1.0
+scale_amount = 10.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 6 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="visualFluff"]
+position = Vector2( 12.7964, 0.608536 )
+scale = Vector2( 0.134294, 0.0695556 )
+emitting = false
+amount = 20
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 0.45
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 60.36
+gravity = Vector2( 0, -300 )
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+tangential_accel_random = 1.0
+scale_amount = 10.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 5 )
+color_ramp = SubResource( 7 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="visualFluff"]
+visible = false
+position = Vector2( -8.69542e-08, 0 )
+scale = Vector2( 0.729427, 0.749749 )
+
+[node name="projectileSprite" type="Sprite" parent="visualFluff"]
+use_parent_material = true
+position = Vector2( 0.325469, 0.169393 )
+rotation = 1.5708
+scale = Vector2( 0.138036, 0.0676703 )
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="enemyHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 10.0
+bus = "SFX"
+
+[node name="unsatisfying" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[connection signal="body_entered" from="selfArea" to="." method="_on_selfArea_body_entered"]
+[connection signal="screen_exited" from="visualFluff/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

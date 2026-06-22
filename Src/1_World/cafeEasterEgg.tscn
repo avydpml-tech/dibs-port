@@ -1,0 +1,215 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Src/1_World/cafeEasterEgg.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/smug_loaf.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/download.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/cafe/park_greyscale_test.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/3_Background/cafe/moxpressions2.png" type="Texture" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/3_Background/cafe/mox_doodles.png" type="Texture" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Assets/1_Visual/3_Background/cafe/krita_moxies.png" type="Texture" id=9]
+[ext_resource path="res://Assets/1_Visual/3_Background/cafe/mox_attires.png" type="Texture" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/MiscScenes/creatureSpawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/1_Visual/3_Background/cafe/cafe_screenshot.png" type="Texture" id=14]
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/f_wolf/woof - 2022-02-01 03-17-38.png" type="Texture" id=15]
+[ext_resource path="res://Src/Shaders/blur.shader" type="Shader" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 16 )
+shader_param/radius = 1.998
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[node name="debugArena2" type="Node2D"]
+script = ExtResource( 1 )
+stage_music = "m_cafe_jazz"
+
+[node name="Transition_point3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 164, 424 )
+scale = Vector2( 0.469612, 0.469612 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_04-StunFun.tscn"
+where_is_exit_point = "right"
+turn_off_music = true
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="background" type="Node2D" parent="Background"]
+position = Vector2( 4901.54, 0 )
+
+[node name="Floor" type="TileMap" parent="Background/background"]
+modulate = Color( 0.282353, 0.282353, 0.282353, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -196607, 8, 0, -131071, 8, 0, -65535, 8, 0, -65529, 8, 0, 65513, 8, 0, 65514, 8, 0, 65515, 8, 0, 65516, 8, 0, 65521, 8, 0, 65522, 8, 0, 65523, 8, 0, 65524, 8, 0, 65525, 8, 0, 65526, 8, 0, 65527, 8, 0, 65528, 8, 0, 65529, 8, 0, 65530, 8, 0, 65531, 8, 0, 65532, 8, 0, 65533, 8, 0, 65535, 8, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 7, 8, 0, 131050, 8, 0, 131051, 8, 0, 131052, 8, 0, 131053, 8, 0, 131054, 8, 0, 131055, 8, 0, 131056, 8, 0, 131057, 8, 0, 131058, 8, 0, 131059, 8, 0, 131060, 8, 0, 131061, 8, 0, 131062, 8, 0, 131063, 8, 0, 131064, 8, 0, 131065, 8, 0, 131066, 8, 0, 131067, 8, 0, 131068, 8, 0, 131069, 8, 0, 131070, 8, 0, 131071, 8, 0, 65536, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 65544, 8, 0, 65545, 8, 0 )
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+margin_left = -227.0
+margin_top = 266.0
+margin_right = -108.0
+margin_bottom = 362.0
+rect_pivot_offset = Vector2( -690, 378 )
+mouse_filter = 2
+color = Color( 0.298039, 0.298039, 0.298039, 1 )
+
+[node name="Node2D" type="Node2D" parent="Background"]
+
+[node name="Label3" type="Label" parent="Background/Node2D"]
+margin_left = 1379.0
+margin_top = 346.0
+margin_right = 1583.0
+margin_bottom = 428.0
+rect_pivot_offset = Vector2( 102, 6 )
+text = "Oh well. Have some rando stuff"
+
+[node name="CafeScreenshot" type="Sprite" parent="Background/Node2D"]
+position = Vector2( 2152, 378 )
+scale = Vector2( 0.259685, 0.259685 )
+texture = ExtResource( 14 )
+
+[node name="KritaMoxies" type="Sprite" parent="Background/Node2D"]
+position = Vector2( 2557.66, 377.086 )
+scale = Vector2( 0.182331, 0.182331 )
+texture = ExtResource( 9 )
+
+[node name="Moxpressions2" type="Sprite" parent="Background/Node2D"]
+position = Vector2( 3317, 368 )
+scale = Vector2( 0.164934, 0.164934 )
+texture = ExtResource( 5 )
+
+[node name="MoxDoodles" type="Sprite" parent="Background/Node2D"]
+position = Vector2( 2959, 273 )
+scale = Vector2( 0.245386, 0.245386 )
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Node2D"]
+margin_left = 3515.66
+margin_top = 271.086
+margin_right = 5515.66
+margin_bottom = 1271.09
+rect_scale = Vector2( 2, 2 )
+bbcode_enabled = true
+bbcode_text = "[rainbow sat=.5
+s][wave] 
+WOOOOO
+ RAINBOW
+:D"
+text = " 
+WOOOOO
+ RAINBOW
+:D"
+scroll_active = false
+
+[node name="ParkGreyscaleTest" type="Sprite" parent="Background/Node2D"]
+position = Vector2( 4817.66, 353.086 )
+scale = Vector2( 0.383063, 0.383063 )
+texture = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="Background/Node2D"]
+margin_left = 5130.0
+margin_top = 339.0
+margin_right = 5468.0
+margin_bottom = 421.0
+text = "That's the end for now. You should head back to the game."
+
+[node name="MoxAttires" type="Sprite" parent="Background/Node2D"]
+position = Vector2( 4048, 280 )
+scale = Vector2( 0.2769, 0.2769 )
+texture = ExtResource( 10 )
+
+[node name="download" type="Sprite" parent="Background"]
+position = Vector2( -166.676, 309.034 )
+scale = Vector2( 0.152076, 0.152076 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Background"]
+margin_left = -102.957
+margin_top = 283.869
+margin_right = 101.043
+margin_bottom = 365.869
+text = "Hey 
+
+You're not supposed to be here.
+
+Get back there"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Background"]
+margin_left = 6227.0
+margin_top = 116.0
+margin_right = 8227.0
+margin_bottom = 1115.99
+rect_scale = Vector2( 2, 2 )
+bbcode_enabled = true
+bbcode_text = "[rainbow sat=.5
+s][wave] 
+Hmm
+Most interesting"
+text = " 
+Hmm
+Most interesting"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="monsterSpawner" parent="Background" instance=ExtResource( 12 )]
+position = Vector2( 5672.95, 193.045 )
+mon_name = "walnut"
+interacted_by = "asdasds"
+
+[node name="Button" type="Button" parent="Background"]
+visible = false
+margin_left = 179.962
+margin_top = 457.922
+margin_right = 191.962
+margin_bottom = 477.922
+text = "asdfsadfwer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 197, 362 )
+
+[node name="Woof-2022-02-0103-17-38" type="Sprite" parent="."]
+visible = false
+material = SubResource( 1 )
+position = Vector2( 956, 221 )
+texture = ExtResource( 15 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -11
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = -21.0
+margin_top = -13.0
+margin_right = 1405.0
+margin_bottom = 805.0
+rect_pivot_offset = Vector2( -690, 378 )
+mouse_filter = 2
+color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+
+[node name="Transition_point" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4674, 1300 )
+scale = Vector2( 8.90649, 1.17048 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn"
+where_is_exit_point = "W"
+turn_off_music = true
+
+[node name="SmugLoaf" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -1443, 388 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 2 )
+
+[node name="SmugLoaf2" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 8240, 390 )
+scale = Vector2( 0.64, 0.64 )
+texture = ExtResource( 2 )
+flip_h = true

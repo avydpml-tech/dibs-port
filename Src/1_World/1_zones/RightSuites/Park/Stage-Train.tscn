@@ -1,0 +1,703 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/white-bar-thin.png" type="Texture" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/white-bar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/trainstation/train_segments/train_car_interior.png" type="Texture" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/1_Visual/3_Background/trainstation/train_segments/train_front_interior.png" type="Texture" id=11]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_shieldmon/f_shieldmon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Interactables/universalLightSwitch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Src/Interactables/doorSwitch.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_walnut/f_walnut.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/Shaders/ColorSwap/gradientMapShader.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_tit_hugger/f_tit_hugger.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=20]
+[ext_resource path="res://Src/Interactables/cinemaTapes.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Src/1_World/1_zones/RightSuites/Park/Stage-Train.gd" type="Script" id=22]
+[ext_resource path="res://Src/Interactables/seat.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_noodle/f_noodle.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Assets/1_Visual/3_Background/trainstation/train_segments/train_door_outline.png" type="Texture" id=25]
+[ext_resource path="res://Assets/1_Visual/3_Background/Lamp 1.png" type="Texture" id=26]
+[ext_resource path="res://Assets/1_Audio/sfx/ui/infobleep.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Assets/1_Audio/sfx/train/train_slow_down.ogg" type="AudioStream" id=28]
+[ext_resource path="res://Assets/1_Audio/sfx/train/train.ogg" type="AudioStream" id=29]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/ParallaxBackground/Midground:motion_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "slow_down_parallax_light"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/ParallaxBackground/Midground:motion_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5000, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "start_parallax_light"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/ParallaxBackground/Midground:motion_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5000, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "very_fast_light"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/ParallaxBackground/Midground:motion_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5000, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ParallaxBackground/Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ParallaxBackground/Background:motion_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Control2/gradientMap:material:shader_param/mix_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "start_train"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ParallaxBackground/Background:motion_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2000, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control2/gradientMap:material:shader_param/mix_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.903 ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=7]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 119, 107 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.027451, 0.027451, 0.027451, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../cockpitStatic3/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 0.027451, 0.027451, 0.027451, 1 ), Color( 0.027451, 0.027451, 0.027451, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../cockpitStatic3/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 38, 69.75 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 59, 69.75 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.137255 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 22 )
+day_or_night = "light"
+stage_music = "NULL"
+train_time = 20.0
+
+[node name="TrainTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="ParallaxLights" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ParallaxBG")
+anims/RESET = SubResource( 4 )
+anims/slow_down_parallax_light = SubResource( 8 )
+anims/start_parallax_light = SubResource( 3 )
+anims/very_fast_light = SubResource( 5 )
+
+[node name="ParallaxBG" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/start_train = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="Background" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="TileMap7" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.164706, 0.164706, 0.164706, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -196613, 13, 0, -196612, 13, 0, -196611, 13, 0, -196610, 13, 0, -196609, 13, 0, -262144, 13, 0, -262143, 13, 0, -262142, 13, 0, -262141, 13, 0, -262140, 13, 0, -262139, 13, 0, -262138, 13, 0, -262137, 13, 0, -262136, 13, 0, -262135, 13, 0, -262134, 13, 0, -131077, 13, 0, -131076, 13, 0, -131075, 13, 0, -131074, 13, 0, -131073, 13, 0, -196608, 13, 0, -196607, 13, 0, -196606, 13, 0, -196605, 13, 0, -196604, 13, 0, -196603, 13, 0, -196602, 13, 0, -196601, 13, 0, -196600, 20, 0, -196599, 20, 0, -196598, 20, 0, -196597, 20, 0, -196596, 20, 0, -196595, 20, 0, -196594, 20, 0, -196593, 20, 0, -196592, 20, 0, -65541, 13, 0, -65540, 13, 0, -65539, 13, 0, -65538, 13, 0, -65537, 13, 0, -131072, 13, 0, -131071, 13, 0, -131070, 13, 0, -131069, 13, 0, -131068, 13, 0, -131067, 13, 0, -131066, 13, 0, -131065, 13, 0, -131064, 20, 0, -131063, 20, 0, -131062, 20, 0, -131061, 20, 0, -131060, 20, 0, -131059, 20, 0, -131058, 20, 0, -131057, 20, 0, -131056, 20, 0, -5, 13, 0, -4, 13, 0, -3, 13, 0, -2, 13, 0, -1, 13, 0, -65536, 13, 0, -65535, 13, 0, -65534, 13, 0, -65533, 13, 0, -65532, 13, 0, -65531, 13, 0, -65530, 13, 0, -65529, 13, 0, -65528, 20, 0, -65527, 20, 0, -65526, 20, 0, -65525, 20, 0, -65524, 20, 0, -65523, 20, 0, -65522, 20, 0, -65521, 20, 0, -65520, 20, 0, 65530, 1, 0, 65531, 13, 0, 65532, 13, 0, 65533, 13, 0, 65534, 13, 0, 65535, 13, 0, 0, 13, 0, 1, 13, 0, 2, 13, 0, 3, 13, 0, 4, 13, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 20, 0, 9, 20, 0, 10, 20, 0, 11, 20, 0, 12, 20, 0, 13, 20, 0, 14, 20, 0, 15, 20, 0, 16, 20, 0, 131067, 13, 0, 131068, 13, 0, 131069, 13, 0, 131070, 13, 0, 131071, 13, 0, 65536, 13, 0, 65537, 13, 0, 65538, 13, 0, 65539, 13, 0, 65540, 13, 0, 65541, 13, 0, 65542, 13, 0, 65543, 13, 0, 65544, 20, 0, 65545, 20, 0, 65546, 20, 0, 65547, 20, 0, 65548, 20, 0, 65549, 20, 0, 65550, 20, 0, 65551, 20, 0, 65552, 20, 0, 196603, 13, 0, 196604, 13, 0, 196605, 13, 0, 196606, 13, 0, 196607, 13, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 0, 131075, 13, 0, 131076, 13, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 20, 0, 131081, 20, 0, 131082, 20, 0, 131083, 20, 0, 131084, 20, 0, 131085, 20, 0, 131086, 20, 0, 131087, 20, 0, 131088, 20, 0, 262139, 13, 0, 262140, 13, 0, 262141, 13, 0, 262142, 13, 0, 262143, 13, 0, 196608, 13, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 13, 0, 196614, 13, 0, 196615, 13, 0, 196616, 20, 0, 196617, 20, 0, 196618, 20, 0, 196619, 20, 0, 196620, 20, 0, 196621, 20, 0, 196622, 20, 0, 196623, 20, 0, 196624, 20, 0, 327675, 13, 0, 327676, 13, 0, 327677, 13, 0, 327678, 13, 0, 327679, 13, 0, 262144, 13, 0, 262145, 13, 0, 262146, 13, 0, 262147, 13, 0, 262148, 20, 0, 262149, 20, 0, 262150, 20, 0, 262151, 20, 0, 262152, 20, 0, 262153, 20, 0, 262154, 20, 0, 262155, 20, 0, 262156, 20, 0, 262157, 20, 0, 262158, 20, 0, 262159, 20, 0, 262160, 20, 0, 393211, 13, 0, 393212, 13, 0, 393213, 13, 0, 393214, 13, 0, 393215, 13, 0, 327680, 13, 0, 327681, 13, 0, 327682, 13, 0, 327683, 13, 0, 327684, 20, 0, 327685, 20, 0, 327686, 20, 0, 327687, 20, 0, 327688, 20, 0, 327689, 20, 0, 327690, 20, 0, 327691, 20, 0, 327692, 20, 0, 327693, 20, 0, 327694, 20, 0, 327695, 20, 0, 327696, 20, 0, 458747, 13, 0, 458748, 13, 0, 458749, 13, 0, 458750, 13, 0, 458751, 13, 0, 393216, 13, 0, 393217, 13, 0, 393218, 13, 0, 393219, 13, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0, 393232, 20, 0, 524283, 13, 0, 524284, 13, 0, 524285, 13, 0, 524286, 13, 0, 524287, 13, 0, 458752, 13, 0, 458753, 13, 0, 458754, 13, 0, 458755, 13, 0, 458756, 20, 0, 458757, 20, 0, 458758, 20, 0, 458759, 20, 0, 458760, 20, 0, 458761, 20, 0, 458762, 20, 0, 458763, 20, 0, 458764, 20, 0, 458765, 20, 0, 458766, 20, 0, 458767, 20, 0, 458768, 20, 0, 524292, 20, 0, 524293, 20, 0, 524294, 20, 0, 524295, 20, 0, 524296, 20, 0, 524297, 20, 0, 524298, 20, 0, 524299, 20, 0, 524300, 20, 0, 524301, 20, 0, 524302, 20, 0, 524303, 20, 0, 524304, 20, 0, 589828, 20, 0, 589829, 20, 0, 589830, 20, 0, 589831, 20, 0, 589832, 20, 0, 589833, 20, 0, 589834, 20, 0, 589835, 20, 0, 589836, 20, 0, 589837, 20, 0, 589838, 20, 0, 589839, 20, 0, 589840, 20, 0, 655364, 20, 0, 655365, 20, 0, 655366, 20, 0, 655367, 20, 0, 655368, 20, 0, 655369, 20, 0, 655370, 20, 0, 655371, 20, 0, 655372, 20, 0, 655373, 20, 0, 655374, 20, 0, 655375, 20, 0, 655376, 20, 0, 720900, 20, 0, 720901, 20, 0, 720902, 20, 0, 720903, 20, 0, 720904, 20, 0, 720905, 20, 0, 720906, 20, 0, 720907, 20, 0, 720908, 20, 0, 720909, 20, 0, 720910, 20, 0, 720911, 20, 0, 720912, 20, 0, 786436, 20, 0, 786437, 20, 0, 786438, 20, 0, 786439, 20, 0, 786440, 20, 0, 786441, 20, 0, 786442, 20, 0, 786443, 20, 0, 786444, 20, 0, 786445, 20, 0, 786446, 20, 0, 786447, 20, 0, 786448, 20, 0, 851972, 20, 0, 851973, 20, 0, 851974, 20, 0, 851975, 20, 0, 851976, 20, 0, 851977, 20, 0, 851978, 20, 0, 851979, 20, 0, 851980, 20, 0, 851981, 20, 0, 851982, 20, 0, 851983, 20, 0, 851984, 20, 0 )
+
+[node name="TileMap5" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.247059, 0.247059, 0.247059, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 24, 0, 1, 13, 0, 2, 17, 0, 3, 17, 0, 4, 2, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0 )
+
+[node name="TileMap6" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 1, 5, 0, 3, 5, 0, 5, 5, 0, 8, 5, 0 )
+
+[node name="Midground" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.4 )
+
+[node name="TileMap5" type="TileMap" parent="CanvasLayer/ParallaxBackground/Midground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -100 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 0, 36, 0, 3, 36, 0, 6, 36, 0, 9, 36, 0, 12, 36, 0, 15, 36, 0, 18, 36, 0, 21, 36, 0, 24, 36, 0, 27, 36, 0 )
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gradientMap" parent="CanvasLayer/Control2" instance=ExtResource( 18 )]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Roof" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, 64.099 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 65544, 8, 0, 65545, 8, 0, 65546, 8, 0, 65547, 8, 0, 65548, 8, 0, 65549, 8, 0, 65550, 8, 0, 65551, 8, 0, 65552, 8, 0, 65553, 8, 0, 65554, 8, 0, 65555, 8, 0, 65556, 8, 0, 65557, 8, 0, 65558, 8, 0, 65559, 8, 0, 65560, 8, 0, 65561, 8, 0, 65562, 8, 0, 65563, 8, 0, 65564, 8, 0, 65565, 8, 0, 65566, 8, 0, 65567, 8, 0, 65568, 8, 0, 65569, 8, 0, 65570, 8, 0, 65571, 8, 0, 65572, 8, 0, 65573, 8, 0, 65574, 8, 0, 65575, 8, 0, 65576, 8, 0, 65577, 8, 0, 65578, 8, 0, 65579, 8, 0, 65580, 8, 0, 65581, 8, 0, 65582, 8, 0, 65583, 8, 0, 65584, 8, 0, 65585, 8, 0 )
+
+[node name="TileMap4" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, 64.099 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -262136, 26, 0, -262135, 26, 0, -262134, 26, 0, -262133, 26, 0, -262132, 26, 0, -262131, 26, 0, -262130, 26, 0, -262129, 26, 0, -262128, 26, 0, -262127, 26, 0, -262126, 26, 0, -262125, 26, 0, -262124, 26, 0, -262123, 26, 0, -262094, 26, 0, -262093, 26, 0, -262092, 26, 0, -262091, 26, 0, -262090, 26, 0, -262089, 26, 0, -262088, 26, 0, -262087, 26, 0, -262086, 26, 0, -196600, 26, 0, -196599, 26, 0, -196598, 26, 0, -196597, 26, 0, -196596, 26, 0, -196595, 26, 0, -196594, 26, 0, -196593, 26, 0, -196592, 26, 0, -196591, 26, 0, -196590, 26, 0, -196589, 26, 0, -196588, 26, 0, -196587, 26, 0, -196573, 26, 0, -196572, 26, 0, -196571, 26, 0, -196570, 26, 0, -196569, 26, 0, -196568, 26, 0, -196567, 26, 0, -196566, 26, 0, -196565, 26, 0, -196564, 26, 0, -196563, 26, 0, -196562, 26, 0, -196561, 26, 0, -196560, 26, 0, -196559, 26, 0, -196558, 26, 0, -196557, 26, 0, -196556, 26, 0, -196555, 26, 0, -196554, 26, 0, -196553, 26, 0, -196552, 26, 0, -196551, 26, 0, -196550, 26, 0, -65546, 26, 0, -65545, 26, 0, -65544, 26, 0, -65543, 26, 0, -65542, 26, 0, -65541, 26, 0, -65540, 26, 0, -65539, 26, 0, -65538, 26, 0, -65537, 26, 0, -131072, 26, 0, -131071, 26, 0, -131070, 26, 0, -131069, 26, 0, -131068, 26, 0, -131067, 26, 0, -131066, 26, 0, -131065, 26, 0, -131064, 26, 0, -131063, 26, 0, -131062, 26, 0, -131061, 26, 0, -131060, 26, 0, -131059, 26, 0, -131058, 26, 0, -131057, 26, 0, -131056, 26, 0, -131055, 26, 0, -131054, 26, 0, -131053, 26, 0, -131052, 26, 0, -131051, 26, 0, -131050, 26, 0, -131049, 26, 0, -131048, 26, 0, -131047, 26, 0, -131046, 26, 0, -131045, 26, 0, -131044, 26, 0, -131043, 26, 0, -131042, 26, 0, -131041, 26, 0, -131040, 26, 0, -131039, 26, 0, -131038, 26, 0, -131037, 26, 0, -131036, 26, 0, -131035, 26, 0, -131034, 26, 0, -131033, 26, 0, -131032, 26, 0, -131031, 26, 0, -131030, 26, 0, -131029, 26, 0, -131028, 26, 0, -131027, 26, 0, -131026, 26, 0, -131025, 26, 0, -131024, 26, 0, -131023, 26, 0, -131022, 26, 0, -131021, 26, 0, -131020, 26, 0, -131019, 26, 0, -131018, 26, 0, -131017, 26, 0, -131016, 26, 0, -131015, 26, 0, -131014, 26, 0, -10, 26, 0, -9, 26, 0, -8, 26, 0, -7, 26, 0, -6, 26, 0, -5, 26, 0, -4, 26, 0, -3, 26, 0, -2, 26, 0, -1, 26, 0, -65536, 26, 0, -65535, 26, 0, -65534, 26, 0, -65533, 26, 0, -65532, 26, 0, -65531, 26, 0, -65530, 26, 0, -65529, 26, 0, -65528, 26, 0, -65527, 26, 0, -65526, 26, 0, -65525, 26, 0, -65524, 26, 0, -65523, 26, 0, -65522, 26, 0, -65521, 26, 0, -65520, 26, 0, -65519, 26, 0, -65518, 26, 0, -65517, 26, 0, -65516, 26, 0, -65515, 26, 0, -65514, 26, 0, -65513, 26, 0, -65512, 26, 0, -65511, 26, 0, -65510, 26, 0, -65509, 26, 0, -65508, 26, 0, -65507, 26, 0, -65506, 26, 0, -65505, 26, 0, -65504, 26, 0, -65503, 26, 0, -65502, 26, 0, -65501, 26, 0, -65500, 26, 0, -65499, 26, 0, -65498, 26, 0, -65497, 26, 0, -65496, 26, 0, -65495, 26, 0, -65494, 26, 0, -65493, 26, 0, -65492, 26, 0, -65491, 26, 0, -65490, 26, 0, -65489, 26, 0, -65488, 26, 0, -65487, 26, 0, -65486, 26, 0, -65485, 26, 0, -65484, 26, 0, -65483, 26, 0, -65482, 26, 0, -65481, 26, 0, -65480, 26, 0, -65479, 26, 0, -65478, 26, 0, 65526, 26, 0, 65527, 26, 0, 65528, 26, 0, 65529, 26, 0, 65530, 26, 0, 65531, 26, 0, 65532, 26, 0, 65533, 26, 0, 65534, 26, 0, 65535, 26, 0, 0, 26, 0, 1, 26, 0, 2, 26, 0, 3, 26, 0, 4, 26, 0, 5, 26, 0, 6, 26, 0, 7, 26, 0, 8, 26, 0, 9, 26, 0, 10, 26, 0, 11, 26, 0, 12, 26, 0, 13, 26, 0, 14, 26, 0, 15, 26, 0, 16, 26, 0, 17, 26, 0, 18, 26, 0, 19, 26, 0, 20, 26, 0, 21, 26, 0, 22, 26, 0, 23, 26, 0, 24, 26, 0, 25, 26, 0, 26, 26, 0, 27, 26, 0, 28, 26, 0, 29, 26, 0, 30, 26, 0, 31, 26, 0, 32, 26, 0, 33, 26, 0, 34, 26, 0, 35, 26, 0, 36, 26, 0, 37, 26, 0, 38, 26, 0, 39, 26, 0, 40, 26, 0, 41, 26, 0, 42, 26, 0, 43, 26, 0, 44, 26, 0, 45, 26, 0, 46, 26, 0, 47, 26, 0, 48, 26, 0, 49, 26, 0, 50, 26, 0, 51, 26, 0, 52, 26, 0, 53, 26, 0, 54, 26, 0, 55, 26, 0, 56, 26, 0, 57, 26, 0, 58, 26, 0, 131062, 26, 0, 131063, 26, 0, 131064, 26, 0, 131065, 26, 0, 131066, 26, 0, 131067, 26, 0, 131068, 26, 0, 131069, 26, 0, 131070, 26, 0, 131071, 26, 0, 65536, 26, 0, 65537, 26, 0, 65538, 26, 0, 65539, 26, 0, 65540, 26, 0, 65541, 26, 0, 65542, 26, 0, 65543, 26, 0, 65544, 26, 0, 65545, 26, 0, 65546, 26, 0, 65547, 26, 0, 65548, 26, 0, 65549, 26, 0, 65550, 26, 0, 65551, 26, 0, 65552, 26, 0, 65553, 26, 0, 65554, 26, 0, 65555, 26, 0, 65556, 26, 0, 65557, 26, 0, 65558, 26, 0, 65559, 26, 0, 65560, 26, 0, 65561, 26, 0, 65562, 26, 0, 65563, 26, 0, 65564, 26, 0, 65565, 26, 0, 65566, 26, 0, 65567, 26, 0, 65568, 26, 0, 65569, 26, 0, 65570, 26, 0, 65571, 26, 0, 65572, 26, 0, 65573, 26, 0, 65574, 26, 0, 65575, 26, 0, 65576, 26, 0, 65577, 26, 0, 65578, 26, 0, 65579, 26, 0, 65580, 26, 0, 65581, 26, 0, 65582, 26, 0, 65583, 26, 0, 65584, 26, 0, 65585, 26, 0, 65586, 26, 0, 65587, 26, 0, 65588, 26, 0, 65589, 26, 0, 65590, 26, 0, 65591, 26, 0, 65592, 26, 0, 65593, 26, 0, 65594, 26, 0, 196598, 26, 0, 196599, 26, 0, 196600, 26, 0, 196601, 26, 0, 196602, 26, 0, 196603, 26, 0, 196604, 26, 0, 196605, 26, 0, 196606, 26, 0, 196607, 26, 0, 131072, 26, 0, 131073, 26, 0, 131074, 26, 0, 131075, 26, 0, 131076, 26, 0, 131077, 26, 0, 131122, 26, 0, 131123, 26, 0, 131124, 26, 0, 131125, 26, 0, 131126, 26, 0, 131127, 26, 0, 131128, 26, 0, 131129, 26, 0, 131130, 26, 0, 262134, 26, 0, 262135, 26, 0, 262136, 26, 0, 262137, 26, 0, 262138, 26, 0, 262139, 26, 0, 262140, 26, 0, 262141, 26, 0, 262142, 26, 0, 262143, 26, 0, 196608, 26, 0, 196609, 26, 0, 196610, 26, 0, 196611, 26, 0, 196612, 26, 0, 196613, 26, 0, 196614, 26, 0, 196615, 26, 0, 196616, 26, 0, 196617, 26, 0, 196618, 26, 0, 196619, 26, 0, 196620, 26, 0, 196621, 26, 0, 196622, 26, 0, 196623, 26, 0, 196624, 26, 0, 196625, 26, 0, 196626, 26, 0, 196627, 26, 0, 196628, 26, 0, 196629, 26, 0, 196630, 26, 0, 196631, 26, 0, 196632, 26, 0, 196633, 26, 0, 196634, 26, 0, 196635, 26, 0, 196636, 26, 0, 196637, 26, 0, 196638, 26, 0, 196639, 26, 0, 196640, 26, 0, 196641, 26, 0, 196642, 26, 0, 196643, 26, 0, 196644, 26, 0, 196645, 26, 0, 196646, 26, 0, 196647, 26, 0, 196648, 26, 0, 196649, 26, 0, 196650, 26, 0, 196651, 26, 0, 196652, 26, 0, 196653, 26, 0, 196654, 26, 0, 196655, 26, 0, 196656, 26, 0, 196657, 26, 0, 196658, 26, 0, 196659, 26, 0, 196660, 26, 0, 196661, 26, 0, 196662, 26, 0, 196663, 26, 0, 196664, 26, 0, 196665, 26, 0, 196666, 26, 0, 327670, 26, 0, 327671, 26, 0, 327672, 26, 0, 327673, 26, 0, 327674, 26, 0, 327675, 26, 0, 327676, 26, 0, 327677, 26, 0, 327678, 26, 0, 327679, 26, 0, 262144, 26, 0, 262145, 26, 0, 262146, 26, 0, 262147, 26, 0, 262148, 26, 0, 262149, 26, 0, 262150, 26, 0, 262151, 26, 0, 262152, 26, 0, 262153, 26, 0, 262154, 26, 0, 262155, 26, 0, 262156, 26, 0, 262157, 26, 0, 262158, 26, 0, 262159, 26, 0, 262160, 26, 0, 262161, 26, 0, 262162, 26, 0, 262163, 26, 0, 262164, 26, 0, 262165, 26, 0, 262166, 26, 0, 262167, 26, 0, 262168, 26, 0, 262169, 26, 0, 262170, 26, 0, 262171, 26, 0, 262172, 26, 0, 262173, 26, 0, 262174, 26, 0, 262175, 26, 0, 262176, 26, 0, 262177, 26, 0, 262178, 26, 0, 262179, 26, 0, 262180, 26, 0, 262181, 26, 0, 262182, 26, 0, 262183, 26, 0, 262184, 26, 0, 262185, 26, 0, 262186, 26, 0, 262187, 26, 0, 262188, 26, 0, 262189, 26, 0, 262190, 26, 0, 262191, 26, 0, 262192, 26, 0, 262193, 26, 0, 262194, 26, 0, 262195, 26, 0, 262196, 26, 0, 262197, 26, 0, 262198, 26, 0, 262199, 26, 0, 262200, 26, 0, 262201, 26, 0, 262202, 26, 0, 393206, 26, 0, 393207, 26, 0, 393208, 26, 0, 393209, 26, 0, 393210, 26, 0, 393211, 26, 0, 393212, 26, 0, 393213, 26, 0, 393214, 26, 0, 393215, 26, 0, 327680, 26, 0, 327681, 26, 0, 327682, 26, 0, 327683, 26, 0, 327684, 26, 0, 327685, 26, 0, 327686, 26, 0, 327687, 26, 0, 327688, 26, 0, 327689, 26, 0, 327690, 26, 0, 327691, 26, 0, 327692, 26, 0, 327693, 26, 0, 327694, 26, 0, 327695, 26, 0, 327696, 26, 0, 327697, 26, 0, 327698, 26, 0, 327699, 26, 0, 327700, 26, 0, 327701, 26, 0, 327702, 26, 0, 327703, 26, 0, 327704, 26, 0, 327705, 26, 0, 327706, 26, 0, 327707, 26, 0, 327708, 26, 0, 327709, 26, 0, 327710, 26, 0, 327711, 26, 0, 327712, 26, 0, 327713, 26, 0, 327714, 26, 0, 327715, 26, 0, 327716, 26, 0, 327717, 26, 0, 327718, 26, 0, 327719, 26, 0, 327720, 26, 0, 327721, 26, 0, 327722, 26, 0, 327723, 26, 0, 327724, 26, 0, 327725, 26, 0, 327726, 26, 0, 327727, 26, 0, 327728, 26, 0, 327729, 26, 0, 327730, 26, 0, 327731, 26, 0, 327732, 26, 0, 327733, 26, 0, 327734, 26, 0, 327735, 26, 0, 327736, 26, 0, 327737, 26, 0, 327738, 26, 0, 458742, 26, 0, 458743, 26, 0, 458744, 26, 0, 458745, 26, 0, 458746, 26, 0, 458747, 26, 0, 458748, 26, 0, 458749, 26, 0, 458750, 26, 0, 458751, 26, 0, 393216, 26, 0, 393217, 26, 0, 393224, 26, 0, 393225, 26, 0, 393226, 26, 0, 393227, 26, 0, 393228, 26, 0, 393229, 26, 0, 393230, 26, 0, 393231, 26, 0, 393232, 26, 0, 393233, 26, 0, 393234, 26, 0, 393235, 26, 0, 393236, 26, 0, 393237, 26, 0, 393238, 26, 0, 393239, 26, 0, 393240, 26, 0, 393241, 26, 0, 393242, 26, 0, 393243, 26, 0, 393244, 26, 0, 393245, 26, 0, 393246, 26, 0, 393247, 26, 0, 393248, 26, 0, 393249, 26, 0, 393250, 26, 0, 393251, 26, 0, 393252, 26, 0, 393253, 26, 0, 393254, 26, 0, 393255, 26, 0, 393256, 26, 0, 393257, 26, 0, 393258, 26, 0, 393259, 26, 0, 393260, 26, 0, 393261, 26, 0, 393262, 26, 0, 393263, 26, 0, 393264, 26, 0, 393265, 26, 0, 393266, 26, 0, 393267, 26, 0, 393268, 26, 0, 393269, 26, 0, 393270, 26, 0, 393271, 26, 0, 393272, 26, 0, 393273, 26, 0, 393274, 26, 0, 524282, 26, 0, 524283, 26, 0, 524284, 26, 0, 524285, 26, 0, 524286, 26, 0, 524287, 26, 0, 458752, 26, 0, 458753, 26, 0, 458775, 26, 0, 458776, 26, 0, 458777, 26, 0, 458778, 26, 0, 458779, 26, 0, 458780, 26, 0, 458781, 26, 0, 458782, 26, 0, 458783, 26, 0, 458784, 26, 0, 458785, 26, 0, 458786, 26, 0, 458787, 26, 0, 458788, 26, 0, 458789, 26, 0, 458790, 26, 0, 458791, 26, 0, 458792, 26, 0, 458793, 26, 0, 458794, 26, 0, 458795, 26, 0, 458796, 26, 0, 458797, 26, 0, 458798, 26, 0, 458799, 26, 0, 458800, 26, 0, 458801, 26, 0, 458802, 26, 0, 458803, 26, 0, 458804, 26, 0, 524329, 26, 0, 524330, 26, 0, 524331, 26, 0, 524332, 26, 0, 524333, 26, 0, 524334, 26, 0, 524335, 26, 0, 524336, 26, 0, 524337, 26, 0, 524338, 26, 0, 524339, 26, 0, 524340, 26, 0 )
+
+[node name="Train" type="Node2D" parent="."]
+
+[node name="TrainCarInterior" type="Sprite" parent="Train"]
+position = Vector2( 1820, 403 )
+texture = ExtResource( 3 )
+
+[node name="TrainCarInterior2" type="Sprite" parent="Train"]
+position = Vector2( 1820, 403 )
+texture = ExtResource( 3 )
+
+[node name="TrainCarInterior3" type="Sprite" parent="Train"]
+position = Vector2( 2836, 403 )
+texture = ExtResource( 3 )
+
+[node name="TrainCarInterior4" type="Sprite" parent="Train"]
+position = Vector2( 3856, 403 )
+texture = ExtResource( 3 )
+
+[node name="TrainCarInterior5" type="Sprite" parent="Train"]
+position = Vector2( 4872, 403 )
+texture = ExtResource( 3 )
+
+[node name="TrainCarInterior6" type="Sprite" parent="Train"]
+position = Vector2( 5890, 403 )
+texture = ExtResource( 3 )
+
+[node name="Train" type="Sprite" parent="Train"]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
+position = Vector2( 717, 413 )
+texture = ExtResource( 11 )
+
+[node name="TrainTrinkets" type="Node2D" parent="."]
+
+[node name="trainProgress" type="TextureProgress" parent="TrainTrinkets"]
+modulate = Color( 1, 1, 1, 0.192157 )
+margin_left = 649.0
+margin_top = 367.0
+margin_right = 849.0
+margin_bottom = 387.0
+rect_scale = Vector2( 0.192, 0.209903 )
+step = 0.0
+value = 50.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lamp1" type="Sprite" parent="TrainTrinkets"]
+modulate = Color( 1, 1, 1, 0.529412 )
+position = Vector2( 667.779, 382.348 )
+scale = Vector2( 1.6329, 1.6329 )
+texture = ExtResource( 26 )
+
+[node name="Lamp2" type="Sprite" parent="TrainTrinkets" groups=["Lights"]]
+visible = false
+modulate = Color( 0.458824, 0.960784, 0.52549, 1 )
+position = Vector2( 667.779, 382.348 )
+scale = Vector2( 1.6329, 1.6329 )
+texture = ExtResource( 26 )
+
+[node name="lightVignette" type="Sprite" parent="TrainTrinkets/Lamp2"]
+modulate = Color( 1, 1, 1, 0.254902 )
+light_mask = -2147483647
+material = SubResource( 7 )
+position = Vector2( 0.465027, -1.74255 )
+scale = Vector2( 0.173159, 0.173159 )
+texture = ExtResource( 20 )
+
+[node name="lightVignette2" type="Sprite" parent="TrainTrinkets/Lamp2"]
+modulate = Color( 1, 1, 1, 0.160784 )
+light_mask = -2147483647
+material = SubResource( 7 )
+position = Vector2( 0.465027, -1.74255 )
+scale = Vector2( 0.310645, 0.310645 )
+texture = ExtResource( 20 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="LoadPositions" type="Node2D" parent="."]
+position = Vector2( 912.24, 576.51 )
+
+[node name="237" parent="LoadPositions" instance=ExtResource( 14 )]
+position = Vector2( -270.846, 7.0568 )
+
+[node name="doorSwitch" parent="." instance=ExtResource( 16 )]
+position = Vector2( 1278, 407 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="exitTrain" parent="doors_transitions" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -138.591, -195.242 )
+door_active = false
+scene_path_to_load = "res://Src/1_World/1_zones/RightSuites/Park/Stage-Labs.tscn"
+where_is_exit_point = "middle"
+
+[node name="left" parent="doors_transitions/exitTrain" instance=ExtResource( 14 )]
+position = Vector2( 3.71405, -1.11365 )
+
+[node name="Elevator" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 1310.41, -1873.24 )
+scene_path_to_load = "res://1_World/1_zones/stages/sci fi/Stage_01.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Elevator" instance=ExtResource( 14 )]
+position = Vector2( -0.816528, -1.61804 )
+
+[node name="lightSwitch" parent="doors_transitions" instance=ExtResource( 15 )]
+position = Vector2( -294.591, -200.242 )
+
+[node name="Entity" type="Node2D" parent="."]
+
+[node name="1" parent="Entity" instance=ExtResource( 17 )]
+position = Vector2( 1923.01, 386.863 )
+
+[node name="2" parent="Entity" instance=ExtResource( 17 )]
+position = Vector2( 2833.01, 374.863 )
+
+[node name="3" parent="Entity" instance=ExtResource( 17 )]
+position = Vector2( 3036.01, 391.863 )
+
+[node name="4" parent="Entity" instance=ExtResource( 24 )]
+position = Vector2( 3429.01, 413.863 )
+
+[node name="5" parent="Entity" instance=ExtResource( 19 )]
+position = Vector2( 2387, 399.118 )
+
+[node name="6" parent="Entity" instance=ExtResource( 12 )]
+position = Vector2( 4715, 413.504 )
+
+[node name="7" parent="Entity" instance=ExtResource( 24 )]
+position = Vector2( 4979.01, 422.863 )
+
+[node name="8" parent="Entity" instance=ExtResource( 17 )]
+position = Vector2( 4846.01, 398.863 )
+
+[node name="9" parent="Entity" instance=ExtResource( 17 )]
+position = Vector2( 5133.01, 408.863 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 726, 353 )
+
+[node name="Seats" type="Node2D" parent="."]
+position = Vector2( 943, 576.51 )
+
+[node name="seat" parent="Seats" instance=ExtResource( 23 )]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( -60, -124.51 )
+is_in_cinema = false
+
+[node name="seat2" parent="Seats" instance=ExtResource( 23 )]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 3, -124.51 )
+is_in_cinema = false
+
+[node name="seat3" parent="Seats" instance=ExtResource( 23 )]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 65, -124.51 )
+is_in_cinema = false
+
+[node name="seat4" parent="Seats" instance=ExtResource( 23 )]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 126, -124.51 )
+is_in_cinema = false
+
+[node name="seat5" parent="Seats" instance=ExtResource( 23 )]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 185, -124.51 )
+is_in_cinema = false
+
+[node name="seat6" parent="Seats" instance=ExtResource( 23 )]
+modulate = Color( 0.662745, 0.662745, 0.662745, 1 )
+position = Vector2( 248, -124.51 )
+is_in_cinema = false
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="big" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 1829, 242 )
+
+[node name="big2" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 2210, 4684 )
+scale = Vector2( 5.12009, 1.95335 )
+
+[node name="wall-light2" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( 362, 382 )
+rotation = 1.28295
+
+[node name="wall-light3" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( -343, 543 )
+rotation = 3.14159
+
+[node name="Stairs" type="Node2D" parent="Foreground"]
+scale = Vector2( 2, 2 )
+
+[node name="Stairs2" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 106.5, 837.5 )
+scale = Vector2( 1, 1 )
+
+[node name="Stairs3" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 473.5, 712 )
+scale = Vector2( 1, 1 )
+
+[node name="Stairs" parent="Foreground/Stairs" instance=ExtResource( 7 )]
+position = Vector2( -179, 924.5 )
+scale = Vector2( 1, 1 )
+
+[node name="FloorsTilemap" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65536, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 65544, 8, 0, 65545, 8, 0, 65546, 8, 0, 65547, 8, 0, 65548, 8, 0, 65549, 8, 0, 65550, 8, 0, 65551, 8, 0, 65552, 8, 0, 65553, 8, 0, 65554, 8, 0, 65555, 8, 0, 65556, 8, 0, 65557, 8, 0, 65558, 8, 0, 65559, 8, 0, 65560, 8, 0, 262146, 9, 0 )
+
+[node name="ForegroundTilemap" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65561, 7, 0 )
+
+[node name="big3" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 776, 390 )
+scale = Vector2( 5.50159, 1.12828 )
+
+[node name="cockpitStatic" type="StaticBody2D" parent="Foreground"]
+position = Vector2( 302, 412 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/cockpitStatic"]
+shape = SubResource( 6 )
+
+[node name="cockpitStatic2" type="StaticBody2D" parent="Foreground"]
+position = Vector2( 352, 320 )
+rotation = 1.20031
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/cockpitStatic2"]
+shape = SubResource( 6 )
+
+[node name="cockpitStatic3" type="StaticBody2D" parent="Foreground"]
+position = Vector2( 1454, 412 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/cockpitStatic3"]
+shape = SubResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="Foreground"]
+margin_left = 1340.0
+margin_top = 313.0
+margin_right = 2225.0
+margin_bottom = 502.0
+mouse_filter = 2
+color = Color( 0.027451, 0.027451, 0.027451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/ColorRect"]
+anims/RESET = SubResource( 10 )
+anims/open = SubResource( 9 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="ammo" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 2649, 376 )
+
+[node name="ammo2" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 2127, 417 )
+
+[node name="ammo3" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 4257, 386 )
+
+[node name="ammo4" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 5841, 386 )
+
+[node name="ammo5" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 6058, 451 )
+
+[node name="ammo6" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 6294, 445 )
+
+[node name="ammo7" parent="Interactables" instance=ExtResource( 4 )]
+position = Vector2( 6238, 447 )
+
+[node name="TrainDoor" type="Node2D" parent="."]
+
+[node name="TrainDoorEnterance" type="Area2D" parent="TrainDoor"]
+position = Vector2( 666, 426 )
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainDoor/TrainDoorEnterance"]
+shape = SubResource( 13 )
+
+[node name="TrainDoorExit" type="Area2D" parent="TrainDoor"]
+position = Vector2( 666, 426 )
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrainDoor/TrainDoorExit"]
+shape = SubResource( 14 )
+
+[node name="TrainDoorOutline" type="Sprite" parent="TrainDoor"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 666, 426 )
+texture = ExtResource( 25 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TrainDoor/TrainDoorOutline"]
+anims/RESET = SubResource( 11 )
+anims/fade_in = SubResource( 12 )
+
+[node name="cinemaTape" parent="." instance=ExtResource( 21 )]
+position = Vector2( 6271, 407 )
+tape_name = "train"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Train" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 29 )
+bus = "SFX"
+
+[node name="EndBeep" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 27 )
+bus = "SFX"
+
+[node name="TrainSlowDown" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 28 )
+bus = "SFX"
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="timeout" from="TrainTimer" to="." method="_on_TrainTimer_timeout"]
+[connection signal="animation_finished" from="ParallaxLights" to="." method="_on_ParallaxLights_animation_finished"]
+[connection signal="body_entered" from="TrainDoor/TrainDoorEnterance" to="." method="_on_TrainDoorEnterance_body_entered"]
+[connection signal="body_exited" from="TrainDoor/TrainDoorExit" to="." method="_on_TrainDoorExit_body_exited"]

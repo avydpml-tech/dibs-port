@@ -1,0 +1,678 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Manjari/Manjari-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://zzzz_Anim_Projects/_backgrounds/1MoxieShip/export/moxieship_wallcover.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/tutorialParent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi-tiles-edited/Chair 2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/1_Visual/game_icon/DiBS_logo.png" type="Texture" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/D-DINExp.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/1_Visual/Tilesets/SmallCrates.tres" type="TileSet" id=10]
+[ext_resource path="res://zzzz_Anim_Projects/_backgrounds/1MoxieShip/export/moxieship_controls.png" type="Texture" id=11]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/_Theatre/_Curated Fonts/D-DIN-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://zzzz_Anim_Projects/_backgrounds/1MoxieShip/export/moxieship_stars.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Assets/1_Visual/3_Background/MoxieShip/MoxieShip - 2Ship Controls.png" type="Texture" id=17]
+[ext_resource path="res://Assets/1_Visual/2_UI/Tutorial/wasd-keys-ui.png" type="Texture" id=18]
+[ext_resource path="res://zzzz_Anim_Projects/_backgrounds/1MoxieShip/export/moxieship_shutters.png" type="Texture" id=19]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=20]
+[ext_resource path="res://Assets/1_Visual/3_Background/black 128.png" type="Texture" id=21]
+[ext_resource path="res://zzzz_Anim_Projects/_backgrounds/1MoxieShip/export/moxieship_reflections.png" type="Texture" id=22]
+[ext_resource path="res://Assets/1_Visual/2_UI/mouse_scroll_down_outline.svg" type="Texture" id=23]
+[ext_resource path="res://zzzz_Anim_Projects/_backgrounds/1MoxieShip/mox_keychain.png" type="Texture" id=24]
+[ext_resource path="res://Assets/1_Visual/3_Background/MoxieShip/MoxieShip - 2 walls.png" type="Texture" id=25]
+[ext_resource path="res://Assets/1_Visual/3_Background/Lamp 1.png" type="Texture" id=26]
+[ext_resource path="res://Assets/1_Visual/3_Background/__Guides/zzzz_outline/1 MoxieShip - 2Ship Controls.png" type="Texture" id=27]
+[ext_resource path="res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://Src/1_World/1_zones/ship/Stage_02.gd" type="Script" id=29]
+[ext_resource path="res://Src/Interactables/lightSwitch.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Src/Interactables/seat.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=32]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MoxieshipShutters:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 481, 656 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../walllights/big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MoxieshipReflections:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("text:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.552941 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("text:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../credits:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 499, 1116 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../blackoverlay:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "ending_start"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MoxieshipShutters:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 479, 750 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../walllights/big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.82 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MoxieshipReflections:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0705882 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("text:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.552941 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("text:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../credits:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 21.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 499, 1139 ), Vector2( 499, -1176 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../blackoverlay:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.9, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.372549 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("../..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 16 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_ending"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "window_down"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("MoxieshipShutters:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.6, 1.1 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 481, 656 ), Vector2( 479, 750 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../walllights/big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.82 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MoxieshipReflections:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 1.1 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0705882 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("text:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.552941 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("text:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.52549, 0.52549, 0.52549, 0.176471 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Assets/1_Visual/z_Fonts/Roboto/Roboto-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 19
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = SubResource( 11 )
+
+[sub_resource type="Theme" id=13]
+default_font = SubResource( 12 )
+Button/styles/focus = SubResource( 9 )
+Button/styles/hover = SubResource( 9 )
+Button/styles/pressed = SubResource( 10 )
+
+[sub_resource type="CanvasItemMaterial" id=14]
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+font_data = ExtResource( 28 )
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=21]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=22]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=23]
+size = 30
+font_data = ExtResource( 12 )
+
+[sub_resource type="CanvasItemMaterial" id=20]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="CanvasItemMaterial" id=16]
+blend_mode = 1
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=17]
+default_font = SubResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 6, 0 )
+script = ExtResource( 29 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -6
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 626.567, 355.792 )
+scale = Vector2( 5.49677, 4.28888 )
+texture = ExtResource( 16 )
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="TileMap3" type="TileMap" parent="background"]
+visible = false
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0 )
+
+[node name="MoxieShip - 2 walls" type="Sprite" parent="background"]
+modulate = Color( 0.819608, 0.854902, 0.937255, 1 )
+position = Vector2( 405.134, 569.042 )
+texture = ExtResource( 25 )
+offset = Vector2( 496.275, 71.4182 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background"]
+color = Color( 0.4, 0.501961, 0.615686, 1 )
+
+[node name="MoxieShip - 2Ship Controls" type="Sprite" parent="background"]
+visible = false
+position = Vector2( 481.096, 656.085 )
+texture = ExtResource( 17 )
+
+[node name="ShipControls" type="Node2D" parent="background"]
+
+[node name="MoxieshipStars" type="Sprite" parent="background/ShipControls"]
+position = Vector2( 481, 656 )
+texture = ExtResource( 15 )
+
+[node name="MoxieshipShutters" type="Sprite" parent="background/ShipControls"]
+position = Vector2( 481, 656 )
+texture = ExtResource( 19 )
+
+[node name="wall" type="Sprite" parent="background/ShipControls"]
+modulate = Color( 0.819608, 0.854902, 0.937255, 1 )
+position = Vector2( 474, 655 )
+texture = ExtResource( 2 )
+
+[node name="MoxieshipReflections" type="Sprite" parent="background/ShipControls"]
+position = Vector2( 482, 657 )
+texture = ExtResource( 22 )
+
+[node name="MoxieshipControls" type="Sprite" parent="background/ShipControls"]
+position = Vector2( 481, 656 )
+texture = ExtResource( 11 )
+
+[node name="MoxKeychain" type="Sprite" parent="background/ShipControls"]
+position = Vector2( 384, 577 )
+texture = ExtResource( 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/ShipControls"]
+anims/RESET = SubResource( 6 )
+anims/ending_start = SubResource( 15 )
+anims/window_down = SubResource( 5 )
+
+[node name="text" type="Node2D" parent="background/ShipControls"]
+visible = false
+modulate = Color( 1, 1, 1, 0.552941 )
+
+[node name="Label" type="Label" parent="background/ShipControls/text"]
+margin_left = 414.0
+margin_top = 556.0
+margin_right = 554.0
+margin_bottom = 579.0
+rect_scale = Vector2( 1.21743, 1.21743 )
+theme = SubResource( 13 )
+text = "END GAME?"
+
+[node name="OptionsButton" type="Button" parent="background/ShipControls/text"]
+visible = false
+material = SubResource( 14 )
+margin_left = 410.0
+margin_top = 553.0
+margin_right = 592.0
+margin_bottom = 595.0
+rect_scale = Vector2( 0.798846, 0.798846 )
+theme = SubResource( 13 )
+custom_fonts/font = SubResource( 7 )
+text = "END GAME?"
+flat = true
+align = 2
+expand_icon = true
+
+[node name="OptionsButton2" type="Button" parent="background/ShipControls/text"]
+material = SubResource( 14 )
+margin_left = 454.0
+margin_top = 592.0
+margin_right = 544.0
+margin_bottom = 634.0
+rect_scale = Vector2( 0.585134, 0.585134 )
+theme = SubResource( 13 )
+custom_fonts/font = SubResource( 7 )
+text = "YES"
+flat = true
+expand_icon = true
+
+[node name="crates" type="TileMap" parent="background"]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 1376301, 1610612736, 0, 1376302, 1610612736, 0, 1376303, -1610612736, 0, 1441836, 1610612737, 0, 1441837, 1610612736, 0, 1441838, -1073741824, 0, 1441839, -1610612736, 0, 1507371, -1610612736, 0, 1507372, -1610612736, 0, 1507373, -1610612736, 0, 1507374, -1610612736, 0, 1507375, -1610612736, 0 )
+
+[node name="walllights" type="Node2D" parent="."]
+position = Vector2( 798.467, 689.287 )
+
+[node name="wall-light" parent="walllights" instance=ExtResource( 9 )]
+position = Vector2( -135.672, 94.401 )
+scale = Vector2( 1, 0.679944 )
+
+[node name="wall-light4" parent="walllights" instance=ExtResource( 9 )]
+position = Vector2( -415.165, 94.401 )
+scale = Vector2( 1, 0.679944 )
+
+[node name="wall-light2" parent="walllights" instance=ExtResource( 9 )]
+position = Vector2( 497.236, 92.1112 )
+scale = Vector2( 1, 0.679944 )
+
+[node name="big" parent="walllights" instance=ExtResource( 32 )]
+position = Vector2( -311.467, -81.287 )
+scale = Vector2( 1.78079, 1.2894 )
+energy = 0.0
+
+[node name="Lamp 1" type="Sprite" parent="walllights"]
+position = Vector2( 488.259, -113.065 )
+scale = Vector2( 1.6329, 1.6329 )
+texture = ExtResource( 26 )
+
+[node name="Lamp 2" type="Sprite" parent="walllights" groups=["Lights"]]
+modulate = Color( 0.458824, 0.960784, 0.52549, 1 )
+position = Vector2( 488.259, -113.065 )
+scale = Vector2( 1.6329, 1.6329 )
+texture = ExtResource( 26 )
+
+[node name="lightVignette" type="Sprite" parent="walllights/Lamp 2"]
+modulate = Color( 1, 1, 1, 0.254902 )
+light_mask = -2147483647
+material = SubResource( 1 )
+position = Vector2( 0.465027, -1.74255 )
+scale = Vector2( 0.173159, 0.173159 )
+texture = ExtResource( 20 )
+
+[node name="lightVignette2" type="Sprite" parent="walllights/Lamp 2"]
+modulate = Color( 1, 1, 1, 0.160784 )
+light_mask = -2147483647
+material = SubResource( 1 )
+position = Vector2( 0.465027, -1.74255 )
+scale = Vector2( 0.310645, 0.310645 )
+texture = ExtResource( 20 )
+
+[node name="Interactables" type="Node2D" parent="."]
+position = Vector2( 798.467, 689.287 )
+
+[node name="left" parent="Interactables" instance=ExtResource( 14 )]
+position = Vector2( -886.577, 21.504 )
+
+[node name="Door-237" parent="Interactables" instance=ExtResource( 6 )]
+position = Vector2( 37.0533, -31.732 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_01.tscn"
+where_is_exit_point = "right"
+
+[node name="237" parent="Interactables/Door-237" instance=ExtResource( 14 )]
+position = Vector2( -2.85004, 43.6643 )
+
+[node name="Elevator-to-palooza" parent="Interactables" instance=ExtResource( 6 )]
+position = Vector2( 492.642, -27.4341 )
+scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_03-Palooza.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="Interactables/Elevator-to-palooza" instance=ExtResource( 14 )]
+position = Vector2( -2.85009, 48.0427 )
+
+[node name="lightSwitch" parent="Interactables" instance=ExtResource( 30 )]
+position = Vector2( 278.665, -49.4008 )
+activated = true
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 584, 660 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="1 MoxieShip - 2Ship Controls" type="Sprite" parent="Foreground"]
+visible = false
+position = Vector2( 1134.05, 686.281 )
+texture = ExtResource( 27 )
+
+[node name="Chair 2" type="Sprite" parent="Foreground"]
+position = Vector2( 480.113, 699.232 )
+scale = Vector2( 2.1255, 2.1255 )
+texture = ExtResource( 4 )
+
+[node name="blackbars" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131072, 26, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 26, 0, 131081, 6, 0, 131082, 7, 0 )
+
+[node name="Floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131072, 1610612743, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, -1610612728, 0, 131081, 6, 0, 131082, 7, 0 )
+
+[node name="seat" parent="Foreground" instance=ExtResource( 31 )]
+position = Vector2( 482, 693 )
+show_chair = false
+should_boost_seat = true
+
+[node name="parentTutorial9" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.290196 )
+material = SubResource( 21 )
+position = Vector2( 1079, 831 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 23 )
+input_str = "ui_interact"
+was_pressed = [ "ui_up", "ui_right", "ui_left" ]
+hide_when_exit_scene = true
+
+[node name="Label2" type="Label" parent="parentTutorial9"]
+visible = false
+modulate = Color( 1, 1, 1, 0.870588 )
+material = SubResource( 22 )
+margin_left = -37.373
+margin_top = -105.112
+margin_right = 36.627
+margin_bottom = -40.1117
+rect_scale = Vector2( 1, 1.1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 23 )
+text = "scroll
+down"
+align = 1
+
+[node name="parentTutorial8" parent="." instance=ExtResource( 3 )]
+material = SubResource( 20 )
+position = Vector2( 1078, 823 )
+scale = Vector2( 0.689, 0.689 )
+texture = ExtResource( 18 )
+input_str = "ui_interact"
+was_pressed = [ "ui_up", "ui_right", "ui_left" ]
+hide_if_one_handed = true
+
+[node name="Label4" type="Label" parent="parentTutorial8"]
+margin_left = -11.6111
+margin_top = 1.45129
+margin_right = 28.3889
+margin_bottom = 24.4513
+rect_scale = Vector2( 1.02248, 1.02248 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "S"
+
+[node name="blackoverlay" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 559, 643 )
+scale = Vector2( 10.9375, 6.27344 )
+texture = ExtResource( 21 )
+
+[node name="credits" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.890196 )
+position = Vector2( 499, 1116 )
+scale = Vector2( 51.052, 0.407 )
+
+[node name="DiBsLogo" type="Sprite" parent="credits"]
+material = SubResource( 16 )
+scale = Vector2( 0.00779266, 0.977471 )
+texture = ExtResource( 5 )
+
+[node name="Label2" type="Label" parent="credits/DiBsLogo"]
+use_parent_material = true
+margin_left = -266.445
+margin_top = 640.976
+margin_right = 360.555
+margin_bottom = 1323.98
+rect_scale = Vector2( 1.22168, 1.22168 )
+theme = SubResource( 17 )
+text = "Congrats. Hope you enjoyed playing!
+
+
+
+
+
+
+
+
+
+
+
+
+You can, like, go now. 
+
+
+
+
+
+
+
+Bye. 
+
+
+
+
+
+
+See you in a bit.
+
+"
+
+[connection signal="pressed" from="background/ShipControls/text/OptionsButton2" to="." method="_on_OptionsButton2_pressed"]

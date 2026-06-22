@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/MiscScenes/endingScene/ChangeSceneButton.gd" type="Script" id=1]
+
+[node name="changeSceneButton" type="Button"]
+margin_right = 84.0
+margin_bottom = 20.0
+text = "Main menu"
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_changeSceneButton_pressed"]

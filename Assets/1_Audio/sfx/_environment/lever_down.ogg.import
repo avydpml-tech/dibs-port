@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lever_down.ogg-123fa16d5eab94025a4f9cd3a6da0a0d.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/lever_down.ogg"
+dest_files=[ "res://.import/lever_down.ogg-123fa16d5eab94025a4f9cd3a6da0a0d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

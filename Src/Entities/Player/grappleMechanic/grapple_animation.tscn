@@ -1,0 +1,401 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/1_Visual/1_Entities/f_nonplayer/_gm_icons/tentacle_arms-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Src/Entities/Player/grappleMechanic/grapple_animation.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "grab_player"
+tracks/0/type = "value"
+tracks/0/path = NodePath("tentacle_arms-Sheet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.159248 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.155325, 115.108, 109.785 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tentacle_arms-Sheet2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.159248 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 174.437, 48.2911, 58.1282 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tentacle_arms-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -55.3008, 605.834 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tentacle_arms-Sheet2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1407.38, 497.58 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tentacle_arms-Sheet/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tentacle_arms-Sheet2/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("tentacle_arms-Sheet:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3.85678, 3.85678 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("tentacle_arms-Sheet2:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3.85678, 3.85678 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("tentacle_arms-Sheet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.155325, 67.4199, 56.4781 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tentacle_arms-Sheet2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 174.437, 85.0814, 88.4006 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tentacle_arms-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 21.2671, 775.007 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tentacle_arms-Sheet2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1357.43, 371.163 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tentacle_arms-Sheet/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tentacle_arms-Sheet2/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("tentacle_arms-Sheet2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("tentacle_arms-Sheet:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 3.5 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("tentacle_arms-Sheet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.155325, 115.108, 109.785 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tentacle_arms-Sheet2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 174.437, 118.878, 124.974 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tentacle_arms-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -55.3008, 123.834 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tentacle_arms-Sheet2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1309.81, 772.175 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tentacle_arms-Sheet/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tentacle_arms-Sheet2/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("tentacle_arms-Sheet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -0.155325, 68.5359, 59.9265 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tentacle_arms-Sheet2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 174.437, 48.2911, 58.1282 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tentacle_arms-Sheet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -55.3008, 805.109 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tentacle_arms-Sheet2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1407.38, 105.024 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("tentacle_arms-Sheet/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("tentacle_arms-Sheet2/KinematicBody2D/CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="GrappleAnimation" type="Node2D"]
+modulate = Color( 0.815686, 0.764706, 0.764706, 1 )
+script = ExtResource( 2 )
+
+[node name="tentacle_arms-Sheet" type="Sprite" parent="."]
+position = Vector2( -55.3008, 605.834 )
+rotation = -0.00271093
+scale = Vector2( 3.85678, 3.85678 )
+texture = ExtResource( 1 )
+offset = Vector2( -1.23499, -53.691 )
+hframes = 2
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="tentacle_arms-Sheet" groups=["TentacleArm"]]
+collision_layer = 131584
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tentacle_arms-Sheet/KinematicBody2D"]
+position = Vector2( 14.7644, -157.043 )
+rotation = 0.00271094
+scale = Vector2( 0.259284, 0.259284 )
+polygon = PoolVector2Array( -100.52, 609.187, -107.111, 465.788, -100.203, 354.15, -108.95, 271.271, -68.454, 157.116, -62.3983, 170.876, -93.3764, 275.833, -71.9465, 394.888, -25.9119, 489.338, -11.6252, 602.044, -75.1213, 628.236 )
+disabled = true
+
+[node name="tentacle_arms-Sheet2" type="Sprite" parent="."]
+position = Vector2( 1407.38, 497.58 )
+rotation = 3.0445
+scale = Vector2( 3.85678, 3.85678 )
+texture = ExtResource( 1 )
+offset = Vector2( 1.17728, 58.4086 )
+flip_v = true
+hframes = 2
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="tentacle_arms-Sheet2" groups=["TentacleArm"]]
+collision_layer = 131584
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tentacle_arms-Sheet2/KinematicBody2D"]
+position = Vector2( -29.7068, 161.772 )
+rotation = -3.0445
+scale = Vector2( 0.259284, 0.259284 )
+polygon = PoolVector2Array( -114.856, 548.535, -77.3983, 424.925, -55.4388, 288.808, -111.324, 160.354, -84.5549, 187.769, -37.8672, 293.516, -36.9441, 397.955, -24.2085, 492.349, -34.6965, 597.979, -75.1213, 628.236 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/grab_player = SubResource( 1 )
+anims/grab_player0 = SubResource( 2 )
+anims/grab_player1 = SubResource( 3 )
+anims/grab_player2 = SubResource( 4 )

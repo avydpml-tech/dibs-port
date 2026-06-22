@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/smoke-J8L2.png" type="Texture" id=1]
+[ext_resource path="res://Src/Environment/puffSmoke.gd" type="Script" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.589773 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.661616 )
+colors = PoolColorArray( 1, 1, 1, 0.0431373, 1, 1, 1, 0 )
+
+[node name="puffSmokes" type="CPUParticles2D"]
+material = SubResource( 1 )
+emitting = false
+amount = 5
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 11.85
+direction = Vector2( 0, -1 )
+spread = 30.76
+gravity = Vector2( 0, 0 )
+initial_velocity = 1000.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+script = ExtResource( 2 )
+
+[node name="puffSmokes" type="Node2D" parent="."]
+scale = Vector2( 1.01884, 1.12827 )

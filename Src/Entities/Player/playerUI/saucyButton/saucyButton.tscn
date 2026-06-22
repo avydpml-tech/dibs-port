@@ -1,0 +1,235 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Src/Shaders/glow.shader" type="Shader" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/circle_filled.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/2_UI/circle.png" type="Texture" id=3]
+[ext_resource path="res://Src/Entities/Player/playerUI/saucyButton/saucyButton.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/radius = 5.0
+shader_param/amount = 0.25
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/radius = 0.0
+shader_param/amount = 0.0
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("circle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("circle:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("circle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.213647, 0.213647 ), Vector2( 0.243891, 0.243891 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("circle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0.386034, 0.386034 ), Vector2( 0.214, 0.214 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("full_circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("full_circle:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ null, SubResource( 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("full_circle:material:shader_param/radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("full_circle:material:shader_param/amount")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.873 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("circle:material:shader_param/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("circle:material:shader_param/radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("circle:material:shader_param/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25357, 0.499207 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.25, 1.0, 0.25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("circle:material:shader_param/radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+
+[node name="saucyButton" type="Control" groups=["CoomButton"]]
+rect_scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="saucyButton" type="Button" parent="."]
+margin_right = 42.0
+margin_bottom = 39.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="circle" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 21.364, 19.132 )
+scale = Vector2( 0.243891, 0.243891 )
+texture = ExtResource( 3 )
+
+[node name="full_circle" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 2 )
+position = Vector2( 21.3638, 19.1321 )
+scale = Vector2( 0.13207, 0.13207 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/mouse_entered = SubResource( 3 )
+anims/mouse_exited = SubResource( 4 )
+
+[node name="fullCircleFadeIn" type="AnimationPlayer" parent="."]
+anims/coom_ready = SubResource( 5 )
+
+[node name="glowShader" type="AnimationPlayer" parent="."]
+anims/coom_not_ready = SubResource( 6 )
+anims/coom_ready = SubResource( 7 )
+
+[connection signal="mouse_entered" from="saucyButton" to="." method="_on_coomButton_mouse_entered"]
+[connection signal="mouse_exited" from="saucyButton" to="." method="_on_coomButton_mouse_exited"]
+[connection signal="pressed" from="saucyButton" to="." method="_on_coomButton_pressed"]

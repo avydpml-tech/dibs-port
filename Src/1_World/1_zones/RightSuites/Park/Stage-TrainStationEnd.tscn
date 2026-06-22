@@ -1,0 +1,323 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/smug_loaf.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/trainstation/train_segments/train_front.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/trainstation/tree.png" type="Texture" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/1_Visual/3_Background/roughs/Suites Roughs.png" type="Texture" id=11]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/3_Background/StripedPalace/Chunk9_light_long.png" type="Texture" id=17]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_wolf/f_wolf.tscn" type="PackedScene" id=23]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+day_or_night = "dark"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="Background" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+
+[node name="TileMap7" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.164706, 0.164706, 0.164706, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -196613, 13, 0, -196612, 13, 0, -196611, 13, 0, -196610, 13, 0, -196609, 13, 0, -262144, 13, 0, -262143, 13, 0, -262142, 13, 0, -262141, 13, 0, -262140, 13, 0, -262139, 13, 0, -262138, 13, 0, -262137, 13, 0, -262136, 13, 0, -262135, 13, 0, -262134, 13, 0, -131077, 13, 0, -131076, 13, 0, -131075, 13, 0, -131074, 13, 0, -131073, 13, 0, -196608, 13, 0, -196607, 13, 0, -196606, 13, 0, -196605, 13, 0, -196604, 13, 0, -196603, 13, 0, -196602, 13, 0, -196601, 13, 0, -196600, 20, 0, -196599, 20, 0, -196598, 20, 0, -196597, 20, 0, -196596, 20, 0, -196595, 20, 0, -196594, 20, 0, -196593, 20, 0, -196592, 20, 0, -65541, 13, 0, -65540, 13, 0, -65539, 13, 0, -65538, 13, 0, -65537, 13, 0, -131072, 13, 0, -131071, 13, 0, -131070, 13, 0, -131069, 13, 0, -131068, 13, 0, -131067, 13, 0, -131066, 13, 0, -131065, 13, 0, -131064, 20, 0, -131063, 20, 0, -131062, 20, 0, -131061, 20, 0, -131060, 20, 0, -131059, 20, 0, -131058, 20, 0, -131057, 20, 0, -131056, 20, 0, -5, 13, 0, -4, 13, 0, -3, 13, 0, -2, 13, 0, -1, 13, 0, -65536, 13, 0, -65535, 13, 0, -65534, 13, 0, -65533, 13, 0, -65532, 13, 0, -65531, 13, 0, -65530, 13, 0, -65529, 13, 0, -65528, 20, 0, -65527, 20, 0, -65526, 20, 0, -65525, 20, 0, -65524, 20, 0, -65523, 20, 0, -65522, 20, 0, -65521, 20, 0, -65520, 20, 0, 65530, 1, 0, 65531, 13, 0, 65532, 13, 0, 65533, 13, 0, 65534, 13, 0, 65535, 13, 0, 0, 13, 0, 1, 13, 0, 2, 13, 0, 3, 13, 0, 4, 13, 0, 5, 13, 0, 6, 13, 0, 7, 13, 0, 8, 20, 0, 9, 20, 0, 10, 20, 0, 11, 20, 0, 12, 20, 0, 13, 20, 0, 14, 20, 0, 15, 20, 0, 16, 20, 0, 131067, 13, 0, 131068, 13, 0, 131069, 13, 0, 131070, 13, 0, 131071, 13, 0, 65536, 13, 0, 65537, 13, 0, 65538, 13, 0, 65539, 13, 0, 65540, 13, 0, 65541, 13, 0, 65542, 13, 0, 65543, 13, 0, 65544, 20, 0, 65545, 20, 0, 65546, 20, 0, 65547, 20, 0, 65548, 20, 0, 65549, 20, 0, 65550, 20, 0, 65551, 20, 0, 65552, 20, 0, 196603, 13, 0, 196604, 13, 0, 196605, 13, 0, 196606, 13, 0, 196607, 13, 0, 131072, 13, 0, 131073, 13, 0, 131074, 13, 0, 131075, 13, 0, 131076, 13, 0, 131077, 13, 0, 131078, 13, 0, 131079, 13, 0, 131080, 20, 0, 131081, 20, 0, 131082, 20, 0, 131083, 20, 0, 131084, 20, 0, 131085, 20, 0, 131086, 20, 0, 131087, 20, 0, 131088, 20, 0, 262139, 13, 0, 262140, 13, 0, 262141, 13, 0, 262142, 13, 0, 262143, 13, 0, 196608, 13, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 13, 0, 196614, 13, 0, 196615, 13, 0, 196616, 20, 0, 196617, 20, 0, 196618, 20, 0, 196619, 20, 0, 196620, 20, 0, 196621, 20, 0, 196622, 20, 0, 196623, 20, 0, 196624, 20, 0, 327675, 13, 0, 327676, 13, 0, 327677, 13, 0, 327678, 13, 0, 327679, 13, 0, 262144, 13, 0, 262145, 13, 0, 262146, 13, 0, 262147, 13, 0, 262148, 20, 0, 262149, 20, 0, 262150, 20, 0, 262151, 20, 0, 262152, 20, 0, 262153, 20, 0, 262154, 20, 0, 262155, 20, 0, 262156, 20, 0, 262157, 20, 0, 262158, 20, 0, 262159, 20, 0, 262160, 20, 0, 393211, 13, 0, 393212, 13, 0, 393213, 13, 0, 393214, 13, 0, 393215, 13, 0, 327680, 13, 0, 327681, 13, 0, 327682, 13, 0, 327683, 13, 0, 327684, 20, 0, 327685, 20, 0, 327686, 20, 0, 327687, 20, 0, 327688, 20, 0, 327689, 20, 0, 327690, 20, 0, 327691, 20, 0, 327692, 20, 0, 327693, 20, 0, 327694, 20, 0, 327695, 20, 0, 327696, 20, 0, 458747, 13, 0, 458748, 13, 0, 458749, 13, 0, 458750, 13, 0, 458751, 13, 0, 393216, 13, 0, 393217, 13, 0, 393218, 13, 0, 393219, 13, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0, 393232, 20, 0, 524283, 13, 0, 524284, 13, 0, 524285, 13, 0, 524286, 13, 0, 524287, 13, 0, 458752, 13, 0, 458753, 13, 0, 458754, 13, 0, 458755, 13, 0, 458756, 20, 0, 458757, 20, 0, 458758, 20, 0, 458759, 20, 0, 458760, 20, 0, 458761, 20, 0, 458762, 20, 0, 458763, 20, 0, 458764, 20, 0, 458765, 20, 0, 458766, 20, 0, 458767, 20, 0, 458768, 20, 0, 524292, 20, 0, 524293, 20, 0, 524294, 20, 0, 524295, 20, 0, 524296, 20, 0, 524297, 20, 0, 524298, 20, 0, 524299, 20, 0, 524300, 20, 0, 524301, 20, 0, 524302, 20, 0, 524303, 20, 0, 524304, 20, 0, 589828, 20, 0, 589829, 20, 0, 589830, 20, 0, 589831, 20, 0, 589832, 20, 0, 589833, 20, 0, 589834, 20, 0, 589835, 20, 0, 589836, 20, 0, 589837, 20, 0, 589838, 20, 0, 589839, 20, 0, 589840, 20, 0, 655364, 20, 0, 655365, 20, 0, 655366, 20, 0, 655367, 20, 0, 655368, 20, 0, 655369, 20, 0, 655370, 20, 0, 655371, 20, 0, 655372, 20, 0, 655373, 20, 0, 655374, 20, 0, 655375, 20, 0, 655376, 20, 0, 720900, 20, 0, 720901, 20, 0, 720902, 20, 0, 720903, 20, 0, 720904, 20, 0, 720905, 20, 0, 720906, 20, 0, 720907, 20, 0, 720908, 20, 0, 720909, 20, 0, 720910, 20, 0, 720911, 20, 0, 720912, 20, 0, 786436, 20, 0, 786437, 20, 0, 786438, 20, 0, 786439, 20, 0, 786440, 20, 0, 786441, 20, 0, 786442, 20, 0, 786443, 20, 0, 786444, 20, 0, 786445, 20, 0, 786446, 20, 0, 786447, 20, 0, 786448, 20, 0, 851972, 20, 0, 851973, 20, 0, 851974, 20, 0, 851975, 20, 0, 851976, 20, 0, 851977, 20, 0, 851978, 20, 0, 851979, 20, 0, 851980, 20, 0, 851981, 20, 0, 851982, 20, 0, 851983, 20, 0, 851984, 20, 0 )
+
+[node name="TileMap5" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.247059, 0.247059, 0.247059, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 24, 0, 1, 13, 0, 2, 17, 0, 3, 17, 0, 4, 2, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0 )
+
+[node name="TileMap6" type="TileMap" parent="CanvasLayer/ParallaxBackground/Background"]
+modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
+position = Vector2( 0, 90 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 1, 5, 0, 3, 5, 0, 5, 5, 0, 8, 5, 0 )
+
+[node name="Midground" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.4 )
+
+[node name="TileMap5" type="TileMap" parent="CanvasLayer/ParallaxBackground/Midground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 0, -100 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 0, 36, 0, 3, 36, 0 )
+
+[node name="Train" type="Sprite" parent="."]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
+position = Vector2( 1482, 400 )
+texture = ExtResource( 3 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TileMap4" type="TileMap" parent="Background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -4, 26, 0, -3, 26, 0, -2, 26, 0, -1, 26, 0, -65536, 26, 0, 65526, 26, 0, 65527, 26, 0, 65528, 26, 0, 65529, 26, 0, 65530, 26, 0, 65531, 26, 0, 65532, 26, 0, 65533, 26, 0, 65534, 26, 0, 65535, 26, 0, 0, 26, 0, 1, 26, 0, 2, 26, 0, 3, 26, 0, 4, 26, 0, 5, 26, 0, 6, 26, 0, 7, 26, 0, 8, 26, 0, 9, 26, 0, 10, 26, 0, 11, 26, 0, 12, 26, 0, 13, 26, 0, 131050, 1610612743, 0, 131061, 1, 0, 131062, 1, 0, 131063, 1, 0, 131064, 1, 0, 131065, 17, 0, 131066, 17, 0, 131067, 17, 0, 131068, 17, 0, 131069, 17, 0, 131070, 17, 0, 131071, 17, 0, 65536, 17, 0, 65545, 17, 0, 65546, 17, 0, 65547, 26, 0, 65548, 26, 0, 65549, 26, 0, 196585, 1610612762, 0, 196586, 1610612762, 0, 196587, 1610612762, 0, 196588, 1610612762, 0, 196589, 1610612762, 0, 196590, 1610612762, 0, 196591, 1610612762, 0, 196592, 1610612762, 0, 196593, 1610612762, 0, 196594, 1610612762, 0, 196595, 1610612762, 0, 196596, 1610612762, 0, 196597, 1610612762, 0, 196598, 1610612762, 0, 196599, 1610612762, 0, 196600, 26, 0, 196601, 26, 0, 196602, 26, 0, 196603, 26, 0, 196604, 26, 0, 196605, 26, 0, 196606, 26, 0, 196607, 26, 0, 131072, 26, 0, 131073, 26, 0, 131074, 26, 0, 131075, 26, 0, 131076, 26, 0, 131077, 26, 0, 131078, 26, 0, 131079, 26, 0, 131080, 26, 0, 131081, 26, 0, 131082, 26, 0, 131083, 26, 0, 131084, 26, 0, 131085, 26, 0, 262122, 1610612762, 0, 262123, 1610612762, 0, 262124, 1610612762, 0, 262125, 1610612762, 0, 262126, 1610612762, 0, 262127, 1610612762, 0, 262128, 1610612762, 0, 262129, 1610612762, 0, 262130, 1610612762, 0, 262131, 1610612762, 0, 262132, 1610612762, 0, 262133, 1610612762, 0, 262134, 1610612762, 0, 262140, 26, 0, 262141, 26, 0, 262142, 26, 0, 262143, 26, 0, 196608, 26, 0, 196612, 26, 0, 196613, 26, 0, 196614, 26, 0, 196615, 26, 0, 196616, 26, 0, 196617, 26, 0, 196618, 26, 0, 196619, 26, 0, 196620, 26, 0, 196621, 26, 0, 262148, 26, 0, 262149, 26, 0, 262150, 26, 0, 262151, 26, 0, 327686, 26, 0, 327687, 26, 0, 393222, 26, 0, 393223, 26, 0, 1179651, 22, 0, 1179652, 22, 0, 1179653, 22, 0, 1179654, 22, 0, 1179655, 22, 0, 1179656, 22, 0, 1179657, 22, 0, 1179658, 22, 0, 1179659, 22, 0, 1179660, 22, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.454902, 0.384314, 0.396078, 1 )
+
+[node name="Eastereggs" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Eastereggs"]
+margin_left = 310.0
+margin_top = 285.0
+margin_right = 525.0
+margin_bottom = 333.0
+rect_scale = Vector2( 1.97559, 1.97559 )
+text = "Hey, congrats. 
+You reached the end of this build!
+You can exit now."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Eastereggs"]
+margin_left = 2518.0
+margin_top = 388.0
+margin_right = 2733.0
+margin_bottom = 436.0
+rect_scale = Vector2( 1.38854, 1.38854 )
+text = "Yep. Nothing here."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Eastereggs"]
+margin_left = -1292.0
+margin_top = 355.0
+margin_right = -1077.0
+margin_bottom = 403.0
+rect_scale = Vector2( 1.54979, 1.54979 )
+text = "Yeah, it's the end of the build."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Eastereggs"]
+margin_left = -2426.0
+margin_top = 355.0
+margin_right = -2208.0
+margin_bottom = 403.0
+rect_scale = Vector2( 1.54979, 1.54979 )
+text = "Uhh I guess you can look around
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Eastereggs"]
+margin_left = -4259.0
+margin_top = 338.0
+margin_right = -4027.0
+margin_bottom = 386.0
+rect_scale = Vector2( 1.54979, 1.54979 )
+text = "A park with some calm music.
+Unsure if this'll be in the final game.
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Eastereggs"]
+margin_left = -4870.0
+margin_top = 183.0
+margin_right = -4655.0
+margin_bottom = 231.0
+rect_scale = Vector2( 1.32185, 1.32185 )
+text = "cheeky smug loaf
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Eastereggs"]
+margin_left = -5353.0
+margin_top = 353.0
+margin_right = -5138.0
+margin_bottom = 401.0
+rect_scale = Vector2( 1.32185, 1.32185 )
+text = "Yup. That's it. 
+It's jank city."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Smug" type="Sprite" parent="Eastereggs"]
+position = Vector2( -4923.96, 202.448 )
+scale = Vector2( 0.552642, 0.552642 )
+texture = ExtResource( 2 )
+
+[node name="big" parent="Eastereggs" instance=ExtResource( 5 )]
+position = Vector2( -3748, 285.394 )
+scale = Vector2( 2.27575, 3.78263 )
+
+[node name="big2" parent="Eastereggs" instance=ExtResource( 5 )]
+position = Vector2( -3322, 281.394 )
+scale = Vector2( 5.12009, 1.95335 )
+
+[node name="wall-light2" parent="Eastereggs" instance=ExtResource( 9 )]
+position = Vector2( -3594, 380.394 )
+rotation = 1.28295
+
+[node name="wall-light3" parent="Eastereggs" instance=ExtResource( 9 )]
+position = Vector2( -4299, 541.394 )
+rotation = 3.14159
+
+[node name="big3" parent="Eastereggs" instance=ExtResource( 5 )]
+position = Vector2( -3167.76, 390 )
+scale = Vector2( 5.50159, 1.12828 )
+
+[node name="Chunk9LightLong" type="Sprite" parent="Eastereggs"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -3353.76, 303 )
+rotation = 0.149733
+scale = Vector2( 4.21513, 1.19287 )
+texture = ExtResource( 17 )
+offset = Vector2( -1.30859, 167.941 )
+
+[node name="Tree" type="Sprite" parent="Eastereggs"]
+position = Vector2( -3381, 363 )
+scale = Vector2( 0.586012, 0.586012 )
+texture = ExtResource( 4 )
+
+[node name="LoadPositions" type="Node2D" parent="."]
+position = Vector2( 912.24, 576.51 )
+
+[node name="237" parent="LoadPositions" instance=ExtResource( 14 )]
+position = Vector2( -270.846, 7.0568 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 815.591, 600.242 )
+
+[node name="middle" parent="doors_transitions" instance=ExtResource( 14 )]
+position = Vector2( 227.409, -180.242 )
+
+[node name="Entry-To-Paloza" parent="doors_transitions" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -920.591, -195.242 )
+scene_path_to_load = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="doors_transitions/Entry-To-Paloza" instance=ExtResource( 14 )]
+position = Vector2( 3.71405, -1.11365 )
+
+[node name="Elevator" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 1310.41, -1873.24 )
+scene_path_to_load = "res://1_World/1_zones/stages/sci fi/Stage_01.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Elevator" instance=ExtResource( 14 )]
+position = Vector2( -0.816528, -1.61804 )
+
+[node name="Entity" type="Node2D" parent="."]
+
+[node name="f_wolf" parent="Entity" instance=ExtResource( 23 )]
+position = Vector2( 2657, 2408.86 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1053, 319 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="big" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 1078.17, 186 )
+scale = Vector2( 1.82778, 1.82778 )
+
+[node name="big2" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 1888.17, 130 )
+scale = Vector2( 3.02739, 2.05408 )
+
+[node name="wall-light2" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( 380, 336 )
+rotation = 1.12139
+
+[node name="wall-light3" parent="Foreground" instance=ExtResource( 9 )]
+position = Vector2( -343, 543 )
+rotation = 3.14159
+
+[node name="Stairs" type="Node2D" parent="Foreground"]
+scale = Vector2( 2, 2 )
+
+[node name="Stairs2" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 106.5, 837.5 )
+scale = Vector2( 1, 1 )
+
+[node name="Stairs3" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 473.5, 712 )
+scale = Vector2( 1, 1 )
+
+[node name="Stairs" parent="Foreground/Stairs" instance=ExtResource( 7 )]
+position = Vector2( -179, 924.5 )
+scale = Vector2( 1, 1 )
+
+[node name="FloorsTilemap" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131051, 8, 0, 131052, 8, 0, 131053, 8, 0, 131054, 8, 0, 131055, 8, 0, 131056, 8, 0, 131057, 8, 0, 131058, 8, 0, 131059, 8, 0, 131060, 8, 0, 131061, 8, 0, 131062, 8, 0, 131063, 8, 0, 131064, 8, 0, 131065, 8, 0, 131066, 8, 0, 131067, 8, 0, 131068, 8, 0, 131069, 6, 0, 131070, 6, 0, 131071, 6, 0, 65536, 6, 0, 65537, 6, 0, 65538, 6, 0, 65539, 6, 0, 65540, 6, 0, 65541, 6, 0, 65542, 6, 0, 65543, 6, 0, 65544, 6, 0, 65545, 6, 0, 65546, 6, 0, 65547, 6, 0, 131079, -1073741816, 0, 262146, 9, 0, 1179651, 8, 0, 1179652, 8, 0, 1179653, 8, 0, 1179654, 8, 0, 1179655, 8, 0, 1179656, 8, 0, 1179657, 8, 0, 1179658, 8, 0, 1179659, 8, 0, 1179660, 8, 0 )
+
+[node name="ForegroundTilemap" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131067, 8, 0, 131068, 8, 0, 131069, 8, 0, 131070, 8, 0, 65547, 7, 0 )
+
+[node name="big3" parent="Foreground" instance=ExtResource( 5 )]
+position = Vector2( 776, 355 )
+scale = Vector2( 5.50159, 1.12828 )
+
+[node name="SuitesRoughs" type="Sprite" parent="."]
+visible = false
+position = Vector2( 991, -285 )
+texture = ExtResource( 11 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0784314, 0.0941176, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

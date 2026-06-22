@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/m_cafe_jazz.ogg-e88bb6d163489ec42af4a85e80d112f3.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/music/m_cafe_jazz.ogg"
+dest_files=[ "res://.import/m_cafe_jazz.ogg-e88bb6d163489ec42af4a85e80d112f3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

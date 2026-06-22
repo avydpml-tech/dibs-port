@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Entities/Player/z_test_scenes/snowBreath.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Entities/Player/z_test_scenes/snowBreath.gd" type="Script" id=2]
+
+
+[node name="Node2D" type="Node2D"]
+
+[node name="snowBreath" type="Node2D" parent="." instance=ExtResource( 1 )]
+rotation = 3.14159
+scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 2 )
+breath_timer_min = 5
+breath_timer_max = 3

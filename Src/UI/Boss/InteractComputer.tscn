@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Src/Menu/Themes/interact_ui_subtext_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Src/Menu/Themes/interact_ui_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Src/UI/Boss/InteractComputer.gd" type="Script" id=3]
+[ext_resource path="res://Src/Interactables/Modules/change_scene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Interactables/ComputerProgressBar.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 77, 49 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/Disclaimer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/Disclaimer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="InteractComputer" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 513
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 76, 83 )
+shape = SubResource( 1 )
+
+[node name="InteractModules" type="Node2D" parent="."]
+
+[node name="ProgressBar" parent="InteractModules" instance=ExtResource( 5 )]
+margin_left = 38.0
+margin_top = 39.0
+margin_right = 438.0
+margin_bottom = 139.0
+timer = 2.0
+call_method = "change_scene_to_boss_area"
+
+[node name="SecondaryInteractModules" type="Node2D" parent="."]
+
+[node name="ChangeScene" parent="SecondaryInteractModules" instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Disclaimer" type="Label" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 390.0
+margin_top = 542.0
+margin_right = 938.0
+margin_bottom = 674.0
+theme = ExtResource( 1 )
+text = "There is currently no audio for the boss. 
+Much of the art is in place, but there still 
+needs a bit of clean up.
+
+Aside from those, he's playable.
+You can now annoy him."
+align = 1
+
+[node name="Try" type="Label" parent="CanvasLayer/Disclaimer"]
+margin_top = -40.0
+margin_right = 548.0
+margin_bottom = 11.0
+theme = ExtResource( 2 )
+text = "TRY BOSS?"
+align = 1
+
+[node name="TryBoss" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 159.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = "STARTING..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TryBoss")
+anims/RESET = SubResource( 3 )
+anims/fade = SubResource( 2 )
+
+[node name="AnimationPlayerDisclaimer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TryBoss")
+anims/RESET = SubResource( 4 )
+anims/fade = SubResource( 5 )

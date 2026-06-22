@@ -1,0 +1,236 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/GalleryRoom/Stage_03-GalleryRoom.gd" type="Script" id=1]
+[ext_resource path="res://Assets/1_Visual/3_Background/green-to-wall/patreon-locked.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Audio/sfx/press_button.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/planet.png" type="Texture" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World/1_zones/gook.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/Environment/wallLight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/1_World/1_zones/MainHub/doorClick.gd" type="Script" id=10]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/transition_fade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_shieldmon/f_shieldmon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/back-dark-gradient.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_walnut/f_walnut.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/1_World_Objects/Platform/risingPlatformElevator.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_strength = 0.8
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20.9028, 25.1333 )
+
+[node name="Node2D" type="Node2D" groups=["Gallery"]]
+position = Vector2( 6, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 763.702, 765.796, 752.113 ]
+}
+day_or_night = "dark"
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -6
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 626.567, 355.792 )
+scale = Vector2( 5.49677, 4.28888 )
+texture = ExtResource( 16 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control"]
+layer = -1
+scroll_base_scale = Vector2( 0.7, 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Control/ParallaxBackground"]
+
+[node name="planet-2880x1800-horizon-earth-4k-9337 - Copy2" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 100, 100, 100, 0.02 )
+position = Vector2( 818.923, 675.256 )
+rotation = -2.87979
+scale = Vector2( 0.281007, 0.219257 )
+texture = ExtResource( 4 )
+
+[node name="black-background3" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 919.168, 57.1341 )
+scale = Vector2( 6.95977, 2.55559 )
+texture = ExtResource( 16 )
+
+[node name="black-background2" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 911.617, 1045.31 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="black-background4" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -518.801, 662.404 )
+scale = Vector2( 5.49677, 1.13582 )
+texture = ExtResource( 16 )
+
+[node name="black-background5" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2360.02, 652.965 )
+scale = Vector2( 5.49677, 1.13582 )
+texture = ExtResource( 16 )
+
+[node name="back-dark-gradient" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -506.149, 1109.78 )
+rotation = 1.57079
+scale = Vector2( 5.49677, 1.13582 )
+texture = ExtResource( 15 )
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="TileMap3" type="TileMap" parent="background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 17, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 17, 0, 131082, 1, 0, 131083, 1, 0, 131084, 17, 0, 196612, 1, 0, 196613, 20, 0, 196614, 1, 0, 196615, 1, 0, 196616, 19, 0, 196617, 19, 0, 196620, 20, 0, 262148, 17, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 19, 0, 262153, 19, 0, 262156, 19, 0, 327684, 20, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 19, 0 )
+
+[node name="doors_transitions" type="Node2D" parent="background"]
+position = Vector2( 798.467, 689.287 )
+
+[node name="Elevator-to-palooza" parent="background/doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( -150.858, -28.5232 )
+scene_path_to_load = "res://Src/1_World/1_zones/GalleryRoom/Stage_02-GalleryRoom.tscn"
+where_is_exit_point = "right"
+
+[node name="left" parent="background/doors_transitions/Elevator-to-palooza" instance=ExtResource( 14 )]
+position = Vector2( -0.177361, 12.4067 )
+
+[node name="gook" type="TileMap" parent="background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 1610612744, 0, 131074, 1073741832, 0, 131075, 1073741832, 0, 131076, 1073741832, 0, 131077, 1073741832, 0, 131078, 1073741832, 0, 131079, 1610612744, 0, 131080, 8, 0, 131082, 536870915, 0, 196612, 8, 0, 196613, 536870914, 0, 196614, 1073741828, 0, 196615, 2, 0, 196616, -2147483640, 0, 196617, 536870915, 0, 262148, 1073741832, 0, 262149, 536870917, 0, 262151, 536870914, 0, 262152, -536870904, 0, 327684, -536870904, 0, 327685, 1073741832, 0, 327686, 536870920, 0, 327687, 536870917, 0, 327688, 536870915, 0 )
+
+[node name="gook3" type="TileMap" parent="background"]
+visible = false
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 8, 0, 131074, 8, 0, 131075, 536870920, 0, 131076, 536870920, 0, 131077, 536870920, 0, 196615, 536870916, 0, 262148, 536870920, 0, 262149, 1073741832, 0 )
+
+[node name="gook2" type="TileMap" parent="background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 4, 0, 131074, 1610612744, 0, 131075, 1610612740, 0, 131076, 1073741828, 0, 131078, 1610612740, 0, 196613, 1073741827, 0, 262149, 536870920, 0, 262150, 1073741832, 0, 262151, 1073741828, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background"]
+color = Color( 0.156863, 0.423529, 0.298039, 1 )
+
+[node name="walllights" type="Node2D" parent="."]
+position = Vector2( 798.467, 689.287 )
+
+[node name="wall-light3" parent="walllights" instance=ExtResource( 9 )]
+position = Vector2( 1124.79, 88.2188 )
+scale = Vector2( 1, 0.679944 )
+
+[node name="Floor" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131072, -1073741816, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131078, 8, 0, 131079, 8, 0, 131082, 8, 0, 131083, 8, 0, 196612, 8, 0, 196613, 8, 0, 196614, 8, 0, 196615, 8, 0, 262149, 8, 0, 262150, 8, 0, 262151, 8, 0, 262152, 536870920, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 8, 0, 327690, 8, 0 )
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="1" parent="Entities" instance=ExtResource( 12 )]
+position = Vector2( 1537.71, 1171.61 )
+is_asleep = true
+
+[node name="2" parent="Entities" instance=ExtResource( 17 )]
+position = Vector2( 1903.99, 668.573 )
+is_asleep = true
+
+[node name="walls" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65545, 8, 0, 65546, 8, 0, 65547, 8, 0, 65548, 8, 0, 131072, -1073741816, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, -1073741816, 0, 131085, -1610612728, 0, 196611, -1073741816, 0, 196612, 8, 0, 196613, 8, 0, 196614, 8, 0, 196615, 8, 0, 196616, -1073741816, 0, 196618, -1610612728, 0, 196619, 1610612743, 0, 196621, 7, 0, 262147, -1073741816, 0, 262149, 8, 0, 262150, 8, 0, 262151, 8, 0, 262152, -1073741816, 0, 262154, -1610612728, 0, 262155, 1610612743, 0, 262157, 7, 0, 327683, -1073741816, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 8, 0, 327690, -1610612728, 0 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 2360.42, 1360.51 )
+
+[node name="big" parent="." instance=ExtResource( 5 )]
+position = Vector2( 652.743, 628.362 )
+scale = Vector2( -0.752, -12.55 )
+color = Color( 0.431373, 0.666667, 0.65098, 1 )
+range_item_cull_mask = 3
+
+[node name="big2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3172.7, 1035.47 )
+scale = Vector2( 4.16232, 4.16232 )
+color = Color( 0.431373, 0.666667, 0.65098, 1 )
+range_item_cull_mask = 3
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Transition_point" parent="." instance=ExtResource( 11 )]
+position = Vector2( 3460.68, 1169.87 )
+where_is_exit_point = "middle"
+turn_off_music = true
+
+[node name="patreon door" type="Node2D" parent="."]
+position = Vector2( 37.3865, 1220.31 )
+
+[node name="Door-237" parent="patreon door" instance=ExtResource( 6 )]
+position = Vector2( 9.51501, -38.5192 )
+door_active = false
+scene_path_to_load = "res://1_World/1_zones/ship/Stage_01.tscn"
+where_is_exit_point = "right"
+
+[node name="right" parent="patreon door/Door-237" instance=ExtResource( 14 )]
+position = Vector2( -2.85004, 43.6643 )
+
+[node name="patreon-locked" type="Sprite" parent="patreon door/Door-237"]
+visible = false
+position = Vector2( 0.630005, 13.1962 )
+scale = Vector2( 1.70707, 1.70707 )
+texture = ExtResource( 2 )
+
+[node name="interactable" type="StaticBody2D" parent="patreon door"]
+collision_layer = 0
+script = ExtResource( 10 )
+
+[node name="Area2D" type="Area2D" parent="patreon door/interactable"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="patreon door/interactable/Area2D"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="patreon door/interactable"]
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="patreon door/interactable"]
+stream = ExtResource( 3 )
+pitch_scale = 3.0
+attenuation = 0.101532
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2436.85, 1536.81 )
+end_position = 768
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="input_event" from="patreon door/interactable/Area2D" to="patreon door/interactable" method="_on_Area2D_input_event"]

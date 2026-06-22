@@ -1,0 +1,240 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Src/1_World/1_zones/Master_stage.gd" type="Script" id=1]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_cordygreg/f_cordygreg.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Interactables/clothes.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Interactables/ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World_Objects/stairsRight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Assets/1_Visual/3_Background/__Guides/zzzz_outline/5 LeftArea.png" type="Texture" id=9]
+[ext_resource path="res://Src/1_World_Objects/stairsLeft.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_umbrella/f_umbrella.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_shieldmon/f_shieldmon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_ceiling_dweller/f_ceiling_dweller.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_walnut/f_walnut.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_tit_hugger/f_tit_hugger.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Src/Entities/Nonplayer/f_subtypes/f_hangmon/f_hangmon.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Assets/1_Visual/Tilesets/LewdAreaTileSet.tres" type="TileSet" id=24]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58.3493, 10 )
+
+[sub_resource type="ShaderMaterial" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+day_or_night = "dark"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Tilesets" type="Node2D" parent="Background"]
+
+[node name="background" type="TileMap" parent="Background/Tilesets"]
+modulate = Color( 2, 2, 2, 1 )
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 24 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65543, 30, 0, 131074, 35, 0, 131075, 31, 0, 131076, 31, 0, 131077, 30, 0, 131078, 30, 0, 131079, 30, 0, 131080, 30, 0, 131081, 30, 0, 131082, 30, 0, 131083, 30, 0, 131084, 30, 0, 196613, 30, 0, 196614, 1610612766, 0, 196615, 1610612773, 0, 196616, 1610612773, 0, 196617, 1610612774, 0, 196618, 34, 0, 196620, 1610612774, 0, 196621, 34, 0, 196623, 1610612773, 0, 196624, 1610612773, 0, 196625, 1610612774, 0, 196626, 1610612773, 0, 196627, 1610612773, 0, 196628, 38, 0, 196629, 38, 0, 196630, 38, 0, 262151, 31, 0, 262152, 31, 0, 262153, 31, 0, 262156, 31, 0, 262159, 39, 0, 262160, 39, 0, 262161, 31, 0, 262162, 39, 0, 262163, 33, 0, 262164, 31, 0, 262165, 35, 0, 262166, 31, 0, 327692, 1610612774, 0, 327693, 1610612774, 0, 327694, 1610612774, 0, 327695, 1610612774, 0, 327696, 1610612774, 0, 327697, 1610612766, 0, 327698, 30, 0, 327699, 30, 0, 327700, 30, 0, 327701, 30, 0, 393226, 31, 0, 393227, 30, 0, 393228, 31, 0, 393229, 40, 0, 393230, 33, 0, 393231, 40, 0, 393232, 33, 0, 393233, 30, 0, 393234, 30, 0, 393235, 30, 0, 458763, 30, 0, 458764, 30, 0, 458765, 30, 0, 458766, 30, 0, 458767, 30, 0, 458768, 30, 0, 458769, 30, 0, 458770, 30, 0, 458771, 30, 0, 458772, 30, 0, 458773, 30, 0 )
+
+[node name="playerPos" type="Position2D" parent="Background/Tilesets"]
+position = Vector2( 676.816, 482.584 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.466667, 0.396078, 0.501961, 1 )
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="doors_transitions" type="Node2D" parent="Interactables"]
+
+[node name="StoreDoor" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+modulate = Color( 0.552941, 0.490196, 0.54902, 1 )
+position = Vector2( 645.389, 657.508 )
+scene_path_to_load = "res://Src/1_World/1_zones/LewdZones/Stage_01-StripedClub.tscn"
+where_is_exit_point = "StoreDoor"
+
+[node name="left" parent="Interactables/doors_transitions/StoreDoor" instance=ExtResource( 14 )]
+position = Vector2( -3.79219, 26.9884 )
+
+[node name="StoreDoor2" parent="Interactables/doors_transitions" instance=ExtResource( 6 )]
+modulate = Color( 0.552941, 0.490196, 0.54902, 1 )
+position = Vector2( 5510.54, 1939.51 )
+door_type = "long_door"
+scene_path_to_load = "res://Src/1_World/1_zones/LewdZones/Stage_01-StripedClub.tscn"
+where_is_exit_point = "leftDoor"
+
+[node name="rightDoor" parent="Interactables/doors_transitions/StoreDoor2" instance=ExtResource( 14 )]
+position = Vector2( -3.79219, 26.9884 )
+
+[node name="ForeInteractable" type="Node2D" parent="Interactables"]
+position = Vector2( 2242.02, 519.419 )
+
+[node name="ammo" parent="Interactables/ForeInteractable" instance=ExtResource( 4 )]
+position = Vector2( 359.07, 710.581 )
+rotation = 0.00747181
+
+[node name="ammo2" parent="Interactables/ForeInteractable" instance=ExtResource( 4 )]
+position = Vector2( 1327.43, 656.581 )
+rotation = 0.0188655
+
+[node name="ammo3" parent="Interactables/ForeInteractable" instance=ExtResource( 4 )]
+position = Vector2( 1366.98, 655.581 )
+rotation = 0.469571
+
+[node name="clothes" parent="Interactables/ForeInteractable" instance=ExtResource( 3 )]
+position = Vector2( 2509.39, 670.142 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Interactables/ForeInteractable"]
+position = Vector2( 1338.3, 699.121 )
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/ForeInteractable/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Interactables/ForeInteractable"]
+position = Vector2( 2501.66, 710.905 )
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/ForeInteractable/StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="Entity" type="Node2D" parent="."]
+modulate = Color( 0.992157, 0.968627, 1, 1 )
+
+[node name="1" parent="Entity" instance=ExtResource( 23 )]
+position = Vector2( 3818.56, 1426 )
+
+[node name="2" parent="Entity" instance=ExtResource( 12 )]
+position = Vector2( 3849.39, 1680.7 )
+
+[node name="3" parent="Entity" instance=ExtResource( 17 )]
+position = Vector2( 3098.16, 1175.12 )
+
+[node name="4" parent="Entity" instance=ExtResource( 2 )]
+position = Vector2( 3330.35, 1630.13 )
+
+[node name="5" parent="Entity" instance=ExtResource( 2 )]
+position = Vector2( 4013.42, 1600.43 )
+
+[node name="6" parent="Entity" instance=ExtResource( 12 )]
+position = Vector2( 3548.34, 1627.14 )
+
+[node name="7" parent="Entity" instance=ExtResource( 12 )]
+position = Vector2( 3981.66, 1619.72 )
+
+[node name="8" parent="Entity" instance=ExtResource( 12 )]
+position = Vector2( 3642.63, 1554.03 )
+
+[node name="9" parent="Entity" instance=ExtResource( 15 )]
+position = Vector2( 4335.99, 970.925 )
+
+[node name="10" parent="Entity" instance=ExtResource( 15 )]
+position = Vector2( 3273.4, 983.283 )
+
+[node name="11" parent="Entity" instance=ExtResource( 19 )]
+position = Vector2( 4669.3, 1122.24 )
+
+[node name="12" parent="Entity" instance=ExtResource( 19 )]
+position = Vector2( 3898.8, 1128.64 )
+
+[node name="13" parent="Entity" instance=ExtResource( 11 )]
+position = Vector2( 3819.52, 1933.52 )
+
+[node name="14" parent="Entity" instance=ExtResource( 11 )]
+position = Vector2( 4691.91, 1933.52 )
+
+[node name="15" parent="Entity" instance=ExtResource( 11 )]
+position = Vector2( 4550.39, 1933.52 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1064.66, 608.185 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -1
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+position = Vector2( 734.206, 375.462 )
+scale = Vector2( 4.53903, 3.08609 )
+texture = ExtResource( 16 )
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="floor" type="TileMap" parent="Foreground"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 131073, 1610612743, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 196614, 8, 0, 262152, 8, 0, 262153, 8, 0, 262154, 8, 0, 262155, 8, 0, 262156, 8, 0, 262157, 8, 0, 262158, 8, 0, 262159, 8, 0, 262160, 8, 0, 262161, 8, 0, 262162, 8, 0, 262163, 8, 0, 262164, 8, 0, 262166, 8, 0, 262167, 7, 0, 327690, 8, 0, 327691, 8, 0, 327700, 8, 0, 393225, 1610612743, 0, 393226, 8, 0, 393228, 8, 0, 393229, 8, 0, 393230, 8, 0, 393231, 8, 0, 393232, 8, 0, 393233, 8, 0, 393234, 8, 0, 393235, 8, 0, 393236, 8, 0, 393237, 8, 0, 458764, 8, 0, 458765, 8, 0, 458766, 8, 0, 458767, 8, 0, 458768, 8, 0, 458769, 8, 0, 458770, 8, 0, 458771, 8, 0, 458772, 8, 0, 458773, 8, 0, 458774, 7, 0 )
+
+[node name="Lights" type="TileMap" parent="Foreground"]
+modulate = Color( 2, 2, 2, 1 )
+material = SubResource( 2 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 24 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131079, 26, 0, 131080, 26, 0, 131081, 26, 0, 131082, 26, 0, 131083, 26, 0, 131084, 26, 0, 196616, 28, 0, 196617, 28, 0, 196618, 28, 0, 196619, 28, 0, 196620, 28, 0, 196621, 28, 0, 196622, 28, 0, 196623, 28, 0, 196624, 28, 0, 196625, 28, 0, 327697, 1610612772, 0, 327698, 1610612772, 0, 327699, 1610612772, 0, 327700, 1610612772, 0, 327701, 1610612772, 0 )
+
+[node name="Lights2" type="Node2D" parent="Foreground"]
+position = Vector2( 6287.88, 1213.12 )
+
+[node name="big4" parent="Foreground/Lights2" instance=ExtResource( 5 )]
+position = Vector2( -3505.25, -91.2885 )
+scale = Vector2( 5.76171, -2.3267 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big5" parent="Foreground/Lights2" instance=ExtResource( 5 )]
+position = Vector2( -4594.37, -307.419 )
+scale = Vector2( 5.76171, -2.3267 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big2" parent="Foreground/Lights2" instance=ExtResource( 5 )]
+position = Vector2( -2357.58, -102.489 )
+scale = Vector2( 4.47951, 2.58304 )
+energy = 0.7
+shadow_enabled = true
+
+[node name="big6" parent="Foreground/Lights2" instance=ExtResource( 5 )]
+position = Vector2( -778.88, 710.88 )
+scale = Vector2( 0.758063, 1.54349 )
+energy = 0.99
+shadow_enabled = true
+
+[node name="Stairs" type="Node2D" parent="Foreground"]
+
+[node name="Stairs" parent="Foreground/Stairs" instance=ExtResource( 7 )]
+position = Vector2( 1467.09, 844.104 )
+
+[node name="Stairs2" parent="Foreground/Stairs" instance=ExtResource( 7 )]
+position = Vector2( 1973.02, 1095.57 )
+
+[node name="Stairs3" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 4934.58, 1599.61 )
+
+[node name="Stairs5" parent="Foreground/Stairs" instance=ExtResource( 10 )]
+position = Vector2( 5445.18, 1344.13 )
+
+[node name="Stairs4" parent="Foreground/Stairs" instance=ExtResource( 7 )]
+position = Vector2( 2989.6, 1859.29 )
+
+[node name="5 LeftArea" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2673.03, 1001.7 )
+texture = ExtResource( 9 )
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]

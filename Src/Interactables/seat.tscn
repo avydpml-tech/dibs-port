@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Src/Interactables/!_common/physicsInteractable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Interactables/seat.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/Theatre/theatre_chairs_single.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/5_CinemaTapes/tapeTentacle1/arrow.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 104, 10 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.15407, 20.9843 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[sub_resource type="Animation" id=3]
+resource_name = "clicked"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0624329, 0.137567 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0.811765, 0.811765, 0.811765, 1 ), Color( 0.411765, 0.411765, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "mouse_hover"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.368627, 0.368627, 0.368627, 1 ), Color( 0.568627, 0.568627, 0.568627, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("booster/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("booster/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 40 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "boost_seat"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("booster/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("booster/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 80 ), Vector2( 1, 40 ) ]
+}
+
+[node name="seat" instance=ExtResource( 1 )]
+collision_layer = 131072
+collision_mask = 513
+mode = 1
+gravity_scale = 40.0
+script = ExtResource( 2 )
+is_persist = true
+
+[node name="booster" type="StaticBody2D" parent="." index="0"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="booster" index="0"]
+position = Vector2( 1, 40 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="InteractArrow" type="Sprite" parent="." index="2"]
+modulate = Color( 1, 1, 1, 0.27451 )
+material = SubResource( 2 )
+position = Vector2( 0.202154, -62.0733 )
+rotation = -1.5708
+scale = Vector2( 0.0919209, 0.0919209 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractArrow" index="0"]
+anims/clicked = SubResource( 3 )
+anims/mouse_hover = SubResource( 4 )
+
+[node name="Chair" type="Sprite" parent="." index="3"]
+modulate = Color( 0.172549, 0.172549, 0.192157, 1 )
+position = Vector2( 0.202154, 0.0338082 )
+texture = ExtResource( 3 )
+
+[node name="boosterAnimPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/RESET = SubResource( 7 )
+anims/boost_seat = SubResource( 6 )
+
+[node name="interactTimer" type="Timer" parent="." index="5"]
+wait_time = 0.3
+one_shot = true

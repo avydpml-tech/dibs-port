@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/component/hold_input_timer.gd" type="Script" id=1]
+
+[node name="HoldInputTimer" type="Timer"]
+one_shot = true
+script = ExtResource( 1 )
+action_event = "ui_h"

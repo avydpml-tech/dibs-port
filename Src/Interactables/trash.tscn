@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Src/Interactables/!_common/genericInteractable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Interactables/trash.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/objects/trashbin_toppled.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/objects/trashbin.png" type="Texture" id=4]
+[ext_resource path="res://Src/Shaders/silouette.shader" type="Shader" id=6]
+[ext_resource path="res://Assets/1_Audio/sfx/_environment/lever_up.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/1_Audio/sfx/_environment/lever_down.ogg" type="AudioStream" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 6 )
+shader_param/modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "clicked"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0624329, 0.137567 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0.811765, 0.811765, 0.811765, 1 ), Color( 0.411765, 0.411765, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "mouse_hover"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.368627, 0.368627, 0.368627, 1 ), Color( 0.568627, 0.568627, 0.568627, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "clicked"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0624329, 0.137567 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.686275, 0.686275, 0.686275, 1 ), Color( 0.811765, 0.811765, 0.811765, 1 ), Color( 0.411765, 0.411765, 0.411765, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "mouse_hover"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.368627, 0.368627, 0.368627, 1 ), Color( 0.568627, 0.568627, 0.568627, 1 ) ]
+}
+
+[node name="trashbin" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="upright" type="Node2D" parent="." index="0"]
+
+[node name="Enter 3" type="Sprite" parent="upright" index="0"]
+visible = false
+material = SubResource( 1 )
+position = Vector2( 0, -3 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="upright/Enter 3" index="0"]
+anims/clicked = SubResource( 2 )
+anims/mouse_hover = SubResource( 3 )
+
+[node name="Enter 2" type="Sprite" parent="upright" index="1"]
+texture = ExtResource( 4 )
+
+[node name="Enter 1" type="Sprite" parent="upright" index="2"]
+visible = false
+texture = ExtResource( 4 )
+
+[node name="toppled" type="Node2D" parent="." index="1"]
+visible = false
+
+[node name="toppled_highlight" type="Sprite" parent="toppled" index="0"]
+material = SubResource( 1 )
+position = Vector2( 0, -3 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="toppled/toppled_highlight" index="0"]
+anims/clicked = SubResource( 4 )
+anims/mouse_hover = SubResource( 5 )
+
+[node name="Enter 2" type="Sprite" parent="toppled" index="1"]
+texture = ExtResource( 3 )
+
+[node name="Enter 1" type="Sprite" parent="toppled" index="2"]
+texture = ExtResource( 3 )
+
+[node name="lever_up" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource( 7 )
+bus = "SFX"
+
+[node name="lever_down" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource( 8 )
+bus = "SFX"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]

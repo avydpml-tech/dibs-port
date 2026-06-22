@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SWFMoan275.ogg-bbcd4b158615353ae087be45dc5492a2.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/smex/Moan/Curated/SWFMoan275.ogg"
+dest_files=[ "res://.import/SWFMoan275.ogg-bbcd4b158615353ae087be45dc5492a2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

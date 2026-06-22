@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=1]
+[ext_resource path="res://Src/Environment/wallLight_plantAffects.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/3_Background/flashlight_light.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi packs tilesets/Pack 01 (Pixel Art)/PNG/Chunk6.png" type="Texture" id=4]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "flicker"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.059765, 0.10971, 1.18641, 1.30451, 1.3414, 1.6, 2.44834, 2.52658, 2.63577, 2.73303, 2.81127, 2.91904 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0468651, 0.130407, 1.20917, 1.29484, 1.35371, 1.6, 2.36803, 2.49016, 2.57166, 2.6389, 2.69595, 2.83044, 2.98326 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.8, 0.8, 0.0, 0.8, 0.0, 0.0552359, 0.0, 0.8, 0.8, 0.0, 0.8, 0.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_is_flashing_Nonplayer"
+}, {
+"args": [  ],
+"method": "stopped_flashlight"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 81.674, 23.988 )
+
+[node name="wallLight" type="StaticBody2D"]
+script = ExtResource( 2 )
+flicker = true
+
+[node name="wall-light" type="Light2D" parent="."]
+rotation = 3.14009
+texture = ExtResource( 3 )
+energy = 0.0
+range_item_cull_mask = 1048575
+
+[node name="big" type="Light2D" parent="."]
+position = Vector2( -14.3537, -67.6677 )
+rotation = 3.14009
+scale = Vector2( 2.18977, 2.18977 )
+texture = ExtResource( 1 )
+energy = 0.0294563
+shadow_enabled = true
+
+[node name="Chunk6" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.988235, 0.972549, 0.972549, 1 )
+position = Vector2( -56.1043, -70.9123 )
+rotation = 3.14009
+scale = Vector2( 8.78902, 5.86764 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 3.14009
+scale = Vector2( 8.78902, 5.86764 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 0.594046, 54.9472, 8.00239, -17.8241, -7.10143, -17.4027 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../wall-light")
+anims/flicker = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -10.7544, -370.488 )
+shape = SubResource( 2 )

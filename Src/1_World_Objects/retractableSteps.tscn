@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Interactables/lockedDoor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=2]
+
+
+
+
+
+
+
+
+[node name="retractableSteps" type="Node2D"]
+position = Vector2( -2043.48, 703.478 )
+rotation = 1.5708
+
+[node name="lockedDoor18" parent="." instance=ExtResource( 1 )]
+position = Vector2( -129.364, 133.74 )
+unique_id = "locked_door"
+volume_distance = 2000
+
+[node name="lockedDoor17" parent="." instance=ExtResource( 1 )]
+position = Vector2( -67.844, 70.5601 )
+rotation = -4.58559e-06
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="lockedDoor16" parent="." instance=ExtResource( 1 )]
+unique_id = "locked_door"
+volume_distance = 1
+
+[node name="black-background5" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -20.7301, 238.701 )
+rotation = -1.57079
+scale = Vector2( 1.22905, -0.638084 )
+texture = ExtResource( 2 )

@@ -1,0 +1,205 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/1_Audio/sfx/whistle/whistle_call.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Assets/1_Visual/2_UI/music_note.png" type="Texture" id=2]
+[ext_resource path="res://Assets/1_Audio/sfx/press_button.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/planet.png" type="Texture" id=4]
+[ext_resource path="res://Src/Environment/genericLight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/1_World_Objects/scene_transitions/door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/1_World/1_zones/gook.tres" type="TileSet" id=7]
+[ext_resource path="res://Assets/1_Visual/Tilesets/ShipTileSet.tres" type="TileSet" id=8]
+[ext_resource path="res://Src/1_World/1_zones/GalleryRoom/Stage_01-GalleryRoom.gd" type="Script" id=9]
+[ext_resource path="res://Src/1_World/1_zones/MainHub/doorClick.gd" type="Script" id=10]
+[ext_resource path="res://Src/UI/Popup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/MiscScenes/creatureSpawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Src/Entities/Player/playerChar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/MiscScenes/playerLoadPositions.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/back-dark-gradient.png" type="Texture" id=15]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/black-background.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20.9028, 25.1333 )
+
+[node name="Node2D" type="Node2D" groups=["Gallery"]]
+script = ExtResource( 9 )
+day_or_night = "dark"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = -6
+
+[node name="black-background" type="Sprite" parent="Control/CanvasLayer"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 626.567, 355.792 )
+scale = Vector2( 5.49677, 4.28888 )
+texture = ExtResource( 16 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control"]
+layer = -1
+scroll_base_scale = Vector2( 0.7, 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Control/ParallaxBackground"]
+visible = false
+
+[node name="planet-2880x1800-horizon-earth-4k-9337 - Copy2" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 100, 100, 100, 0.02 )
+position = Vector2( 818.923, 675.256 )
+rotation = -2.87979
+scale = Vector2( 0.281007, 0.219257 )
+texture = ExtResource( 4 )
+
+[node name="black-background3" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 919.168, 57.1341 )
+scale = Vector2( 6.95977, 2.55559 )
+texture = ExtResource( 16 )
+
+[node name="black-background2" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 911.617, 1045.31 )
+scale = Vector2( 6.92202, 1.43033 )
+texture = ExtResource( 16 )
+
+[node name="black-background4" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -518.801, 662.404 )
+scale = Vector2( 5.49677, 1.13582 )
+texture = ExtResource( 16 )
+
+[node name="black-background5" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2360.02, 652.965 )
+scale = Vector2( 5.49677, 1.13582 )
+texture = ExtResource( 16 )
+
+[node name="back-dark-gradient" type="Sprite" parent="Control/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -506.149, 1109.78 )
+rotation = 1.57079
+scale = Vector2( 5.49677, 1.13582 )
+texture = ExtResource( 15 )
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="TileMap3" type="TileMap" parent="background"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0 )
+
+[node name="gook" type="TileMap" parent="background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131074, 1073741832, 0, 131075, 536870914, 0 )
+
+[node name="gook3" type="TileMap" parent="background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="gook2" type="TileMap" parent="background"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 128, 128 )
+format = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="background"]
+color = Color( 0, 0.313726, 0.172549, 1 )
+
+[node name="walllights" type="Node2D" parent="."]
+position = Vector2( 798.467, 689.287 )
+
+[node name="doors_transitions" type="Node2D" parent="."]
+position = Vector2( 798.467, 689.287 )
+
+[node name="Elevator-to-palooza" parent="doors_transitions" instance=ExtResource( 6 )]
+position = Vector2( 863.807, -31.779 )
+scene_path_to_load = "res://Src/1_World/1_zones/GalleryRoom/Stage_02-GalleryRoom.tscn"
+where_is_exit_point = "left"
+
+[node name="right" parent="doors_transitions/Elevator-to-palooza" instance=ExtResource( 14 )]
+position = Vector2( -2.85009, 48.0427 )
+
+[node name="tangleStartPos" type="Position2D" parent="doors_transitions"]
+position = Vector2( -51.2947, 9.24988 )
+
+[node name="exclaimPopup" parent="." instance=ExtResource( 11 )]
+position = Vector2( 794, 620 )
+lifetime = 1.2
+texture = ExtResource( 2 )
+gravity = Vector2( 120, 98 )
+angular_velocity = 50.0
+scale_amount = 0.1
+
+[node name="Floor" type="TileMap" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 131073, 1610612743, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 1073741831, 0 )
+
+[node name="playerChar" parent="." instance=ExtResource( 13 )]
+position = Vector2( 749.184, 658.924 )
+is_tangled = true
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="SpawnPoint"]
+position = Vector2( 1415.9, 656.258 )
+
+[node name="big" parent="." instance=ExtResource( 5 )]
+position = Vector2( 855.505, 628.58 )
+scale = Vector2( -3.58286, -13.8658 )
+color = Color( 0.431373, 0.666667, 0.65098, 1 )
+energy = 0.8
+range_item_cull_mask = 3
+
+[node name="patreon door" type="Node2D" parent="."]
+position = Vector2( 868.947, 1464.53 )
+
+[node name="interactable" type="StaticBody2D" parent="patreon door"]
+collision_layer = 0
+script = ExtResource( 10 )
+
+[node name="Area2D" type="Area2D" parent="patreon door/interactable"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="patreon door/interactable/Area2D"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="patreon door/interactable"]
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="patreon door/interactable"]
+stream = ExtResource( 3 )
+pitch_scale = 3.0
+attenuation = 0.101532
+
+[node name="overview" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="overview"]
+layer = 2
+
+[node name="creatureSpawner" parent="overview/CanvasLayer" instance=ExtResource( 12 )]
+position = Vector2( 903.762, 398.681 )
+interacted_by = "creatureSpawner"
+
+[node name="whistle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 10.0
+bus = "SFX"
+
+[connection signal="new_time" from="." to="playerChar" method="_on_Node2D_new_time"]
+[connection signal="input_event" from="patreon door/interactable/Area2D" to="patreon door/interactable" method="_on_Area2D_input_event"]

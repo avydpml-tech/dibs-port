@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "// From GDQuest gradient shader map.
+shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D gradient: hint_black;
+uniform float mix_amount = 1.0;
+
+// Replaced texture(TEXTURE, UV) with texture(SCREEN_TEXTURE, SCREEN_UV).
+// Found this method from https://www.youtube.com/watch?v=UVDbvfGD0AE
+
+void fragment(){
+	vec4 input_color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	float greyscale_value = dot(input_color.rgb, vec3(0.299, 0.587, 0.114));
+	vec3 sampled_color = texture(gradient, vec2(greyscale_value, 0.0)).rgb;
+
+	COLOR.rgb = mix(input_color.rgb, sampled_color, mix_amount);
+	COLOR.a = input_color.a;
+}"
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0966921, 0.37659, 0.65896, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.211824, 0.315904, 0.361512, 1, 0.498047, 0.796875, 0.76886, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[resource]
+shader = SubResource( 1 )
+shader_param/mix_amount = 0.0
+shader_param/gradient = SubResource( 4 )

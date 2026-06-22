@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="playerPos" type="Position2D" groups=["LoadPos"]]
+position = Vector2( -21.6302, -7.21008 )

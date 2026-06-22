@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/1_Visual/3_Background/StripedPalace/Chunk9_light.png" type="Texture" id=1]
+[ext_resource path="res://Src/Environment/wallLight.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/lightVignette.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/3_Background/scifi packs tilesets/Pack 01 (Pixel Art)/PNG/Chunk6.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "flicker"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.059765, 0.10971, 0.309364, 0.470175, 0.507062, 0.728401, 0.806638, 0.985115, 1.08237, 1.16061, 1.26838 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0468651, 0.130407, 0.332131, 0.4605, 0.519368, 0.770217, 0.851721, 0.988241, 1.04529, 1.17978, 1.3326 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.8, 0.8, 0.0, 0.8, 0.0, 0.8, 0.8, 0.0, 0.8, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "none"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0210736 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0137802 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "subtle_flicker"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.139192, 0.309364, 0.36054, 0.437673, 0.513478, 0.731177, 0.972507 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 1.9, 2.0, 1.95, 2.0, 1.95, 2.0, 1.95 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("big:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.431357, 0.872443 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.95, 1.0 ]
+}
+
+[node name="smallLight" type="Light2D" groups=["Lights"]]
+rotation = 3.14009
+texture = ExtResource( 1 )
+energy = 1.95561
+range_item_cull_mask = 1048575
+script = ExtResource( 2 )
+
+[node name="big" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+energy = 0.958345
+shadow_enabled = true
+
+[node name="Chunk6" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.988235, 0.972549, 0.972549, 1 )
+position = Vector2( 55.9977, 70.9965 )
+scale = Vector2( 8.78902, 5.86764 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/flicker = SubResource( 1 )
+anims/none = SubResource( 3 )
+anims/subtle_flicker = SubResource( 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SexSlide13.ogg-b5f8726f6c7e91334add2629b5496a62.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/smex/Slide/SexSlide13.ogg"
+dest_files=[ "res://.import/SexSlide13.ogg-b5f8726f6c7e91334add2629b5496a62.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

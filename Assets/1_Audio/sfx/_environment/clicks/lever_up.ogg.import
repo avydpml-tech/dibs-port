@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lever_up.ogg-956ac669e1db2a8e7185b88dffc93a3e.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/clicks/lever_up.ogg"
+dest_files=[ "res://.import/lever_up.ogg-956ac669e1db2a8e7185b88dffc93a3e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

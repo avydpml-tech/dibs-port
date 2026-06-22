@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/component/hold_input_timer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/UI/component/ProgressBar.gd" type="Script" id=2]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/reloadbar-full.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Visual/zzz_Misc/z_misc/reloadbar.png" type="Texture" id=4]
+
+[node name="ProgressBar" type="TextureProgress"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="HoldInputTimer" parent="." instance=ExtResource( 1 )]

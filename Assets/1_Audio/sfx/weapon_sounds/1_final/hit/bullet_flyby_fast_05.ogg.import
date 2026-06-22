@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bullet_flyby_fast_05.ogg-efd5c7fb29e4b889ed7374f9a8dd2fda.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/weapon_sounds/1_final/hit/bullet_flyby_fast_05.ogg"
+dest_files=[ "res://.import/bullet_flyby_fast_05.ogg-efd5c7fb29e4b889ed7374f9a8dd2fda.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

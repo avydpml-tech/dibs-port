@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/alert.ogg-c410d800d301a764b6eeb4ca93b30920.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/enemy/walnut/alert.ogg"
+dest_files=[ "res://.import/alert.ogg-c410d800d301a764b6eeb4ca93b30920.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

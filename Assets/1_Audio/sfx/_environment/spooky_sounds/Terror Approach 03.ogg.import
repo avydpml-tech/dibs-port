@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Terror Approach 03.ogg-0bd0ded22a1af86874968a6547a79e59.oggstr"
+
+[deps]
+
+source_file="res://Assets/1_Audio/sfx/_environment/spooky_sounds/Terror Approach 03.ogg"
+dest_files=[ "res://.import/Terror Approach 03.ogg-0bd0ded22a1af86874968a6547a79e59.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

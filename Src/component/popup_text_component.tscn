@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/1_Visual/4_Interactables/cinema_tape_icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/1_Audio/sfx/ui/pick_up.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Src/component/popup_text_component.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFontData" id=25]
+font_path = "res://Assets/1_Visual/z_Fonts/D-DINExp-Bold.otf"
+
+[sub_resource type="DynamicFont" id=22]
+size = 26
+font_data = SubResource( 25 )
+
+[sub_resource type="Theme" id=26]
+default_font = SubResource( 22 )
+
+[sub_resource type="Animation" id=28]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("popup_icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "show_text"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "show_text_fancy_start"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("popup_icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[node name="PopupText" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="text" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.411765 )
+
+[node name="popup" type="Control" parent="text"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -20.0
+margin_bottom = -20.0
+mouse_filter = 2
+
+[node name="popup_icon" type="Sprite" parent="text/popup"]
+visible = false
+modulate = Color( 1, 1, 1, 0.803922 )
+texture = ExtResource( 3 )
+offset = Vector2( -177.247, 1.30481 )
+
+[node name="Label" type="Label" parent="text/popup"]
+margin_left = -276.0
+margin_right = 255.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 276, 0 )
+theme = SubResource( 26 )
+align = 1
+
+[node name="tapeFoundAudio" type="AudioStreamPlayer" parent="text/popup"]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="text/popup"]
+anims/RESET = SubResource( 28 )
+anims/show_text = SubResource( 35 )
+anims/show_text_fancy_start = SubResource( 36 )
