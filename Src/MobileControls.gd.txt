@@ -96,6 +96,11 @@ func _handle_touch(event: InputEventScreenTouch):
 			_press_action("ui_r")
 			return
 
+        # Тап по центру = диалог
+		if not _in_left_zone(pos) and not _in_right_zone(pos):
+			tap_touch_index = event.index
+			_press_action("dialogic_default_action")
+			return
 	else:
 		# Отпустили палец
 		if event.index == left_touch_index:
@@ -120,6 +125,9 @@ func _handle_touch(event: InputEventScreenTouch):
 			reload_pressed = false
 			_release_action("ui_r")
 
+        if event.index == tap_touch_index:
+			tap_touch_index = -1
+			_release_action("dialogic_default_action")
 
 func _handle_drag(event: InputEventScreenDrag):
 	if event.index == left_touch_index:
