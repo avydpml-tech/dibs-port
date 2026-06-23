@@ -235,7 +235,7 @@ Console="*res://addons/quentincaffeino/console/src/Console.tscn"
 EndingsManager="*res://Src/_Singletons/EndingsManager.gd"
 SaveManager="*res://Src/_Singletons/SaveManager.gd"
 EntityManager="*res://Src/_Singletons/EntityManager.gd"
-
+MobileControls="*res://Src/MobileControls/MobileControls.tscn"
 [debug]
 
 settings/fps/force_fps=60
