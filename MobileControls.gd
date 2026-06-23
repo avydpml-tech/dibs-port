@@ -1,0 +1,261 @@
+extends CanvasLayer
+
+# ============================================================
+# MobileControls.gd
+# Виртуальные кнопки для DiBS на Android
+# ============================================================
+
+const STICK_RADIUS = 80.0
+const DEAD_ZONE = 0.2
+const UP_THRESHOLD = -0.5      # стик вверх = прыжок
+const DOWN_THRESHOLD = 0.5     # стик вниз = взаимодействие
+
+# --- Левый стик (движение) ---
+var left_stick_origin := Vector2.ZERO
+var left_stick_pos := Vector2.ZERO
+var left_touch_index := -1
+var left_active := false
+
+# --- Правый стик (прицел) ---
+var right_stick_origin := Vector2.ZERO
+var right_stick_pos := Vector2.ZERO
+var right_touch_index := -1
+var right_active := false
+
+# --- Состояния кнопок ---
+var fire_pressed := false
+var reload_pressed := false
+
+# --- Ноды ---
+onready var left_base    = $LeftStick/Base
+onready var left_knob    = $LeftStick/Knob
+onready var right_base   = $RightStick/Base
+onready var right_knob   = $RightStick/Knob
+onready var fire_btn     = $FireButton
+onready var reload_btn   = $ReloadButton
+
+# Текущие симулируемые действия
+var _actions_pressed := {}
+
+
+func _ready():
+	# Позиции стиков задаём по размеру экрана
+	var screen = OS.get_screen_size()
+	$LeftStick.rect_position  = Vector2(80, screen.y - 280)
+	$RightStick.rect_position = Vector2(screen.x - 280, screen.y - 280)
+	$FireButton.rect_position = Vector2(screen.x - 210, screen.y - 420)
+	$ReloadButton.rect_position = Vector2(screen.x - 370, screen.y - 260)
+
+	left_stick_origin  = $LeftStick.rect_position  + Vector2(100, 100)
+	right_stick_origin = $RightStick.rect_position + Vector2(100, 100)
+
+	set_process_input(true)
+
+
+func _input(event):
+	if event is InputEventScreenTouch:
+		_handle_touch(event)
+	elif event is InputEventScreenDrag:
+		_handle_drag(event)
+
+
+# ============================================================
+# TOUCH
+# ============================================================
+func _handle_touch(event: InputEventScreenTouch):
+	var pos = event.position
+
+	if event.pressed:
+		# Левый стик
+		if not left_active and _in_left_zone(pos):
+			left_active = true
+			left_touch_index = event.index
+			left_stick_origin = pos
+			left_stick_pos = pos
+			$LeftStick.rect_position = pos - Vector2(100, 100)
+			return
+
+		# Правый стик
+		if not right_active and _in_right_zone(pos):
+			right_active = true
+			right_touch_index = event.index
+			right_stick_origin = pos
+			right_stick_pos = pos
+			$RightStick.rect_position = pos - Vector2(100, 100)
+			return
+
+		# Кнопка выстрела
+		if _node_contains(fire_btn, pos):
+			fire_pressed = true
+			_press_action("ui_flashlight")
+			return
+
+		# Кнопка перезарядки
+		if _node_contains(reload_btn, pos):
+			reload_pressed = true
+			_press_action("ui_r")
+			return
+
+	else:
+		# Отпустили палец
+		if event.index == left_touch_index:
+			left_active = false
+			left_touch_index = -1
+			left_stick_pos = left_stick_origin
+			_release_left_actions()
+			_reset_left_knob()
+
+		if event.index == right_touch_index:
+			right_active = false
+			right_touch_index = -1
+			right_stick_pos = right_stick_origin
+			_release_right_actions()
+			_reset_right_knob()
+
+		if fire_pressed and not event.pressed:
+			fire_pressed = false
+			_release_action("ui_flashlight")
+
+		if reload_pressed and not event.pressed:
+			reload_pressed = false
+			_release_action("ui_r")
+
+
+func _handle_drag(event: InputEventScreenDrag):
+	if event.index == left_touch_index:
+		_update_left_stick(event.position)
+	if event.index == right_touch_index:
+		_update_right_stick(event.position)
+
+
+# ============================================================
+# ЛЕВЫЙ СТИК — движение + прыжок + взаимодействие
+# ============================================================
+func _update_left_stick(pos: Vector2):
+	var delta = pos - left_stick_origin
+	var dist  = delta.length()
+	var dir   = delta.normalized() if dist > 1 else Vector2.ZERO
+
+	# Ограничиваем кноб по радиусу
+	if dist > STICK_RADIUS:
+		left_knob.rect_position = dir * STICK_RADIUS + Vector2(60, 60)
+	else:
+		left_knob.rect_position = delta + Vector2(60, 60)
+
+	# --- Горизонталь ---
+	if dir.x < -DEAD_ZONE:
+		_press_action("kb_left")
+		_release_action("kb_right")
+	elif dir.x > DEAD_ZONE:
+		_press_action("kb_right")
+		_release_action("kb_left")
+	else:
+		_release_action("kb_left")
+		_release_action("kb_right")
+
+	# --- Вертикаль (прыжок / взаимодействие) ---
+	if dir.y < UP_THRESHOLD:
+		_press_action("ui_up")
+		_release_action("ui_interact")
+	elif dir.y > DOWN_THRESHOLD:
+		_press_action("ui_interact")
+		_release_action("ui_up")
+	else:
+		_release_action("ui_up")
+		_release_action("ui_interact")
+
+
+func _release_left_actions():
+	_release_action("kb_left")
+	_release_action("kb_right")
+	_release_action("ui_up")
+	_release_action("ui_interact")
+
+
+func _reset_left_knob():
+	left_knob.rect_position = Vector2(60, 60)
+	$LeftStick.rect_position = left_stick_origin - Vector2(100, 100)
+
+
+# ============================================================
+# ПРАВЫЙ СТИК — прицел
+# ============================================================
+func _update_right_stick(pos: Vector2):
+	var delta = pos - right_stick_origin
+	var dist  = delta.length()
+	var dir   = delta.normalized() if dist > 1 else Vector2.ZERO
+
+	if dist > STICK_RADIUS:
+		right_knob.rect_position = dir * STICK_RADIUS + Vector2(60, 60)
+	else:
+		right_knob.rect_position = delta + Vector2(60, 60)
+
+	# Прицел
+	if dir.x < -DEAD_ZONE:
+		_press_action("aim_left")
+		_release_action("aim_right")
+	elif dir.x > DEAD_ZONE:
+		_press_action("aim_right")
+		_release_action("aim_left")
+	else:
+		_release_action("aim_left")
+		_release_action("aim_right")
+
+	if dir.y < -DEAD_ZONE:
+		_press_action("aim_up")
+		_release_action("aim_down")
+	elif dir.y > DEAD_ZONE:
+		_press_action("aim_down")
+		_release_action("aim_up")
+	else:
+		_release_action("aim_up")
+		_release_action("aim_down")
+
+
+func _release_right_actions():
+	_release_action("aim_left")
+	_release_action("aim_right")
+	_release_action("aim_up")
+	_release_action("aim_down")
+
+
+func _reset_right_knob():
+	right_knob.rect_position = Vector2(60, 60)
+	$RightStick.rect_position = right_stick_origin - Vector2(100, 100)
+
+
+# ============================================================
+# СИМУЛЯЦИЯ INPUT ACTIONS
+# ============================================================
+func _press_action(action: String):
+	if _actions_pressed.get(action, false):
+		return
+	_actions_pressed[action] = true
+	var ev = InputEventAction.new()
+	ev.action = action
+	ev.pressed = true
+	Input.parse_input_event(ev)
+
+
+func _release_action(action: String):
+	if not _actions_pressed.get(action, false):
+		return
+	_actions_pressed[action] = false
+	var ev = InputEventAction.new()
+	ev.action = action
+	ev.pressed = false
+	Input.parse_input_event(ev)
+
+
+# ============================================================
+# УТИЛИТЫ
+# ============================================================
+func _in_left_zone(pos: Vector2) -> bool:
+	return pos.x < OS.get_screen_size().x * 0.45
+
+func _in_right_zone(pos: Vector2) -> bool:
+	return pos.x > OS.get_screen_size().x * 0.55
+
+func _node_contains(node: Control, pos: Vector2) -> bool:
+	var rect = Rect2(node.rect_global_position, node.rect_size)
+	return rect.has_point(pos)

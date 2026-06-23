@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/MobileControls/MobileControls.gd" type="Script" id=1]
+
+[node name="MobileControls" type="CanvasLayer"]
+layer = 10
+script = ExtResource( 1 )
+
+; ============================================================
+; ЛЕВЫЙ СТИК
+; ============================================================
+[node name="LeftStick" type="Control" parent="."]
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_position = Vector2( 80, 500 )
+rect_size = Vector2( 200, 200 )
+modulate = Color( 1, 1, 1, 0.8 )
+
+[node name="Base" type="ColorRect" parent="LeftStick"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_position = Vector2( 0, 0 )
+rect_size = Vector2( 200, 200 )
+color = Color( 0.2, 0.2, 0.2, 0.8 )
+
+[node name="BaseShape" type="ColorRect" parent="LeftStick"]
+rect_position = Vector2( 10, 10 )
+rect_size = Vector2( 180, 180 )
+color = Color( 0.35, 0.35, 0.35, 0.8 )
+
+[node name="Knob" type="ColorRect" parent="LeftStick"]
+rect_position = Vector2( 60, 60 )
+rect_size = Vector2( 80, 80 )
+color = Color( 0.7, 0.7, 0.7, 0.8 )
+
+; ============================================================
+; ПРАВЫЙ СТИК
+; ============================================================
+[node name="RightStick" type="Control" parent="."]
+rect_position = Vector2( 880, 500 )
+rect_size = Vector2( 200, 200 )
+modulate = Color( 1, 1, 1, 0.8 )
+
+[node name="Base" type="ColorRect" parent="RightStick"]
+rect_position = Vector2( 0, 0 )
+rect_size = Vector2( 200, 200 )
+color = Color( 0.2, 0.2, 0.2, 0.8 )
+
+[node name="BaseShape" type="ColorRect" parent="RightStick"]
+rect_position = Vector2( 10, 10 )
+rect_size = Vector2( 180, 180 )
+color = Color( 0.35, 0.35, 0.35, 0.8 )
+
+[node name="Knob" type="ColorRect" parent="RightStick"]
+rect_position = Vector2( 60, 60 )
+rect_size = Vector2( 80, 80 )
+color = Color( 0.7, 0.7, 0.7, 0.8 )
+
+; ============================================================
+; КНОПКА ВЫСТРЕЛА (над правым стиком)
+; ============================================================
+[node name="FireButton" type="ColorRect" parent="."]
+rect_position = Vector2( 930, 360 )
+rect_size = Vector2( 100, 100 )
+color = Color( 0.8, 0.2, 0.2, 0.8 )
+modulate = Color( 1, 1, 1, 0.8 )
+
+[node name="Label" type="Label" parent="FireButton"]
+rect_position = Vector2( 15, 30 )
+rect_size = Vector2( 70, 40 )
+text = "FIRE"
+align = 1
+
+; ============================================================
+; КНОПКА ПЕРЕЗАРЯДКИ (слева от правого стика)
+; ============================================================
+[node name="ReloadButton" type="ColorRect" parent="."]
+rect_position = Vector2( 770, 510 )
+rect_size = Vector2( 100, 100 )
+color = Color( 0.2, 0.5, 0.8, 0.8 )
+modulate = Color( 1, 1, 1, 0.8 )
+
+[node name="Label" type="Label" parent="ReloadButton"]
+rect_position = Vector2( 5, 30 )
+rect_size = Vector2( 90, 40 )
+text = "RELOAD"
+align = 1
