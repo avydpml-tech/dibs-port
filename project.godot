@@ -255,6 +255,10 @@ window/stretch/aspect="keep"
 enabled=PoolStringArray( "res://addons/ActionIcon/plugin.cfg", "res://addons/AsepriteWizard/plugin.cfg", "res://addons/GGS/plugin.cfg", "res://addons/InstanceDock/plugin.cfg", "res://addons/SingletonScriptsShortcut/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/imjp94.yafsm/plugin.cfg", "res://addons/nklbdev.parallax/plugin.cfg", "res://addons/quentincaffeino/console/plugin.cfg", "res://addons/vnen.tiled_importer/plugin.cfg" )
 
 [input]
+ui_touch={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 ui_accept={
 "deadzone": 0.5,
