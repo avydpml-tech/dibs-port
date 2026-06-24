@@ -15,7 +15,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_enter") or Input.is_action_just_pressed("ui_t") or Input.is_action_just_pressed("dialogic_default_action"):
+	if Input.is_action_just_pressed("ui_enter") or Input.is_action_just_pressed("ui_t") or Input.is_action_just_pressed("ui_touch"):
 		if Globals.is_entered_mainhub:
 			Globals.is_show_mainhub_start_screen = true
 			get_node("/root/SceneChanger")._change_scene(mainhub.get_path())
