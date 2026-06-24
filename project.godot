@@ -236,8 +236,8 @@ EndingsManager="*res://Src/_Singletons/EndingsManager.gd"
 SaveManager="*res://Src/_Singletons/SaveManager.gd"
 EntityManager="*res://Src/_Singletons/EntityManager.gd"
 MobileControls="*res://Src/MobileControls/MobileControls.tscn"
-[debug]
 
+[debug]
 settings/fps/force_fps=60
 gdscript/warnings/enable=false
 
