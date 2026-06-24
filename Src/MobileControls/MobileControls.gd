@@ -114,6 +114,125 @@ func _handle_touch(event: InputEventScreenTouch):
 
 
 func _handle_drag(event: InputEventScreenDrag):
+extends CanvasLayer
+
+const STICK_RADIUS = 80.0
+const DEAD_ZONE = 0.2
+const UP_THRESHOLD = -0.5
+const DOWN_THRESHOLD = 0.5
+
+var left_stick_origin := Vector2.ZERO
+var left_touch_index := -1
+var left_active := false
+
+var right_stick_origin := Vector2.ZERO
+var right_touch_index := -1
+var right_active := false
+
+var fire_pressed := false
+var reload_pressed := false
+var tap_touch_index := -1
+
+var _actions_pressed := {}
+
+var _left_knob  = null
+var _right_knob = null
+var _fire_btn   = null
+var _reload_btn = null
+
+
+func _ready():
+	# Инициализируем узлы сразу без задержек, чтобы избежать Null Instance при старте
+	_left_knob  = get_node_or_null("LeftStick/Knob")
+	_right_knob = get_node_or_null("RightStick/Knob")
+	_fire_btn   = get_node_or_null("FireButton")
+	_reload_btn = get_node_or_null("ReloadButton")
+
+	if _left_knob == null:
+		return
+
+	var screen = get_viewport().size
+
+	get_node("LeftStick").rect_position    = Vector2(80, screen.y - 280)
+	get_node("RightStick").rect_position   = Vector2(screen.x - 280, screen.y - 280)
+	get_node("FireButton").rect_position   = Vector2(screen.x - 210, screen.y - 420)
+	get_node("ReloadButton").rect_position = Vector2(screen.x - 370, screen.y - 260)
+
+	left_stick_origin  = get_node("LeftStick").rect_position + Vector2(100, 100)
+	right_stick_origin = get_node("RightStick").rect_position + Vector2(100, 100)
+
+	set_process_input(true)
+
+
+func _input(event):
+	if _left_knob == null:
+		return
+	if event is InputEventScreenTouch:
+		_handle_touch(event)
+	elif event is InputEventScreenDrag:
+		_handle_drag(event)
+
+
+func _handle_touch(event: InputEventScreenTouch):
+	var pos = event.position
+	var screen = get_viewport().size
+
+	if event.pressed:
+		if _fire_btn and _fire_btn.get_global_rect().has_point(pos):
+			fire_pressed = true
+			_press_action("ui_flashlight")
+			return
+
+		if _reload_btn and _reload_btn.get_global_rect().has_point(pos):
+			reload_pressed = true
+			_press_action("ui_r")
+			return
+
+		if not left_active and pos.x < screen.x * 0.35 and pos.y > screen.y * 0.5:
+			left_active = true
+			left_touch_index = event.index
+			left_stick_origin = pos
+			get_node("LeftStick").rect_position = pos - Vector2(100, 100)
+			return
+
+		if not right_active and pos.x > screen.x * 0.65 and pos.y > screen.y * 0.5:
+			right_active = true
+			right_touch_index = event.index
+			right_stick_origin = pos
+			get_node("RightStick").rect_position = pos - Vector2(100, 100)
+			return
+
+		# Заменили несуществующий ui_touch на валидный ui_accept для безопасного тапа по экрану
+		tap_touch_index = event.index
+		_press_action("ui_accept")
+
+	else:
+		if event.index == left_touch_index:
+			left_active = false
+			left_touch_index = -1
+			_release_left_actions()
+			_reset_left_knob()
+
+		if event.index == right_touch_index:
+			right_active = false
+			right_touch_index = -1
+			_release_right_actions()
+			_reset_right_knob()
+
+		if event.index == tap_touch_index:
+			tap_touch_index = -1
+			_release_action("ui_accept")
+
+		if fire_pressed:
+			fire_pressed = false
+			_release_action("ui_flashlight")
+
+		if reload_pressed:
+			reload_pressed = false
+			_release_action("ui_r")
+
+
+func _handle_drag(event: InputEventScreenDrag):
 	if _left_knob == null:
 		return
 	if event.index == left_touch_index:
@@ -161,8 +280,9 @@ func _release_left_actions():
 
 
 func _reset_left_knob():
-	_left_knob.rect_position = Vector2(60, 60)
-	get_node("LeftStick").rect_position = left_stick_origin - Vector2(100, 100)
+	if _left_knob:
+		_left_knob.rect_position = Vector2(60, 60)
+		get_node("LeftStick").rect_position = left_stick_origin - Vector2(100, 100)
 
 
 func _update_right_stick(pos: Vector2):
@@ -204,8 +324,9 @@ func _release_right_actions():
 
 
 func _reset_right_knob():
-	_right_knob.rect_position = Vector2(60, 60)
-	get_node("RightStick").rect_position = right_stick_origin - Vector2(100, 100)
+	if _right_knob:
+		_right_knob.rect_position = Vector2(60, 60)
+		get_node("RightStick").rect_position = right_stick_origin - Vector2(100, 100)
 
 
 func _press_action(action: String):
@@ -226,3 +347,4 @@ func _release_action(action: String):
 	ev.action = action
 	ev.pressed = false
 	Input.parse_input_event(ev)
+
