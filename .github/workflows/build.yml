@@ -43,7 +43,8 @@ jobs:
           export/android/debug_keystore = "'$GITHUB_WORKSPACE'/debug.keystore"
           export/android/debug_keystore_user = "androiddebugkey"
           export/android/debug_keystore_pass = "android"' > ~/.config/godot/editor_settings-3.tres
-          ./godot --export "Android" game.apk --path $GITHUB_WORKSPACE
+          ./godot --verbose --export "Android" game.apk --path $GITHUB_WORKSPACE 2>&1 | tee godot_export.log || true
+          cat godot_export.log
           BUILDTOOLS=$ANDROID_SDK_ROOT/build-tools/$(ls $ANDROID_SDK_ROOT/build-tools | tail -1)
           $BUILDTOOLS/zipalign -v -f 4 game.apk game_aligned.apk
           $BUILDTOOLS/apksigner sign --ks debug.keystore --ks-pass pass:android --key-pass pass:android --out game_signed.apk game_aligned.apk
