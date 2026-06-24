@@ -21,7 +21,7 @@ export (float) var chase_cooldown = 0.1
 
 
 var enemy_state = "idle"
-
+var just_shot_at = false
 
 func _ready():
 	_generic_ready()
