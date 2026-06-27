@@ -85,3 +85,18 @@ rect_position = Vector2( 5, 30 )
 rect_size = Vector2( 90, 40 )
 text = "RELOAD"
 align = 1
+
+; ============================================================
+; КНОПКА МЕНЮ (правый верхний угол, позиция из gd)
+; ============================================================
+[node name="MenuButton" type="ColorRect" parent="."]
+rect_position = Vector2( 1170, 20 )
+rect_size = Vector2( 90, 50 )
+color = Color( 0.15, 0.15, 0.15, 0.85 )
+modulate = Color( 1, 1, 1, 0.9 )
+
+[node name="Label" type="Label" parent="MenuButton"]
+rect_position = Vector2( 5, 12 )
+rect_size = Vector2( 80, 30 )
+text = "MENU"
+align = 1
