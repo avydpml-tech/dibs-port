@@ -2,28 +2,37 @@ extends CanvasLayer
 
 const STICK_RADIUS = 80.0
 const DEAD_ZONE = 0.2
-const UP_THRESHOLD = -0.5
-const DOWN_THRESHOLD = 0.5
 
+# Игровое разрешение
+const GAME_W = 1280.0
+const GAME_H = 720.0
+
+# Левый стик (динамический)
 var left_stick_origin := Vector2.ZERO
 var left_touch_index := -1
 var left_active := false
 
+# Правый стик (фиксированный)
 var right_stick_origin := Vector2.ZERO
 var right_touch_index := -1
 var right_active := false
 
-var fire_pressed := false
-var reload_pressed := false
+# Кнопки
+var fire_touch_index := -1
+var reload_touch_index := -1
 var tap_touch_index := -1
 
 var _actions_pressed := {}
 
-var _left_knob  = null
-var _right_knob = null
-var _fire_btn   = null
-var _reload_btn = null
-var _menu_btn   = null
+var _left_knob   = null
+var _right_knob  = null
+var _fire_btn    = null
+var _reload_btn  = null
+var _menu_btn    = null
+
+# Начальная позиция левого стика (для сброса)
+var _left_stick_home := Vector2.ZERO
+var _right_stick_home := Vector2.ZERO
 
 
 func _ready():
@@ -35,18 +44,25 @@ func _ready():
 	_reload_btn = get_node("ReloadButton")
 	_menu_btn   = get_node("MenuButton")
 
-	var screen = get_viewport().size
+	# Левый стик — нижний левый угол
+	_left_stick_home = Vector2(60, GAME_H - 220)
+	get_node("LeftStick").rect_position = _left_stick_home
 
-	get_node("LeftStick").rect_position    = Vector2(80, screen.y - 280)
-	get_node("RightStick").rect_position   = Vector2(screen.x - 280, screen.y - 280)
-	get_node("FireButton").rect_position   = Vector2(screen.x - 210, screen.y - 420)
-	get_node("ReloadButton").rect_position = Vector2(screen.x - 370, screen.y - 260)
+	# Правый стик — нижний правый угол (фиксированный)
+	_right_stick_home = Vector2(GAME_W - 260, GAME_H - 220)
+	get_node("RightStick").rect_position = _right_stick_home
 
-	# Кнопка меню — правый верхний угол
-	get_node("MenuButton").rect_position   = Vector2(screen.x - 110, 20)
+	# Кнопка выстрела — над правым стиком
+	get_node("FireButton").rect_position = Vector2(GAME_W - 175, GAME_H - 370)
 
-	left_stick_origin  = get_node("LeftStick").rect_position + Vector2(100, 100)
-	right_stick_origin = get_node("RightStick").rect_position + Vector2(100, 100)
+	# Кнопка перезарядки — левее правого стика
+	get_node("ReloadButton").rect_position = Vector2(GAME_W - 360, GAME_H - 230)
+
+	# Пауза — правый верхний угол
+	get_node("MenuButton").rect_position = Vector2(GAME_W - 110, 20)
+
+	left_stick_origin  = _left_stick_home + Vector2(100, 100)
+	right_stick_origin = _right_stick_home + Vector2(100, 100)
 
 	set_process_input(true)
 
@@ -62,45 +78,55 @@ func _input(event):
 
 func _handle_touch(event: InputEventScreenTouch):
 	var pos = event.position
-	var screen = get_viewport().size
 
 	if event.pressed:
-		# Кнопка меню
+		# Пауза
 		if _menu_btn.get_global_rect().has_point(pos):
 			_press_action("ui_pause")
 			return
 
+		# Выстрел
 		if _fire_btn.get_global_rect().has_point(pos):
-			fire_pressed = true
+			fire_touch_index = event.index
 			_press_action("ui_flashlight")
 			return
 
+		# Перезарядка
 		if _reload_btn.get_global_rect().has_point(pos):
-			reload_pressed = true
+			reload_touch_index = event.index
 			_press_action("ui_r")
 			return
 
-		if not left_active and pos.x < screen.x * 0.35 and pos.y > screen.y * 0.5:
+		# Правый стик (прицел) — правая половина нижней зоны
+		if not right_active and pos.x > GAME_W * 0.55 and pos.y > GAME_H * 0.45:
+			right_active = true
+			right_touch_index = event.index
+			right_stick_origin = _right_stick_home + Vector2(100, 100)
+			return
+
+		# Левый стик (движение) — левая половина нижней зоны, динамический
+		if not left_active and pos.x < GAME_W * 0.45 and pos.y > GAME_H * 0.45:
 			left_active = true
 			left_touch_index = event.index
 			left_stick_origin = pos
 			get_node("LeftStick").rect_position = pos - Vector2(100, 100)
 			return
 
-		if not right_active and pos.x > screen.x * 0.65 and pos.y > screen.y * 0.5:
-			right_active = true
-			right_touch_index = event.index
-			right_stick_origin = pos
-			get_node("RightStick").rect_position = pos - Vector2(100, 100)
-			return
-
+		# Тап в остальных зонах = ui_touch (диалоги)
 		tap_touch_index = event.index
 		_press_action("ui_touch")
 
 	else:
-		# Отпускаем меню
 		if _menu_btn.get_global_rect().has_point(pos):
 			_release_action("ui_pause")
+
+		if event.index == fire_touch_index:
+			fire_touch_index = -1
+			_release_action("ui_flashlight")
+
+		if event.index == reload_touch_index:
+			reload_touch_index = -1
+			_release_action("ui_r")
 
 		if event.index == left_touch_index:
 			left_active = false
@@ -112,19 +138,10 @@ func _handle_touch(event: InputEventScreenTouch):
 			right_active = false
 			right_touch_index = -1
 			_release_right_actions()
-			_reset_right_knob()
 
 		if event.index == tap_touch_index:
 			tap_touch_index = -1
 			_release_action("ui_touch")
-
-		if fire_pressed:
-			fire_pressed = false
-			_release_action("ui_flashlight")
-
-		if reload_pressed:
-			reload_pressed = false
-			_release_action("ui_r")
 
 
 func _handle_drag(event: InputEventScreenDrag):
@@ -146,6 +163,7 @@ func _update_left_stick(pos: Vector2):
 	else:
 		_left_knob.rect_position = delta + Vector2(60, 60)
 
+	# Горизонталь — движение
 	if dir.x < -DEAD_ZONE:
 		_press_action("kb_left")
 		_release_action("kb_right")
@@ -156,27 +174,28 @@ func _update_left_stick(pos: Vector2):
 		_release_action("kb_left")
 		_release_action("kb_right")
 
-	if dir.y < UP_THRESHOLD:
+	# Вертикаль — вверх=прыжок, вниз=взаимодействие
+	if dir.y < -0.5:
 		_press_action("ui_up")
-		_release_action("ui_interact")
-	elif dir.y > DOWN_THRESHOLD:
-		_press_action("ui_interact")
+		_release_action("ui_down")
+	elif dir.y > 0.5:
+		_press_action("ui_down")
 		_release_action("ui_up")
 	else:
 		_release_action("ui_up")
-		_release_action("ui_interact")
+		_release_action("ui_down")
 
 
 func _release_left_actions():
 	_release_action("kb_left")
 	_release_action("kb_right")
 	_release_action("ui_up")
-	_release_action("ui_interact")
+	_release_action("ui_down")
 
 
 func _reset_left_knob():
 	_left_knob.rect_position = Vector2(60, 60)
-	get_node("LeftStick").rect_position = left_stick_origin - Vector2(100, 100)
+	get_node("LeftStick").rect_position = _left_stick_home
 
 
 func _update_right_stick(pos: Vector2):
@@ -215,11 +234,6 @@ func _release_right_actions():
 	_release_action("aim_right")
 	_release_action("aim_up")
 	_release_action("aim_down")
-
-
-func _reset_right_knob():
-	_right_knob.rect_position = Vector2(60, 60)
-	get_node("RightStick").rect_position = right_stick_origin - Vector2(100, 100)
 
 
 func _press_action(action: String):
