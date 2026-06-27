@@ -44,15 +44,7 @@ jobs:
             -keyalg RSA -keysize 2048 -validity 10000 \
             -dname "CN=Android Debug,O=Android,C=US"
 
-          cat > ~/.config/godot/editor_settings-3.tres << 'EOF'
-[gd_resource type="EditorSettings" load_steps=1 version=2]
-
-[resource]
-export/android/android_sdk_path = "/usr/local/lib/android/sdk"
-export/android/debug_keystore = "/home/runner/work/dibs-port/dibs-port/debug.keystore"
-export/android/debug_keystore_user = "androiddebugkey"
-export/android/debug_keystore_pass = "android"
-EOF
+          printf '[gd_resource type="EditorSettings" load_steps=1 version=2]\n\n[resource]\nexport/android/android_sdk_path = "/usr/local/lib/android/sdk"\nexport/android/debug_keystore = "/home/runner/work/dibs-port/dibs-port/debug.keystore"\nexport/android/debug_keystore_user = "androiddebugkey"\nexport/android/debug_keystore_pass = "android"\n' > ~/.config/godot/editor_settings-3.tres
 
           ./godot --verbose --export "Android" game.apk --path $GITHUB_WORKSPACE 2>&1 | tee godot_export.log || true
           cat godot_export.log
