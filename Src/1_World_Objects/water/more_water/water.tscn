@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://materials/water_material.tres" type="Material" id=1]
+[ext_resource path="res://Src/1_World_Objects/water/more_water/water_material.tres" type="Material" id=1]
 [ext_resource path="res://zzz_Misc/icon.png" type="Texture" id=2]
 [ext_resource path="res://props/water/water.gd" type="Script" id=3]
 
