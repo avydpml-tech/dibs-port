@@ -29,6 +29,9 @@ var _menu_btn    = null
 var _left_stick_home := Vector2.ZERO
 var _right_stick_home := Vector2.ZERO
 
+# Прицел — угол в радианах, обновляется плавно
+var _aim_angle := 0.0
+
 
 func _ready():
 	yield(get_tree(), "idle_frame")
@@ -145,7 +148,7 @@ func _update_left_stick(pos: Vector2):
 	else:
 		_left_knob.rect_position = delta + Vector2(60, 60)
 
-	# Горизонталь — дублируем kb_ и ui_ чтобы покрыть все скрипты и разворот
+	# Горизонталь — дублируем kb_ и ui_ для всех скриптов
 	if dir.x < -DEAD_ZONE:
 		_press_action("kb_left")
 		_press_action("ui_left")
@@ -162,16 +165,25 @@ func _update_left_stick(pos: Vector2):
 		_release_action("ui_left")
 		_release_action("ui_right")
 
-	# Вертикаль — вверх=прыжок, вниз=взаимодействие
+	# Вертикаль — вверх=прыжок, вниз=взаимодействие (пробуем все варианты)
 	if dir.y < -0.5:
 		_press_action("ui_up")
+		_press_action("ui_jump")
 		_release_action("ui_down")
+		_release_action("ui_accept")
+		_release_action("ui_enter")
 	elif dir.y > 0.5:
 		_press_action("ui_down")
+		_press_action("ui_accept")
+		_press_action("ui_enter")
 		_release_action("ui_up")
+		_release_action("ui_jump")
 	else:
 		_release_action("ui_up")
+		_release_action("ui_jump")
 		_release_action("ui_down")
+		_release_action("ui_accept")
+		_release_action("ui_enter")
 
 
 func _release_left_actions():
@@ -180,7 +192,10 @@ func _release_left_actions():
 	_release_action("ui_left")
 	_release_action("ui_right")
 	_release_action("ui_up")
+	_release_action("ui_jump")
 	_release_action("ui_down")
+	_release_action("ui_accept")
+	_release_action("ui_enter")
 
 
 func _reset_left_knob():
@@ -198,20 +213,28 @@ func _update_right_stick(pos: Vector2):
 	else:
 		_right_knob.rect_position = delta + Vector2(60, 60)
 
-	if dir.x < -DEAD_ZONE:
+	if dist < 5.0:
+		_release_right_actions()
+		return
+
+	# Плавный прицел — используем аналоговые значения напрямую
+	# dir.x и dir.y уже нормализованы, дают плавное направление
+	var threshold = 0.15
+
+	if dir.x < -threshold:
 		_press_action("aim_left")
 		_release_action("aim_right")
-	elif dir.x > DEAD_ZONE:
+	elif dir.x > threshold:
 		_press_action("aim_right")
 		_release_action("aim_left")
 	else:
 		_release_action("aim_left")
 		_release_action("aim_right")
 
-	if dir.y < -DEAD_ZONE:
+	if dir.y < -threshold:
 		_press_action("aim_up")
 		_release_action("aim_down")
-	elif dir.y > DEAD_ZONE:
+	elif dir.y > threshold:
 		_press_action("aim_down")
 		_release_action("aim_up")
 	else:
