@@ -3,21 +3,17 @@ extends CanvasLayer
 const STICK_RADIUS = 80.0
 const DEAD_ZONE = 0.2
 
-# Игровое разрешение
 const GAME_W = 1280.0
 const GAME_H = 720.0
 
-# Левый стик (динамический)
 var left_stick_origin := Vector2.ZERO
 var left_touch_index := -1
 var left_active := false
 
-# Правый стик (фиксированный)
 var right_stick_origin := Vector2.ZERO
 var right_touch_index := -1
 var right_active := false
 
-# Кнопки
 var fire_touch_index := -1
 var reload_touch_index := -1
 var tap_touch_index := -1
@@ -30,7 +26,6 @@ var _fire_btn    = null
 var _reload_btn  = null
 var _menu_btn    = null
 
-# Начальная позиция левого стика (для сброса)
 var _left_stick_home := Vector2.ZERO
 var _right_stick_home := Vector2.ZERO
 
@@ -44,22 +39,15 @@ func _ready():
 	_reload_btn = get_node("ReloadButton")
 	_menu_btn   = get_node("MenuButton")
 
-	# Левый стик — нижний левый угол
 	_left_stick_home = Vector2(60, GAME_H - 220)
 	get_node("LeftStick").rect_position = _left_stick_home
 
-	# Правый стик — нижний правый угол (фиксированный)
 	_right_stick_home = Vector2(GAME_W - 260, GAME_H - 220)
 	get_node("RightStick").rect_position = _right_stick_home
 
-	# Кнопка выстрела — над правым стиком
-	get_node("FireButton").rect_position = Vector2(GAME_W - 175, GAME_H - 370)
-
-	# Кнопка перезарядки — левее правого стика
+	get_node("FireButton").rect_position   = Vector2(GAME_W - 175, GAME_H - 370)
 	get_node("ReloadButton").rect_position = Vector2(GAME_W - 360, GAME_H - 230)
-
-	# Пауза — правый верхний угол
-	get_node("MenuButton").rect_position = Vector2(GAME_W - 110, 20)
+	get_node("MenuButton").rect_position   = Vector2(GAME_W - 110, 20)
 
 	left_stick_origin  = _left_stick_home + Vector2(100, 100)
 	right_stick_origin = _right_stick_home + Vector2(100, 100)
@@ -80,31 +68,26 @@ func _handle_touch(event: InputEventScreenTouch):
 	var pos = event.position
 
 	if event.pressed:
-		# Пауза
 		if _menu_btn.get_global_rect().has_point(pos):
 			_press_action("ui_pause")
 			return
 
-		# Выстрел
 		if _fire_btn.get_global_rect().has_point(pos):
 			fire_touch_index = event.index
 			_press_action("ui_flashlight")
 			return
 
-		# Перезарядка
 		if _reload_btn.get_global_rect().has_point(pos):
 			reload_touch_index = event.index
 			_press_action("ui_r")
 			return
 
-		# Правый стик (прицел) — правая половина нижней зоны
 		if not right_active and pos.x > GAME_W * 0.55 and pos.y > GAME_H * 0.45:
 			right_active = true
 			right_touch_index = event.index
 			right_stick_origin = _right_stick_home + Vector2(100, 100)
 			return
 
-		# Левый стик (движение) — левая половина нижней зоны, динамический
 		if not left_active and pos.x < GAME_W * 0.45 and pos.y > GAME_H * 0.45:
 			left_active = true
 			left_touch_index = event.index
@@ -112,7 +95,6 @@ func _handle_touch(event: InputEventScreenTouch):
 			get_node("LeftStick").rect_position = pos - Vector2(100, 100)
 			return
 
-		# Тап в остальных зонах = ui_touch (диалоги)
 		tap_touch_index = event.index
 		_press_action("ui_touch")
 
@@ -163,16 +145,22 @@ func _update_left_stick(pos: Vector2):
 	else:
 		_left_knob.rect_position = delta + Vector2(60, 60)
 
-	# Горизонталь — движение
+	# Горизонталь — дублируем kb_ и ui_ чтобы покрыть все скрипты и разворот
 	if dir.x < -DEAD_ZONE:
 		_press_action("kb_left")
+		_press_action("ui_left")
 		_release_action("kb_right")
+		_release_action("ui_right")
 	elif dir.x > DEAD_ZONE:
 		_press_action("kb_right")
+		_press_action("ui_right")
 		_release_action("kb_left")
+		_release_action("ui_left")
 	else:
 		_release_action("kb_left")
 		_release_action("kb_right")
+		_release_action("ui_left")
+		_release_action("ui_right")
 
 	# Вертикаль — вверх=прыжок, вниз=взаимодействие
 	if dir.y < -0.5:
@@ -189,6 +177,8 @@ func _update_left_stick(pos: Vector2):
 func _release_left_actions():
 	_release_action("kb_left")
 	_release_action("kb_right")
+	_release_action("ui_left")
+	_release_action("ui_right")
 	_release_action("ui_up")
 	_release_action("ui_down")
 
