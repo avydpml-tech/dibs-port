@@ -195,7 +195,7 @@ instance_dock/scenes=[  ]
 config/name="DiBS"
 config/description="res://Src/Menu/temp/warningScreen.tscn
 res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
-run/main_scene="res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
+run/main_scene="res://Src/Menu/temp/warningScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Deep in Brixen Space\\DiBS"
 boot_splash/image="res://Assets/1_Visual/game_icon/DiBS_logo_smaller.png"
