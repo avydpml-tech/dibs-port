@@ -71,3 +71,11 @@ jobs:
           name: game-apk
           path: game_signed.apk
           if-no-files-found: error
+
+      - name: Upload Godot log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: godot-log
+          path: godot_export.log
+          if-no-files-found: ignore
