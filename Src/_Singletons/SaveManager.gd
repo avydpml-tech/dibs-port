@@ -186,6 +186,6 @@ func easter_egg_file():
 func _create_version_txt():
 	
 	var file = File.new()
-	file.open("res://version.txt", File.WRITE)
+	file.open("user://version.txt", File.WRITE)
 	file.store_line(Globals.game_version)
 	file.close()
