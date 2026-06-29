@@ -19,12 +19,6 @@
 [ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle_border_filled.png" type="Texture" id=18]
 [ext_resource path="res://Assets/1_Visual/2_UI/OptionsIcons/circle.png" type="Texture" id=19]
 [ext_resource path="res://Src/Menu/Themes/menuTheme.tres" type="Theme" id=20]
-[ext_resource path="res://Src/1_World/1_zones/ship/Stage_01.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Src/1_World/1_zones/MallZones/Stage_01_b-CinemaRoom.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Src/1_World/1_zones/ship/Stage_09-Warehouse.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Src/1_World/1_zones/MallZones/Stage_02_b-Mall.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Src/Interactables/EventTrigger.tscn" type="PackedScene" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -62,11 +56,6 @@ font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-scene_path_to_load = ExtResource( 21 )
-quick_start = ExtResource( 22 )
-warehouse = ExtResource( 24 )
-cinema = ExtResource( 23 )
-mall = ExtResource( 25 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
