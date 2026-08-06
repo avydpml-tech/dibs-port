@@ -21,17 +21,21 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_enter") or Input.is_action_just_pressed("ui_t") or Input.is_action_just_pressed("ui_touch"):
-		if Globals.is_entered_mainhub:
-			Globals.is_show_mainhub_start_screen = true
-			_debug_label.text = "Going to mainhub..."
-			get_node("/root/SceneChanger")._change_scene(mainhub.get_path())
-		else:
-			_debug_label.text = "Going to: " + str(scene_path_to_load.get_path())
-			get_node("/root/SceneChanger")._change_scene(scene_path_to_load.get_path())
+		_skip_warning()
 
-	elif Input.is_action_just_pressed("ui_esc"):
-		get_tree().quit()
+func _skip_warning():
+	# Защита от повторного срабатывания
+	set_process(false)
+	
+	if _debug_label:
+		_debug_label.text = "Skipping..."
 
+	if Globals.is_entered_mainhub:
+		Globals.is_show_mainhub_start_screen = true
+		get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn")
+	else:
+		# Жёсткий путь вместо .get_path()
+		get_node("/root/SceneChanger")._change_scene("res://Src/Menu/temp/openingScene.tscn")
 func _on_quick_start_pressed():
 	get_node("/root/SceneChanger")._change_scene(scene_path_to_load_3)
 	$message/quick_start.release_focus()
