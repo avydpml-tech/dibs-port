@@ -1,0 +1,77 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Download Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/3.4.4-stable/Godot_v3.4.4-stable_linux_headless.64.zip
+          unzip -q Godot_v3.4.4-stable_linux_headless.64.zip
+          mv Godot_v3.4.4-stable_linux_headless.64 godot
+          chmod +x godot
+
+      - name: Download Export Templates
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/3.4.4-stable/Godot_v3.4.4-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/templates/3.4.4.stable
+          unzip -q Godot_v3.4.4-stable_export_templates.tpz -d /tmp/templates
+          mv /tmp/templates/templates/* ~/.local/share/godot/templates/3.4.4.stable/
+
+      - name: Build APK
+        run: |
+          mkdir -p ~/.config/godot
+          keytool -genkey -v             -keystore debug.keystore             -storepass android             -alias androiddebugkey             -keypass android             -keyalg RSA -keysize 2048 -validity 10000             -dname "CN=Android Debug,O=Android,C=US"
+
+          printf '[gd_resource type="EditorSettings" load_steps=1 version=2]
+
+[resource]
+export/android/android_sdk_path = "/usr/local/lib/android/sdk"
+export/android/debug_keystore = "/home/runner/work/dibs-android-/dibs-android-/debug.keystore"
+export/android/debug_keystore_user = "androiddebugkey"
+export/android/debug_keystore_pass = "android"
+' > ~/.config/godot/editor_settings-3.tres
+
+          ./godot --verbose --export "Android" game.apk --path $GITHUB_WORKSPACE 2>&1 | tee godot_export.log
+
+          if [ ! -f game.apk ]; then
+            echo "ERROR: game.apk not found after export"
+            exit 1
+          fi
+
+          BUILDTOOLS=$ANDROID_SDK_ROOT/build-tools/$(ls $ANDROID_SDK_ROOT/build-tools | sort -V | tail -1)
+          echo "Using build-tools: $BUILDTOOLS"
+
+          $BUILDTOOLS/zipalign -v -f 4 game.apk game_aligned.apk
+          $BUILDTOOLS/apksigner sign             --ks debug.keystore             --ks-pass pass:android             --key-pass pass:android             --out game_signed.apk             game_aligned.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: DiBS-Android-APK
+          path: game_signed.apk
+          if-no-files-found: error
+
+      - name: Upload Godot log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: godot-log
+          path: godot_export.log
+          if-no-files-found: ignore
