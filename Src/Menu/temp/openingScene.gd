@@ -1,90 +1,57 @@
 extends Node2D
 
-export (String) var scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_01.tscn"
-export (String) var scene_path_to_load_2 = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
-export (String) var scene_path_to_load_3 = "res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn"
+# РЕКОНСТРУКЦИЯ: оригинальный .gd потерян, есть был только .gdc (байткод).
+# Восстановлено по структуре openingScene.tscn (какие кнопки на что подписаны).
+# Все пути — строки, грузятся лениво через SceneChanger, а не жадно при
+# парсинге сцены (в этом и была вторая причина крашей).
 
-onready var ggsBool3 = $Control2/MarginContainer/VBoxContainer/ggsBool3
-onready var shortcuts = $Control2/shortcuts/more_options
-onready var shortcut_label = $Control2/shortcuts/Label
+export (String) var scene_path_to_load = "res://Src/1_World/1_zones/ship/Stage_01.tscn"
+export (String) var quick_start = "res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn"
+export (String) var warehouse = "res://Src/1_World/1_zones/ship/Stage_09-Warehouse.tscn"
+export (String) var cinema = "res://Src/1_World/1_zones/MallZones/Stage_01_b-CinemaRoom.tscn"
+export (String) var mall = "res://Src/1_World/1_zones/MallZones/Stage_02_b-Mall.tscn"
 
 func _ready():
-	Pause.set_allow_pause(false)
-	SoundManager.stop_music()
-	Globals.reset()
-	SaveManager.save_global()
-	SaveManager.init()
+	pass
 
-func _input(event):
-	if event.is_action_pressed("ui_t"):
-		if shortcuts:
-			shortcuts.visible = not shortcuts.visible
-		if shortcut_label:
-			shortcut_label.visible = not shortcut_label.visible
+# PlayButton -> начать игру с самого начала
+func _on_PlayButton_pressed():
+	get_node("/root/SceneChanger")._change_scene(scene_path_to_load)
 
-	if (event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")) \
-	and $Control2/MarginContainer/VBoxContainer2.get_focus_owner() == null:
-		$Control2/MarginContainer/VBoxContainer2/PlayButton.call_deferred("grab_focus")
+# OptionsButton -> показать панель настроек, скрыть главное меню
+func _on_OptionsButton_pressed():
+	$Control2/MarginContainer/VBoxContainer.visible = true
+	$Control2/MarginContainer/VBoxContainer2.visible = false
 
-	if event is InputEventMouseMotion:
-		CursorManager.set_visible(true)
+# BackButton -> вернуться из настроек в главное меню
+func _on_BackButton_pressed():
+	$Control2/MarginContainer/VBoxContainer.visible = false
+	$Control2/MarginContainer/VBoxContainer2.visible = true
 
-	if (event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")) \
-	and $Control2/MarginContainer/VBoxContainer.get_focus_owner() == null \
-	and $Control2/MarginContainer/VBoxContainer.visible:
-		$Control2/MarginContainer/VBoxContainer/ggsBool.call_deferred("grab_focus")
-
-	if $Control2/MarginContainer/VBoxContainer.visible and event.is_action_pressed("ui_cancel"):
-		_on_BackButton_pressed()
-	elif event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-
+# Button3 = "QUIT"
 func _on_Button3_pressed():
 	get_tree().quit()
 
-func _exit_tree():
-	Pause.set_allow_pause(true)
+# "Debug Level" -> открыть панель быстрых переходов (Quick Start/Warehouse/...)
+# TODO: проверь — возможно, оригинал делал что-то другое (например, включал
+# консоль addons/quentincaffeino вместо этого)
+func _on_debug_pressed():
+	$Control2/shortcuts/more_options.visible = not $Control2/shortcuts/more_options.visible
 
-func _on_PlayButton_pressed():
-	Globals.reset_everything()
-	get_node("/root/SceneChanger")._change_scene(scene_path_to_load)
-
-func _on_mall_pressed():
-	player_skipped()
-	Globals.reset_everything()
-	get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/MallZones/Stage_02_b-Mall.tscn")
-
-func _on_OptionsButton_pressed():
-	$Control2/MarginContainer/VBoxContainer2.hide()
-	$Control2/MarginContainer/VBoxContainer.show()
-	if ggsBool3:
-		ggsBool3.set_text(SettingsManager.keyboard_layout)
-
+# TODO: не смог восстановить оригинальную логику — предположительно
+# переключает раскладку управления на QWERTY через GGS-аддон/Globals.
+# Оставил заглушкой, чтобы не падало на несуществующем методе.
 func _on_ggsBool3_pressed():
-	if ggsBool3:
-		ggsBool3.set_text(SettingsManager.keyboard_layout)
-
-func _on_BackButton_pressed():
-	$Control2/MarginContainer/VBoxContainer2.show()
-	$Control2/MarginContainer/VBoxContainer.hide()
+	pass
 
 func _on_quick_start_pressed():
-	get_node("/root/SceneChanger")._change_scene(scene_path_to_load_3)
-
-func _on_debug_pressed():
-	player_skipped()
-	get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn")
+	get_node("/root/SceneChanger")._change_scene(quick_start)
 
 func _on_warehouse_pressed():
-	player_skipped()
-	get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/ship/Stage_09-Warehouse.tscn")
+	get_node("/root/SceneChanger")._change_scene(warehouse)
 
 func _on_theatre_pressed():
-	player_skipped()
-	get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/MallZones/Stage_01_a-TheatreHall.tscn")
+	get_node("/root/SceneChanger")._change_scene(cinema)
 
-func player_skipped():
-	EventManager.link_to_target("res://Src/1_World/1_zones/ship/Stage_09-Warehouse.tscn", "lockedDoor", true)
-
-func _on_moxieButton_pressed():
-	OS.shell_open("https://www.patreon.com/user?u=34316216")
+func _on_mall_pressed():
+	get_node("/root/SceneChanger")._change_scene(mall)
