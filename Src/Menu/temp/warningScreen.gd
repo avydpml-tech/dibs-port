@@ -1,7 +1,11 @@
 extends Node2D
 
-export (Resource) var scene_path_to_load
-export (Resource) var mainhub
+# Было: export (Resource) — заставляло Godot жадно грузить ВСЮ сцену
+# (со всеми текстурами/тайлсетами) прямо при парсинге warningScreen.tscn,
+# то есть ещё до показа предупреждения. Теперь просто строка-путь,
+# сама сцена грузится лениво внутри SceneChanger._change_scene().
+export (String) var scene_path_to_load = "res://Src/Menu/temp/openingScene.tscn"
+export (String) var mainhub = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
 export (String) var scene_path_to_load_2 = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
 export (String) var scene_path_to_load_3 = "res://Src/1_World/1_zones/ship/Stage_05-Canals.tscn"
 
@@ -26,23 +30,23 @@ func _process(delta):
 func _skip_warning():
 	# Защита от повторного срабатывания
 	set_process(false)
-	
+
 	if _debug_label:
 		_debug_label.text = "Skipping..."
 
 	if Globals.is_entered_mainhub:
 		Globals.is_show_mainhub_start_screen = true
-		get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn")
+		get_node("/root/SceneChanger")._change_scene(mainhub)
 	else:
-		# Жёсткий путь вместо .get_path()
-		get_node("/root/SceneChanger")._change_scene("res://Src/Menu/temp/openingScene.tscn")
+		get_node("/root/SceneChanger")._change_scene(scene_path_to_load)
+
 func _on_quick_start_pressed():
 	get_node("/root/SceneChanger")._change_scene(scene_path_to_load_3)
 	$message/quick_start.release_focus()
 
 func _on_warehouse_pressed():
 	player_skipped()
-	get_node("/root/SceneChanger")._change_scene("res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn")
+	get_node("/root/SceneChanger")._change_scene(scene_path_to_load_2)
 	$message/quick_start.release_focus()
 
 func _on_theatre_pressed():

@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Src/Menu/temp/warningScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/1_Visual/zzz_Misc/patreon/fixed_start_typo.png" type="Texture" id=2]
 [ext_resource path="res://Assets/1_Visual/z_Fonts/Manjari/Manjari-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/1_Visual/z_Fonts/Manjari/Manjari-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Src/Menu/temp/openingScene.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/1_Visual/z_Fonts/_Theatre/_Curated Fonts/Manjari-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/1_Visual/1_Entities/!_player/playerUI/_grapple_mechanic/icons/saucy-icons-fox-head-outline.png" type="Texture" id=8]
 
@@ -25,8 +23,8 @@ font_data = ExtResource( 7 )
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 1 )
 script = ExtResource( 1 )
-scene_path_to_load = ExtResource( 5 )
-mainhub = ExtResource( 6 )
+scene_path_to_load = "res://Src/Menu/temp/openingScene.tscn"
+mainhub = "res://Src/1_World/1_zones/MainHub/Stage-Mainhub.tscn"
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
