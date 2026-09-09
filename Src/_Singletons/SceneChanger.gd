@@ -4,7 +4,7 @@ signal scene_changed()
 
 var current_scene: String = ""
 
-func _change_scene(path, fade_time = 0.2, hold_fade = 0, var delay = 0.1):
+func _change_scene(path, fade_time = 0.2, hold_fade = 0, delay = 0.1):
 	var log = get_node_or_null("/root/CrashLog")
 
 	if log:
