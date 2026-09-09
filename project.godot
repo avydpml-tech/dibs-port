@@ -214,7 +214,11 @@ animation/layers/exclusion_pattern="_ne$"
 default_bus_layout="res://zzz_Misc/default_bus_layout.tres"
 
 [autoload]
+[autoload]
 
+CrashLog="*res://Src/_Singletons/CrashLogger.gd"
+Globals="*res://Src/_Singletons/Globals.gd"
+SceneChanger="*res://Src/_Singletons/SceneChanger.tscn"
 AnimationManager="*res://Src/_Singletons/AnimationManager.gd"
 PosManager="*res://Src/_Singletons/PosManager.gd"
 Globals="*res://Src/_Singletons/Globals.gd"
