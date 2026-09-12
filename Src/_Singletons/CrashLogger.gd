@@ -29,6 +29,17 @@ func _ready():
 	add_child(_heartbeat_timer)
 	_heartbeat_timer.connect("timeout", self, "_on_heartbeat")
 
+	# Трассировка: логируем КАЖДУЮ ноду, добавленную в дерево сцены.
+	# Автозагрузки (и всё, что они создают в _ready()) добавляются
+	# по порядку из [autoload] в project.godot — поэтому последняя
+	# строка "+ нода:" перед обрывом лога укажет ровно на то место,
+	# где всё упало. ВАЖНО: это временная debug-мера, убери после
+	# того как найдём причину — она пишет на диск очень часто.
+	get_tree().connect("node_added", self, "_on_node_added")
+
+func _on_node_added(node: Node) -> void:
+	_log("+ нода: %s (%s)" % [str(node.get_path()), node.get_class()])
+
 func _make_session_id() -> String:
 	var t = OS.get_datetime()
 	return "%04d-%02d-%02d_%02d-%02d-%02d" % [t.year, t.month, t.day, t.hour, t.minute, t.second]
